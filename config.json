@@ -3,7 +3,7 @@
   "language": "Dart",
   "repository": "https://github.com/exercism/xdartlang",
   "active": false,
-  "test_pattern": "TODO",
+  "test_pattern": "_test\\.dart$",
   "exercises": [
     {
       "slug": "hello-world",
