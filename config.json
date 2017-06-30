@@ -1,0 +1,16 @@
+{
+  "slug": "dartlang",
+  "language": "Dart",
+  "repository": "https://github.com/exercism/xdartlang",
+  "active": false,
+  "test_pattern": "TODO",
+  "exercises": [
+
+  ],
+  "deprecated": [
+
+  ],
+  "foregone": [
+
+  ]
+}
