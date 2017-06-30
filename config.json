@@ -22,6 +22,18 @@
         "Strings",
         "Transforming"
       ]
+    },
+    {
+      "slug": "bob",
+      "difficulty": 1,
+      "topics": [
+        "Control flow (conditionals)",
+        "Polymorfism",
+        "Strings",
+        "Unicode",
+        "Pattern recognition",
+        "Regular expressions"
+      ]
     }
   ],
   "deprecated": [
