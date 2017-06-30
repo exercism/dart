@@ -1,0 +1,8 @@
+name: exercism_dart
+authors:
+  - SuperPaintman <SuperPaintmanDeveloper@gmail.com>
+dev_dependencies:
+  test: '0.12.23+1'
+  args: '0.13.7'
+  yaml: '2.1.12'
+  dart_style: '1.0.6'

@@ -1,4 +1,26 @@
-language: bash
+language: dart
+
+sudo: false
+
+dart:
+  - dev
+  - stable
+
+dart_task:
+  - test: --platform vm
+
+cache:
+  directories:
+    - $HOME/.pub-cache
+
+before_script:
+  - |
+    unformatted="$(pub run dart_style:format -l 120 -n .)"
+    if [ ! -z "$unformatted" ]; then
+      echo "Files are unformatted:"
+      echo "$unformatted"
+      exit 1
+    fi
 
 script:
   - bin/fetch-configlet
