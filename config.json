@@ -34,6 +34,13 @@
         "Pattern recognition",
         "Regular expressions"
       ]
+    },
+    {
+      "slug": "gigasecond",
+      "difficulty": 1,
+      "topics": [
+        "Time"
+      ]
     }
   ],
   "deprecated": [
