@@ -4,6 +4,9 @@ import "dart:async";
 import "package:test/test.dart";
 import "package:yaml/yaml.dart";
 
+/** Constants */
+const ENV_NAME = "EXERCISE";
+
 /** Helpers */
 Future runCmd(List<String> cmds) async {
   final cmd = cmds.first;
@@ -56,16 +59,32 @@ Running tests for: $packageName
   }
 }
 
+Future runAllTests() async {
+  final exercisesRootDir = new Directory("exercises");
+
+  assert(await exercisesRootDir.exists());
+
+  final exercisesDirs = exercisesRootDir.listSync().where((d) => d is Directory);
+
+  for (var dir in exercisesDirs) {
+    await runTest(dir.path);
+  }
+}
+
 void main() {
+  final testname = Platform.environment[ENV_NAME];
+
   test("Exercises", () async {
-    final exercisesRootDir = new Directory("exercises");
+    if (testname == null) {
+      await runAllTests();
+    } else {
+      final testpath = "${Directory.current.path}/exercises/$testname";
 
-    assert(await exercisesRootDir.exists());
+      if (!await new Directory(testpath).exists()) {
+        throw new ArgumentError("No exercise with this name: $testname");
+      }
 
-    final exercisesDirs = exercisesRootDir.listSync().where((d) => d is Directory);
-
-    for (var dir in exercisesDirs) {
-      await runTest(dir.path);
+      await runTest(testpath);
     }
   });
 }
