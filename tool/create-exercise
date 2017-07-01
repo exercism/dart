@@ -50,7 +50,7 @@ class ${pascalCase(name)} {
 
 String mainTemplate(String name) => """
 class ${pascalCase(name)} {
-
+  // Put your code here
 }
 """;
 
