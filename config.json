@@ -1,7 +1,7 @@
 {
-  "slug": "dartlang",
+  "slug": "dart",
   "language": "Dart",
-  "repository": "https://github.com/exercism/xdartlang",
+  "repository": "https://github.com/exercism/dart",
   "active": false,
   "test_pattern": "TODO",
   "exercises": [
