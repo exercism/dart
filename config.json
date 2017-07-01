@@ -16,6 +16,16 @@
       ]
     },
     {
+      "slug": "hamming",
+      "difficulty": 1,
+      "topics": [
+        "Control-flow (loops)",
+        "Control-flow (conditionals)",
+        "Equality",
+        "Strings"
+      ]
+    },
+    {
       "slug": "rna-transcription",
       "difficulty": 1,
       "topics": [
