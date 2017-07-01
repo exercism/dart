@@ -1,0 +1,3 @@
+name: 'difference_of_squares'
+dev_dependencies:
+  test: '0.12.23+1'
