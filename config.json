@@ -16,6 +16,15 @@
       ]
     },
     {
+      "slug": "leap",
+      "difficulty": 1,
+      "topics": [
+        "Booleans",
+        "Integers",
+        "Logic"
+      ]
+    },
+    {
       "slug": "hamming",
       "difficulty": 1,
       "topics": [
