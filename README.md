@@ -1,6 +1,6 @@
 # Exercism Dart Track
 
-![build status](https://travis-ci.org/exercism/dartlang.svg?branch=master)
+![build status](https://travis-ci.org/exercism/dart.svg?branch=master)
 
 Exercism exercises in Dart.
 
