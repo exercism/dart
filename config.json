@@ -6,7 +6,10 @@
   "test_pattern": "_test\\.dart$",
   "exercises": [
     {
+      "uuid": "93ed6692-5f4e-477d-9bce-9e76999e1f1f",
       "slug": "hello-world",
+      "core": false,
+      "unlocked_by": null,
       "difficulty": 1,
       "topics": [
         "Control-flow (conditionals)",
@@ -16,7 +19,10 @@
       ]
     },
     {
+      "uuid": "d06437d7-e5d0-4fe1-a22f-883d3c35f7eb",
       "slug": "leap",
+      "core": false,
+      "unlocked_by": null,
       "difficulty": 1,
       "topics": [
         "Booleans",
@@ -25,7 +31,10 @@
       ]
     },
     {
+      "uuid": "d4fed623-39da-43f8-8d34-8c9e68c67217",
       "slug": "hamming",
+      "core": false,
+      "unlocked_by": null,
       "difficulty": 1,
       "topics": [
         "Control-flow (loops)",
@@ -35,7 +44,10 @@
       ]
     },
     {
+      "uuid": "69ef6894-ffd5-431b-ab3e-9f20d8d5741c",
       "slug": "rna-transcription",
+      "core": false,
+      "unlocked_by": null,
       "difficulty": 1,
       "topics": [
         "Strings",
@@ -43,7 +55,10 @@
       ]
     },
     {
+      "uuid": "8b67deea-286c-4c99-b1f0-9493cfd445f9",
       "slug": "bob",
+      "core": false,
+      "unlocked_by": null,
       "difficulty": 1,
       "topics": [
         "Control flow (conditionals)",
@@ -55,23 +70,26 @@
       ]
     },
     {
+      "uuid": "a356c21f-2de3-49a8-a9f1-962d8c9e84c1",
       "slug": "gigasecond",
+      "core": false,
+      "unlocked_by": null,
       "difficulty": 1,
       "topics": [
         "Time"
       ]
     },
     {
+      "uuid": "6e251bc8-aa24-46df-b7d4-25a6c22fdce7",
       "slug": "difference-of-squares",
+      "core": false,
+      "unlocked_by": null,
       "difficulty": 1,
       "topics": [
         "Integers",
         "Mathematics"
       ]
     }
-  ],
-  "deprecated": [
-
   ],
   "foregone": [
 
