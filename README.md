@@ -68,5 +68,5 @@ Please keep the following in mind:
 
 - Please do not commit any configuration files or directories inside the exercise other than ...
 
-- Be sure to add it to the appropriate place in the `config.json` file. Also, please run `bin/fetch-configlet && bin/configlet` to ensure the exercise is configured correctly.
+- Be sure to add it to the appropriate place in the `config.json` file. Also, please run `bin/fetch-configlet && bin/configlet lint .` to ensure the exercise is configured correctly.
 
