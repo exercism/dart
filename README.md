@@ -62,7 +62,7 @@ Please keep the following in mind:
 - Exercises should use only the Dart core libraries.
 
 - Please do not add a README or README.md file to the exercise directory. The READMEs are constructed using shared metadata, which lives in the
-[exercism/problem-specifications](https://github.com/exercism/problem-specifications) repository. Further explanation can be found in [fixing-exercise-readmes](https://github.com/exercism/docs/blob/master/contributing-to-language-tracks/exercise-readmes.md)
+[exercism/problem-specifications](https://github.com/exercism/problem-specifications) repository. Further explanation can be found in [fixing-exercise-readmes](https://github.com/exercism/docs/blob/master/language-tracks/exercises/anatomy/readmes.md)
 
 - Each exercise should have a test suite, an example solution, a template file for the real implementation and ... (anything else that needs to go with each exercise for this track). The CI build expects files to be named using the following convention: (describe the Dart convention for naming the various files that make up an exercise).
 
