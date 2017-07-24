@@ -1,7 +1,5 @@
 {
-  "slug": "dart",
   "language": "Dart",
-  "repository": "https://github.com/exercism/dart",
   "active": false,
   "test_pattern": "_test\\.dart$",
   "exercises": [
