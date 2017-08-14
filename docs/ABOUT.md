@@ -12,7 +12,7 @@ The primary concepts baked into the making of the language were:
  - It is architecture-neutral and portable.
  - It executes with high performance for practical applications and not just benchmarks.
 
-The language derives much of its syntax from Java and JavaScript.
+The language derives its syntax from Java and JavaScript; as well as Smalltalk.
 
 ## Why Learn Dart?
 
