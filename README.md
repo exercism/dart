@@ -6,7 +6,7 @@ Exercism exercises in Dart.
 
 ## Setup
 
-The simplest way to install Dart is ...
+The simplest way to install Dart can be [found here](docs/INSTALLATION.md).
 
 ## Contributing
 
