@@ -1,6 +1,6 @@
-[Dart](https://en.wikipedia.org/wiki/Dart_(programming_language)) brings object-oriented and typing together with the flexibility that JavaScript is known for. This has made the biggest impact in regards to web develop via AngularDart which has the Angular framework implemented using Dart.
+Dart brings object-oriented and typing together with the flexibility that JavaScript is known for. This has made the biggest impact in regards to web develop via AngularDart which has the Angular framework implemented using Dart.
 
-Dart applications are typically compiled to run in the Dart virtual machine (Dart VM) regardless of computer architecture.
+To dig deeper into Dart, [click here](https://en.wikipedia.org/wiki/Dart_(programming_language)).
 
 The primary concepts baked into the making of the language were:
 
