@@ -10,18 +10,7 @@ The primary concepts baked into the making of the language were:
  - It is architecture-neutral and portable.
  - It executes with high performance for practical applications and not just benchmarks.
 
-## Why Learn Dart?
-
-- DART IS FROM GOOGLE.
-It is the programming language between many of their produces like AdSense.
-It has grown to provide solutions for web-based content, and mobile apps
-
-- [Write once, run anywhere](https://en.wikipedia.org/wiki/Write_once,_run_anywhere) policy: Programs written in Dart are compiled into machine-independent bytecodes (or JavaScript for web apps), so it can run on any Dart platform.
-Basically, Dart is [Platform Independent](https://en.wikipedia.org/wiki/Cross-platform#Platform-independent_software)
-
-- Dart has a solid API:
-Dart has built-in [application programming interfaces](https://en.wikipedia.org/wiki/Application_programming_interface) (APIs) for I/O, networking, data structures, concurrency, and many other functions.
-Standard libraries can be supplemented by open source libraries found on [Pub](https://pub.dartlang.org).
+Standard (built-in) libraries can be supplemented by open source libraries found on [Pub](https://pub.dartlang.org).
 
 - Standardization:
 If you need to write a web/enterprise app, or you need data persistence or you need to do cryptography, no problem!
