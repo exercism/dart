@@ -14,9 +14,10 @@ The primary concepts baked into the making of the language were:
 
 If you need to write a web/enterprise app, or you need data persistence or you need to do cryptography, no problem!
 Dart is all you require!
-There are many standard tools/practices that extend the [Dart specification](https://www.dartlang.org/guides/language/spec) , thanks to the [Dart Enhancement Proposals](https://github.com/dart-lang/dart_enhancement_proposals) (DEP)!
 
-Standard (built-in) libraries can be supplemented by open source libraries found on [Pub](https://pub.dartlang.org).
+There is a rich ecosystem springing up around Dart because the standard (built-in) libraries can be supplemented by open source libraries found on [Pub](https://pub.dartlang.org).
+
+And the community has a voice in the development of the language since there are many standard tools/practices that extend the [Dart specification](https://www.dartlang.org/guides/language/spec), thanks to the [Dart Enhancement Proposals](https://github.com/dart-lang/dart_enhancement_proposals) (DEP)!
 
 ## Dart Project Layout
 ```bash
