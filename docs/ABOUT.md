@@ -10,12 +10,13 @@ The primary concepts baked into the making of the language were:
  - It is architecture-neutral and portable.
  - It executes with high performance for practical applications and not just benchmarks.
 
-Standard (built-in) libraries can be supplemented by open source libraries found on [Pub](https://pub.dartlang.org).
-
 - Standardization:
+
 If you need to write a web/enterprise app, or you need data persistence or you need to do cryptography, no problem!
-Dart is all you require.
+Dart is all you require!
 There are many standard tools/practices that extend the [Dart specification](https://www.dartlang.org/guides/language/spec) , thanks to the [Dart Enhancement Proposals](https://github.com/dart-lang/dart_enhancement_proposals) (DEP)!
+
+Standard (built-in) libraries can be supplemented by open source libraries found on [Pub](https://pub.dartlang.org).
 
 ## Dart Project Layout
 ```bash
