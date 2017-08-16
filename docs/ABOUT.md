@@ -1,9 +1,6 @@
-[Dart](https://en.wikipedia.org/wiki/Dart_(programming_language)) is a general-purpose computer programming language that is:
- 1. [Concurrent](https://en.wikipedia.org/wiki/Concurrent_computing)
- 2. [Class-Based](https://en.wikipedia.org/wiki/Class-based_programming)
- 3. [Object-Oriented](https://en.wikipedia.org/wiki/Object-oriented_programming)
+[Dart](https://en.wikipedia.org/wiki/Dart_(programming_language)) brings object-oriented and typing together with the flexibility that JavaScript is known for. This has made the biggest impact in regards to web develop via AngularDart which has the Angular framework implemented using Dart.
 
-Dart applications are typically compiled to [bytecode](https://en.wikipedia.org/wiki/Bytecode) that can run on any [Dart virtual machine](https://en.wikipedia.org/wiki/Dart_virtual_machine) (JVM) regardless of computer architecture.
+Dart applications are typically compiled to run in the Dart virtual machine (Dart VM) regardless of computer architecture.
 
 The primary concepts baked into the making of the language were:
 
