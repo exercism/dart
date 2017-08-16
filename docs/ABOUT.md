@@ -18,16 +18,3 @@ Dart is all you require!
 There is a rich ecosystem springing up around Dart because the standard (built-in) libraries can be supplemented by open source libraries found on [Pub](https://pub.dartlang.org).
 
 And the community has a voice in the development of the language since there are many standard tools/practices that extend the [Dart specification](https://www.dartlang.org/guides/language/spec), thanks to the [Dart Enhancement Proposals](https://github.com/dart-lang/dart_enhancement_proposals) (DEP)!
-
-## Dart Project Layout
-```bash
-.
-└────-- lib/
-    │   ├── src/
-    |   │   └──-- other application files
-    │   └── dart app file
-    ├── test/
-    |   └──-- test related files
-    ├── analysis_options.yaml
-    └── pubspec.yaml
-```
