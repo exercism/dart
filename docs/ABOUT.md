@@ -10,7 +10,7 @@ The primary concepts baked into the making of the language were:
  - It is architecture-neutral and portable.
  - It executes with high performance for practical applications and not just benchmarks.
 
-- Standardization:
+Standardization:
 
 If you need to write a web/enterprise app, or you need data persistence or you need to do cryptography, no problem!
 Dart is all you require!
