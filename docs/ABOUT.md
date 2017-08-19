@@ -1,4 +1,4 @@
-Dart brings object-oriented and typing together with the flexibility that JavaScript is known for.  It is designed to make common programming tasks simpler. This has made the biggest impact in regards to web development via AngularDart which has the Angular framework implemented using Dart.
+Dart brings object-oriented and typing together with the flexibility that JavaScript is known for.  It is designed to simplify common programming tasks. This has made the biggest impact in regards to web development via AngularDart which has the Angular framework implemented using Dart.
 
 To dig deeper into Dart, [click here](https://en.wikipedia.org/wiki/Dart_(programming_language)).
 
