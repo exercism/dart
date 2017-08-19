@@ -5,7 +5,7 @@ To dig deeper into Dart, [click here](https://en.wikipedia.org/wiki/Dart_(progra
 The primary concepts baked into the making of the language were:
 
  - It is simple, object-oriented, and familiar.
-  * The language derives its syntax from Java and JavaScript; as well as Smalltalk.
+   * The language derives its syntax from Java and JavaScript; as well as Smalltalk.
  - It provides tools out of the box to help development efforts.
  - It is architecture-neutral and portable.
  - It executes with high performance for practical applications and not just benchmarks.
