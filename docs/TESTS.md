@@ -86,7 +86,7 @@ If you get stuck, at any point, don't forget to reach out for [help](http://exer
    ```
    *(Don't worry about the tests failing, at first, this is how you begin each exercise.)*
 
-6. Solve the exercise.  Find and work through the `README.md` guide ([view on GitHub](https://github.com/exercism/dart/blob/master/exercises/hello-world/README.md)).
+5. Solve the exercise.  Find and work through the `README.md` guide ([view on GitHub](https://github.com/exercism/dart/blob/master/exercises/hello-world/README.md)).
 
 Good luck!  Have fun!
 
@@ -126,7 +126,7 @@ If you get stuck, at any point, don't forget to reach out for [help](http://exer
    ```
    *(Don't worry about the tests failing, at first, this is how you begin each exercise.)*
 
-6. Solve the exercise.  Find and work through the `README.md` guide ([view on GitHub](https://github.com/exercism/dart/blob/master/exercises/hello-world/README.md)).
+5. Solve the exercise.  Find and work through the `README.md` guide ([view on GitHub](https://github.com/exercism/dart/blob/master/exercises/hello-world/README.md)).
 
 Good luck!  Have fun!
 
