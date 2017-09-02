@@ -45,7 +45,11 @@ Please keep the following in mind:
 
 - Please open an issue before creating a PR that makes significant (breaking) changes to an existing exercise or makes changes across many exercises. It is best to discuss these changes before doing the work. Discussions related to exercises that are not track specific can be found in [exercism/discussions](https://github.com/exercism/discussions/issues).
 
-- Follow the coding standards for Dart. (If there is a formatter for the track's language, add instructions for using it here.)
+- Follow the coding standards for Dart.
+    * For your convenience, [a link to the Dart style guide](https://www.dartlang.org/guides/language/effective-dart)
+    * Some points of interest:
+      * [Filename naming convention](https://www.dartlang.org/guides/language/effective-dart/style#do-name-libraries-and-source-files-using-lowercase_with_underscores)
+      * [Guide to the built-in formatter tool](https://github.com/dart-lang/dart_style#getting-dartfmt)
 
 - Watch out for trailing spaces, extra blank lines, and spaces in blank lines.
 
