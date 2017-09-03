@@ -12,7 +12,7 @@ Choose your operating system:
 
 1. Open a Command Prompt.
 
-2. Get the first exercise:
+1. Get the first exercise:
 
      ```batchfile
      C:\Users\JaneDoe>exercism fetch dart
@@ -26,26 +26,26 @@ Choose your operating system:
      unchanged: 0, updated: 0, new: 1
      ```
 
-3. Change directory into the exercism:
+1. Change directory into the exercism:
 
      ```batchfile
      C:\Users\JaneDoe>cd C:\Users\JaneDoe\exercism\dart\hello-world
      ```
 
-4. Download the dependent packages:
+1. Download the dependent packages:
 
      ```batchfile
      C:\Users\JaneDoe>pub get
      ```
 
-5. Run the tests:
+1. Run the tests:
 
      ```batchfile
      C:\Users\JaneDoe>pub run test
      ```
    *(Don't worry about the tests failing, at first, this is how you begin each exercise.)*
 
-6. Solve the exercise.  Find and work through the `README.md` guide ([view on GitHub](https://github.com/exercism/dart/blob/master/exercises/hello-world/README.md)).
+1. Solve the exercise.  Find and work through the `README.md` guide ([view on GitHub](https://github.com/exercism/dart/blob/master/exercises/hello-world/README.md)).
 
 
 Good luck!  Have fun!
@@ -67,26 +67,26 @@ If you get stuck, at any point, don't forget to reach out for [help](http://exer
      unchanged: 0, updated: 0, new: 1
      ```
 
-2. Change directory into the exercise:
+1. Change directory into the exercise:
 
      ```shell
      $ cd /Users/janedoe/exercism/dart/hello-world
      ```
 
-3. Download the dependent packages:
+1. Download the dependent packages:
 
      ```shell
      $ pub get
      ```
 
-4. Run the tests:
+1. Run the tests:
 
      ```shell
      $ pub run test
      ```
    *(Don't worry about the tests failing, at first, this is how you begin each exercise.)*
 
-5. Solve the exercise.  Find and work through the `README.md` guide ([view on GitHub](https://github.com/exercism/dart/blob/master/exercises/hello-world/README.md)).
+1. Solve the exercise.  Find and work through the `README.md` guide ([view on GitHub](https://github.com/exercism/dart/blob/master/exercises/hello-world/README.md)).
 
 Good luck!  Have fun!
 
@@ -107,26 +107,26 @@ If you get stuck, at any point, don't forget to reach out for [help](http://exer
      unchanged: 0, updated: 0, new: 1
      ```
 
-2. Change directory into the exercise:
+1. Change directory into the exercise:
 
      ```shell
      $ cd /home/janedoe/exercism/dart/hello-world
      ```
 
-3. Download the dependent packages:
+1. Download the dependent packages:
 
      ```shell
      $ pub get
      ```
 
-4. Run the tests:
+1. Run the tests:
 
      ```shell
      $ pub run test
      ```
    *(Don't worry about the tests failing, at first, this is how you begin each exercise.)*
 
-5. Solve the exercise.  Find and work through the `README.md` guide ([view on GitHub](https://github.com/exercism/dart/blob/master/exercises/hello-world/README.md)).
+1. Solve the exercise.  Find and work through the `README.md` guide ([view on GitHub](https://github.com/exercism/dart/blob/master/exercises/hello-world/README.md)).
 
 Good luck!  Have fun!
 
