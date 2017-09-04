@@ -2,7 +2,6 @@ import "package:test/test.dart";
 import "package:hello_world/hello_world.dart";
 
 void main() {
-  group("HelloWorld", () {
     var helloWorld = new HelloWorld();
 
     test("should work", () {
@@ -20,5 +19,4 @@ void main() {
     test("says hello to sally", () {
       expect(helloWorld.hello("Sally"), equals("Hello, Sally!"));
     }, skip: true);
-  });
 }
