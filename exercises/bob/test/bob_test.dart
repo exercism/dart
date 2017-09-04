@@ -72,6 +72,8 @@ void main() {
       ///   \xdc = Ü
       ///   \xfc = ü
       ///
+      ///   "\xdcML\xc4\xdcTS" === "ÜMLÄÜTS"
+      ///
       ///   "\xfcML\xe4\xdcTS" === "üMLäÜTS"
 
       final result = bob.hey("\xdcML\xc4\xdcTS!");
