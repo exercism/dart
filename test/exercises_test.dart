@@ -27,14 +27,32 @@ Future runCmd(List<String> cmds) async {
   assert(res.exitCode == 0);
 }
 
+Future getPackageName() async {
+  final pubspec = new File("pubspec.yaml");
+
+  final packageName = loadYaml(await pubspec.readAsString())["name"];
+
+  return packageName;
+}
+
+Future locateExercismDirAndExecuteTests() async {
+  final exercisesRootDir = new Directory("exercises");
+
+  assert(await exercisesRootDir.exists());
+
+  final exercisesDirs = exercisesRootDir.listSync().where((d) => d is Directory);
+
+  for (dynamic dir in exercisesDirs) {
+    await runTest(dir.path);
+  }
+}
+
 Future runTest(String path) async {
   final current = Directory.current;
 
   Directory.current = path;
 
-  final pubspec = new File("pubspec.yaml");
-
-  final packageName = loadYaml(await pubspec.readAsString())["name"];
+  dynamic packageName = await getPackageName();
 
   print("""
 ================================================================================
@@ -45,7 +63,7 @@ Running tests for: $packageName
   await runCmd(["cp", "lib/${packageName}.dart", "lib/${packageName}.dart.bu"]);
   await runCmd(["cp", "test/${packageName}_test.dart", "test/${packageName}_test.dart.bu"]);
   try {
-    for (var cmds in [
+    for (dynamic cmds in [
       ["cp", "lib/example.dart", "lib/${packageName}.dart"], // Replace main file with example
       ["sed", "-i", "-e", "s/\\bskip:\\s*true\\b/skip: false/g", "test/${packageName}_test.dart"], // Enable all tests
       ["pub", "get"], // Pull dependencies
@@ -62,15 +80,23 @@ Running tests for: $packageName
 }
 
 Future runAllTests() async {
-  final exercisesRootDir = new Directory("exercises");
+  final dartExercismRootDir = new Directory("..");
 
-  assert(await exercisesRootDir.exists());
+  assert(await dartExercismRootDir.exists());
 
-  final exercisesDirs = exercisesRootDir.listSync().where((d) => d is Directory);
+  await locateExercismDirAndExecuteTests();
 
-  for (var dir in exercisesDirs) {
-    await runTest(dir.path);
-  }
+  Directory.current = dartExercismRootDir.parent;
+
+  dynamic packageName = await getPackageName();
+
+  print("""
+
+================================================================================
+Running tests for: $packageName
+================================================================================
+""");
+
 }
 
 void main() {
