@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+unformatted="$(pub run dart_style:format -l 120 -n .)"
+
+if [ ! -z "$unformatted" ]; then
+  echo "Files are unformatted:"
+  echo "$unformatted"
+  exit 1
+fi
