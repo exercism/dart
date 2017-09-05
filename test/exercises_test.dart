@@ -64,10 +64,17 @@ Running tests for: $packageName
   await runCmd(["cp", "test/${packageName}_test.dart", "test/${packageName}_test.dart.bu"]);
   try {
     for (dynamic cmds in [
-      ["cp", "lib/example.dart", "lib/${packageName}.dart"], // Replace main file with example
-      ["sed", "-i", "-e", "s/\\bskip:\\s*true\\b/skip: false/g", "test/${packageName}_test.dart"], // Enable all tests
-      ["pub", "get"], // Pull dependencies
-      ["pub", "run", "test"] // Run tests
+      /// Replace main file with example
+      ["cp", "lib/example.dart", "lib/${packageName}.dart"],
+
+      /// Enable all tests
+      ["sed", "-i", "-e", "s/\\bskip:\\s*true\\b/skip: false/g", "test/${packageName}_test.dart"],
+
+      /// Pull dependencies
+      ["pub", "get"],
+
+      /// Run tests
+      ["pub", "run", "test"]
     ]) {
       await runCmd(cmds);
     }
@@ -96,7 +103,6 @@ Future runAllTests() async {
 Running tests for: $packageName
 ================================================================================
 """);
-
 }
 
 void main() {

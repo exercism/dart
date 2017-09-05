@@ -10,7 +10,7 @@ void main() {
         final result = rnaTranscription.toRna("C");
 
         expect(result, equals("G"));
-      });
+      }, skip: false);
 
       test("transcribes guanine to cytosine", () {
         final result = rnaTranscription.toRna("G");
