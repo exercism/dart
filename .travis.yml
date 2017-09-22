@@ -9,10 +9,6 @@ dart:
 dart_task:
   - test: --platform vm
 
-branches:
-  only:
-  - master
-
 cache:
   directories:
     - $HOME/.pub-cache
