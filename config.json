@@ -35,8 +35,8 @@
       "unlocked_by": null,
       "difficulty": 1,
       "topics": [
-        "Control-flow (loops)",
         "Control-flow (conditionals)",
+        "Control-flow (loops)",
         "Equality",
         "Strings"
       ]
@@ -86,6 +86,19 @@
       "topics": [
         "Integers",
         "Mathematics"
+      ]
+    },
+    {
+      "uuid": "6e811b53-4eb1-40f9-a811-b5113d68ae8a",
+      "slug": "anagram",
+      "core": false,
+      "unlocked_by": null,
+      "difficulty": 1,
+      "topics": [
+        "Control flow (conditionals)",
+        "Control-flow (loops)",
+        "Equality",
+        "Strings"
       ]
     }
   ],
