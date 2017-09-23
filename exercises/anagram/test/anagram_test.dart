@@ -4,7 +4,6 @@ import 'package:anagram/anagram.dart';
 Anagram anagram = new Anagram();
 
 void main() {
-
   group("simple tests", simpleTests);
 
   group("slightly less simple tests", slightlyLessSimpleTests);
