@@ -4,7 +4,7 @@
   "test_pattern": "_test\\.dart$",
   "exercises": [
     {
-      "uuid": "93ed6692-5f4e-477d-9bce-9e76999e1f1f",
+      "uuid": "6b868b7b-cac4-41ff-a855-21f596637845",
       "slug": "hello-world",
       "core": false,
       "unlocked_by": null,
@@ -17,7 +17,7 @@
       ]
     },
     {
-      "uuid": "d06437d7-e5d0-4fe1-a22f-883d3c35f7eb",
+      "uuid": "4bcfd789-dee6-4dd9-8524-076508504eda",
       "slug": "leap",
       "core": false,
       "unlocked_by": null,
@@ -29,7 +29,7 @@
       ]
     },
     {
-      "uuid": "d4fed623-39da-43f8-8d34-8c9e68c67217",
+      "uuid": "91c8033d-f40c-4a90-9ec9-7081f6eba8d2",
       "slug": "hamming",
       "core": false,
       "unlocked_by": null,
@@ -42,7 +42,7 @@
       ]
     },
     {
-      "uuid": "69ef6894-ffd5-431b-ab3e-9f20d8d5741c",
+      "uuid": "99147c39-e8d3-4166-9215-c47fb4832781",
       "slug": "rna-transcription",
       "core": false,
       "unlocked_by": null,
@@ -53,7 +53,7 @@
       ]
     },
     {
-      "uuid": "8b67deea-286c-4c99-b1f0-9493cfd445f9",
+      "uuid": "615a83cc-a905-435a-a30e-f052b61cfd4c",
       "slug": "bob",
       "core": false,
       "unlocked_by": null,
@@ -68,7 +68,7 @@
       ]
     },
     {
-      "uuid": "a356c21f-2de3-49a8-a9f1-962d8c9e84c1",
+      "uuid": "0c0511fd-59aa-4480-a7cd-4de0e9303b86",
       "slug": "gigasecond",
       "core": false,
       "unlocked_by": null,
@@ -78,7 +78,7 @@
       ]
     },
     {
-      "uuid": "6e251bc8-aa24-46df-b7d4-25a6c22fdce7",
+      "uuid": "c1cdab6f-c18c-4173-828a-2191151d20d4",
       "slug": "difference-of-squares",
       "core": false,
       "unlocked_by": null,
@@ -102,7 +102,5 @@
       ]
     }
   ],
-  "foregone": [
-
-  ]
+  "foregone": []
 }

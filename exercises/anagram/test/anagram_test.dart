@@ -1,5 +1,5 @@
 import 'package:test/test.dart';
-import 'package:anagram/example.dart';
+import 'package:anagram/anagram.dart';
 
 Anagram anagram = new Anagram();
 
