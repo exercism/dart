@@ -43,38 +43,19 @@ Running tests for: $packageName
 """);
 
   await runCmd(["cp", "lib/${packageName}.dart", "lib/${packageName}.dart.bu"]);
-  await runCmd([
-    "cp",
-    "test/${packageName}_test.dart",
-    "test/${packageName}_test.dart.bu"
-  ]);
+  await runCmd(["cp", "test/${packageName}_test.dart", "test/${packageName}_test.dart.bu"]);
   try {
     for (var cmds in [
-      [
-        "cp",
-        "lib/example.dart",
-        "lib/${packageName}.dart"
-      ], // Replace main file with example
-      [
-        "sed",
-        "-i",
-        "-e",
-        "s/\\bskip:\\s*true\\b/skip: false/g",
-        "test/${packageName}_test.dart"
-      ], // Enable all tests
+      ["cp", "lib/example.dart", "lib/${packageName}.dart"], // Replace main file with example
+      ["sed", "-i", "-e", "s/\\bskip:\\s*true\\b/skip: false/g", "test/${packageName}_test.dart"], // Enable all tests
       ["pub", "get"], // Pull dependencies
       ["pub", "run", "test"] // Run tests
     ]) {
       await runCmd(cmds);
     }
   } finally {
-    await runCmd(
-        ["mv", "lib/${packageName}.dart.bu", "lib/${packageName}.dart"]);
-    await runCmd([
-      "mv",
-      "test/${packageName}_test.dart.bu",
-      "test/${packageName}_test.dart"
-    ]);
+    await runCmd(["mv", "lib/${packageName}.dart.bu", "lib/${packageName}.dart"]);
+    await runCmd(["mv", "test/${packageName}_test.dart.bu", "test/${packageName}_test.dart"]);
 
     Directory.current = current;
   }
@@ -85,8 +66,7 @@ Future runAllTests() async {
 
   assert(await exercisesRootDir.exists());
 
-  final exercisesDirs =
-      exercisesRootDir.listSync().where((d) => d is Directory);
+  final exercisesDirs = exercisesRootDir.listSync().where((d) => d is Directory);
 
   for (var dir in exercisesDirs) {
     await runTest(dir.path);
