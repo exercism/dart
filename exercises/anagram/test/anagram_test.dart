@@ -6,7 +6,8 @@ Anagram anagram = new Anagram();
 void main() {
   // Simple
   test("no matches", () {
-    expect(anagram.findAngrams("diaper", ["hello", "world", "zombies", "pants"]),
+    expect(
+        anagram.findAngrams("diaper", ["hello", "world", "zombies", "pants"]),
         equals([]));
   });
 
@@ -18,7 +19,6 @@ void main() {
     expect(anagram.findAngrams("galea", ["eagle"]), equals([]));
   });
 
-
   // Mid Range
   test("detects two anagrams", () {
     expect(anagram.findAngrams("master", ["stream", "pigeon", "maters"]),
@@ -26,60 +26,65 @@ void main() {
   });
 
   test("does not detect anagram subsets", () {
-    expect(anagram.findAngrams("good", ["dog", "goody"]),
-        equals([]));
+    expect(anagram.findAngrams("good", ["dog", "goody"]), equals([]));
   });
 
   test("detects anagram", () {
-    expect(anagram.findAngrams("listen", ["enlists", "google", "inlets",
-    "banana"]), equals(["inlets"]));
+    expect(
+        anagram
+            .findAngrams("listen", ["enlists", "google", "inlets", "banana"]),
+        equals(["inlets"]));
   });
 
   test("detects anagram", () {
-    expect(anagram.findAngrams("allergy", [ "gallery",
-    "ballerina",
-    "regally",
-    "clergy",
-    "largely",
-    "leading"
-    ]), equals(["gallery", "regally", "largely"]));
+    expect(
+        anagram.findAngrams("allergy", [
+          "gallery",
+          "ballerina",
+          "regally",
+          "clergy",
+          "largely",
+          "leading"
+        ]),
+        equals(["gallery", "regally", "largely"]));
   });
 
   // More Challenging
   // Suggesting moving it up higher
   test("does not detect a word as its own anagram", () {
-    expect(anagram.findAngrams("banana", [
-      "Banana"
-    ]), equals([]));
+    expect(anagram.findAngrams("banana", ["Banana"]), equals([]));
   });
 
   test("does not detect identical words", () {
-    expect(anagram.findAngrams("corn", [
-      "corn", "dark", "Corn", "rank", "CORN","cron", "park"]
-    ), equals(["cron"]));
+    expect(
+        anagram.findAngrams(
+            "corn", ["corn", "dark", "Corn", "rank", "CORN", "cron", "park"]),
+        equals(["cron"]));
   });
 
   test("does not detect non-anagrams with identical checksum", () {
-    expect(anagram.findAngrams("mass", ["last"]
-    ), equals([]));
+    expect(anagram.findAngrams("mass", ["last"]), equals([]));
   });
 
   test("detects anagrams case-insensitively", () {
-    expect(anagram.findAngrams("Orchestra", [
-      "cashregister", "Carthorse", "radishes"
-    ]), equals(["Carthorse"]));
+    expect(
+        anagram.findAngrams(
+            "Orchestra", ["cashregister", "Carthorse", "radishes"]),
+        equals(["Carthorse"]));
   });
 
   test("detects anagrams using case-insensitive subject", () {
-    expect(anagram.findAngrams("Orchestra", [
-      "cashregister", "carthorse", "radishes"
-    ]), equals(["carthorse"]));
+    expect(
+        anagram.findAngrams(
+            "Orchestra", ["cashregister", "carthorse", "radishes"]),
+        equals(["carthorse"]));
   });
 
   test("detects anagrams using case-insensitive possible matches", () {
-    expect(anagram.findAngrams("orchestra", [
-      "cashregister", "Carthorse", "radishes"
-    ]), equals(["Carthorse"]));
+    expect(
+        anagram.findAngrams(
+            "orchestra", ["cashregister", "Carthorse", "radishes"]),
+        equals(["Carthorse"]));
   });
 
   test("does not detect a anagram if the original word is repeated", () {
