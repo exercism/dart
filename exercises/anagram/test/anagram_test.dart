@@ -42,7 +42,7 @@ void slightlyLessSimpleTests() {
     expect(anagram.findAnagrams("listen", ["enlists", "google", "inlets", "banana"]), equals(["inlets"]));
   }, skip: true);
 
-  test("detects anagram", () {
+  test("detects three anagrams", () {
     expect(anagram.findAnagrams("allergy", ["gallery", "ballerina", "regally", "clergy", "largely", "leading"]),
         equals(["gallery", "regally", "largely"]));
   }, skip: true);
