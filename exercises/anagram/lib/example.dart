@@ -1,12 +1,12 @@
 class Anagram {
-  List<String> findAngrams(String subject, List<String> candidates) {
-    Map<String, int> subjectCharsMap = countChracters(subject);
+  List<String> findAnagrams(String subject, List<String> candidates) {
+    Map<String, int> subjectCharsMap = countCharacters(subject);
 
     List<String> matchTracker = new List<String>();
 
     for (String possible in candidates) {
       if (possible.toLowerCase() != subject.toLowerCase()) {
-        Map<String, int> possibleCharMap = countChracters(possible);
+        Map<String, int> possibleCharMap = countCharacters(possible);
 
         if (mapsMatch(subjectCharsMap, possibleCharMap)) {
           matchTracker.add(possible);
@@ -18,7 +18,7 @@ class Anagram {
     return matchTracker;
   }
 
-  Map<String, int> countChracters(String word) {
+  Map<String, int> countCharacters(String word) {
     Map<String, int> charTracker = new Map<String, int>();
 
     for (int counter = 0; counter < word.length; counter++) {
