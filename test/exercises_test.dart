@@ -42,11 +42,16 @@ Future locateExercismDirAndExecuteTests() async {
 
   final exercisesDirs = exercisesRootDir.listSync().where((d) => d is Directory);
 
-  for (dynamic dir in exercisesDirs) {
+  /// Sort directories alphabetically
+  final sortedExerciseDirs = exercisesDirs.toList();
+  sortedExerciseDirs.sort((a, b) => a.path.compareTo(b.path));
+
+  for (dynamic dir in sortedExerciseDirs) {
     await runTest(dir.path);
   }
 }
 
+/// Execute a single test
 Future runTest(String path) async {
   final current = Directory.current;
 
@@ -86,6 +91,7 @@ Running tests for: $packageName
   }
 }
 
+/// Execute all the tests under the exercise directory
 Future runAllTests() async {
   final dartExercismRootDir = new Directory("..");
 
