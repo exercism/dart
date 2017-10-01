@@ -1,107 +1,107 @@
 {
-  "language": "Dart",
   "active": false,
-  "test_pattern": "_test\\.dart$",
   "exercises": [
     {
-      "uuid": "6b868b7b-cac4-41ff-a855-21f596637845",
+      "core": true,
+      "difficulty": 1,
       "slug": "hello-world",
-      "core": true,
-      "unlocked_by": null,
-      "difficulty": 1,
       "topics": [
-        "Control-flow (conditionals)",
-        "Optional values",
-        "Strings",
-        "Text formatting"
-      ]
+        "control_flow_conditionals",
+        "optional_values",
+        "strings",
+        "text_formatting"
+      ],
+      "unlocked_by": null,
+      "uuid": "6b868b7b-cac4-41ff-a855-21f596637845"
     },
     {
-      "uuid": "4bcfd789-dee6-4dd9-8524-076508504eda",
+      "core": true,
+      "difficulty": 1,
       "slug": "leap",
-      "core": true,
+      "topics": [
+        "booleans",
+        "integers",
+        "logic"
+      ],
       "unlocked_by": "hello-world",
-      "difficulty": 1,
-      "topics": [
-        "Booleans",
-        "Integers",
-        "Logic"
-      ]
+      "uuid": "4bcfd789-dee6-4dd9-8524-076508504eda"
     },
     {
-      "uuid": "c1cdab6f-c18c-4173-828a-2191151d20d4",
+      "core": true,
+      "difficulty": 2,
       "slug": "difference-of-squares",
-      "core": true,
+      "topics": [
+        "integers",
+        "mathematics"
+      ],
       "unlocked_by": "leap",
-      "difficulty": 2,
-      "topics": [
-        "Integers",
-        "Mathematics"
-      ]
+      "uuid": "c1cdab6f-c18c-4173-828a-2191151d20d4"
     },
     {
-      "uuid": "615a83cc-a905-435a-a30e-f052b61cfd4c",
+      "core": true,
+      "difficulty": 2,
       "slug": "bob",
-      "core": true,
+      "topics": [
+        "control_flow_conditionals",
+        "pattern_recognition",
+        "polymorphism",
+        "regular_expressions",
+        "strings",
+        "unicode"
+      ],
       "unlocked_by": "difference-of-squares",
-      "difficulty": 2,
-      "topics": [
-        "Control flow (conditionals)",
-        "Polymorphism",
-        "Strings",
-        "Unicode",
-        "Pattern recognition",
-        "Regular expressions"
-      ]
+      "uuid": "615a83cc-a905-435a-a30e-f052b61cfd4c"
     },
     {
-      "uuid": "91c8033d-f40c-4a90-9ec9-7081f6eba8d2",
+      "core": true,
+      "difficulty": 2,
       "slug": "hamming",
-      "core": true,
+      "topics": [
+        "control_flow_conditionals",
+        "control_flow_loops",
+        "equality",
+        "strings"
+      ],
       "unlocked_by": "bob",
-      "difficulty": 2,
-      "topics": [
-        "Control-flow (loops)",
-        "Control-flow (conditionals)",
-        "Equality",
-        "Strings"
-      ]
+      "uuid": "91c8033d-f40c-4a90-9ec9-7081f6eba8d2"
     },
     {
-      "uuid": "0c0511fd-59aa-4480-a7cd-4de0e9303b86",
+      "core": true,
+      "difficulty": 3,
       "slug": "gigasecond",
-      "core": true,
+      "topics": [
+        "mathematics",
+        "time"
+      ],
       "unlocked_by": "hamming",
-      "difficulty": 3,
-      "topics": [
-        "Mathematics",
-        "Time"
-      ]
+      "uuid": "0c0511fd-59aa-4480-a7cd-4de0e9303b86"
     },
     {
-      "uuid": "99147c39-e8d3-4166-9215-c47fb4832781",
-      "slug": "rna-transcription",
       "core": true,
-      "unlocked_by": "gigasecond",
       "difficulty": 3,
+      "slug": "rna-transcription",
       "topics": [
-        "Strings",
-        "Transforming"
-      ]
+        "strings",
+        "transforming"
+      ],
+      "unlocked_by": "gigasecond",
+      "uuid": "99147c39-e8d3-4166-9215-c47fb4832781"
     },
     {
-      "uuid": "6e811b53-4eb1-40f9-a811-b5113d68ae8a",
-      "slug": "anagram",
       "core": false,
-      "unlocked_by": null,
       "difficulty": 1,
+      "slug": "anagram",
       "topics": [
-        "Control flow (conditionals)",
-        "Control-flow (loops)",
-        "Equality",
-        "Strings"
-      ]
+        "control_flow_conditionals",
+        "control_flow_loops",
+        "equality",
+        "strings"
+      ],
+      "unlocked_by": null,
+      "uuid": "6e811b53-4eb1-40f9-a811-b5113d68ae8a"
     }
   ],
-  "foregone": []
+  "foregone": [],
+  "language": "Dart",
+  "test_pattern": "_test\\.dart$"
 }
