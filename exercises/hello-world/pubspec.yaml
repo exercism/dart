@@ -1,3 +1,3 @@
 name: 'hello_world'
 dev_dependencies:
-  test: '0.12.23+1'
+  test: '<0.13.0'

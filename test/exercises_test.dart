@@ -1,3 +1,5 @@
+@Timeout(const Duration(seconds: 45))
+
 import "dart:io";
 import "dart:async";
 
@@ -46,7 +48,7 @@ Running tests for: $packageName
     for (var cmds in [
       ["cp", "lib/example.dart", "lib/${packageName}.dart"], // Replace main file with example
       ["sed", "-i", "-e", "s/\\bskip:\\s*true\\b/skip: false/g", "test/${packageName}_test.dart"], // Enable all tests
-      ["pub", "get"], // Pull dependecies
+      ["pub", "get"], // Pull dependencies
       ["pub", "run", "test"] // Run tests
     ]) {
       await runCmd(cmds);
