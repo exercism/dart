@@ -2,6 +2,6 @@ name: exercism_dart
 authors:
   - SuperPaintman <SuperPaintmanDeveloper@gmail.com>
 dev_dependencies:
-  test: '<0.13.0'
+  dart_style: '>=1.0.8 <2.0.0'
+  test: '>=0.12.24+8 <0.13.0'
   yaml: '>=2.1.12 <2.2.0'
-  dart_style: '^1.0.6'
