@@ -1,5 +1,5 @@
 import "package:test/test.dart";
-import "package:rna_transcription/rna_transcription.dart";
+import "package:rna_transcription/example.dart";
 
 void main() {
   final rnaTranscription = new RnaTranscription();
@@ -16,33 +16,33 @@ void main() {
         final result = rnaTranscription.toRna("G");
 
         expect(result, equals("C"));
-      }, skip: false);
+      }, skip: true);
 
       test("transcribes adenine to uracil", () {
         final result = rnaTranscription.toRna("A");
 
         expect(result, equals("U"));
-      }, skip: false);
+      }, skip: true);
 
       test("transcribes thymine to adenine", () {
         final result = rnaTranscription.toRna("T");
 
         expect(result, equals("A"));
-      }, skip: false);
+      }, skip: true);
 
       test("transcribes all dna nucleotides to their rna complements", () {
         final result = rnaTranscription.toRna("ACGTGGTCTTAA");
 
         expect(result, equals("UGCACCAGAAUU"));
-      }, skip: false);
+      }, skip: true);
 
       test("correctly handles completely invalid input", () {
         expect(() => rnaTranscription.toRna("XXX"), throwsArgumentError);
-      }, skip: false);
+      }, skip: true);
 
       test("correctly handles partially invalid input", () {
         expect(() => rnaTranscription.toRna("ACGTXXXCTTAA"), throwsArgumentError);
-      }, skip: false);
+      }, skip: true);
     });
   });
 }
