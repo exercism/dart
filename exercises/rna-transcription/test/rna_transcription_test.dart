@@ -1,5 +1,5 @@
 import "package:test/test.dart";
-import "package:rna_transcription/example.dart";
+import "package:rna_transcription/rna_transcription.dart";
 
 void main() {
   final rnaTranscription = new RnaTranscription();
