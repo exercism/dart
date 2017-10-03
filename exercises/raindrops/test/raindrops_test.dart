@@ -20,9 +20,7 @@ void main() {
     test("the sound for 6 is Pling as it has a factor 3", () {
       expect(raindrops.convert(6), equals("Pling"));
     }, skip: true);
-    test(
-        "2 to the power 3 does not make a raindrop sound as 3 is the exponent not the base",
-        () {
+    test("2 to the power 3 does not make a raindrop sound as 3 is the exponent not the base", () {
       expect(raindrops.convert(8), equals("8"));
     }, skip: true);
     test("the sound for 9 is Pling as it has a factor 3", () {
@@ -55,8 +53,7 @@ void main() {
     test("the sound for 52 is 52", () {
       expect(raindrops.convert(52), equals("52"));
     }, skip: true);
-    test("the sound for 105 is PlingPlangPlong as it has factors 3, 5 and 7",
-        () {
+    test("the sound for 105 is PlingPlangPlong as it has factors 3, 5 and 7", () {
       expect(raindrops.convert(105), equals("PlingPlangPlong"));
     }, skip: true);
     test("the sound for 3125 is Plang as it has a factor 5", () {
