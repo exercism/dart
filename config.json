@@ -78,13 +78,26 @@
     },
     {
       "core": true,
+      "difficulty": 2,
+      "slug": "raindrops",
+      "topics": [
+        "control_flow_conditionals",
+        "equality",
+        "mathematics",
+        "strings"
+      ],
+      "unlocked_by": "gigasecond",
+      "uuid": "d6657d4a-0257-0c80-6667-fddd127a571f0ad1fd4"
+    },
+    {
+      "core": true,
       "difficulty": 3,
       "slug": "rna-transcription",
       "topics": [
         "strings",
         "transforming"
       ],
-      "unlocked_by": "gigasecond",
+      "unlocked_by": "raindrops",
       "uuid": "99147c39-e8d3-4166-9215-c47fb4832781"
     },
     {
@@ -99,18 +112,6 @@
       ],
       "unlocked_by": null,
       "uuid": "6e811b53-4eb1-40f9-a811-b5113d68ae8a"
-    },
-    {
-      "core": false,
-      "difficulty": 2,
-      "slug": "raindrops",
-      "topics": [
-        "control_flow_conditionals",
-        "equality",
-        "strings"
-      ],
-      "unlocked_by": "anagram",
-      "uuid": "d6657d4a-0257-0c80-6667-fddd127a571f0ad1fd4"
     }
   ],
   "foregone": [],
