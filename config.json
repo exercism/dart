@@ -99,6 +99,18 @@
       ],
       "unlocked_by": null,
       "uuid": "6e811b53-4eb1-40f9-a811-b5113d68ae8a"
+    },
+    {
+      "core": false,
+      "difficulty": 2,
+      "slug": "raindrops",
+      "topics": [
+        "control_flow_conditionals",
+        "equality",
+        "strings"
+      ],
+      "unlocked_by": null,
+      "uuid": "d6657d4a-0257-0c80-6667-fddd127a571f0ad1fd4"
     }
   ],
   "foregone": [],
