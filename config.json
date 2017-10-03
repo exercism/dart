@@ -91,6 +91,19 @@
     },
     {
       "core": true,
+      "difficulty": 2,
+      "slug": "phone-number",
+      "topics": [
+        "control_flow_conditionals",
+        "control_flow_loops",
+        "dynamic",
+        "regular_expressions"
+      ],
+      "unlocked_by": "hamming",
+      "uuid": "8649b2b4-02f6-4947-92b9-d1cc0d7c3594"
+    },
+    {
+      "core": true,
       "difficulty": 3,
       "slug": "gigasecond",
       "topics": [
