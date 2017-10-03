@@ -1,7 +1,6 @@
 {
   "active": false,
-  "exercises": [
-    {
+  "exercises": [{
       "core": true,
       "difficulty": 1,
       "slug": "hello-world",
@@ -36,6 +35,19 @@
       ],
       "unlocked_by": "leap",
       "uuid": "c1cdab6f-c18c-4173-828a-2191151d20d4"
+    },
+    {
+      "core": true,
+      "difficulty": 2,
+      "slug": "word-count",
+      "topics": [
+        "control_flow_loops",
+        "regular_expressions",
+        "maps",
+        "lists"
+      ],
+      "unlocked_by": "difference-of-squares",
+      "uuid": ""
     },
     {
       "core": true,
