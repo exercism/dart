@@ -27,7 +27,7 @@ Future runCmd(List<String> cmds) async {
   assert(res.exitCode == 0);
 }
 
-Future getPackageName() async {
+Future<String> getPackageName() async {
   final pubspec = new File("pubspec.yaml");
 
   final packageName = loadYaml(await pubspec.readAsString())["name"];
@@ -46,7 +46,7 @@ Future locateExercismDirAndExecuteTests() async {
   final sortedExerciseDirs = exercisesDirs.toList();
   sortedExerciseDirs.sort((a, b) => a.path.compareTo(b.path));
 
-  for (dynamic dir in sortedExerciseDirs) {
+  for (FileSystemEntity dir in sortedExerciseDirs) {
     await runTest(dir.path);
   }
 }
@@ -57,7 +57,7 @@ Future runTest(String path) async {
 
   Directory.current = path;
 
-  dynamic packageName = await getPackageName();
+  String packageName = await getPackageName();
 
   print("""
 ================================================================================
@@ -68,7 +68,7 @@ Running tests for: $packageName
   await runCmd(["cp", "lib/${packageName}.dart", "lib/${packageName}.dart.bu"]);
   await runCmd(["cp", "test/${packageName}_test.dart", "test/${packageName}_test.dart.bu"]);
   try {
-    for (dynamic cmds in [
+    for (List<String> cmds in [
       /// Replace main file with example
       ["cp", "lib/example.dart", "lib/${packageName}.dart"],
 
@@ -101,7 +101,7 @@ Future runAllTests() async {
 
   Directory.current = dartExercismRootDir.parent;
 
-  dynamic packageName = await getPackageName();
+  String packageName = await getPackageName();
 
   print("""
 
