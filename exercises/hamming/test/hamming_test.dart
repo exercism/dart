@@ -5,50 +5,64 @@ void main() {
   final hamming = new Hamming();
 
   group("Hamming", () {
-    test("no difference between identical strands", () {
-      final res = hamming.compute("A", "A");
-
-      expect(res, equals(0));
+    test("empty strands", () {
+      expect(hamming.compute("", ""), equals(0));
     });
 
-    test("complete hamming distance for single nucleotide strand", () {
-      final res = hamming.compute("A", "G");
+    test("identical strands", () {
+      expect(hamming.compute("A", "A"), equals(0));
+    });
 
-      expect(res, equals(1));
-    }, skip: true);
+    test("long identical strands", () {
+      expect(hamming.compute("GGACTGA", "GGACTGA"), equals(0));
+    });
 
-    test("complete hamming distance for small strand", () {
-      final res = hamming.compute("AG", "CT");
+    test("complete distance in single nucleotide strands", () {
+      expect(hamming.compute("A", "G"), equals(1));
+    });
 
-      expect(res, equals(2));
-    }, skip: true);
+    test("complete distance in small strands", () {
+      expect(hamming.compute("AG", "CT"), equals(2));
+    });
 
-    test("small hamming distance", () {
-      final res = hamming.compute("AT", "CT");
+    test("small distance in small strands", () {
+      expect(hamming.compute("AT", "CT"), equals(1));
+    });
 
-      expect(res, equals(1));
-    }, skip: true);
+    test("small distance", () {
+      expect(hamming.compute("GGACG", "GGTCG"), equals(1));
+    });
 
-    test("small hamming distance in longer strand", () {
-      final res = hamming.compute("GGACG", "GGTCG");
+    test("small distance in long strands", () {
+      expect(hamming.compute("ACCAGGG", "ACTATGG"), equals(2));
+    });
 
-      expect(res, equals(1));
-    }, skip: true);
+    test("non-unique character in first strand", () {
+      expect(hamming.compute("AGA", "AGG"), equals(1));
+    });
 
-    test("large hamming distance", () {
-      final res = hamming.compute("GATACA", "GCATAA");
+    test("non-unique character in second strand", () {
+      expect(hamming.compute("AGG", "AGA"), equals(1));
+    });
 
-      expect(res, equals(4));
-    }, skip: true);
+    test("same nucleotides in different positions", () {
+      expect(hamming.compute("TAG", "GAT"), equals(2));
+    });
 
-    test("hamming distance in very long strand", () {
-      final res = hamming.compute("GGACGGATTCTG", "AGGACGGATTCT");
+    test("large distance", () {
+      expect(hamming.compute("GATACA", "GCATAA"), equals(4));
+    });
 
-      expect(res, equals(9));
-    }, skip: true);
+    test("large distance in off-by-one strand", () {
+      expect(hamming.compute("GGACGGATTCTG", "AGGACGGATTCT"), equals(9));
+    });
 
-    test("throws error when strands are not equal length", () {
-      expect(() => hamming.compute("GGACGGATTCTG", "AGGAC"), throwsArgumentError);
-    }, skip: true);
+    test("disallow first strand longer", () {
+      expect(() => hamming.compute("AATG", "AAA"), throwsArgumentError);
+    });
+
+    test("disallow second strand longer", () {
+      expect(() => hamming.compute("ATA", "AGTG"), throwsArgumentError);
+    });
   });
 }
