@@ -110,7 +110,7 @@
         "equality",
         "strings"
       ],
-      "unlocked_by": null,
+      "unlocked_by": "rna-transcription",
       "uuid": "6e811b53-4eb1-40f9-a811-b5113d68ae8a"
     }
   ],
