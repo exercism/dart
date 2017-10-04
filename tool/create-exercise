@@ -207,6 +207,11 @@ Future main(args) async {
   await new File("${exerciseDir.path}/test/${filename}_test.dart").writeAsString(testTemplate(name));
   await new File("${exerciseDir.path}/pubspec.yaml").writeAsString(pubTemplate(name));
 
+  if (arguments["spec-path"] != null) {
+    // The output from test generation is not always well-formatted, use dartfmt to clean it up
+    await Process.run("dartfmt", ["-l", "120", "-w", "${exerciseDir.path}/test/${filename}_test.dart"]);
+  }
+
   // Install deps
   Directory.current = exerciseDir;
 
