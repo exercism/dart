@@ -4,9 +4,9 @@ class Hamming {
       throw new ArgumentError("DNA strands must be of equal length.");
     }
 
-    var diff = 0;
+    int diff = 0;
 
-    for (var i = 0; i < a.length; i++) {
+    for (int i = 0; i < a.length; i++) {
       if (a[i] != b[i]) {
         diff++;
       }

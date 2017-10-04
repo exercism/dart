@@ -1,3 +1,5 @@
 class Hamming {
-  // Put your code here
+  int compute(String a, String b) {
+    // Put your code here
+  }
 }
