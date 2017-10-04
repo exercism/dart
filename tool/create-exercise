@@ -179,10 +179,18 @@ Future main(args) async {
 
   // Get test cases from canonical-data.json, format tests
   if (arguments["spec-path"] != null) {
-    var file = new File("${arguments['spec-path']}/exercises/$name/canonical-data.json");
-    final specification = JSON.decode(await file.readAsString());
-
-    testCasesString = testCaseTemplate(name, specification);
+    String filename = "${arguments['spec-path']}/exercises/$name/canonical-data.json";
+    try {
+      File file = new File(filename);
+      final specification = JSON.decode(await file.readAsString());
+      testCasesString = testCaseTemplate(name, specification);
+    } on FileSystemException {
+      stderr.write("Could not open file '$filename', exiting.\n");
+      exit(1);
+    } on FormatException {
+      stderr.write("File '$filename' is not valid JSON, exiting.\n");
+      exit(1);
+    }
   }
 
   if (await exerciseDir.exists()) {
