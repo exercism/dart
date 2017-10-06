@@ -27,5 +27,24 @@ should all produce the output
 
 **Note:** As this exercise only deals with telephone numbers used in NANP-countries, only 1 is considered a valid country code.
 
+# Tip
+A function with a *return type* can only return data of that *type* and `null`.
+However the function caller is only expecting one data type.
+
+Example:
+```dart
+String hello(int a){
+    if ( a == 0) return "a";
+    return null;
+}
+```
+To make it more clear that this function can also return `null` or more data types, use `dynamic`.
+```dart
+dynamic hello(int a){
+    if ( a == 0) return "a";
+    return null;
+}
+```
+
 ## Submitting Incomplete Solutions
 It's possible to submit an incomplete solution so you can see how others have completed the exercise.
