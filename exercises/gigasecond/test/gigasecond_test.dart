@@ -10,6 +10,9 @@ void main() {
 }
 
 void gigasecondTests() {
+  // The setUp() function is used to share code between tests. Its callback (the
+  // anonymous function it takes as a parameter) is ran before every test in a
+  // group or test suite.
   setUp(() {
     birthDate = new DateTime.utc(2015, DateTime.SEPTEMBER, 14);
   });
