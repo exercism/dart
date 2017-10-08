@@ -1,3 +1,3 @@
 class HelloWorld {
-  String hello([String name = "World"]) => "Hello, $name!";
+  String hello() => "Hello, World!";
 }
