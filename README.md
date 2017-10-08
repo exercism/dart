@@ -1,6 +1,6 @@
 # Exercism Dart Track
 
-![build status](https://travis-ci.org/exercism/dart.svg?branch=master)
+![build status](https://travis-ci.org/exercism/dart.svg?branch=master)  [![Gitter](https://badges.gitter.im/exercism/dart.svg)](https://gitter.im/exercism/dart?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
 Exercism exercises in Dart.
 
