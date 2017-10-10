@@ -56,7 +56,12 @@ Please keep the following in mind:
 
 - Watch out for trailing spaces, extra blank lines, and spaces in blank lines.
 
-- All the tests for Dart exercises can be run from the top level of the repo with ... Please run this command before submitting your PR.
+- Please run the following commands before submitting your PR:
+    * `pub run test` - All the tests for Dart exercises can be run from the top level of the repo with this command
+    * `bin/configlet lint .` - Checks the config.json for formatting issues
+    * `bin/configlet fmt .` - Formats the config.json
+    * `bin/check_formatting` - Checks All the Dart files for formatting issues
+    * `pub run dart_style:format -l 120 -w .` - Formats all the Dart files
 
 ### Contributing a New Exercise ###
 
