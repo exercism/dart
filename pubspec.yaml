@@ -1,6 +1,9 @@
 name: exercism_dart
 authors:
   - SuperPaintman <SuperPaintmanDeveloper@gmail.com>
+  - Stargator <wildbug@linuxmail.org>
+  - fwip
+  - kabiir
 dev_dependencies:
   args: '0.13.7'
   dart_style: '>=1.0.8 <2.0.0'
