@@ -117,7 +117,7 @@ String testCaseTemplate(name, testCase) {
 
 /// `repr` takes in any object and tries to coerce it to a String in such a way that it is suitable to include in code.
 /// Based on the python `repr` function, but only works for basic types: String, Iterable, Map, and primitive types
-String repr(dynamic x) {
+String repr(Object x) {
   if (x is String) {
     x = x.replaceAll("\n", r"\n").replaceAll(r"$", r"\$");
     return '"$x"';
@@ -140,18 +140,18 @@ String repr(dynamic x) {
 }
 
 /// A helper method to get the inside type of an iterable
-String getIterableType(dynamic iter) {
+String getIterableType(Object iter) {
   Set<String> types = iter.map(getFriendlyType).toSet();
 
   if (types.length == 1) {
     return types.first;
   }
 
-  return "dynamic";
+  return "Object";
 }
 
 /// Get a human-friendly type of a variable
-String getFriendlyType(dynamic x) {
+String getFriendlyType(Object x) {
   if (x is String) {
     return "String";
   }
