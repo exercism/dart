@@ -81,11 +81,18 @@ dev_dependencies:
   test: '<0.13.0'
 """;
 
-String testCaseTemplate(name, testCase) {
+String testCaseTemplate(String name, Map<String, Object> testCase, {bool firstTest = true}) {
   if (testCase['cases'] != null) {
     // We have a group, not a case
-    String tests = testCase['cases'].map((c) => testCaseTemplate(name, c)).join("\n");
     String description = testCase['description'];
+
+    // Build the tests up recursively, only first test should be skipped
+    List<String> testList = [];
+    for (Map<String, Object> c in testCase['cases']) {
+      testList.add(testCaseTemplate(name, c, firstTest: firstTest));
+      firstTest = false;
+    }
+    String tests = testList.join("\n");
 
     if (description == null) {
       return tests;
@@ -111,7 +118,7 @@ String testCaseTemplate(name, testCase) {
     test($description, () {
       final $resultType result = $object.$method($arguments);
       expect(result, equals($expected));
-    }, skip: true);
+    }, skip: ${!firstTest});
   """;
 }
 
