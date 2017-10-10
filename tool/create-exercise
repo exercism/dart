@@ -238,6 +238,9 @@ Future main(args) async {
 
     if (res.exitCode != 0) {
       stderr.write("Warning: dartfmt exited with a code of ${res.exitCode}, '$testFileName' is likely malformed.\n");
+    } else {
+      stdout.write("Successfully created a rough-draft of tests at '$testFileName'.\n");
+      stdout.write("You should check this over and fix or refine as necessary.\n");
     }
   }
 
