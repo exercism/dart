@@ -212,14 +212,26 @@ Future main(args) async {
   await new Directory("${exerciseDir.path}/test").create(recursive: true);
 
   // Create files
+  String testFileName = "${exerciseDir.path}/test/${filename}_test.dart";
   await new File("${exerciseDir.path}/lib/example.dart").writeAsString(exampleTemplate(name));
   await new File("${exerciseDir.path}/lib/${filename}.dart").writeAsString(mainTemplate(name));
-  await new File("${exerciseDir.path}/test/${filename}_test.dart").writeAsString(testTemplate(name));
+  await new File(testFileName).writeAsString(testTemplate(name));
   await new File("${exerciseDir.path}/pubspec.yaml").writeAsString(pubTemplate(name));
 
   if (arguments["spec-path"] != null) {
     // The output from test generation is not always well-formatted, use dartfmt to clean it up
-    await Process.run("dartfmt", ["-l", "120", "-w", "${exerciseDir.path}/test/${filename}_test.dart"]);
+    final res = await Process.run("dartfmt", ["-l", "120", "-w", testFileName], runInShell: true);
+    if (!res.stdout.toString().isEmpty) {
+      stdout.write(res.stdout);
+    }
+
+    if (!res.stderr.toString().isEmpty) {
+      stderr.write(res.stderr);
+    }
+
+    if (res.exitCode != 0) {
+      stderr.write("Warning: dartfmt exited with a code of ${res.exitCode}, '$testFileName' is likely malformed.\n");
+    }
   }
 
   // Install deps
