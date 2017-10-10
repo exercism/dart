@@ -122,25 +122,31 @@ String repr(dynamic x) {
     x = x.replaceAll("\n", r"\n").replaceAll(r"$", r"\$");
     return '"$x"';
   }
+
   if (x is Iterable) {
     return '[${x.map(repr).join(", ")}]';
   }
+
   if (x is Map) {
     List<String> pairs = [];
     for (var k in x.keys) {
       pairs.add("${repr(k)}: ${repr(x[k])}");
     }
+
     return "{${pairs.join(', ')}}";
   }
+
   return "$x";
 }
 
 /// A helper method to get the inside type of an iterable
 String getIterableType(dynamic iter) {
   Set<String> types = iter.map(getFriendlyType).toSet();
+
   if (types.length == 1) {
     return types.first;
   }
+
   return "dynamic";
 }
 
@@ -149,15 +155,19 @@ String getFriendlyType(dynamic x) {
   if (x is String) {
     return "String";
   }
+
   if (x is Iterable) {
     return "List<${getIterableType(x)}>";
   }
+
   if (x is Map) {
     return "Map<${getIterableType(x.keys)}, ${getIterableType(x.values)}>";
   }
+
   if (x is num) {
     return "num";
   }
+
   return x.runtimeType;
 }
 
