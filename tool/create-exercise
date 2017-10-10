@@ -119,7 +119,7 @@ String testCaseTemplate(name, testCase) {
 /// Based on the python `repr` function, but only works for basic types: String, Iterable, Map, and primitive types
 String repr(Object x) {
   if (x is String) {
-    x = x.replaceAll("\n", r"\n").replaceAll(r"$", r"\$");
+    x = x.replaceAll('"', r'\"').replaceAll("\n", r"\n").replaceAll(r"$", r"\$");
     return '"$x"';
   }
 
