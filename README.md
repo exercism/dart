@@ -22,7 +22,10 @@ We simulate Test-Driven Development (TDD) by implementing the tests in order of 
 Test files should use the following format:
 
 ```
-# include the body of an example test
+  test("says hello world with no name", () {
+    final String result = helloWorld.hello();
+    expect(result, equals("Hello, World!"));
+  }, skip: false);
 ```
 
 ## Contributing
