@@ -113,7 +113,7 @@
       "uuid": "99147c39-e8d3-4166-9215-c47fb4832781"
     },
     {
-      "core": false,
+      "core": true,
       "difficulty": 1,
       "slug": "anagram",
       "topics": [
