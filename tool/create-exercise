@@ -3,12 +3,15 @@
 
 import "dart:io";
 import "dart:async";
+import "dart:convert";
 import "package:args/args.dart";
 
 /** Constants */
 const ME = "create-exercise";
 
-final parser = new ArgParser()..addSeparator("Usage: $ME <slug>");
+final parser = new ArgParser()
+  ..addSeparator("Usage: $ME <slug> [--spec-path path]")
+  ..addOption("spec-path", help: "The location of the problem-specifications directory.", valueHelp: 'path');
 
 /** Helpers */
 List<String> words(String str) {
@@ -54,6 +57,11 @@ class ${pascalCase(name)} {
 }
 """;
 
+String testCasesString = """
+    test("should work", () {
+      // TODO
+    });""";
+
 String testTemplate(String name) => """
 import "package:test/test.dart";
 import "package:${snakeCase(name)}/${snakeCase(name)}.dart";
@@ -62,9 +70,7 @@ void main() {
   final ${camelCase(name)} = new ${pascalCase(name)}();
 
   group("${pascalCase(name)}", () {
-    test("should work", () {
-      // TODO
-    });
+$testCasesString
   });
 }
 """;
@@ -72,8 +78,105 @@ void main() {
 String pubTemplate(String name) => """
 name: '${snakeCase(name)}'
 dev_dependencies:
-  test: '0.12.23+1'
+  test: '<0.13.0'
 """;
+
+String testCaseTemplate(String name, Map<String, Object> testCase, {bool firstTest = true}) {
+  if (testCase['cases'] != null) {
+    // We have a group, not a case
+    String description = testCase['description'];
+
+    // Build the tests up recursively, only first test should be skipped
+    List<String> testList = [];
+    for (Map<String, Object> c in testCase['cases']) {
+      testList.add(testCaseTemplate(name, c, firstTest: firstTest));
+      firstTest = false;
+    }
+    String tests = testList.join("\n");
+
+    if (description == null) {
+      return tests;
+    }
+
+    return """
+      group("$description", () {
+        $tests
+      });
+    """;
+  }
+
+  String description = repr(testCase['description']);
+  String resultType = getFriendlyType(testCase['expected']);
+  String object = camelCase(name);
+  String method = camelCase(testCase['property']);
+  String expected = repr(testCase['expected']);
+
+  List<String> inputKeys = testCase.keys.toList()..remove("expected")..remove("description")..remove("property");
+  String arguments = inputKeys.map((k) => repr(testCase[k])).join(", ");
+
+  return """
+    test($description, () {
+      final $resultType result = $object.$method($arguments);
+      expect(result, equals($expected));
+    }, skip: ${!firstTest});
+  """;
+}
+
+/// `repr` takes in any object and tries to coerce it to a String in such a way that it is suitable to include in code.
+/// Based on the python `repr` function, but only works for basic types: String, Iterable, Map, and primitive types
+String repr(Object x) {
+  if (x is String) {
+    x = x.replaceAll('"', r'\"').replaceAll("\n", r"\n").replaceAll(r"$", r"\$");
+    return '"$x"';
+  }
+
+  if (x is Iterable) {
+    return '[${x.map(repr).join(", ")}]';
+  }
+
+  if (x is Map) {
+    List<String> pairs = [];
+    for (var k in x.keys) {
+      pairs.add("${repr(k)}: ${repr(x[k])}");
+    }
+
+    return "{${pairs.join(', ')}}";
+  }
+
+  return "$x";
+}
+
+/// A helper method to get the inside type of an iterable
+String getIterableType(Object iter) {
+  Set<String> types = iter.map(getFriendlyType).toSet();
+
+  if (types.length == 1) {
+    return types.first;
+  }
+
+  return "Object";
+}
+
+/// Get a human-friendly type of a variable
+String getFriendlyType(Object x) {
+  if (x is String) {
+    return "String";
+  }
+
+  if (x is Iterable) {
+    return "List<${getIterableType(x)}>";
+  }
+
+  if (x is Map) {
+    return "Map<${getIterableType(x.keys)}, ${getIterableType(x.values)}>";
+  }
+
+  if (x is num) {
+    return "num";
+  }
+
+  return x.runtimeType;
+}
 
 Future main(args) async {
   final arguments = parser.parse(args);
@@ -91,6 +194,22 @@ Future main(args) async {
   final exerciseDir = new Directory("exercises/${kebabCase(name)}");
   final filename = snakeCase(name);
 
+  // Get test cases from canonical-data.json, format tests
+  if (arguments["spec-path"] != null) {
+    String filename = "${arguments['spec-path']}/exercises/$name/canonical-data.json";
+    try {
+      File file = new File(filename);
+      final specification = JSON.decode(await file.readAsString());
+      testCasesString = testCaseTemplate(name, specification);
+    } on FileSystemException {
+      stderr.write("Could not open file '$filename', exiting.\n");
+      exit(1);
+    } on FormatException {
+      stderr.write("File '$filename' is not valid JSON, exiting.\n");
+      exit(1);
+    }
+  }
+
   if (await exerciseDir.exists()) {
     stderr.write("$name already exist");
     exit(1);
@@ -100,10 +219,30 @@ Future main(args) async {
   await new Directory("${exerciseDir.path}/test").create(recursive: true);
 
   // Create files
+  String testFileName = "${exerciseDir.path}/test/${filename}_test.dart";
   await new File("${exerciseDir.path}/lib/example.dart").writeAsString(exampleTemplate(name));
   await new File("${exerciseDir.path}/lib/${filename}.dart").writeAsString(mainTemplate(name));
-  await new File("${exerciseDir.path}/test/${filename}_test.dart").writeAsString(testTemplate(name));
+  await new File(testFileName).writeAsString(testTemplate(name));
   await new File("${exerciseDir.path}/pubspec.yaml").writeAsString(pubTemplate(name));
+
+  if (arguments["spec-path"] != null) {
+    // The output from test generation is not always well-formatted, use dartfmt to clean it up
+    final res = await Process.run("dartfmt", ["-l", "120", "-w", testFileName], runInShell: true);
+    if (!res.stdout.toString().isEmpty) {
+      stdout.write(res.stdout);
+    }
+
+    if (!res.stderr.toString().isEmpty) {
+      stderr.write(res.stderr);
+    }
+
+    if (res.exitCode != 0) {
+      stderr.write("Warning: dartfmt exited with a code of ${res.exitCode}, '$testFileName' is likely malformed.\n");
+    } else {
+      stdout.write("Successfully created a rough-draft of tests at '$testFileName'.\n");
+      stdout.write("You should check this over and fix or refine as necessary.\n");
+    }
+  }
 
   // Install deps
   Directory.current = exerciseDir;

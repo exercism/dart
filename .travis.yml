@@ -14,14 +14,9 @@ cache:
     - $HOME/.pub-cache
 
 before_script:
-  - |
-    unformatted="$(pub run dart_style:format -l 120 -n .)"
-    if [ ! -z "$unformatted" ]; then
-      echo "Files are unformatted:"
-      echo "$unformatted"
-      exit 1
-    fi
+  - bin/check_formatting
 
 script:
   - bin/fetch-configlet
   - bin/configlet lint .
+  - pub run test

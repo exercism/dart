@@ -1,7 +1,6 @@
 {
   "active": false,
-  "exercises": [
-    {
+  "exercises": [{
       "core": true,
       "difficulty": 1,
       "slug": "hello-world",
@@ -36,6 +35,19 @@
       ],
       "unlocked_by": "leap",
       "uuid": "c1cdab6f-c18c-4173-828a-2191151d20d4"
+    },
+    {
+      "core": true,
+      "difficulty": 2,
+      "slug": "word-count",
+      "topics": [
+        "control_flow_loops",
+        "regular_expressions",
+        "maps",
+        "lists"
+      ],
+      "unlocked_by": "difference-of-squares",
+      "uuid": "b74dde02-03d0-4165-8302-e8ba119b486b"
     },
     {
       "core": true,
@@ -78,17 +90,30 @@
     },
     {
       "core": true,
+      "difficulty": 2,
+      "slug": "raindrops",
+      "topics": [
+        "control_flow_conditionals",
+        "equality",
+        "mathematics",
+        "strings"
+      ],
+      "unlocked_by": "gigasecond",
+      "uuid": "d6657d4a-0257-0c80-6667-fddd127a571f0ad1fd4"
+    },
+    {
+      "core": true,
       "difficulty": 3,
       "slug": "rna-transcription",
       "topics": [
         "strings",
         "transforming"
       ],
-      "unlocked_by": "gigasecond",
+      "unlocked_by": "raindrops",
       "uuid": "99147c39-e8d3-4166-9215-c47fb4832781"
     },
     {
-      "core": false,
+      "core": true,
       "difficulty": 1,
       "slug": "anagram",
       "topics": [
@@ -97,7 +122,7 @@
         "equality",
         "strings"
       ],
-      "unlocked_by": null,
+      "unlocked_by": "rna-transcription",
       "uuid": "6e811b53-4eb1-40f9-a811-b5113d68ae8a"
     }
   ],

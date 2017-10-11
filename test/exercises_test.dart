@@ -27,14 +27,37 @@ Future runCmd(List<String> cmds) async {
   assert(res.exitCode == 0);
 }
 
+Future<String> getPackageName() async {
+  final pubspec = new File("pubspec.yaml");
+
+  final packageName = loadYaml(await pubspec.readAsString())["name"];
+
+  return packageName;
+}
+
+Future locateExercismDirAndExecuteTests() async {
+  final exercisesRootDir = new Directory("exercises");
+
+  assert(await exercisesRootDir.exists());
+
+  final exercisesDirs = exercisesRootDir.listSync().where((d) => d is Directory);
+
+  /// Sort directories alphabetically
+  final sortedExerciseDirs = exercisesDirs.toList();
+  sortedExerciseDirs.sort((a, b) => a.path.compareTo(b.path));
+
+  for (FileSystemEntity dir in sortedExerciseDirs) {
+    await runTest(dir.path);
+  }
+}
+
+/// Execute a single test
 Future runTest(String path) async {
   final current = Directory.current;
 
   Directory.current = path;
 
-  final pubspec = new File("pubspec.yaml");
-
-  final packageName = loadYaml(await pubspec.readAsString())["name"];
+  String packageName = await getPackageName();
 
   print("""
 ================================================================================
@@ -45,11 +68,18 @@ Running tests for: $packageName
   await runCmd(["cp", "lib/${packageName}.dart", "lib/${packageName}.dart.bu"]);
   await runCmd(["cp", "test/${packageName}_test.dart", "test/${packageName}_test.dart.bu"]);
   try {
-    for (var cmds in [
-      ["cp", "lib/example.dart", "lib/${packageName}.dart"], // Replace main file with example
-      ["sed", "-i", "-e", "s/\\bskip:\\s*true\\b/skip: false/g", "test/${packageName}_test.dart"], // Enable all tests
-      ["pub", "get"], // Pull dependencies
-      ["pub", "run", "test"] // Run tests
+    for (List<String> cmds in [
+      /// Replace main file with example
+      ["cp", "lib/example.dart", "lib/${packageName}.dart"],
+
+      /// Enable all tests
+      ["sed", "-i", "-e", "s/\\bskip:\\s*true\\b/skip: false/g", "test/${packageName}_test.dart"],
+
+      /// Pull dependencies
+      ["pub", "get"],
+
+      /// Run tests
+      ["pub", "run", "test"]
     ]) {
       await runCmd(cmds);
     }
@@ -61,16 +91,24 @@ Running tests for: $packageName
   }
 }
 
+/// Execute all the tests under the exercise directory
 Future runAllTests() async {
-  final exercisesRootDir = new Directory("exercises");
+  final dartExercismRootDir = new Directory("..");
 
-  assert(await exercisesRootDir.exists());
+  assert(await dartExercismRootDir.exists());
 
-  final exercisesDirs = exercisesRootDir.listSync().where((d) => d is Directory);
+  await locateExercismDirAndExecuteTests();
 
-  for (var dir in exercisesDirs) {
-    await runTest(dir.path);
-  }
+  Directory.current = dartExercismRootDir.parent;
+
+  String packageName = await getPackageName();
+
+  print("""
+
+================================================================================
+Running tests for: $packageName
+================================================================================
+""");
 }
 
 void main() {
