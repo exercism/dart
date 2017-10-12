@@ -15,33 +15,33 @@ void main() {
       final res = hamming.compute("A", "A");
 
       expect(res, equals(0));
-    });
+    }, skip: true);
 
     test("non-unique character in first strand", () {
       final res = hamming.compute("AGA", "AGG");
 
       expect(res, equals(1));
-    });
+    }, skip: true);
 
     test("non-unique character in second strand", () {
       final res = hamming.compute("AGG", "AGA");
 
       expect(res, equals(1));
-    });
+    }, skip: true);
 
     test("same nucleotides in different positions", () {
       final res = hamming.compute("TAG", "GAT");
 
       expect(res, equals(2));
-    });
+    }, skip: true);
 
     test("disallow first strand longer", () {
       expect(() => hamming.compute("AATG", "AAA"), throwsArgumentError);
-    });
+    }, skip: true);
 
     test("disallow second strand longer", () {
       expect(() => hamming.compute("ATA", "AGTG"), throwsArgumentError);
-    });
+    }, skip: true);
 
     test("complete hamming distance for single nucleotide strand", () {
       final res = hamming.compute("A", "G");
