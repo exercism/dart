@@ -41,11 +41,11 @@ void main() {
     }, skip: true);
 
     test("non-unique character in first strand", () {
-      expect(hamming.compute("AGA", "AGG"), equals(1));
+      expect(hamming.compute("AAG", "AAA"), equals(1));
     }, skip: true);
 
     test("non-unique character in second strand", () {
-      expect(hamming.compute("AGG", "AGA"), equals(1));
+      expect(hamming.compute("AAA", "AAG"), equals(1));
     }, skip: true);
 
     test("same nucleotides in different positions", () {
