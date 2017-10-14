@@ -1,6 +1,9 @@
 import "package:test/test.dart";
 import "package:hamming/hamming.dart";
 
+/// Test cases match one-to-one with those described
+/// in the problem specification found here:
+/// https://github.com/exercism/problem-specifications/blob/master/exercises/hamming/canonical-data.json
 void main() {
   final hamming = new Hamming();
 
