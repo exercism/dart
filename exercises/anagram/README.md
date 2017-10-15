@@ -6,6 +6,16 @@ Given `"listen"` and a list of candidates like `"enlists" "google"
 "inlets" "banana"` the program should return a list containing
 `"inlets"`.
 
+
+To run the tests:
+
+```sh
+$ pub run test
+```
+
+For more detailed info about the Dart track see the [help page](http://exercism.io/languages/dart).
+
+
 ## Source
 
 Inspired by the Extreme Startup game [https://github.com/rchatley/extreme_startup](https://github.com/rchatley/extreme_startup)

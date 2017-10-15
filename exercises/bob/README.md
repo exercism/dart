@@ -10,6 +10,17 @@ He says 'Fine. Be that way!' if you address him without actually saying
 anything.
 
 He answers 'Whatever.' to anything else.
+
+
+To run the tests:
+
+```sh
+$ pub run test
+```
+
+For more detailed info about the Dart track see the [help page](http://exercism.io/languages/dart).
+
+
 ## Source
 
 Inspired by the 'Deaf Grandma' exercise in Chris Pine's Learn to Program tutorial. [http://pine.fm/LearnToProgram/?Chapter=06](http://pine.fm/LearnToProgram/?Chapter=06)
