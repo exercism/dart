@@ -5,6 +5,7 @@ import "dart:io";
 import "dart:async";
 import "dart:convert";
 import "package:args/args.dart";
+import "package:path/path.dart" show dirname;
 
 /** Constants */
 const ME = "create-exercise";
@@ -226,18 +227,38 @@ Future main(args) async {
   await new File("${exerciseDir.path}/pubspec.yaml").writeAsString(pubTemplate(name));
 
   if (arguments["spec-path"] != null) {
+    // Generate README
+    final dartRoot = "${dirname(Platform.script.toFilePath())}/..";
+    final configletLoc = "$dartRoot/bin/configlet";
+    final genRes = await Process.run(
+        configletLoc, ["generate", "$dartRoot", "--spec-path", arguments["spec-path"], "--only", name],
+        runInShell: true);
+    if (!genRes.stdout.toString().isEmpty) {
+      stdout.write(genRes.stdout);
+    }
+
+    if (!genRes.stderr.toString().isEmpty) {
+      stderr.write(genRes.stderr);
+    }
+    if (genRes.exitCode != 0) {
+      stderr.write(
+          "Warning: `configlet generate` exited with a code of ${genRes.exitCode}, 'README.md' is likely malformed.\n");
+    } else {
+      stdout.write("Successfully created README.md\n");
+    }
+
     // The output from test generation is not always well-formatted, use dartfmt to clean it up
-    final res = await Process.run("dartfmt", ["-l", "120", "-w", testFileName], runInShell: true);
-    if (!res.stdout.toString().isEmpty) {
-      stdout.write(res.stdout);
+    final fmtRes = await Process.run("dartfmt", ["-l", "120", "-w", testFileName], runInShell: true);
+    if (!fmtRes.stdout.toString().isEmpty) {
+      stdout.write(fmtRes.stdout);
     }
 
-    if (!res.stderr.toString().isEmpty) {
-      stderr.write(res.stderr);
+    if (!fmtRes.stderr.toString().isEmpty) {
+      stderr.write(fmtRes.stderr);
     }
 
-    if (res.exitCode != 0) {
-      stderr.write("Warning: dartfmt exited with a code of ${res.exitCode}, '$testFileName' is likely malformed.\n");
+    if (fmtRes.exitCode != 0) {
+      stderr.write("Warning: dartfmt exited with a code of ${fmtRes.exitCode}, '$testFileName' is likely malformed.\n");
     } else {
       stdout.write("Successfully created a rough-draft of tests at '$testFileName'.\n");
       stdout.write("You should check this over and fix or refine as necessary.\n");
