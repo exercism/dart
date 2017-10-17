@@ -10,7 +10,7 @@ void main() {
     });
 
     test("is introduced every 4 years to adjust about a day", () {
-      final year = new Year(2016);
+      final year = new Year(2020);
 
       expect(year.isLeap(), equals(true));
     }, skip: true);

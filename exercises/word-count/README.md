@@ -4,7 +4,7 @@ Given a phrase, count the occurrences of each word in that phrase.
 
 For example for the input `"olly olly in come free"`
 
-```plain
+```text
 olly: 2
 in: 1
 come: 1
@@ -12,7 +12,18 @@ free: 1
 ```
 
 
-For more detailed information about running tests, code style and linting, please see the [help page]("http://exercism.io/languages/dart").
+To run the tests:
+
+```sh
+$ pub run test
+```
+
+For more detailed info about the Dart track see the [help page](http://exercism.io/languages/dart).
+
+
+## Source
+
+This is a classic toy problem, but we were reminded of it by seeing it in the Go Tour.
 
 ## Submitting Incomplete Solutions
 It's possible to submit an incomplete solution so you can see how others have completed the exercise.
