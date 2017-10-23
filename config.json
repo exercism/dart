@@ -1,6 +1,7 @@
 {
   "active": false,
-  "exercises": [{
+  "exercises": [
+    {
       "core": true,
       "difficulty": 1,
       "slug": "hello-world",
@@ -42,9 +43,9 @@
       "slug": "word-count",
       "topics": [
         "control_flow_loops",
-        "regular_expressions",
+        "lists",
         "maps",
-        "lists"
+        "regular_expressions"
       ],
       "unlocked_by": "difference-of-squares",
       "uuid": "b74dde02-03d0-4165-8302-e8ba119b486b"
