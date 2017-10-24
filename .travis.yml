@@ -13,9 +13,7 @@ cache:
     - $HOME/.pub-cache
 
 before_script:
-  - bin/check_formatting
+  - pub run bin/check_formatting.dart
 
 script:
-  - bin/fetch-configlet
-  - bin/configlet lint .
-  - pub run test test/
+  - pub run bin/presubmit.dart
