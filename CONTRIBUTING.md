@@ -31,12 +31,8 @@ Please keep the following in mind:
     * Sensitive information (email address, real names, etc)
 
 - Please run the following commands before submitting your PR:
-    * `pub run test` - All the tests for Dart exercises can be run from the top level of the repo with this command
-    * `bin/fetch-configlet` - Downloads the latest version of configlet and stores it in the bin/ directory
-    * `bin/configlet lint --track-id dart .` - Checks the config.json for formatting issues
-    * `bin/configlet fmt .` - Formats the config.json
-    * `bin/check_formatting` - Checks All the Dart files for formatting issues
-    * `pub run dart_style:format -l 120 -w .` - Formats all the Dart files
+    * `pub run bin/check_formatting.dart` - Checks the config.json and all Dart files for formatting issues
+    * `pub run bin/presubmit.dart` - Runs the test for Dart exercises, and formats config.json and all Dart files
 
 - Once a Pull Request is approved, the contributing branch will be rebased onto the latest version of our master branch.
 
