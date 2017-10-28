@@ -1,19 +1,19 @@
 import 'dart:async';
-import 'utils.dart';
+import 'package:exercism_dart/src/utils.dart';
 
 Future<Null> main() async {
-  final PresubmitUtils utils = new PresubmitUtils();
+  final CommonUtils utils = new CommonUtils();
 
-  await utils.fetchConfiglet();
-
-  print('Formatting config.json...');
-  await utils.run('bin/configlet', ['fmt', '.']);
+  if (utils.fetchConfiglet() == 0) {
+    print('Formatting config.json...');
+    await utils.runCmdIfExecutable('bin/configlet', ['fmt', '.']);
+  }
 
   print('Formatting all Dart files...');
-  await utils.run('pub', ['run', 'dart_style:format', '-l', '120', '-w', '.']);
+  await utils.runCmd('pub', ['run', 'dart_style:format', '-l', '120', '-w', '.']);
 
-  print('Running test...');
-  await utils.run('pub', ['run', 'test']);
+  print('Running tests...');
+  await utils.runCmd('pub', ['run', 'test']);
 
   await utils.terminate();
   print('Done!');
