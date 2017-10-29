@@ -33,7 +33,7 @@ Please keep the following in mind:
 - Please run the following commands before submitting your PR:
     * `pub run test` - All the tests for Dart exercises can be run from the top level of the repo with this command
     * `bin/fetch-configlet` - Downloads the latest version of configlet and stores it in the bin/ directory
-    * `bin/configlet lint .` - Checks the config.json for formatting issues
+    * `bin/configlet lint --track-id dart .` - Checks the config.json for formatting issues
     * `bin/configlet fmt .` - Formats the config.json
     * `bin/check_formatting` - Checks All the Dart files for formatting issues
     * `pub run dart_style:format -l 120 -w .` - Formats all the Dart files
