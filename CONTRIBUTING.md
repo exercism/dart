@@ -32,16 +32,17 @@ Please keep the following in mind:
 
 - Please run the following commands before submitting your PR:
     * `pub run test` - All the tests for Dart exercises can be run from the top level of the repo with this command
+    * `bin/fetch-configlet` - Downloads the latest version of configlet and stores it in the bin/ directory
     * `bin/configlet lint .` - Checks the config.json for formatting issues
     * `bin/configlet fmt .` - Formats the config.json
     * `bin/check_formatting` - Checks All the Dart files for formatting issues
     * `pub run dart_style:format -l 120 -w .` - Formats all the Dart files
 
-- Once a Pull Request is approved, the contributing branch will be Rebased onto the latest version of our master branch.
+- Once a Pull Request is approved, the contributing branch will be rebased onto the latest version of our master branch.
 
 ## Contributing a New Exercise ###
 
-- All Exercism exercises must be defined in [problem-specifications](https://github.com/exercism/problem-specifications/tree/master/exercises) before they are implemented for a specific track. Please submit a PR there if your exercise is new to Exercism.
+- All Exercism exercises must be defined in [problem-specifications](https://github.com/exercism/problem-specifications/tree/master/exercises) before they are implemented for a specific track. Please submit a PR there if your exercise is new to [Exercism](https://github.com/exercism/problem-specifications/).
 
 - Please make sure the new exercise conforms to specifications in the [exercism/problem-specifications](https://github.com/exercism/problem-specifications) repo.
 
@@ -58,4 +59,6 @@ Please keep the following in mind:
 
 - Please do not commit any configuration files or directories inside the exercise other than pubspec.lock and pubspec.yaml
 
-- Be sure to add it to the appropriate place in the `config.json` file. Also, please run `bin/fetch-configlet && bin/configlet lint .` to ensure the exercise is configured correctly.
+- Be sure to add the new exercise to the appropriate place in the `config.json` file.
+
+- Please run `bin/fetch-configlet && bin/configlet lint .` to ensure the exercise is configured correctly.
