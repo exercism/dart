@@ -1,6 +1,3 @@
-#!/usr/bin/env dart
-// vim: set syntax=dart:
-
 import "dart:io";
 import "dart:async";
 import "dart:convert";
@@ -16,6 +13,8 @@ final parser = new ArgParser()
 
 /** Helpers */
 List<String> words(String str) {
+  if (str == null) return [''];
+
   return str
       .toLowerCase()
       .replaceAll(new RegExp(r"[^a-z0-9]"), " ")
@@ -25,6 +24,8 @@ List<String> words(String str) {
 }
 
 String upperFirst(String str) {
+  if (str == null || str.length == 0) return '';
+
   final chars = str.split("");
   final first = chars.first;
 
@@ -127,7 +128,7 @@ String testCaseTemplate(String name, Map<String, Object> testCase, {bool firstTe
 /// Based on the python `repr` function, but only works for basic types: String, Iterable, Map, and primitive types
 String repr(Object x) {
   if (x is String) {
-    x = x.replaceAll('"', r'\"').replaceAll("\n", r"\n").replaceAll(r"$", r"\$");
+    x = (x as String).replaceAll('"', r'\"').replaceAll("\n", r"\n").replaceAll(r"$", r"\$");
     return '"$x"';
   }
 
@@ -148,7 +149,7 @@ String repr(Object x) {
 }
 
 /// A helper method to get the inside type of an iterable
-String getIterableType(Object iter) {
+String getIterableType(Iterable iter) {
   Set<String> types = iter.map(getFriendlyType).toSet();
 
   if (types.length == 1) {
@@ -176,7 +177,7 @@ String getFriendlyType(Object x) {
     return "num";
   }
 
-  return x.runtimeType;
+  return x.runtimeType.toString();
 }
 
 // runProcess runs a process, writes any stdout/stderr output.
