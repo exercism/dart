@@ -61,4 +61,4 @@ Please keep the following in mind:
 
 - Be sure to add the new exercise to the appropriate place in the `config.json` file.
 
-- Please run `bin/fetch-configlet && bin/configlet lint .` to ensure the exercise is configured correctly.
+- Please run `bin/fetch-configlet && bin/configlet lint --track-id dart .` to ensure the exercise is configured correctly.
