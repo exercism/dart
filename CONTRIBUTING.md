@@ -42,7 +42,7 @@ Please keep the following in mind:
 
 ## Contributing a New Exercise ###
 
-- All Exercism exercises must be defined in [problem-specifications](https://github.com/exercism/problem-specifications/tree/master/exercises) before they are implemented for a specific track. Please submit a PR there if your exercise is new to [Exercism](https://github.com/exercism/problem-specifications/).
+- All Exercism exercises must be defined in [problem-specifications](https://github.com/exercism/problem-specifications/tree/master/exercises) before they are implemented for a specific track. If your exercise is new, please submit a PR to [exercism/problem-specification].
 
 - Please make sure the new exercise conforms to specifications in the [exercism/problem-specifications](https://github.com/exercism/problem-specifications) repo.
 
