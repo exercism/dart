@@ -5,6 +5,7 @@ import "dart:io";
 import "dart:async";
 import "dart:convert";
 import "package:args/args.dart";
+import "package:path/path.dart" show dirname;
 
 /** Constants */
 const ME = "create-exercise";
@@ -178,6 +179,21 @@ String getFriendlyType(Object x) {
   return x.runtimeType;
 }
 
+// runProcess runs a process, writes any stdout/stderr output.
+// Returns true if the cmd was successful, false otherwise
+Future<bool> runProcess(String cmd, List<String> arguments) async {
+  final res = await Process.run(cmd, arguments, runInShell: true);
+  if (!res.stdout.toString().isEmpty) {
+    stdout.write(res.stdout);
+  }
+
+  if (!res.stderr.toString().isEmpty) {
+    stderr.write(res.stderr);
+  }
+
+  return res.exitCode == 0;
+}
+
 Future main(args) async {
   final arguments = parser.parse(args);
   final restArgs = arguments.rest;
@@ -226,38 +242,32 @@ Future main(args) async {
   await new File("${exerciseDir.path}/pubspec.yaml").writeAsString(pubTemplate(name));
 
   if (arguments["spec-path"] != null) {
-    // The output from test generation is not always well-formatted, use dartfmt to clean it up
-    final res = await Process.run("dartfmt", ["-l", "120", "-w", testFileName], runInShell: true);
-    if (!res.stdout.toString().isEmpty) {
-      stdout.write(res.stdout);
-    }
-
-    if (!res.stderr.toString().isEmpty) {
-      stderr.write(res.stderr);
-    }
-
-    if (res.exitCode != 0) {
-      stderr.write("Warning: dartfmt exited with a code of ${res.exitCode}, '$testFileName' is likely malformed.\n");
+    // Generate README
+    final dartRoot = "${dirname(Platform.script.toFilePath())}/..";
+    final configletLoc = "$dartRoot/bin/configlet";
+    final genSuccess = await runProcess(
+        configletLoc, ["generate", "$dartRoot", "--spec-path", arguments["spec-path"], "--only", name]);
+    if (genSuccess) {
+      stdout.write("Successfully created README.md\n");
     } else {
-      stdout.write("Successfully created a rough-draft of tests at '$testFileName'.\n");
-      stdout.write("You should check this over and fix or refine as necessary.\n");
+      stderr.write("Warning: `configlet generate` exited with an error, 'README.md' is likely malformed.\n");
     }
+  }
+
+  // The output from file generation is not always well-formatted, use dartfmt to clean it up
+  final fmtSuccess = await runProcess("dartfmt", ["-l", "120", "-w", exerciseDir.path]);
+  if (fmtSuccess) {
+	  stdout.write("Successfully created a rough-draft of tests at '$testFileName'.\n");
+	  stdout.write("You should check this over and fix or refine as necessary.\n");
+  } else {
+	  stderr.write("Warning: dartfmt exited with an error, files in '${exerciseDir.path}' may be malformed.\n");
   }
 
   // Install deps
   Directory.current = exerciseDir;
 
-  final res = await Process.run("pub", ["get"], runInShell: true);
-
-  if (!res.stdout.toString().isEmpty) {
-    stdout.write(res.stdout);
-  }
-
-  if (!res.stderr.toString().isEmpty) {
-    stderr.write(res.stderr);
-  }
-
-  assert(res.exitCode == 0);
+  final pubSuccess = await runProcess("pub", ["get"]);
+  assert(pubSuccess);
 
   Directory.current = currentDir;
 }

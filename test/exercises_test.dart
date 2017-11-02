@@ -6,10 +6,10 @@ import "dart:async";
 import "package:test/test.dart";
 import "package:yaml/yaml.dart";
 
-/** Constants */
-const ENV_NAME = "EXERCISE";
+/// Constants
+const envName = "EXERCISE";
 
-/** Helpers */
+/// Helpers
 Future runCmd(List<String> cmds) async {
   final cmd = cmds.first;
   final other = cmds.skip(1).toList();
@@ -112,19 +112,19 @@ Running tests for: $packageName
 }
 
 void main() {
-  final testname = Platform.environment[ENV_NAME];
+  final testName = Platform.environment[envName];
 
   test("Exercises", () async {
-    if (testname == null) {
+    if (testName == null) {
       await runAllTests();
     } else {
-      final testpath = "${Directory.current.path}/exercises/$testname";
+      final testPath = "${Directory.current.path}/exercises/$testName";
 
-      if (!await new Directory(testpath).exists()) {
-        throw new ArgumentError("No exercise with this name: $testname");
+      if (!await new Directory(testPath).exists()) {
+        throw new ArgumentError("No exercise with this name: $testName");
       }
 
-      await runTest(testpath);
+      await runTest(testPath);
     }
   });
 }
