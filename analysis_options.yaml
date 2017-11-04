@@ -8,13 +8,30 @@ analyzer:
 
 linter:
   rules:
+    # Error Rules
+    - avoid_empty_else
+    - empty_statements
+    - literal_only_boolean_expressions
+    - no_duplicate_case_values
+    - unnecessary_statements
+    - valid_regexps
+
+    # Style Rules
     - always_declare_return_types
-    - camel_case_types
-    - empty_constructor_bodies
+    - always_put_required_named_parameters_first
+    - always_require_non_null_named_parameters
     - annotate_overrides
     - avoid_init_to_null
+    - avoid_return_types_on_setters
+    - camel_case_types
     - constant_identifier_names
+    - empty_catches
+    - empty_constructor_bodies
     - one_member_abstracts
     - slash_for_doc_comments
     - sort_constructors_first
     - unnecessary_brace_in_string_interp
+    - use_setters_to_change_properties
+
+    # Package Rules
+    - package_names
