@@ -11,7 +11,7 @@ void main() {
   group("PhoneNumber: Edge cases - ", edgeCases);
 }
 
-cleanUpTest() {
+void cleanUpTest() {
   test("cleans the number", () {
     expect(phoneNumber.cleanNumber("(223) 456-7890"), equals("2234567890"));
   }, skip: false);
@@ -23,7 +23,7 @@ cleanUpTest() {
   }, skip: true);
 }
 
-numberLengthTest() {
+void numberLengthTest() {
   test("invalid when 9 digits", () {
     expect(phoneNumber.cleanNumber("123456789"), equals(null));
   }, skip: true);
@@ -41,7 +41,7 @@ numberLengthTest() {
   }, skip: true);
 }
 
-numbersOnlyTest() {
+void numbersOnlyTest() {
   test("invalid with letters", () {
     expect(phoneNumber.cleanNumber("123-abc-7890"), equals(null));
   }, skip: true);
@@ -50,7 +50,7 @@ numbersOnlyTest() {
   }, skip: true);
 }
 
-codeRangeTest() {
+void codeRangeTest() {
   test("invalid if area code does not start with 2-9", () {
     expect(phoneNumber.cleanNumber("(123) 456-7890"), equals(null));
   }, skip: true);
@@ -59,7 +59,7 @@ codeRangeTest() {
   }, skip: true);
 }
 
-edgeCases() {
+void edgeCases() {
   test("invalid if passes all other tests but contains special characters", () {
     expect(phoneNumber.cleanNumber("123-@:!-78901256"), equals(null));
   }, skip: true);
