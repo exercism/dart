@@ -1,5 +1,5 @@
 import 'package:test/test.dart';
-import '../tool/create_exercise.dart';
+import '../bin/create_exercise.dart';
 
 void main() {
   group('create-exercise tool', () {
