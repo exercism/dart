@@ -12,7 +12,7 @@ Clone the repo and run `pub get` to download all the dependencies for this proje
 
 To run all the tests execute: `pub run test`
 
-To create a new exercise, use the create-exercise executable in the tool directory: `./tool/create_exercise`
+To create a new exercise, use the executable in the tool directory: `dart bin/create_exercise.dart`
 
 ## Exercise Tests ##
 
