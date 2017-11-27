@@ -1,5 +1,5 @@
 ## Dart
-* One option is to follow the [instructions for installation](https://www.dartlang.org/install) on dartlang.org.
+* One option is to follow the [instructions for installation on the Dart website](https://www.dartlang.org/install).
 
 ### Manual install instruction
 * Download a zip file from [this page](https://www.dartlang.org/install/archive).
@@ -9,7 +9,7 @@
         * [Instructions for Windows](https://www.computerhope.com/issues/ch000549.htm)
         * [Instructions for Linux](https://www.computerhope.com/issues/ch001647.htm)
         * [Instructions for Mac](https://www.pegaxchange.com/tag/macos-sierra-add-entry-to-path-variable/)
-* From a new command window or terminal, type `dart --version` to verify that Dart is now available.
+* From a new command window or terminal, type `dart --version` to verify that Dart is now available. If the output shows the version number, then Dart is correctly installed on your computer.
 
 ## Dart Plugin for your IDE or Editor
 * If you are using an IDE or an editor, [install and configure the Dart plugin](https://www.dartlang.org/tools) if it exists for your editor of choice.
