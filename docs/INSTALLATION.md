@@ -1,7 +1,9 @@
-## Dart
-* One option is to follow the [instructions for installation on the Dart website](https://www.dartlang.org/install).
+## Installing Dart
 
-### Manual install instruction
+### Automatic installation instructions
+* Follow the [instructions for installation on the Dart website](https://www.dartlang.org/install).
+
+### Manual install instructions
 * Download a zip file from [this page](https://www.dartlang.org/install/archive).
 * Unzip the file into whatever directory you choose.
 * Add the full path of that directory to your PATH.
