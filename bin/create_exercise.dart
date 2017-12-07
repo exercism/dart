@@ -8,7 +8,7 @@ import "package:path/path.dart" show dirname;
 const ME = "create-exercise";
 
 final parser = new ArgParser()
-  ..addSeparator("Usage: $ME <slug> [--spec-path path]")
+  ..addSeparator("Usage: $ME [--spec-path path] <slug>")
   ..addOption("spec-path", help: "The location of the problem-specifications directory.", valueHelp: 'path');
 
 /** Helpers */
@@ -218,6 +218,7 @@ Future main(args) async {
       File file = new File(filename);
       final specification = JSON.decode(await file.readAsString());
       testCasesString = testCaseTemplate(name, specification);
+      print("Found: ${arguments['spec-path']}/exercises/$name/canonical-data.json");
     } on FileSystemException {
       stderr.write("Could not open file '$filename', exiting.\n");
       exit(1);
@@ -225,6 +226,8 @@ Future main(args) async {
       stderr.write("File '$filename' is not valid JSON, exiting.\n");
       exit(1);
     }
+  } else {
+      print("Could not find: ${arguments['spec-path']}/exercises/$name/canonical-data.json");
   }
 
   if (await exerciseDir.exists()) {
