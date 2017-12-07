@@ -42,7 +42,7 @@ Please keep the following in mind:
 
 ## Contributing a New Exercise ###
 
-- All Exercism exercises must be defined in [problem-specifications](https://github.com/exercism/problem-specifications/tree/master/exercises) before they are implemented for a specific track. If your exercise is new, please submit a PR to [exercism/problem-specification].
+- All Exercism exercises must be defined in [problem-specifications](https://github.com/exercism/problem-specifications/tree/master/exercises) before they are implemented for a specific track. If your exercise is new, please submit a PR to [exercism/problem-specification](https://github.com/exercism/problem-specifications).
 
 - Please make sure the new exercise conforms to specifications in the [exercism/problem-specifications](https://github.com/exercism/problem-specifications) repo.
 
@@ -61,4 +61,4 @@ Please keep the following in mind:
 
 - Be sure to add the new exercise to the appropriate place in the `config.json` file.
 
-- Please run `bin/fetch-configlet && bin/configlet lint --track-id dart .` to ensure the exercise is configured correctly.
+- Please run `bin/fetch-configlet && bin/configlet lint --track-id=dart .` to ensure the exercise is configured correctly.
