@@ -28,6 +28,19 @@
     },
     {
       "core": true,
+      "difficulty": 1,
+      "slug": "armstrong-numbers",
+      "topics": [
+        "equality",
+        "integers",
+        "logic",
+        "strings"
+      ],
+      "unlocked_by": null,
+      "uuid": "4f650701-9568-4d95-9f72-be4bde2c90ec"
+    },
+    {
+      "core": true,
       "difficulty": 2,
       "slug": "difference-of-squares",
       "topics": [
