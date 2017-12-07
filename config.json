@@ -110,10 +110,24 @@
       ]
     },
     {
+      "slug": "acronym",
+      "uuid": "3f8d18d4-4f31-405b-8aad-80f768b11db3",
+      "core": false,
+      "unlocked_by": "hamming",
+      "difficulty": 2,
+      "topics": [
+        "control_flow_conditionals",
+        "control_flow_loops",
+        "equality",
+        "regular_expressions",
+        "strings"
+      ]
+    },
+    {
       "slug": "phone-number",
       "uuid": "8649b2b4-02f6-4947-92b9-d1cc0d7c3594",
       "core": false,
-      "unlocked_by": "word-count",
+      "unlocked_by": "hamming",
       "difficulty": 2,
       "topics": [
         "control_flow_conditionals",
