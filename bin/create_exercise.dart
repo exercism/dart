@@ -258,10 +258,10 @@ Future main(args) async {
   // The output from file generation is not always well-formatted, use dartfmt to clean it up
   final fmtSuccess = await runProcess("dartfmt", ["-l", "120", "-w", exerciseDir.path]);
   if (fmtSuccess) {
-	  stdout.write("Successfully created a rough-draft of tests at '$testFileName'.\n");
-	  stdout.write("You should check this over and fix or refine as necessary.\n");
+    stdout.write("Successfully created a rough-draft of tests at '$testFileName'.\n");
+    stdout.write("You should check this over and fix or refine as necessary.\n");
   } else {
-	  stderr.write("Warning: dartfmt exited with an error, files in '${exerciseDir.path}' may be malformed.\n");
+    stderr.write("Warning: dartfmt exited with an error, files in '${exerciseDir.path}' may be malformed.\n");
   }
 
   // Install deps
