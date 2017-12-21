@@ -227,7 +227,7 @@ Future main(args) async {
       exit(1);
     }
   } else {
-      print("Could not find: ${arguments['spec-path']}/exercises/$name/canonical-data.json");
+    print("Could not find: ${arguments['spec-path']}/exercises/$name/canonical-data.json");
   }
 
   if (await exerciseDir.exists()) {
