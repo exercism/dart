@@ -19,4 +19,4 @@ before_script:
 script:
   - bin/fetch-configlet
   - bin/configlet lint .
-  - pub run test
+  - pub run test test/
