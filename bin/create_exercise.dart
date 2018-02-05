@@ -4,21 +4,21 @@ import "dart:convert";
 import "package:args/args.dart";
 import "package:path/path.dart" show dirname;
 
-/** Constants */
-const ME = "create-exercise";
+/// Constants
+const String scriptFilename = "create-exercise";
 
 final parser = new ArgParser()
-  ..addSeparator("Usage: $ME [--spec-path path] <slug>")
+  ..addSeparator("Usage: $scriptFilename [--spec-path path] <slug>")
   ..addOption("spec-path", help: "The location of the problem-specifications directory.", valueHelp: 'path');
 
-/** Helpers */
+/// Helpers
 List<String> words(String str) {
   if (str == null) return [''];
 
   return str
       .toLowerCase()
       .replaceAll(new RegExp(r"[^a-z0-9]"), " ")
-      .replaceAll(new RegExp(r"\ +"), " ")
+      .replaceAll(new RegExp(r" +"), " ")
       .trim()
       .split(" ");
 }
@@ -46,7 +46,7 @@ String snakeCase(String str) => words(str).join("_");
 
 String kebabCase(String str) => words(str).join("-");
 
-/** Templates */
+/// Templates
 String exampleTemplate(String name) => """
 class ${pascalCase(name)} {
 
@@ -60,18 +60,18 @@ class ${pascalCase(name)} {
 """;
 
 String testCasesString = """
-    test("should work", () {
+    test('should work', () {
       // TODO
     });""";
 
 String testTemplate(String name) => """
-import "package:test/test.dart";
-import "package:${snakeCase(name)}/${snakeCase(name)}.dart";
+import 'package:test/test.dart';
+import 'package:${snakeCase(name)}/${snakeCase(name)}.dart';
 
 void main() {
   final ${camelCase(name)} = new ${pascalCase(name)}();
 
-  group("${pascalCase(name)}", () {
+  group('${pascalCase(name)}', () {
 $testCasesString
   });
 }
@@ -101,7 +101,7 @@ String testCaseTemplate(String name, Map<String, Object> testCase, {bool firstTe
     }
 
     return """
-      group("$description", () {
+      group('$description', () {
         $tests
       });
     """;
