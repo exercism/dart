@@ -4,10 +4,15 @@
 {{- with .Hints }}
 {{ . }}
 {{ end }}
-{{- with .TrackInsert }}
-{{ . }}
-{{ end }}
-{{- with .Spec.Credits -}}
+
+To run the tests:
+
+```sh
+$ pub run test
+```
+
+For more detailed info about the Dart track see the [help page](http://exercism.io/languages/dart).
+{{ with .Spec.Credits }}
 ## Source
 
 {{ . }}
