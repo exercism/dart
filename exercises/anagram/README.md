@@ -15,7 +15,6 @@ $ pub run test
 
 For more detailed info about the Dart track see the [help page](http://exercism.io/languages/dart).
 
-
 ## Source
 
 Inspired by the Extreme Startup game [https://github.com/rchatley/extreme_startup](https://github.com/rchatley/extreme_startup)

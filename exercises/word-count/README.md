@@ -20,7 +20,6 @@ $ pub run test
 
 For more detailed info about the Dart track see the [help page](http://exercism.io/languages/dart).
 
-
 ## Source
 
 This is a classic toy problem, but we were reminded of it by seeing it in the Go Tour.

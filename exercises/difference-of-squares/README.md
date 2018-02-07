@@ -21,7 +21,6 @@ $ pub run test
 
 For more detailed info about the Dart track see the [help page](http://exercism.io/languages/dart).
 
-
 ## Source
 
 Problem 6 at Project Euler [http://projecteuler.net/problem=6](http://projecteuler.net/problem=6)
