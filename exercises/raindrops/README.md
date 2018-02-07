@@ -26,7 +26,6 @@ $ pub run test
 
 For more detailed info about the Dart track see the [help page](http://exercism.io/languages/dart).
 
-
 ## Source
 
 A variation on a famous interview question intended to weed out potential candidates. [http://jumpstartlab.com](http://jumpstartlab.com)
