@@ -1,4 +1,5 @@
 # Phone Number
+
 Clean up user-entered phone numbers so that they can be sent SMS messages.
 
 The **North American Numbering Plan (NANP)** is a telephone numbering system used by many countries in North America like the United States, Canada or Bermuda. All NANP-countries share the same international country code: `1`.
@@ -27,7 +28,8 @@ should all produce the output
 
 **Note:** As this exercise only deals with telephone numbers used in NANP-countries, only 1 is considered a valid country code.
 
-# Tip
+## Tip
+
 A function with a *return type* can only return data of that *type* and `null`.
 However the function caller is only expecting one data type.
 
@@ -50,7 +52,20 @@ dynamic hello(int a){
         return null;
     }
 }
+
+
+
+To run the tests:
+
+```sh
+$ pub run test
 ```
+
+For more detailed info about the Dart track see the [help page](http://exercism.io/languages/dart).
+
+## Source
+
+Event Manager by JumpstartLab [http://tutorials.jumpstartlab.com/projects/eventmanager.html](http://tutorials.jumpstartlab.com/projects/eventmanager.html)
 
 ## Submitting Incomplete Solutions
 It's possible to submit an incomplete solution so you can see how others have completed the exercise.
