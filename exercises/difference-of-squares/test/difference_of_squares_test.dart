@@ -1,49 +1,58 @@
-import "package:test/test.dart";
-import "package:difference_of_squares/difference_of_squares.dart";
+import 'package:test/test.dart';
+import 'package:difference_of_squares/difference_of_squares.dart';
 
 void main() {
-  final squares = new DifferenceOfSquares();
+  final DifferenceOfSquares differenceOfSquares = new DifferenceOfSquares();
 
-  group("DifferenceOfSquares", () {
-    group("#squareOfSums()", () {
+  group('DifferenceOfSquares', () {
+    group('Square the sum of the numbers up to the given number', () {
       test("square of sum 1", () {
-        expect(squares.squareOfSums(1), equals(1));
-      });
+        final num result = differenceOfSquares.squareOfSum(1);
+        expect(result, equals(1));
+      }, skip: false);
 
       test("square of sum 5", () {
-        expect(squares.squareOfSums(5), equals(225));
+        final num result = differenceOfSquares.squareOfSum(5);
+        expect(result, equals(225));
       }, skip: true);
 
       test("square of sum 100", () {
-        expect(squares.squareOfSums(100), equals(25502500));
+        final num result = differenceOfSquares.squareOfSum(100);
+        expect(result, equals(25502500));
       }, skip: true);
     });
 
-    group("#sumOfSquares()", () {
+    group('Sum the squares of the numbers up to the given number', () {
       test("sum of squares 1", () {
-        expect(squares.sumOfSquares(1), equals(1));
+        final num result = differenceOfSquares.sumOfSquare(1);
+        expect(result, equals(1));
       }, skip: true);
 
       test("sum of squares 5", () {
-        expect(squares.sumOfSquares(5), equals(55));
+        final num result = differenceOfSquares.sumOfSquare(5);
+        expect(result, equals(55));
       }, skip: true);
 
       test("sum of squares 100", () {
-        expect(squares.sumOfSquares(100), equals(338350));
+        final num result = differenceOfSquares.sumOfSquare(100);
+        expect(result, equals(338350));
       }, skip: true);
     });
 
-    group("#difference()", () {
+    group('Subtract sum of squares from square of sums', () {
       test("difference of squares 1", () {
-        expect(squares.difference(1), equals(0));
+        final num result = differenceOfSquares.differenceOfSquares(1);
+        expect(result, equals(0));
       }, skip: true);
 
       test("difference of squares 5", () {
-        expect(squares.difference(5), equals(170));
+        final num result = differenceOfSquares.differenceOfSquares(5);
+        expect(result, equals(170));
       }, skip: true);
 
       test("difference of squares 100", () {
-        expect(squares.difference(100), equals(25164150));
+        final num result = differenceOfSquares.differenceOfSquares(100);
+        expect(result, equals(25164150));
       }, skip: true);
     });
   });
