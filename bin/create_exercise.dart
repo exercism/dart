@@ -113,8 +113,8 @@ String testCaseTemplate(String name, Map<String, Object> testCase, {bool firstTe
   String method = camelCase(testCase['property']);
   String expected = repr(testCase['expected']);
 
-  List<String> inputKeys = testCase.keys.toList()..remove("expected")..remove("description")..remove("property");
-  String arguments = inputKeys.map((k) => repr(testCase[k])).join(", ");
+  Map<String, dynamic> input = testCase['input'] as Map<String, dynamic>;
+  String arguments = input.keys.map((k) => repr(input[k])).join(', ');
 
   return """
     test($description, () {
@@ -215,8 +215,8 @@ Future main(args) async {
   if (arguments["spec-path"] != null) {
     String filename = "${arguments['spec-path']}/exercises/$name/canonical-data.json";
     try {
-      File file = new File(filename);
-      final specification = JSON.decode(await file.readAsString());
+      File canonicalDataJson = new File(filename);
+      final specification = JSON.decode(await canonicalDataJson.readAsString());
       testCasesString = testCaseTemplate(name, specification);
       print("Found: ${arguments['spec-path']}/exercises/$name/canonical-data.json");
     } on FileSystemException {
@@ -231,7 +231,7 @@ Future main(args) async {
   }
 
   if (await exerciseDir.exists()) {
-    stderr.write("$name already exist");
+    stderr.write("$name already exist\n");
     exit(1);
   }
 
