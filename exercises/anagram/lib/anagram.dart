@@ -1,3 +1,3 @@
 class Anagram {
-  // Enter your code here
+  // Put your code here
 }
