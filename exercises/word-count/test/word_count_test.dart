@@ -61,4 +61,8 @@ void edgeCases() {
     Map<String, int> test = myWordCounter.countWords("First: don't laugh. Then: don't cry.");
     expect(test, equals({"first": 1, "don't": 2, "laugh": 1, "then": 1, "cry": 1}));
   }, skip: true);
+  test("multiple spaces not detected as a word", () {
+    Map<String, int> test = myWordCounter.countWords("multiple   whitespaces");
+    expect(test, equals({"multiple": 1, "whitespaces": 1}));
+  }, skip: true);
 }
