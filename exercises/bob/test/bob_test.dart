@@ -2,14 +2,14 @@ import 'package:test/test.dart';
 import 'package:bob/bob.dart';
 
 void main() {
-  final bob = new Bob();
+  final Bob bob = new Bob();
 
   group('Bob', () {
     test("stating something", () {
       final String result = bob.hey("Tom-ay-to, tom-aaaah-to.");
 
       expect(result, equals("Whatever."));
-    });
+    }, skip: false);
 
     test("shouting", () {
       final String result = bob.hey("WATCH OUT!");
