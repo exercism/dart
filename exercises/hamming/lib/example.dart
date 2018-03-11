@@ -1,5 +1,5 @@
 class Hamming {
-  int compute(String a, String b) {
+  int distance(String a, String b) {
     if (a.length != b.length) {
       throw new ArgumentError("DNA strands must be of equal length.");
     }
