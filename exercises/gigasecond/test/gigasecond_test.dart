@@ -1,62 +1,48 @@
-import "package:test/test.dart";
-import "package:gigasecond/gigasecond.dart";
-
-DateTime birthDate;
-DateTime expectedDate;
-Gigasecond gigasecond;
+import 'package:test/test.dart';
+import 'package:gigasecond/gigasecond.dart';
 
 void main() {
-  group("Gigasecond", gigasecondTests);
+  group('Add one gigasecond to the input.', gigasecondTests);
 }
 
 void gigasecondTests() {
-  // The setUp() function is used to share code between tests. It is executed
-  // before every test in a group or test suite.
-  setUp(() {
-    birthDate = new DateTime.utc(2015, DateTime.SEPTEMBER, 14);
-  });
+  test("date only specification of time", () {
+    final DateTime birthDate = new DateTime.utc(2011, DateTime.APRIL, 25);
+    final DateTime result = add(birthDate);
+    DateTime expectedDate = new DateTime.utc(2043, DateTime.JANUARY, 1, 1, 46, 40);
 
-  group("since midnight tests", sinceMidnightTests);
-  group("at night tests", atNightTests);
-  group("unixEpoch tests", unixEpochTests);
-}
+    expect(result, equals(expectedDate));
+  }, skip: false);
 
-void sinceMidnightTests() {
-  setUp(() {
-    gigasecond = new Gigasecond(birthDate);
-    expectedDate = new DateTime.utc(2047, DateTime.MAY, 23, 1, 46, 40);
-  });
+  test("second test for date only specification of time", () {
+    final DateTime birthDate = new DateTime.utc(1977, DateTime.JUNE, 13);
+    final DateTime result = add(birthDate);
+    DateTime expectedDate = new DateTime.utc(2009, DateTime.FEBRUARY, 19, 1, 46, 40);
 
-  test("tells a gigasecond anniversary since midnight", () {
-    expect(gigasecond.date(), equals(expectedDate));
-  });
+    expect(result, equals(expectedDate));
+  }, skip: true);
 
-  test("make sure calling \"date()\" doesn't mutate value", () {
-    gigasecond.date();
-    expect(gigasecond.date(), equals(expectedDate));
-  });
-}
+  test("third test for date only specification of time", () {
+    final DateTime birthDate = new DateTime.utc(1959, DateTime.JULY, 19);
+    final DateTime result = add(birthDate);
+    DateTime expectedDate = new DateTime.utc(1991, DateTime.MARCH, 27, 1, 46, 40);
 
-void atNightTests() {
-  setUp(() {
-    birthDate = birthDate.add(new Duration(hours: 23, minutes: 59, seconds: 59));
-    gigasecond = new Gigasecond(birthDate);
-    expectedDate = new DateTime.utc(2047, DateTime.MAY, 24, 1, 46, 39);
-  });
+    expect(result, equals(expectedDate));
+  }, skip: true);
 
-  test("tells the anniversary is next day when you are born at night", () {
-    expect(gigasecond.date(), equals(expectedDate));
-  });
-}
+  test("full time specified", () {
+    final DateTime birthDate = new DateTime.utc(2015, DateTime.JANUARY, 24, 22, 00, 00);
+    final DateTime result = add(birthDate);
+    DateTime expectedDate = new DateTime.utc(2046, DateTime.OCTOBER, 2, 23, 46, 40);
 
-void unixEpochTests() {
-  setUp(() {
-    birthDate = new DateTime.utc(1959, DateTime.JULY, 19, 5, 13, 45);
-    gigasecond = new Gigasecond(birthDate);
-    expectedDate = new DateTime.utc(1991, DateTime.MARCH, 27, 7, 0, 25);
-  });
+    expect(result, equals(expectedDate));
+  }, skip: true);
 
-  test("even works before 1970 (beginning of Unix epoch)", () {
-    expect(gigasecond.date(), equals(expectedDate));
-  });
+  test("full time with day roll-over", () {
+    final DateTime birthDate = new DateTime.utc(2015, DateTime.JANUARY, 24, 23, 59, 59);
+    final DateTime result = add(birthDate);
+    DateTime expectedDate = new DateTime.utc(2046, DateTime.OCTOBER, 3, 01, 46, 39);
+
+    expect(result, equals(expectedDate));
+  }, skip: true);
 }
