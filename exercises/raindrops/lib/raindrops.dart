@@ -1,3 +1,3 @@
 class Raindrops {
-  // Enter your code here
+  // Put your code here
 }
