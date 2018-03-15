@@ -23,7 +23,7 @@
         "integers",
         "logic"
       ],
-      "unlocked_by": "hello-world",
+      "unlocked_by": null,
       "uuid": "4bcfd789-dee6-4dd9-8524-076508504eda"
     },
     {
@@ -34,7 +34,7 @@
         "integers",
         "mathematics"
       ],
-      "unlocked_by": "leap",
+      "unlocked_by": null,
       "uuid": "c1cdab6f-c18c-4173-828a-2191151d20d4"
     },
     {
@@ -47,7 +47,7 @@
         "maps",
         "regular_expressions"
       ],
-      "unlocked_by": "difference-of-squares",
+      "unlocked_by": null,
       "uuid": "b74dde02-03d0-4165-8302-e8ba119b486b"
     },
     {
@@ -62,7 +62,7 @@
         "strings",
         "unicode"
       ],
-      "unlocked_by": "word-count",
+      "unlocked_by": null,
       "uuid": "615a83cc-a905-435a-a30e-f052b61cfd4c"
     },
     {
@@ -75,7 +75,7 @@
         "equality",
         "strings"
       ],
-      "unlocked_by": "bob",
+      "unlocked_by": null,
       "uuid": "91c8033d-f40c-4a90-9ec9-7081f6eba8d2"
     },
     {
@@ -98,7 +98,7 @@
         "mathematics",
         "time"
       ],
-      "unlocked_by": "hamming",
+      "unlocked_by": null,
       "uuid": "0c0511fd-59aa-4480-a7cd-4de0e9303b86"
     },
     {
@@ -111,7 +111,7 @@
         "mathematics",
         "strings"
       ],
-      "unlocked_by": "gigasecond",
+      "unlocked_by": null,
       "uuid": "3d4e326d-2419-4e93-ac29-5727dbc3fbf1"
     },
     {
@@ -122,7 +122,7 @@
         "strings",
         "transforming"
       ],
-      "unlocked_by": "raindrops",
+      "unlocked_by": null,
       "uuid": "99147c39-e8d3-4166-9215-c47fb4832781"
     },
     {
@@ -135,7 +135,7 @@
         "equality",
         "strings"
       ],
-      "unlocked_by": "rna-transcription",
+      "unlocked_by": null,
       "uuid": "6e811b53-4eb1-40f9-a811-b5113d68ae8a"
     }
   ],
