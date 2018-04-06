@@ -29,6 +29,19 @@
     {
       "core": true,
       "difficulty": 1,
+      "slug": "scrabble-score",
+      "topics": [
+        "control_flow_conditionals",
+        "control_flow_loops",
+        "equality",
+        "strings"
+      ],
+      "unlocked_by": null,
+      "uuid": "d74be875-bc1c-47a5-bf80-0c4c57ed200e"
+    },
+    {
+      "core": true,
+      "difficulty": 1,
       "slug": "armstrong-numbers",
       "topics": [
         "equality",
