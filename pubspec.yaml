@@ -1,6 +1,6 @@
 name: exercism_dart
 environment:
-  sdk: '>=2.12.0 <3.0.0'
+  sdk: '>=2.18.0 <3.0.0'
 authors:
   - SuperPaintman <SuperPaintmanDeveloper@gmail.com>
   - Stargator <wildbug@linuxmail.org>
