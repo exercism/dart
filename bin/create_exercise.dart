@@ -1,5 +1,6 @@
 import "dart:async";
 import "dart:io";
+
 import "package:args/args.dart";
 import "package:dart2_constant/convert.dart" as polyfill;
 import "package:path/path.dart" show dirname;
@@ -111,11 +112,11 @@ String testCaseTemplate(String name, Map<String, Object> testCase, {bool firstTe
 
   if (testCase['cases'] != null) {
     // We have a group, not a case
-    String description = testCase['description'];
+    String description = testCase['description'] as String;
 
     // Build the tests up recursively, only first test should be skipped
     List<String> testList = <String>[];
-    for (Map<String, Object> caseObj in testCase['cases']) {
+    for (Map<String, Object> caseObj in testCase['cases'] as dynamic) {
       testList.add(testCaseTemplate(name, caseObj, firstTest: skipTests));
       skipTests = false;
     }
@@ -242,7 +243,7 @@ Future main(List<String> args) async {
     try {
       final File canonicalDataJson = new File(filename);
       final source = await canonicalDataJson.readAsString();
-      final Map<String, Object> specification = polyfill.json.decode(source);
+      final Map<String, Object> specification = polyfill.json.decode(source) as Map<String, Object>;
 
       testCasesString = testCaseTemplate(name, specification);
       print("Found: ${arguments['spec-path']}/exercises/$name/canonical-data.json");

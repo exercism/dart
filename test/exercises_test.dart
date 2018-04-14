@@ -1,5 +1,5 @@
-import "dart:io";
 import "dart:async";
+import "dart:io";
 
 import "package:test/test.dart";
 import "package:yaml/yaml.dart";
@@ -30,7 +30,7 @@ Future<String> getPackageName() async {
 
   final String pubspecString = await pubspec.readAsString();
 
-  final String packageName = loadYaml(pubspecString)["name"];
+  final String packageName = loadYaml(pubspecString)["name"] as String;
 
   return packageName;
 }
@@ -74,7 +74,7 @@ Running tests for: $packageName
 
     for (List<String> cmds in [
       /// Pull dependencies
-      ["pub", "get"],
+      ["pub", "upgrade"],
 
       /// Run all exercise tests
       ["pub", "run", "test", "--run-skipped"]
