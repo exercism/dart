@@ -1,6 +1,6 @@
 class PhoneNumber {
   /// Returns `String` for a valid number, `null` for invalid.
-  dynamic cleanNumber(String phoneNumber) {
+  String clean(String phoneNumber) {
     /// initialize an empty string.
     String onlyDigits = "";
 
@@ -16,7 +16,7 @@ class PhoneNumber {
     /// Only these special characters are allowed.
     /// **"." "(" ")" "-" "+" ** and space,
     /// remove these characters.
-    phoneNumber = phoneNumber.replaceAll(new RegExp(r"^[\-\.\(\)\+\s+]*$"), "");
+    phoneNumber = phoneNumber.replaceAll(new RegExp(r"^[-.()+\s]*$"), "");
 
     /// "123-@:!-7890" is invalid, however **"123-@:!-789012"** is valid
     /// by the current logic since the regex grabs all the digits
