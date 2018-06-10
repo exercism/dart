@@ -1,85 +1,90 @@
 {
+  "language": "Dart",
   "active": true,
+  "blurb": "",
+  "test_pattern": "_test\\.dart$",
   "exercises": [
     {
-      "core": true,
-      "difficulty": 1,
       "slug": "hello-world",
+      "uuid": "6b868b7b-cac4-41ff-a855-21f596637845",
+      "core": true,
+      "unlocked_by": null,
+      "difficulty": 1,
       "topics": [
         "control_flow_conditionals",
         "optional_values",
         "strings",
         "text_formatting"
-      ],
-      "unlocked_by": null,
-      "uuid": "6b868b7b-cac4-41ff-a855-21f596637845"
+      ]
     },
     {
-      "core": true,
-      "difficulty": 1,
       "slug": "leap",
+      "uuid": "4bcfd789-dee6-4dd9-8524-076508504eda",
+      "core": true,
+      "unlocked_by": null,
+      "difficulty": 1,
       "topics": [
         "booleans",
         "integers",
         "logic"
-      ],
-      "unlocked_by": null,
-      "uuid": "4bcfd789-dee6-4dd9-8524-076508504eda"
+      ]
     },
     {
-      "core": true,
-      "difficulty": 1,
       "slug": "scrabble-score",
+      "uuid": "d74be875-bc1c-47a5-bf80-0c4c57ed200e",
+      "core": true,
+      "unlocked_by": null,
+      "difficulty": 1,
       "topics": [
         "control_flow_conditionals",
         "control_flow_loops",
         "equality",
         "strings"
-      ],
-      "unlocked_by": null,
-      "uuid": "d74be875-bc1c-47a5-bf80-0c4c57ed200e"
+      ]
     },
     {
-      "core": true,
-      "difficulty": 1,
       "slug": "armstrong-numbers",
+      "uuid": "4f650701-9568-4d95-9f72-be4bde2c90ec",
+      "core": true,
+      "unlocked_by": null,
+      "difficulty": 1,
       "topics": [
         "equality",
         "integers",
         "logic",
         "strings"
-      ],
-      "unlocked_by": null,
-      "uuid": "4f650701-9568-4d95-9f72-be4bde2c90ec"
+      ]
     },
     {
-      "core": true,
-      "difficulty": 2,
       "slug": "difference-of-squares",
+      "uuid": "c1cdab6f-c18c-4173-828a-2191151d20d4",
+      "core": true,
+      "unlocked_by": null,
+      "difficulty": 2,
       "topics": [
         "integers",
         "mathematics"
-      ],
-      "unlocked_by": null,
-      "uuid": "c1cdab6f-c18c-4173-828a-2191151d20d4"
+      ]
     },
     {
-      "core": true,
-      "difficulty": 2,
       "slug": "word-count",
+      "uuid": "b74dde02-03d0-4165-8302-e8ba119b486b",
+      "core": true,
+      "unlocked_by": null,
+      "difficulty": 2,
       "topics": [
         "control_flow_loops",
         "lists",
         "maps",
         "regular_expressions"
-      ],
-      "unlocked_by": null,
-      "uuid": "b74dde02-03d0-4165-8302-e8ba119b486b"
+      ]
     },
     {
-      "core": true,
-      "difficulty": 2,
       "slug": "bob",
+      "uuid": "615a83cc-a905-435a-a30e-f052b61cfd4c",
+      "core": true,
+      "unlocked_by": null,
+      "difficulty": 2,
       "topics": [
         "control_flow_conditionals",
         "pattern_recognition",
@@ -87,85 +92,80 @@
         "regular_expressions",
         "strings",
         "unicode"
-      ],
-      "unlocked_by": null,
-      "uuid": "615a83cc-a905-435a-a30e-f052b61cfd4c"
+      ]
     },
     {
-      "core": true,
-      "difficulty": 2,
       "slug": "hamming",
+      "uuid": "91c8033d-f40c-4a90-9ec9-7081f6eba8d2",
+      "core": true,
+      "unlocked_by": null,
+      "difficulty": 2,
       "topics": [
         "control_flow_conditionals",
         "control_flow_loops",
         "equality",
         "strings"
-      ],
-      "unlocked_by": null,
-      "uuid": "91c8033d-f40c-4a90-9ec9-7081f6eba8d2"
+      ]
     },
     {
-      "core": false,
-      "difficulty": 2,
       "slug": "phone-number",
+      "uuid": "8649b2b4-02f6-4947-92b9-d1cc0d7c3594",
+      "core": false,
+      "unlocked_by": "word-count",
+      "difficulty": 2,
       "topics": [
         "control_flow_conditionals",
         "control_flow_loops",
         "regular_expressions"
-      ],
-      "unlocked_by": "word-count",
-      "uuid": "8649b2b4-02f6-4947-92b9-d1cc0d7c3594"
+      ]
     },
     {
-      "core": true,
-      "difficulty": 3,
       "slug": "gigasecond",
+      "uuid": "0c0511fd-59aa-4480-a7cd-4de0e9303b86",
+      "core": true,
+      "unlocked_by": null,
+      "difficulty": 3,
       "topics": [
         "mathematics",
         "time"
-      ],
-      "unlocked_by": null,
-      "uuid": "0c0511fd-59aa-4480-a7cd-4de0e9303b86"
+      ]
     },
     {
-      "core": true,
-      "difficulty": 2,
       "slug": "raindrops",
+      "uuid": "3d4e326d-2419-4e93-ac29-5727dbc3fbf1",
+      "core": true,
+      "unlocked_by": null,
+      "difficulty": 2,
       "topics": [
         "control_flow_conditionals",
         "equality",
         "mathematics",
         "strings"
-      ],
-      "unlocked_by": null,
-      "uuid": "3d4e326d-2419-4e93-ac29-5727dbc3fbf1"
+      ]
     },
     {
-      "core": true,
-      "difficulty": 3,
       "slug": "rna-transcription",
+      "uuid": "99147c39-e8d3-4166-9215-c47fb4832781",
+      "core": true,
+      "unlocked_by": null,
+      "difficulty": 3,
       "topics": [
         "strings",
         "transforming"
-      ],
-      "unlocked_by": null,
-      "uuid": "99147c39-e8d3-4166-9215-c47fb4832781"
+      ]
     },
     {
-      "core": true,
-      "difficulty": 1,
       "slug": "anagram",
+      "uuid": "6e811b53-4eb1-40f9-a811-b5113d68ae8a",
+      "core": true,
+      "unlocked_by": null,
+      "difficulty": 1,
       "topics": [
         "control_flow_conditionals",
         "control_flow_loops",
         "equality",
         "strings"
-      ],
-      "unlocked_by": null,
-      "uuid": "6e811b53-4eb1-40f9-a811-b5113d68ae8a"
+      ]
     }
-  ],
-  "foregone": [],
-  "language": "Dart",
-  "test_pattern": "_test\\.dart$"
+  ]
 }
