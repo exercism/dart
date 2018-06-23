@@ -5,15 +5,10 @@ sudo: false
 dart:
   - stable
 
-dart_task:
-  - test: --platform vm
-
 cache:
   directories:
     - $HOME/.pub-cache
 
-before_script:
-  - pub run bin/check_formatting.dart
-
 script:
-  - pub run bin/presubmit.dart
+  - pub run bin/check_formatting.dart
+  - pub run test

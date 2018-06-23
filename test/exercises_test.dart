@@ -1,5 +1,3 @@
-@Timeout(const Duration(seconds: 120))
-
 import "dart:io";
 import "dart:async";
 
@@ -68,7 +66,6 @@ Running tests for: $packageName
   await runCmd(["cp", "lib/${packageName}.dart", "lib/${packageName}.dart.bu"]);
   await runCmd(["cp", "test/${packageName}_test.dart", "test/${packageName}_test.dart.bu"]);
   try {
-
     String inPlaceOption = Platform.isMacOS ? "--in-place" : "-i";
 
     for (List<String> cmds in [
@@ -129,5 +126,5 @@ void main() {
 
       await runTest(testPath);
     }
-  });
+  }, timeout: new Timeout(new Duration(seconds: 120)));
 }
