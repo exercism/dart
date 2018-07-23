@@ -68,12 +68,15 @@ Running tests for: $packageName
   await runCmd(["cp", "lib/${packageName}.dart", "lib/${packageName}.dart.bu"]);
   await runCmd(["cp", "test/${packageName}_test.dart", "test/${packageName}_test.dart.bu"]);
   try {
+
+    String inPlaceOption = Platform.isMacOS ? "--in-place" : "-i";
+
     for (List<String> cmds in [
       /// Replace main file with example
       ["cp", "lib/example.dart", "lib/${packageName}.dart"],
 
       /// Enable all tests
-      ["sed", "-i", "-e", "s/\\bskip:\\s*true\\b/skip: false/g", "test/${packageName}_test.dart"],
+      ["sed", inPlaceOption, "-e", "s/\\bskip:\\s*true\\b/skip: false/g", "test/${packageName}_test.dart"],
 
       /// Pull dependencies
       ["pub", "get"],
