@@ -4,6 +4,11 @@
 
 Exercism exercises in Dart.
 
+## Requirements
+
+* Dart 1.24.3 or higher
+
+
 ## Setup
 
 ### Requirements

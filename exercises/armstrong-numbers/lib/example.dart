@@ -6,7 +6,7 @@ class ArmstrongNumbers {
   bool isArmstrongNumber(final int number) {
     final String numberAsString = number.toString();
     final int numOfDigits = numberAsString.length;
-    int sum = 0;
+    num sum = 0;
 
     for (int count = 0; count < numOfDigits; count++) {
       final String digitAsString = numberAsString.substring(count, count + 1);

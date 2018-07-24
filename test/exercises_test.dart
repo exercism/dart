@@ -28,7 +28,7 @@ Future runCmd(List<String> cmds) async {
 Future<String> getPackageName() async {
   final pubspec = new File("pubspec.yaml");
 
-  final packageName = loadYaml(await pubspec.readAsString())["name"];
+  final String packageName = loadYaml(await pubspec.readAsString())["name"];
 
   return packageName;
 }
@@ -126,5 +126,5 @@ void main() {
 
       await runTest(testPath);
     }
-  }, timeout: new Timeout(new Duration(seconds: 120)));
+  }, timeout: new Timeout(new Duration(minutes: 10)));
 }
