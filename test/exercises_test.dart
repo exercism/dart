@@ -5,7 +5,7 @@ import "package:test/test.dart";
 import "package:yaml/yaml.dart";
 
 /// Constants
-const envName = "EXERCISE";
+const String envName = "EXERCISE";
 
 /// Helpers
 Future runCmd(List<String> cmds) async {
@@ -28,7 +28,9 @@ Future runCmd(List<String> cmds) async {
 Future<String> getPackageName() async {
   final pubspec = new File("pubspec.yaml");
 
-  final String packageName = loadYaml(await pubspec.readAsString())["name"];
+  final String pubspecString = await pubspec.readAsString();
+
+  final String packageName = loadYaml(pubspecString)["name"];
 
   return packageName;
 }
