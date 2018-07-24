@@ -1,7 +1,7 @@
 import "dart:async";
-import "dart:convert";
 import "dart:io";
 import "package:args/args.dart";
+import "package:dart2_constant/convert.dart" as polyfill;
 import "package:path/path.dart" show dirname;
 
 /// Constants
@@ -12,7 +12,7 @@ final parser = new ArgParser()
   ..addOption("spec-path", help: "The location of the problem-specifications directory.", valueHelp: 'path');
 
 /// Helpers
-List<String> words(String str) {
+List<String> words(final String str) {
   if (str == null) return [''];
 
   return str
@@ -23,7 +23,7 @@ List<String> words(String str) {
       .split(" ");
 }
 
-String upperFirst(String str) {
+String upperFirst(final String str) {
   if (str == null || str.length == 0) return '';
 
   final chars = str.split("");
@@ -79,20 +79,45 @@ $testCasesString
 
 String pubTemplate(String name) => """
 name: '${snakeCase(name)}'
+environment:
+  sdk: ">=1.24.0 <3.0.0"
 dev_dependencies:
   test: '<0.13.0'
 """;
 
+String analysisOptionsTemplate() => """
+analyzer:
+  strong-mode:
+    implicit-casts: false
+    implicit-dynamic: false
+  errors:
+    unused_element:        error
+    unused_import:         error
+    unused_local_variable: error
+    dead_code:             error
+
+linter:
+  rules:
+    # Error Rules
+    - avoid_relative_lib_imports
+    - avoid_types_as_parameter_names
+    - literal_only_boolean_expressions
+    - no_adjacent_strings_in_list
+    - valid_regexps
+""";
+
 String testCaseTemplate(String name, Map<String, Object> testCase, {bool firstTest = true}) {
+  bool skipTests = firstTest;
+
   if (testCase['cases'] != null) {
     // We have a group, not a case
     String description = testCase['description'];
 
     // Build the tests up recursively, only first test should be skipped
-    List<String> testList = [];
-    for (Map<String, Object> c in testCase['cases']) {
-      testList.add(testCaseTemplate(name, c, firstTest: firstTest));
-      firstTest = false;
+    List<String> testList = <String>[];
+    for (Map<String, Object> caseObj in testCase['cases']) {
+      testList.add(testCaseTemplate(name, caseObj, firstTest: skipTests));
+      skipTests = false;
     }
     String tests = testList.join("\n");
 
@@ -110,7 +135,7 @@ String testCaseTemplate(String name, Map<String, Object> testCase, {bool firstTe
   String description = repr(testCase['description']);
   String resultType = getFriendlyType(testCase['expected']);
   String object = camelCase(name);
-  String method = camelCase(testCase['property']);
+  String method = camelCase(testCase['property'].toString());
   String expected = repr(testCase['expected']);
 
   Map<String, dynamic> input = testCase['input'] as Map<String, dynamic>;
@@ -120,7 +145,7 @@ String testCaseTemplate(String name, Map<String, Object> testCase, {bool firstTe
     test($description, () {
       final $resultType result = $object.$method($arguments);
       expect(result, equals($expected));
-    }, skip: ${!firstTest});
+    }, skip: ${!skipTests});
   """;
 }
 
@@ -128,8 +153,8 @@ String testCaseTemplate(String name, Map<String, Object> testCase, {bool firstTe
 /// Based on the python `repr` function, but only works for basic types: String, Iterable, Map, and primitive types
 String repr(Object x) {
   if (x is String) {
-    x = (x as String).replaceAll('"', r'\"').replaceAll("\n", r"\n").replaceAll(r"$", r"\$");
-    return '"$x"';
+    String result = x.replaceAll('"', r'\"').replaceAll("\n", r"\n").replaceAll(r"$", r"\$");
+    return '"$result"';
   }
 
   if (x is Iterable) {
@@ -195,7 +220,7 @@ Future<bool> runProcess(String cmd, List<String> arguments) async {
   return res.exitCode == 0;
 }
 
-Future main(args) async {
+Future main(List<String> args) async {
   final arguments = parser.parse(args);
   final restArgs = arguments.rest;
 
@@ -215,8 +240,10 @@ Future main(args) async {
   if (arguments["spec-path"] != null) {
     String filename = "${arguments['spec-path']}/exercises/$name/canonical-data.json";
     try {
-      File canonicalDataJson = new File(filename);
-      final specification = JSON.decode(await canonicalDataJson.readAsString());
+      final File canonicalDataJson = new File(filename);
+      final source = await canonicalDataJson.readAsString();
+      final Map<String, Object> specification = polyfill.json.decode(source);
+
       testCasesString = testCaseTemplate(name, specification);
       print("Found: ${arguments['spec-path']}/exercises/$name/canonical-data.json");
     } on FileSystemException {
@@ -244,13 +271,14 @@ Future main(args) async {
   await new File("${exerciseDir.path}/lib/${filename}.dart").writeAsString(mainTemplate(name));
   await new File(testFileName).writeAsString(testTemplate(name));
   await new File("${exerciseDir.path}/pubspec.yaml").writeAsString(pubTemplate(name));
+  await new File("${exerciseDir.path}/analysis_options.yaml").writeAsString(analysisOptionsTemplate());
 
   if (arguments["spec-path"] != null) {
     // Generate README
     final dartRoot = "${dirname(Platform.script.toFilePath())}/..";
     final configletLoc = "$dartRoot/bin/configlet";
     final genSuccess = await runProcess(
-        configletLoc, ["generate", "$dartRoot", "--spec-path", arguments["spec-path"], "--only", name]);
+        configletLoc, ["generate", "$dartRoot", "--spec-path", '${arguments['spec-path']}', "--only", name]);
     if (genSuccess) {
       stdout.write("Successfully created README.md\n");
     } else {

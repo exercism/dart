@@ -18,7 +18,7 @@ void main() {
 void simpleTests() {
   test("no matches", () {
     final List<String> result = anagram.findAnagrams("diaper", ["hello", "world", "zombies", "pants"]);
-    expect(result, equals([]));
+    expect(result, equals(<String>[]));
   }, skip: false);
 }
 
@@ -30,7 +30,7 @@ void slightlyLessSimpleTests() {
 
   test("does not detect anagram subsets", () {
     final List<String> result = anagram.findAnagrams("good", ["dog", "goody"]);
-    expect(result, equals([]));
+    expect(result, equals(<String>[]));
   }, skip: true);
 
   test("detects anagram", () {
@@ -48,7 +48,7 @@ void slightlyLessSimpleTests() {
 void moreChallengingTests() {
   test("does not detect non-anagrams with identical checksum", () {
     final List<String> result = anagram.findAnagrams("mass", ["last"]);
-    expect(result, equals([]));
+    expect(result, equals(<String>[]));
   }, skip: true);
 
   test("detects anagrams case-insensitively", () {
@@ -70,16 +70,16 @@ void moreChallengingTests() {
 void edgeCaseTests() {
   test("does not detect a anagram if the original word is repeated", () {
     final List<String> result = anagram.findAnagrams("go", ["go Go GO"]);
-    expect(result, equals([]));
+    expect(result, equals(<String>[]));
   }, skip: true);
 
   test("anagrams must use all letters exactly once", () {
     final List<String> result = anagram.findAnagrams("tapper", ["patter"]);
-    expect(result, equals([]));
+    expect(result, equals(<String>[]));
   }, skip: true);
 
   test("capital word is not own anagram", () {
     final List<String> result = anagram.findAnagrams("BANANA", ["Banana"]);
-    expect(result, equals([]));
+    expect(result, equals(<String>[]));
   }, skip: true);
 }

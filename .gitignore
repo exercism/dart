@@ -10,6 +10,7 @@ bin/configlet.exe
 ### Dart ###
 # Directory created by dart tools
 /exercises/**/pubspec.lock
+.dart_tool/
 .packages
 .pub/
 build/
