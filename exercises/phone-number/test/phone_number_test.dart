@@ -81,12 +81,12 @@ void areaCodeTests() {
 
 void exchangeCodeTests() {
   test("invalid if exchange code starts with 0", () {
-    final Null result = phoneNumber.clean("(223) 056-7890");
+    final String result = phoneNumber.clean("(223) 056-7890");
     expect(result, equals(null));
   }, skip: true);
 
   test("invalid if exchange code starts with 1", () {
-    final Null result = phoneNumber.clean("(223) 156-7890");
+    final String result = phoneNumber.clean("(223) 156-7890");
     expect(result, equals(null));
   }, skip: true);
 }

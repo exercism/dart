@@ -29,7 +29,7 @@ class PhoneNumber {
       onlyDigits = onlyDigits.substring(1);
     }
 
-    if (onlyDigits.length < 10 || onlyDigits.length > 10) return null;
+    if (onlyDigits.length != 10) return null;
 
     /// after removing the country code if it exists,
     /// first and fourth digits can only range from **2-9**
