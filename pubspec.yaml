@@ -3,7 +3,8 @@ authors:
   - SuperPaintman <SuperPaintmanDeveloper@gmail.com>
   - Stargator <wildbug@linuxmail.org>
   - fwip
-  - kabiir
+  - devkabiir
+  - jvarness <jake.varness@gmail.com>
 dev_dependencies:
   args: '^1.0.0'
   dart_style: '^1.0.8'
