@@ -3,8 +3,7 @@
   "active": true,
   "blurb": "",
   "test_pattern": "_test\\.dart$",
-  "exercises": [
-    {
+  "exercises": [{
       "slug": "hello-world",
       "uuid": "6b868b7b-cac4-41ff-a855-21f596637845",
       "core": true,
