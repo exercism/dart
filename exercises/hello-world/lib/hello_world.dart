@@ -1,5 +1,5 @@
 class HelloWorld {
-  String hello([String name]) {
+  String hello() {
     // Put your code here
   }
 }

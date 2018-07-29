@@ -13,6 +13,16 @@ The objectives are simple:
 - Submit your solution and check it at the website.
 
 If everything goes well, you will be ready to fetch your first real exercise.
+
+
+To run the tests:
+
+```sh
+$ pub run test
+```
+
+For more detailed info about the Dart track see the [help page](http://exercism.io/languages/dart).
+
 ## Source
 
 This is an exercise to introduce users to using Exercism [http://en.wikipedia.org/wiki/%22Hello,_world!%22_program](http://en.wikipedia.org/wiki/%22Hello,_world!%22_program)

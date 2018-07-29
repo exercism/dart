@@ -1,3 +1,3 @@
-class Year {
+class Leap {
   // Put your code here
 }

@@ -1,17 +1,19 @@
 *.swp
+**/packages/
+.buildlog
 .DS_Store
+.project
 bin/configlet
 bin/configlet.exe
 
 
 ### Dart ###
+# Directory created by dart tools
+/exercises/**/pubspec.lock
 .packages
 .pub/
 build/
-
-.project
-.buildlog
-**/packages/
+doc/
 
 # Files created by dart2js
 *.dart.js
@@ -19,6 +21,3 @@ build/
 *.js.deps
 *.js.map
 *.info.json
-
-# Directory created by dartdoc
-doc/api/

@@ -2,14 +2,54 @@
   "docs_url": "https://github.com/exercism/docs/blob/master/maintaining-a-track/maintainer-configuration.md",
   "maintainers": [
     {
-      "alumnus": false,
-      "avatar_url": null,
-      "bio": null,
       "github_username": "SuperPaintman",
+      "alumnus": false,
+      "show_on_website": false,
+      "name": null,
       "link_text": null,
       "link_url": null,
+      "avatar_url": null,
+      "bio": null
+    },
+    {
+      "github_username": "Stargator",
+      "alumnus": false,
+      "show_on_website": true,
       "name": null,
-      "show_on_website": false
+      "link_text": null,
+      "link_url": null,
+      "avatar_url": "https://avatars0.githubusercontent.com/u/7527155?v=4\u0026s=460",
+      "bio": null
+    },
+    {
+      "github_username": "fwip",
+      "alumnus": false,
+      "show_on_website": false,
+      "name": null,
+      "link_text": null,
+      "link_url": null,
+      "avatar_url": "https://avatars3.githubusercontent.com/u/190414?v=4\u0026s=460",
+      "bio": null
+    },
+    {
+      "github_username": "devkabiir",
+      "alumnus": false,
+      "show_on_website": true,
+      "name": null,
+      "link_text": null,
+      "link_url": null,
+      "avatar_url": "https://avatars1.githubusercontent.com/u/18462563?v=4\u0026s=460",
+      "bio": null
+    },
+    {
+      "github_username": "jvarness",
+      "alumnus": false,
+      "show_on_website": true,
+      "name": "Jake Varness",
+      "link_text": "dev.to",
+      "link_url": "https://dev.to/jvarness",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/6510879?s=460\u0026v=460",
+      "bio": "Team Lead and Senior Software Engineer at Cerner Corporation, husband, father, nerd"
     }
   ]
 }

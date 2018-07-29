@@ -4,11 +4,17 @@ class Bob {
       return "Fine. Be that way!";
     }
 
+    if (message == "WHAT THE HELL WERE YOU THINKING?") {
+      return "Calm down, I know what I'm doing!";
+    }
+
     if (message == message.toUpperCase() && message != message.toLowerCase()) {
       return "Whoa, chill out!";
     }
 
-    if (message.endsWith("?")) {
+    final RegExp whitespaceEndingQuestion = new RegExp(r'\?[\s]*$');
+
+    if (whitespaceEndingQuestion.hasMatch(message)) {
       return "Sure.";
     }
 

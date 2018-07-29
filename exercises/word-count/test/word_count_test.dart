@@ -12,53 +12,63 @@ void main() {
 
 void simpleTests() {
   test("count one word", () {
-    Map<String, int> test = myWordCounter.countWords("word");
-    expect(test, equals({"word": 1}));
+    final Map<String, int> result = myWordCounter.countWords("word");
+    expect(result, equals({"word": 1}));
   }, skip: false);
+
   test("count one of each word", () {
-    Map<String, int> test = myWordCounter.countWords("one of each");
-    expect(test, equals({"one": 1, "of": 1, "each": 1}));
+    final Map<String, int> result = myWordCounter.countWords("one of each");
+    expect(result, equals({"one": 1, "of": 1, "each": 1}));
   }, skip: true);
+
   test("multiple occurrences of a word", () {
-    Map<String, int> test = myWordCounter.countWords("one fish two fish red fish blue fish");
-    expect(test, equals({"one": 1, "fish": 4, "two": 1, "red": 1, "blue": 1}));
+    final Map<String, int> result = myWordCounter.countWords("one fish two fish red fish blue fish");
+    expect(result, equals({"one": 1, "fish": 4, "two": 1, "red": 1, "blue": 1}));
   }, skip: true);
 }
 
 void ignoreSpecialCharacters() {
   test("handles cramped lists", () {
-    Map<String, int> test = myWordCounter.countWords("one,two,three");
-    expect(test, equals({"one": 1, "two": 1, "three": 1}));
+    final Map<String, int> result = myWordCounter.countWords("one,two,three");
+    expect(result, equals({"one": 1, "two": 1, "three": 1}));
   }, skip: true);
+
   test("handles expanded lists", () {
-    Map<String, int> test = myWordCounter.countWords("one,\ntwo,\nthree");
-    expect(test, equals({"one": 1, "two": 1, "three": 1}));
+    final Map<String, int> result = myWordCounter.countWords("one,\ntwo,\nthree");
+    expect(result, equals({"one": 1, "two": 1, "three": 1}));
   }, skip: true);
+
   test("ignore punctuation", () {
-    Map<String, int> test = myWordCounter.countWords('car: carpet as java: javascript!!&@\$%^&');
-    expect(test, equals({"car": 1, "carpet": 1, "as": 1, "java": 1, "javascript": 1}));
+    final Map<String, int> result = myWordCounter.countWords("car: carpet as java: javascript!!&@\$%^&");
+    expect(result, equals({"car": 1, "carpet": 1, "as": 1, "java": 1, "javascript": 1}));
   }, skip: true);
 
   test("with quotations", () {
-    Map<String, int> test = myWordCounter.countWords("Joe can't tell between 'large' and large.");
-    expect(test, equals({"joe": 1, "can't": 1, "tell": 1, "between": 1, "large": 2, "and": 1}));
+    final Map<String, int> result = myWordCounter.countWords("Joe can't tell between 'large' and large.");
+    expect(result, equals({"joe": 1, "can't": 1, "tell": 1, "between": 1, "large": 2, "and": 1}));
   }, skip: true);
 }
 
 void notJustWords() {
   test("include numbers", () {
-    Map<String, int> test = myWordCounter.countWords("testing, 1, 2 testing");
-    expect(test, equals({"testing": 2, "1": 1, "2": 1}));
+    final Map<String, int> result = myWordCounter.countWords("testing, 1, 2 testing");
+    expect(result, equals({"testing": 2, "1": 1, "2": 1}));
   }, skip: true);
 }
 
 void edgeCases() {
   test("normalize case", () {
-    Map<String, int> test = myWordCounter.countWords("go Go GO Stop stop");
-    expect(test, equals({"go": 3, "stop": 2}));
+    final Map<String, int> result = myWordCounter.countWords("go Go GO Stop stop");
+    expect(result, equals({"go": 3, "stop": 2}));
   }, skip: true);
+
   test("with apostrophes", () {
-    Map<String, int> test = myWordCounter.countWords("First: don't laugh. Then: don't cry.");
-    expect(test, equals({"first": 1, "don't": 2, "laugh": 1, "then": 1, "cry": 1}));
+    final Map<String, int> result = myWordCounter.countWords("First: don't laugh. Then: don't cry.");
+    expect(result, equals({"first": 1, "don't": 2, "laugh": 1, "then": 1, "cry": 1}));
+  }, skip: true);
+
+  test("multiple spaces not detected as a word", () {
+    final Map<String, int> result = myWordCounter.countWords(" multiple   whitespaces");
+    expect(result, equals({"multiple": 1, "whitespaces": 1}));
   }, skip: true);
 }
