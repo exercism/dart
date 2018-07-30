@@ -63,29 +63,25 @@ Running tests for: $packageName
 ================================================================================
 """);
 
-  await runCmd(["cp", "lib/${packageName}.dart", "lib/${packageName}.dart.bu"]);
-  await runCmd(["cp", "test/${packageName}_test.dart", "test/${packageName}_test.dart.bu"]);
+  File stub = new File("lib/${packageName}.dart");
+  File example = new File("lib/example.dart");
+
   try {
-    String inPlaceOption = Platform.isMacOS ? "--in-place" : "-i";
+    stub = await stub.rename("lib/${packageName}.dart.bu");
+    example = await example.rename("lib/${packageName}.dart");
 
     for (List<String> cmds in [
-      /// Replace main file with example
-      ["cp", "lib/example.dart", "lib/${packageName}.dart"],
-
-      /// Enable all tests
-      ["sed", inPlaceOption, "-e", "s/\\bskip:\\s*true\\b/skip: false/g", "test/${packageName}_test.dart"],
-
       /// Pull dependencies
       ["pub", "get"],
 
-      /// Run tests
-      ["pub", "run", "test"]
+      /// Run all exercise tests
+      ["pub", "run", "test", "--run-skipped"]
     ]) {
       await runCmd(cmds);
     }
   } finally {
-    await runCmd(["mv", "lib/${packageName}.dart.bu", "lib/${packageName}.dart"]);
-    await runCmd(["mv", "test/${packageName}_test.dart.bu", "test/${packageName}_test.dart"]);
+    await example.rename("lib/example.dart");
+    await stub.rename("lib/${packageName}.dart");
 
     Directory.current = current;
   }
