@@ -1,5 +1,7 @@
 analyzer:
-  strong-mode: true
+  strong-mode:
+    implicit-casts: false
+    implicit-dynamic: false
   errors:
     unused_element:        error
     unused_import:         error
@@ -30,7 +32,6 @@ linter:
     - one_member_abstracts
     - slash_for_doc_comments
     - sort_constructors_first
-    - unnecessary_brace_in_string_interp
     - use_setters_to_change_properties
 
     # Package Rules
