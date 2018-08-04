@@ -53,6 +53,7 @@
         "equality",
         "integers",
         "logic",
+        "math",
         "strings"
       ]
     },
@@ -64,7 +65,7 @@
       "difficulty": 2,
       "topics": [
         "integers",
-        "mathematics"
+        "math"
       ]
     },
     {
@@ -127,7 +128,6 @@
       "unlocked_by": null,
       "difficulty": 3,
       "topics": [
-        "mathematics",
         "time"
       ]
     },
@@ -140,7 +140,6 @@
       "topics": [
         "control_flow_conditionals",
         "equality",
-        "mathematics",
         "strings"
       ]
     },
