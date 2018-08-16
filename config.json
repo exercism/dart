@@ -97,6 +97,19 @@
       ]
     },
     {
+      "slug": "space-age",
+      "uuid": "c8bf7da7-d26d-48e8-a83b-1296972d2376",
+      "core": true,
+      "unlocked_by": null,
+      "difficulty": 2,
+      "topics": [
+        "floating_point_numbers",
+        "integers",
+        "math",
+        "polymorphism"
+      ]
+    },
+    {
       "slug": "hamming",
       "uuid": "91c8033d-f40c-4a90-9ec9-7081f6eba8d2",
       "core": true,
