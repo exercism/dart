@@ -69,9 +69,9 @@ String testTemplate(String name) => """
 import 'package:test/test.dart';
 import 'package:${snakeCase(name)}/${snakeCase(name)}.dart';
 
-void main() {
-  final ${camelCase(name)} = new ${pascalCase(name)}();
+final ${camelCase(name)} = new ${pascalCase(name)}();
 
+void main() {
   group('${pascalCase(name)}', () {
 $testCasesString
   });
