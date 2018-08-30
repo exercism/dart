@@ -9,6 +9,7 @@ authors:
   - jvarness <jake.varness@gmail.com>
 dev_dependencies:
   args: '^1.0.0'
+  archive: '>=1.0.33 <2.0.8'
   dart_style: '^1.0.8'
   dart2_constant: '^1.0.1'
   io: '^0.3.0'

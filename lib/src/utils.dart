@@ -12,14 +12,8 @@ class CommonUtils {
   /// Fetches the configlet file if it doesn't exist already, and returns the
   /// exit code.
   int fetchConfiglet() {
-    File configletFile = new File('bin/configlet');
-
-    if (!configletFile.existsSync()) {
-      print('Fetching configlet...');
-      return _exit(Process.runSync('bin/fetch-configlet', []).exitCode);
-    }
-
-    return 0;
+    print('Fetching configlet...');
+    return _exit(Process.runSync('dart', ['bin/fetch_configlet.dart'], runInShell: true).exitCode);
   }
 
   /// Returns a [Future] with the exit code resulting from running the
