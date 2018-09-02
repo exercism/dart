@@ -216,6 +216,20 @@
         "pattern_matching",
         "stacks"
       ]
+    },
+    {
+      "slug": "pascals-triangle",
+      "uuid": "f06d9bb0-0b8d-4b34-b6d4-5c5cfae0d93c",
+      "core": true,
+      "unlocked_by": null,
+      "difficulty": 3,
+      "topics": [
+        "control_flow_conditionals",
+        "control_flow_loops",
+        "integers",
+        "lists",
+        "math"
+      ]
     }
   ]
 }
