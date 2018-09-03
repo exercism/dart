@@ -193,6 +193,18 @@
         "equality",
         "strings"
       ]
+    },
+    {
+      "slug": "diamond",
+      "uuid": "5bbd251d-b2eb-44a1-a9a6-8543afb7511c",
+      "core": false,
+      "unlocked_by": null,
+      "difficulty": 3,
+      "topics": [
+        "control_flow_conditionals",
+        "control_flow_loops",
+        "strings"
+      ]
     }
   ]
 }
