@@ -18,8 +18,12 @@ class CommonUtils {
 
   /// Returns a [Future] with the exit code resulting from running the
   /// [executable] with [arguments].
+  ///
+  /// Runs [executable] in shell if it's in current working directory
+  /// or in `path`environment variable.
   Future<int> runCmd(String executable, [List<String> arguments = const []]) async {
-    Process spawn = await _manager.spawn(executable, arguments);
+    Process spawn =
+        await _manager.spawn(executable, arguments, runInShell: !(executable.contains(new RegExp(r'[/|\\]'))));
     return _exit(await spawn.exitCode);
   }
 
