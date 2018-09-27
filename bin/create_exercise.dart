@@ -142,12 +142,24 @@ String testCaseTemplate(String name, Map<String, Object> testCase, {bool firstTe
   Map<String, dynamic> input = testCase['input'] as Map<String, dynamic>;
   String arguments = input.keys.map((k) => repr(input[k])).join(', ');
 
-  return """
+  if (_containsWhitespaceCodes(arguments)) {
+    arguments = _protectWhitespaces(arguments);
+  }
+
+  final result = '''
     test($description, () {
       final $resultType result = $object.$method($arguments);
       expect(result, equals($expected));
     }, skip: ${!skipTests});
-  """;
+''';
+
+  return result;
+}
+
+String _protectWhitespaces(String input) => input..replaceAll("\\", '\\\\');
+
+bool _containsWhitespaceCodes(String input) {
+  return input.contains('\n') || input.contains('\r') || input.contains('\t');
 }
 
 /// `repr` takes in any object and tries to coerce it to a String in such a way that it is suitable to include in code.
