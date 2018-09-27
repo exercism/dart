@@ -200,7 +200,13 @@ String getFriendlyType(Object x) {
   }
 
   if (x is num) {
-    return "num";
+    if (x is int) {
+      return 'int';
+    } else if (x is double) {
+      return 'double';
+    } else {
+      return 'num';
+    }
   }
 
   return x.runtimeType.toString();
