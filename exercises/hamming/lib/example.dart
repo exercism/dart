@@ -1,7 +1,11 @@
 class Hamming {
   int distance(String a, String b) {
+    if ((a.isEmpty && b.isNotEmpty) || (a.isNotEmpty && b.isEmpty)) {
+      throw ArgumentError('no strand must be empty');
+    }
+
     if (a.length != b.length) {
-      throw new ArgumentError("DNA strands must be of equal length.");
+      throw ArgumentError('left and right strands must be of equal length');
     }
 
     int diff = 0;
