@@ -1,7 +1,7 @@
-import 'package:test/test.dart';
 import 'package:anagram/anagram.dart';
+import 'package:test/test.dart';
 
-final Anagram anagram = new Anagram();
+final anagram = new Anagram();
 
 void main() {
   group("simple tests", simpleTests);
@@ -78,8 +78,8 @@ void edgeCaseTests() {
     expect(result, equals(<String>[]));
   }, skip: true);
 
-  test("capital word is not own anagram", () {
-    final List<String> result = anagram.findAnagrams("BANANA", ["Banana"]);
+  test("words are not anagrams of themselves (case-insensitive)", () {
+    final List<String> result = anagram.findAnagrams("BANANA", ["BANANA", "Banana", "banana"]);
     expect(result, equals(<String>[]));
   }, skip: true);
 }
