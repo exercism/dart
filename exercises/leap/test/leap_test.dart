@@ -1,43 +1,53 @@
-import 'package:test/test.dart';
 import 'package:leap/leap.dart';
+import 'package:test/test.dart';
+
+final leap = Leap();
 
 void main() {
-  final Leap leap = new Leap();
-
   group('Leap', () {
-    test("year not divisible by 4: common year", () {
+    test('year not divisible by 4 in common year', () {
       final bool result = leap.leapYear(2015);
       expect(result, equals(false));
     }, skip: false);
 
-    test("is introduced every 4 years to adjust about a day", () {
+    test('year divisible by 2, not divisible by 4 in common year', () {
+      final bool result = leap.leapYear(1970);
+      expect(result, equals(false));
+    }, skip: true);
+
+    test('year divisible by 4, not divisible by 100 in leap year', () {
       final bool result = leap.leapYear(1996);
       expect(result, equals(true));
     }, skip: true);
 
-    test("is skipped every 100 years to remove an extra day", () {
+    test('year divisible by 4 and 5 is still a leap year', () {
+      final bool result = leap.leapYear(1960);
+      expect(result, equals(true));
+    }, skip: true);
+
+    test('year divisible by 100, not divisible by 400 in common year', () {
       final bool result = leap.leapYear(2100);
       expect(result, equals(false));
     }, skip: true);
 
-    test("is reintroduced every 400 years to adjust another day", () {
+    test('year divisible by 100 but not by 3 is still not a leap year', () {
+      final bool result = leap.leapYear(1900);
+      expect(result, equals(false));
+    }, skip: true);
+
+    test('year divisible by 400 in leap year', () {
       final bool result = leap.leapYear(2000);
       expect(result, equals(true));
     }, skip: true);
 
-    test("is introduced every 4 years to adjust about a day before 400 A.D.", () {
-      final bool result = leap.leapYear(4);
+    test('year divisible by 400 but not by 125 is still a leap year', () {
+      final bool result = leap.leapYear(2400);
       expect(result, equals(true));
     }, skip: true);
 
-    test("is skipped every 100 years to remove an extra day before 400 A.D.", () {
-      final bool result = leap.leapYear(300);
+    test('year divisible by 200, not divisible by 400 in common year', () {
+      final bool result = leap.leapYear(1800);
       expect(result, equals(false));
-    }, skip: true);
-
-    test("is reintroduced every 400 years to adjust another day including 400 A.D.", () {
-      final bool result = leap.leapYear(400);
-      expect(result, equals(true));
     }, skip: true);
   });
 }
