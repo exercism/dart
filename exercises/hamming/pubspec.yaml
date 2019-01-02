@@ -1,4 +1,5 @@
 name: 'hamming'
+version: 2.3.0
 environment:
   sdk: '>=2.0.0 <3.0.0'
 dev_dependencies:
