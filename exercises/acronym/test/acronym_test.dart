@@ -1,8 +1,8 @@
-import 'package:test/test.dart';
 import 'package:acronym/acronym.dart';
+import 'package:test/test.dart';
 
 void main() {
-  final Acronym acronym = new Acronym();
+  final acronym = new Acronym();
 
   group('Acronym', () {
     group('Abbreviate a phrase', () {
@@ -29,6 +29,27 @@ void main() {
       test("punctuation without whitespace", () {
         final String result = acronym.abbreviate("Complementary metal-oxide semiconductor");
         expect(result, equals("CMOS"));
+      }, skip: true);
+
+      test("very long abbreviation", () {
+        final String result =
+            acronym.abbreviate("Rolling On The Floor Laughing So Hard That My Dogs Came Over And Licked Me");
+        expect(result, equals("ROTFLSHTMDCOALM"));
+      }, skip: true);
+
+      test("consecutive delimiters", () {
+        final String result = acronym.abbreviate("Something - I made up from thin air");
+        expect(result, equals("SIMUFTA"));
+      }, skip: true);
+
+      test("apostrophes", () {
+        final String result = acronym.abbreviate("Halley's Comet");
+        expect(result, equals("HC"));
+      }, skip: true);
+
+      test("underscore emphasis", () {
+        final String result = acronym.abbreviate("The Road _Not_ Taken");
+        expect(result, equals("TRNT"));
       }, skip: true);
     });
   });
