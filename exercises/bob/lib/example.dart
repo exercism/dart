@@ -1,5 +1,5 @@
 class Bob {
-  String hey(String message) {
+  String response(String message) {
     if (message.trim().isEmpty) {
       return "Fine. Be that way!";
     }
