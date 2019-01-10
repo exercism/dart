@@ -1,58 +1,61 @@
-import 'package:test/test.dart';
 import 'package:scrabble_score/scrabble_score.dart';
+import 'package:test/test.dart';
 
 void main() {
   group('Scrabble score', () {
-    group('should return a score of 0 for', () {
-      test('empty input', () {
-        expect(score(''), equals(0));
-      }, skip: false);
-    });
+    test('lowercase letter', () {
+      final num result = score('a');
+      expect(result, equals(1));
+    }, skip: false);
 
-    group('should return the appropriate score for', () {
-      test('lowercase letters', () {
-        expect(score('a'), equals(1));
-      }, skip: true);
+    test('uppercase letter', () {
+      final num result = score('A');
+      expect(result, equals(1));
+    }, skip: true);
 
-      test('uppercase letters', () {
-        expect(score('A'), equals(1));
-      }, skip: true);
+    test('valuable letter', () {
+      final num result = score('f');
+      expect(result, equals(4));
+    }, skip: true);
 
-      test('valuable letters', () {
-        expect(score('f'), equals(4));
-      }, skip: true);
+    test('short word', () {
+      final num result = score('at');
+      expect(result, equals(2));
+    }, skip: true);
 
-      test('english-like word', () {
-        expect(score('pinata'), equals(8));
-      }, skip: true);
+    test('short, valuable word', () {
+      final num result = score('zoo');
+      expect(result, equals(12));
+    }, skip: true);
 
-      test('long, mixed-case word', () {
-        expect(score('OxyphenButazone'), equals(41));
-      }, skip: true);
+    test('medium word', () {
+      final num result = score('street');
+      expect(result, equals(6));
+    }, skip: true);
 
-      test('medium, valuable word', () {
-        expect(score('quirky'), equals(22));
-      }, skip: true);
+    test('medium, valuable word', () {
+      final num result = score('quirky');
+      expect(result, equals(22));
+    }, skip: true);
 
-      test('medium word', () {
-        expect(score('street'), equals(6));
-      }, skip: true);
+    test('long, mixed-case word', () {
+      final num result = score('OxyphenButazone');
+      expect(result, equals(41));
+    }, skip: true);
 
-      test('short, valuable word', () {
-        expect(score('zoo'), equals(12));
-      }, skip: true);
+    test('english-like word', () {
+      final num result = score('pinata');
+      expect(result, equals(8));
+    }, skip: true);
 
-      test('short word', () {
-        expect(score('at'), equals(2));
-      }, skip: true);
+    test('empty input', () {
+      final num result = score('');
+      expect(result, equals(0));
+    }, skip: true);
 
-      test('a word containing one of every letter of the alphabet', () {
-        expect(score('abcdefghijklmnopqrstuvwxyz'), equals(87));
-      }, skip: true);
-
-      test('a word containing one of every letter of the alphabet in reverse', () {
-        expect(score('zyxwvutsrqponmlkjihgfedcba'), equals(87));
-      }, skip: true);
-    });
+    test('entire alphabet available', () {
+      final num result = score('abcdefghijklmnopqrstuvwxyz');
+      expect(result, equals(87));
+    }, skip: true);
   });
 }
