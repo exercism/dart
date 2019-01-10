@@ -13,6 +13,29 @@ class PhoneNumber {
       phoneNumber = phoneNumber.replaceAll(match.group(0), "");
     });
 
+    if (phoneNumber.contains(RegExp(r'[a-zA-Z]'))) throw FormatException('letters not permitted');
+
+    if (phoneNumber.contains(RegExp(r'!|@'))) throw FormatException('punctuations not permitted');
+
+    if (onlyDigits.length < 10) throw FormatException('incorrect number of digits');
+
+    if (onlyDigits.length > 11) throw FormatException('more than 11 digits');
+
+    if (onlyDigits.length == 11) {
+      if (int.parse(onlyDigits[0]) != 1) throw FormatException('11 digits must start with 1');
+      if (int.parse(onlyDigits[1]) == 0) throw FormatException('area code cannot start with zero');
+      if (int.parse(onlyDigits[1]) == 1) throw FormatException('area code cannot start with one');
+      if (int.parse(onlyDigits[4]) == 0) throw FormatException('exchange code cannot start with zero');
+      if (int.parse(onlyDigits[4]) == 1) throw FormatException('exchange code cannot start with one');
+    }
+
+    if (onlyDigits.length == 10) {
+      if (int.parse(onlyDigits[0]) == 0) throw FormatException('area code cannot start with zero');
+      if (int.parse(onlyDigits[0]) == 1) throw FormatException('area code cannot start with one');
+      if (int.parse(onlyDigits[3]) == 0) throw FormatException('exchange code cannot start with zero');
+      if (int.parse(onlyDigits[3]) == 1) throw FormatException('exchange code cannot start with one');
+    }
+
     /// Only these special characters are allowed.
     /// **"." "(" ")" "-" "+" ** and space,
     /// remove these characters.
