@@ -1,7 +1,7 @@
-import 'package:test/test.dart';
 import 'package:raindrops/raindrops.dart';
+import 'package:test/test.dart';
 
-final Raindrops raindrops = new Raindrops();
+final raindrops = Raindrops();
 
 void main() {
   group('identity tests', identityTests);
@@ -74,6 +74,11 @@ void multipleFactorTests() {
     final String result = raindrops.convert(35);
     expect(result, equals('PlangPlong'));
   }, skip: true);
+
+  test('the sound for 105 is PlingPlangPlong as it has factors 3, 5 and 7', () {
+    final String result = raindrops.convert(105);
+    expect(result, equals('PlingPlangPlong'));
+  }, skip: true);
 }
 
 void edgeCaseTests() {
@@ -95,11 +100,6 @@ void edgeCaseTests() {
   test('the sound for 52 is 52', () {
     final String result = raindrops.convert(52);
     expect(result, equals('52'));
-  }, skip: true);
-
-  test('the sound for 105 is PlingPlangPlong as it has factors 3, 5 and 7', () {
-    final String result = raindrops.convert(105);
-    expect(result, equals('PlingPlangPlong'));
   }, skip: true);
 
   test('the sound for 3125 is Plang as it has a factor 5', () {
