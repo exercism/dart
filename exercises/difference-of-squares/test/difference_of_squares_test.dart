@@ -1,8 +1,8 @@
-import 'package:test/test.dart';
 import 'package:difference_of_squares/difference_of_squares.dart';
+import 'package:test/test.dart';
 
 void main() {
-  final DifferenceOfSquares differenceOfSquares = new DifferenceOfSquares();
+  final differenceOfSquares = new DifferenceOfSquares();
 
   group('DifferenceOfSquares', () {
     group('Square the sum of the numbers up to the given number', () {
