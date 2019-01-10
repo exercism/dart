@@ -1,3 +1,3 @@
 class SpaceAge {
-  // Put your code here.
+  // Put your code here
 }
