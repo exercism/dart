@@ -205,6 +205,17 @@
         "control_flow_loops",
         "strings"
       ]
+    },
+    {
+      "slug": "bracket-push",
+      "uuid": "508ebbf1-205e-4992-97d7-2865f06a3b2b",
+      "core": false,
+      "unlocked_by": null,
+      "difficulty": 3,
+      "topics": [
+        "pattern_matching",
+        "stacks"
+      ]
     }
   ]
 }
