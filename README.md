@@ -11,10 +11,6 @@ Exercism exercises in Dart.
 
 ## Setup
 
-### Requirements
- * Dart (Between 1.23.0 and 2.0.0)
- * `sed` command (For Mac Users: `brew install gnu-sed --with-default-names`)
-
 The simplest way to install Dart can be [found here](docs/INSTALLATION.md).
 
 Clone the repo and run `pub get` to download all the dependencies for this project.
