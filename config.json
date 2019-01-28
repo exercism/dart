@@ -348,6 +348,24 @@
         "loops",
         "math"
       ]
+    },
+    {
+      "slug": "binary-search-tree",
+      "uuid": "597f86bc-6717-4a4c-a2c6-58241ac3d6cb",
+      "core": true,
+      "unlocked_by": null,
+      "difficulty": 5,
+      "topics": [
+        "algorithms",
+        "classes",
+        "generics",
+        "inheritance",
+        "logic",
+        "object_oriented_programming",
+        "searching",
+        "sorting",
+        "trees"
+      ]
     }
   ]
 }
