@@ -2,15 +2,33 @@ language: dart
 
 sudo: false
 
-dart:
-  - stable
-  - "1.24.3"
-  - dev
+branches:
+  only:
+    - master
+
+jobs:
+  include:
+    - stage: configlet
+      name: 'configlet lint'
+      script: ./bin/configlet lint --track-id dart .
+      dart: stable
+
+    - stage: unit_test
+      name: 'anagram'
+      script: ./bin/travis.sh
+      env: EXERCISE="anagram"
+      dart: stable
+
+    - stage: unit_test
+      name: 'armstrong_numbers'
+      script: ./bin/travis.sh
+      env: EXERCISE="armstrong-numbers"
+      dart: stable
+
+stages:
+  - configlet
+  - unit_test
 
 cache:
   directories:
     - $HOME/.pub-cache
-
-script:
-  - pub run bin/check_formatting.dart
-  - pub run test
