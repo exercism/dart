@@ -8,12 +8,12 @@ if [ -z "$EXERCISE_DIR" ]; then
 fi
 
 # Multi commit push
-if ! [[ $TRAVIS_COMMIT_RANGE == '' ]]; then
-  CHANGED_FILES=`git diff --name-only ${TRAVIS_COMMIT_RANGE}`
-else
+# if ! [[ $TRAVIS_COMMIT_RANGE == '' ]]; then
+#   CHANGED_FILES=`git diff --name-only ${TRAVIS_COMMIT_RANGE}`
+# else
 #  Single commit push
   CHANGED_FILES=`git diff --name-only master...${TRAVIS_COMMIT}`
-fi
+# fi
 
 
 SKIP_EXERCISE=True
