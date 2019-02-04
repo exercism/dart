@@ -11,7 +11,7 @@ jobs:
     - stage: configlet
       name: 'configlet lint'
       script: ./bin/fetch-configlet && ./bin/configlet lint --track-id dart .
-      dart: stable
+      language: bash
 
     - stage: unit_test
       name: 'anagram'
