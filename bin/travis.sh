@@ -2,7 +2,7 @@
 
 set -e
 
-if [ -z "$EXERCISE" ]; then
+if [ -z "$EXERCISE_DIR" ]; then
   echo -e '\033[31mEXERCISE environment variable must be set!\033[0m'
   exit 1
 fi
@@ -17,6 +17,7 @@ fi
 
 
 ONLY_DOCS=True
+SKIP_EXERCISE=True
 MD=".md"
 
 
@@ -25,7 +26,7 @@ for CHANGED_FILE in $CHANGED_FILES; do
     ONLY_DOCS=False
     break
   fi
-  if ![[ $CHANGED_FILES =~ $EXERCISE ]]; then
+  if ![[ $CHANGED_FILES =~ $EXERCISE_DIR ]]; then
     SKIP_EXERCISE=false
     break
   fi
@@ -47,5 +48,9 @@ cd "exercises/${EXERCISE}"
 cp -f "lib/example.dart" "lib/${TRAVIS_JOB_NAME}.dart"
 
 pub get
+
+dartanalyzer --fatal-warnings lib
+
+dartfmt -l 120 -n
 
 pub run test --run-skipped

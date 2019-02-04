@@ -8,26 +8,31 @@ branches:
 
 jobs:
   include:
-    - stage: configlet
+    - stage: Repo
       name: 'configlet lint'
-      script: ./bin/fetch-configlet && ./bin/configlet lint --track-id dart .
+      script:
+        - ./bin/fetch-configlet
+        - ./bin/configlet version
+        - ./bin/configlet lint --track-id dart .
       language: bash
 
-    - stage: unit_test
+    - stage: Exercises
       name: 'anagram'
       script: ./bin/travis.sh
-      env: EXERCISE="anagram"
+      env: EXERCISE_DIR="anagram"
       dart: stable
+      install: true
 
-    - stage: unit_test
+    - stage: Exercises
       name: 'armstrong_numbers'
       script: ./bin/travis.sh
-      env: EXERCISE="armstrong-numbers"
+      env: EXERCISE_DIR="armstrong-numbers"
       dart: stable
+      install: true
 
 stages:
-  - configlet
-  - unit_test
+  - Repo
+  - Exercises
 
 cache:
   directories:
