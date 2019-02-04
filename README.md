@@ -8,7 +8,6 @@ Exercism exercises in Dart.
 
 * Dart 1.24.3 or higher
 
-
 ## Setup
 
 The simplest way to install Dart can be [found here](docs/INSTALLATION.md).
@@ -19,7 +18,7 @@ To run all the tests execute: `pub run test`
 
 To create a new exercise, use the executable in the tool directory: `dart bin/create_exercise.dart`
 
-## Exercise Tests ##
+## Exercise Tests
 
 At the most basic level, Exercism is all about the tests. They drive the user's implementation forward and tell them when the exercise is complete.
 
