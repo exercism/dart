@@ -38,13 +38,13 @@ if [[ $ONLY_DOCS == True ]]; then
 fi
 
 if [[ $SKIP_EXERCISE == True ]]; then
-  echo "Skipping: No changes made to ${SKIP_EXERCISE}"
+  echo "Skipping: No changes made to ${EXERCISE_DIR}"
   exit 0
 fi
 
 
 
-cd "exercises/${EXERCISE}"
+cd "exercises/${EXERCISE_DIR}"
 cp -f "lib/example.dart" "lib/${TRAVIS_JOB_NAME}.dart"
 
 pub get
