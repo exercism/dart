@@ -10,7 +10,7 @@ jobs:
   include:
     - stage: configlet
       name: 'configlet lint'
-      script: ./bin/configlet lint --track-id dart .
+      script: ./bin/fetch-configlet && ./bin/configlet lint --track-id dart .
       dart: stable
 
     - stage: unit_test
