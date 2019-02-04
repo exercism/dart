@@ -45,4 +45,7 @@ fi
 
 cd "exercises/${EXERCISE}"
 cp -f "lib/example.dart" "lib/${TRAVIS_JOB_NAME}.dart"
+
+pub get
+
 pub run test --run-skipped
