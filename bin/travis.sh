@@ -40,10 +40,15 @@ fi
 cd "exercises/${EXERCISE_DIR}"
 cp -f "lib/example.dart" "lib/${TRAVIS_JOB_NAME}.dart"
 
+
+echo "Running pub get"
 pub get
 
-dartanalyzer --fatal-warnings lib
+echo "Running dartanalyzer --fatal-warnings lib test"
+dartanalyzer --fatal-warnings lib test
 
+echo "Running dartfmt -l 120 -n"
 dartfmt -l 120 -n
 
+echo "Running pub run test --run-skipped"
 pub run test --run-skipped
