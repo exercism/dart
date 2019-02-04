@@ -16,26 +16,19 @@ else
 fi
 
 
-ONLY_DOCS=True
 SKIP_EXERCISE=True
 MD=".md"
 
 
 for CHANGED_FILE in $CHANGED_FILES; do
-  if ! [[ $CHANGED_FILE =~ $MD ]]; then
-    ONLY_DOCS=False
-    break
-  fi
-  if ![[ $CHANGED_FILES =~ $EXERCISE_DIR ]]; then
-    SKIP_EXERCISE=false
-    break
+  # The changes need to be inside $EXERCISE_DIR
+  if [[ $CHANGED_FILE =~ $EXERCISE_DIR ]]; then
+    # If it's not a markdown file don't skip
+    if ! [[ $CHANGED_FILE =~ $MD ]]; then
+      SKIP_EXERCISE=False
+    fi 
   fi
 done
-
-if [[ $ONLY_DOCS == True ]]; then
-  echo "Skipping: Only doc files changed"
-  exit 0
-fi
 
 if [[ $SKIP_EXERCISE == True ]]; then
   echo "Skipping: No changes made to ${EXERCISE_DIR}"
