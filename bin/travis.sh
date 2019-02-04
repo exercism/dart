@@ -47,7 +47,7 @@ pub get
 echo "Running dartanalyzer --fatal-warnings lib test"
 dartanalyzer --fatal-warnings lib test
 
-echo "Running dartfmt -l 120 -n"
+echo "Running dartfmt -l 120 -n --set-exit-if-changed ."
 dartfmt -l 120 -n --set-exit-if-changed .
 
 echo "Running pub run test --run-skipped"
