@@ -1,11 +1,11 @@
-import "dart:async";
-import "dart:io";
+import 'dart:async';
+import 'dart:io';
 
-import "package:test/test.dart";
-import "package:yaml/yaml.dart";
+import 'package:test/test.dart';
+import 'package:yaml/yaml.dart';
 
 /// Constants
-const String envName = "EXERCISE";
+const String envName = 'EXERCISE';
 
 /// Helpers
 Future runCmd(List<String> cmds) async {
@@ -26,17 +26,17 @@ Future runCmd(List<String> cmds) async {
 }
 
 Future<String> getPackageName() async {
-  final pubspec = new File("pubspec.yaml");
+  final pubspec = new File('pubspec.yaml');
 
   final String pubspecString = await pubspec.readAsString();
 
-  final String packageName = loadYaml(pubspecString)["name"] as String;
+  final String packageName = loadYaml(pubspecString)['name'] as String;
 
   return packageName;
 }
 
 Future locateExercismDirAndExecuteTests() async {
-  final exercisesRootDir = new Directory("exercises");
+  final exercisesRootDir = new Directory('exercises');
 
   assert(await exercisesRootDir.exists());
 
@@ -59,31 +59,31 @@ Future runTest(String path) async {
 
   String packageName = await getPackageName();
 
-  print("""
+  print('''
 ================================================================================
 Running tests for: $packageName
 ================================================================================
-""");
+''');
 
-  File stub = new File("lib/${packageName}.dart");
-  File example = new File("lib/example.dart");
+  File stub = new File('lib/${packageName}.dart');
+  File example = new File('lib/example.dart');
 
   try {
-    stub = await stub.rename("lib/${packageName}.dart.bu");
-    example = await example.rename("lib/${packageName}.dart");
+    stub = await stub.rename('lib/${packageName}.dart.bu');
+    example = await example.rename('lib/${packageName}.dart');
 
     for (List<String> cmds in [
       /// Pull dependencies
-      ["pub", "upgrade"],
+      ['pub', 'upgrade'],
 
       /// Run all exercise tests
-      ["pub", "run", "test", "--run-skipped"]
+      ['pub', 'run', 'test', '--run-skipped']
     ]) {
       await runCmd(cmds);
     }
   } finally {
-    await example.rename("lib/example.dart");
-    await stub.rename("lib/${packageName}.dart");
+    await example.rename('lib/example.dart');
+    await stub.rename('lib/${packageName}.dart');
 
     Directory.current = current;
   }
@@ -91,7 +91,7 @@ Running tests for: $packageName
 
 /// Execute all the tests under the exercise directory
 Future runAllTests() async {
-  final dartExercismRootDir = new Directory("..");
+  final dartExercismRootDir = new Directory('..');
 
   assert(await dartExercismRootDir.exists());
 
@@ -101,25 +101,25 @@ Future runAllTests() async {
 
   String packageName = await getPackageName();
 
-  print("""
+  print('''
 
 ================================================================================
 Running tests for: $packageName
 ================================================================================
-""");
+''');
 }
 
 void main() {
   final testName = Platform.environment[envName];
 
-  test("Exercises", () async {
+  test('Exercises', () async {
     if (testName == null) {
       await runAllTests();
     } else {
-      final testPath = "${Directory.current.path}/exercises/$testName";
+      final testPath = '${Directory.current.path}/exercises/$testName';
 
       if (!await new Directory(testPath).exists()) {
-        throw new ArgumentError("No exercise with this name: $testName");
+        throw new ArgumentError('No exercise with this name: $testName');
       }
 
       await runTest(testPath);
