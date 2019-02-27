@@ -173,8 +173,8 @@ bool _containsWhitespaceCodes(String input) {
 /// Based on the python `repr` function, but only works for basic types: String, Iterable, Map, and primitive types
 String repr(Object x) {
   if (x is String) {
-    String result = x.replaceAll('"', r'\"').replaceAll("\n", r"\n").replaceAll(r"$", r"\$");
-    return '"$result"';
+    String result = x.replaceAll('\'', r"\'").replaceAll('\n', r'\n').replaceAll(r'$', r'\$');
+    return "'$result'";
   }
 
   if (x is Iterable) {
