@@ -1,7 +1,7 @@
 ## Installing Dart
 
 ### Automatic installation instructions (recommended)
-* Follow the [instructions for installation on the Dart website](https://www.dartlang.org/install).
+* Follow the [instructions for installation on the Dart website](https://www.dartlang.org/tools/sdk).
 
 ### Manual install instructions (for advanced users)
 * Download a zip file from [this page](https://www.dartlang.org/install/archive).
