@@ -65,9 +65,15 @@ String testCasesString = """
       // TODO
     });""";
 
-String testTemplate(String name) => """
-import 'package:test/test.dart';
-import 'package:${snakeCase(name)}/${snakeCase(name)}.dart';
+/// The test template sorts the import of packages, instantiates an instance of the exercise class, and defines the main
+/// function's group of tests.
+String testTemplate(String name) {
+  final packages = <String>[name, "test"];
+  packages.sort();
+
+  return """
+import 'package:${snakeCase(packages[0])}/${snakeCase(packages[0])}.dart';
+import 'package:${snakeCase(packages[1])}/${snakeCase(packages[1])}.dart';
 
 final ${camelCase(name)} = new ${pascalCase(name)}();
 
@@ -77,6 +83,7 @@ $testCasesString
   });
 }
 """;
+}
 
 String pubTemplate(String name) => """
 name: '${snakeCase(name)}'
