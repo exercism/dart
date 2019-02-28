@@ -12,6 +12,12 @@ set -e
 #   exit 1
 # fi
 
+echo "Running pub upgrade for exercism_dart"
+pub upgrade
+
+echo "Running pub run dart_style:format -l 120 -n --set-exit-if-changed ."
+pub run dart_style:format -l 120 -n --set-exit-if-changed .
+
 CHANGED_FILES=$(git diff --name-only master...$TRAVIS_COMMIT)
 
 # SKIP_EXERCISE=true
@@ -33,8 +39,8 @@ run_job() {
   echo "Running dartanalyzer --fatal-warnings lib test"
   dartanalyzer --fatal-warnings lib test
 
-  echo "Running pub run dart_style:format -l 120 -n --set-exit-if-changed ."
-  pub run dart_style:format -l 120 -n --set-exit-if-changed .
+  # echo "Running pub run dart_style:format -l 120 -n --set-exit-if-changed ."
+  # pub run dart_style:format -l 120 -n --set-exit-if-changed .
 
   echo "Running pub run test --run-skipped"
   pub run test --run-skipped
