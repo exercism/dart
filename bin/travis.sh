@@ -17,30 +17,8 @@ CHANGED_FILES=$(git diff --name-only master...$TRAVIS_COMMIT)
 # SKIP_EXERCISE=true
 MD=".md"
 
-for EXERCISE_DIR in $(ls exercises); do
-  SKIPPED=true
-
-  for CHANGED_FILE in $CHANGED_FILES; do
-    # The changes need to be inside $EXERCISE_DIR
-    if [[ $CHANGED_FILE =~ $EXERCISE_DIR ]]; then
-      # If it's not a markdown file run tasks
-      if ! [[ $CHANGED_FILE =~ $MD ]]; then
-        run_job $EXERCISE_DIR
-        SKIPPED=false
-        # Already ran the job in this directory, goto next
-        break
-      fi
-    fi
-  done
-
-  if SKIPPED; then
-    echo "Skipped: $EXERCISE_DIR"
-  fi
-
-done
-
 # Runs the job for $1 (Exercise dir)
-function run_job() {
+run_job() {
   PACKAGE=$(echo "$1" | sed -r 's#[\-]+#_#g')
 
   pushd "exercises/$1"
@@ -63,6 +41,28 @@ function run_job() {
 
   popd
 }
+
+for EXERCISE_DIR in $(ls exercises); do
+  SKIPPED=true
+
+  for CHANGED_FILE in $CHANGED_FILES; do
+    # The changes need to be inside $EXERCISE_DIR
+    if [[ $CHANGED_FILE =~ $EXERCISE_DIR ]]; then
+      # If it's not a markdown file run tasks
+      if ! [[ $CHANGED_FILE =~ $MD ]]; then
+        run_job $EXERCISE_DIR
+        SKIPPED=false
+        # Already ran the job in this directory, goto next
+        break
+      fi
+    fi
+  done
+
+  if $SKIPPED; then
+    echo "Skipped: $EXERCISE_DIR"
+  fi
+
+done
 
 # exit 0
 
