@@ -7,7 +7,7 @@ void main() {
   group("ArmstrongNumbers", () {
     test("Single digit numbers are Armstrong numbers", () {
       final bool result = armstrongNumbers.isArmstrongNumber(5);
-      expect(result, equals(true));
+      expect(result, equals(false));
     }, skip: false);
 
     test("There are no 2 digit Armstrong numbers", () {
