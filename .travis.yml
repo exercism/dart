@@ -19,7 +19,10 @@ jobs:
     - stage: Exercises
       name: 'format, analyze and test'
       script: ./bin/travis.sh
-      dart: [stable, dev, '1.24.3']
+      dart:
+        - stable
+        - dev
+        - '1.24.3'
       install: true
 
 stages:
