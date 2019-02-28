@@ -17,17 +17,9 @@ jobs:
       language: bash
 
     - stage: Exercises
-      name: 'anagram'
+      name: 'format, analyze and test'
       script: ./bin/travis.sh
-      env: EXERCISE_DIR="anagram"
-      dart: stable
-      install: true
-
-    - stage: Exercises
-      name: 'armstrong_numbers'
-      script: ./bin/travis.sh
-      env: EXERCISE_DIR="armstrong-numbers"
-      dart: stable
+      dart: [stable, dev, '1.24.3']
       install: true
 
 stages:
