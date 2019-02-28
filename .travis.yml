@@ -16,29 +16,27 @@ jobs:
         - ./bin/configlet lint --track-id dart .
       language: bash
 
-    - stage: Exercises (stable)
-      name: 'format, analyze and test'
+    - stage: Exercises
+      name: 'analyze and test'
       script: ./bin/travis.sh
       dart: stable
       install: true
 
-    - stage: Exercises (dev)
-      name: 'format, analyze and test'
+    - stage: Exercises
+      name: 'analyze and test'
       script: ./bin/travis.sh
       dart: dev
       install: true
 
-    - stage: Exercises (1.24.3)
-      name: 'format, analyze and test'
+    - stage: Exercises
+      name: 'analyze and test'
       script: ./bin/travis.sh
       dart: 1.24.3
       install: true
 
 stages:
   - Repo
-  - Exercises (stable)
-  - Exercises (dev)
-  - Exercises (1.24.3)
+  - Exercises
 
 cache:
   directories:
