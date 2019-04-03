@@ -242,6 +242,17 @@
         "lists",
         "math"
       ]
+    },
+    {
+      "slug": "darts",
+      "uuid": "5444c90c-9129-438a-a4be-b844cf1550e5",
+      "core": false,
+      "unlocked_by": "space-age",
+      "difficulty": 3,
+      "topics": [
+        "control_flow_conditionals",
+        "math"
+      ]
     }
   ]
 }
