@@ -1,4 +1,5 @@
 import 'package:test/test.dart';
+
 import '../bin/create_exercise.dart';
 
 void main() {
@@ -125,6 +126,92 @@ void main() {
 
         test('symbols are replaced by a dash', () {
           expect(kebabCase('foo_bar'), equals('foo-bar'));
+        });
+      });
+    });
+
+    group('templates', () {
+      test('exampleTemplate', () {
+        expect(exampleTemplate('foo bar'), equals('''
+class FooBar {
+
+}
+'''));
+      });
+
+      test('mainTemplate', () {
+        expect(mainTemplate('foo bar'), equals('''
+class FooBar {
+  // Put your code here
+}
+'''));
+      });
+
+      test('testTemplate', () {
+        expect(testTemplate('foo bar'), equals('''
+import 'package:foo_bar/foo_bar.dart';
+import 'package:test/test.dart';
+
+final fooBar = new FooBar();
+
+void main() {
+  group('FooBar', () {
+    test('should work', () {
+      // TODO
+    });
+  });
+}
+'''));
+      });
+
+      test('pubTemplate', () {
+        expect(pubTemplate('foo bar'), equals('''
+name: 'foo_bar'
+environment:
+  sdk: '>=2.0.0 <3.0.0'
+dev_dependencies:
+  test: '<2.0.0'
+'''));
+      });
+
+      test('analysisOptionsTemplate', () {
+        expect(analysisOptionsTemplate(), equals('''
+analyzer:
+  strong-mode:
+    implicit-casts: false
+    implicit-dynamic: false
+  errors:
+    unused_element:        error
+    unused_import:         error
+    unused_local_variable: error
+    dead_code:             error
+
+linter:
+  rules:
+    # Error Rules
+    - avoid_relative_lib_imports
+    - avoid_types_as_parameter_names
+    - literal_only_boolean_expressions
+    - no_adjacent_strings_in_list
+    - valid_regexps
+'''));
+      });
+
+      group('testCaseTemplate tests', () {
+        test('simple test for a single case', () {
+          Map<String, dynamic> testCase = <String, dynamic>{
+            "description": "Zero is an Armstrong number",
+            "property": "isArmstrongNumber",
+            "input": {"number": 0},
+            "expected": true
+          };
+
+          expect(testCaseTemplate('armstrong-numbers', testCase), equals('''
+    test('${testCase['description']}', () {
+      final null result = armstrongNumbers.${testCase['property']}(${testCase['input']['number']});
+      expect(result, equals(${testCase['expected']}));
+    }, skip: false);
+'''));
         });
       });
     });
