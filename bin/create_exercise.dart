@@ -60,7 +60,7 @@ class ${pascalCase(name)} {
 }
 """;
 
-String testCasesString = """
+String _testCasesString = """
     test('should work', () {
       // TODO
     });""";
@@ -79,7 +79,7 @@ final ${camelCase(name)} = new ${pascalCase(name)}();
 
 void main() {
   group('${pascalCase(name)}', () {
-$testCasesString
+$_testCasesString
   });
 }
 """;
@@ -114,7 +114,7 @@ linter:
     - valid_regexps
 """;
 
-String testCaseTemplate(String name, Map<String, Object> testCase, {bool firstTest = true}) {
+String testCaseTemplate(String exerciseName, Map<String, Object> testCase, {bool firstTest = true}) {
   bool skipTests = firstTest;
 
   if (testCase['cases'] != null) {
@@ -124,7 +124,7 @@ String testCaseTemplate(String name, Map<String, Object> testCase, {bool firstTe
     // Build the tests up recursively, only first test should be skipped
     List<String> testList = <String>[];
     for (Map<String, Object> caseObj in testCase['cases'] as dynamic) {
-      testList.add(testCaseTemplate(name, caseObj, firstTest: skipTests));
+      testList.add(testCaseTemplate(exerciseName, caseObj, firstTest: skipTests));
       skipTests = false;
     }
     String tests = testList.join("\n");
@@ -142,8 +142,8 @@ String testCaseTemplate(String name, Map<String, Object> testCase, {bool firstTe
 
   String description = repr(testCase['description']);
   String resultType = getFriendlyType(testCase['expected']);
-  String object = camelCase(name);
-  String method = camelCase(testCase['property'].toString());
+  String object = camelCase(exerciseName);
+  String method = testCase['property'].toString();
   String expected = repr(testCase['expected']);
 
   Map<String, dynamic> input = testCase['input'] as Map<String, dynamic>;
@@ -255,26 +255,25 @@ Future main(List<String> args) async {
     exit(1);
   }
 
-  final name = restArgs.first;
+  final exerciseName = restArgs.first;
 
   // Create dir
   final currentDir = Directory.current;
-  final exerciseDir = new Directory("exercises/${kebabCase(name)}");
-  final filename = snakeCase(name);
+  final exerciseDir = new Directory("exercises/${kebabCase(exerciseName)}");
+  final filename = snakeCase(exerciseName);
   String version;
 
   // Get test cases from canonical-data.json, format tests
   if (arguments["spec-path"] != null) {
-    String filename = "${arguments['spec-path']}/exercises/$name/canonical-data.json";
+    String filename = "${arguments['spec-path']}/exercises/$exerciseName/canonical-data.json";
     try {
       final File canonicalDataJson = new File(filename);
       final source = await canonicalDataJson.readAsString();
       final Map<String, Object> specification = json.decode(source) as Map<String, Object>;
 
       version = specification['version'] as String;
-
-      testCasesString = testCaseTemplate(name, specification);
-      print("Found: ${arguments['spec-path']}/exercises/$name/canonical-data.json");
+      _testCasesString = testCaseTemplate(exerciseName, specification);
+      print("Found: ${arguments['spec-path']}/exercises/$exerciseName/canonical-data.json");
     } on FileSystemException {
       stderr.write("Could not open file '$filename', exiting.\n");
       exit(1);
@@ -283,33 +282,33 @@ Future main(List<String> args) async {
       exit(1);
     }
   } else {
-    print("Could not find: ${arguments['spec-path']}/exercises/$name/canonical-data.json");
+    print("Could not find: ${arguments['spec-path']}/exercises/$exerciseName/canonical-data.json");
   }
 
   if (await exerciseDir.exists()) {
-    stderr.write("$name already exist\n");
+    stderr.write("$exerciseName already exist\n");
     exit(1);
   }
 
+  await new Directory("${exerciseDir.path}/.meta").create(recursive: true);
   await new Directory("${exerciseDir.path}/lib").create(recursive: true);
   await new Directory("${exerciseDir.path}/test").create(recursive: true);
-  await new Directory("${exerciseDir.path}/.meta").create(recursive: true);
 
   // Create files
   String testFileName = "${exerciseDir.path}/test/${filename}_test.dart";
-  await new File("${exerciseDir.path}/lib/example.dart").writeAsString(exampleTemplate(name));
-  await new File("${exerciseDir.path}/lib/${filename}.dart").writeAsString(mainTemplate(name));
-  await new File(testFileName).writeAsString(testTemplate(name));
-  await new File("${exerciseDir.path}/pubspec.yaml").writeAsString(pubTemplate(name));
-  await new File("${exerciseDir.path}/analysis_options.yaml").writeAsString(analysisOptionsTemplate());
   await new File("${exerciseDir.path}/.meta/version").writeAsString(version);
+  await new File("${exerciseDir.path}/lib/example.dart").writeAsString(exampleTemplate(exerciseName));
+  await new File("${exerciseDir.path}/lib/${filename}.dart").writeAsString(mainTemplate(exerciseName));
+  await new File(testFileName).writeAsString(testTemplate(exerciseName));
+  await new File("${exerciseDir.path}/analysis_options.yaml").writeAsString(analysisOptionsTemplate());
+  await new File("${exerciseDir.path}/pubspec.yaml").writeAsString(pubTemplate(exerciseName));
 
   if (arguments["spec-path"] != null) {
     // Generate README
     final dartRoot = "${dirname(Platform.script.toFilePath())}/..";
     final configletLoc = "$dartRoot/bin/configlet";
     final genSuccess = await runProcess(
-        configletLoc, ["generate", "$dartRoot", "--spec-path", '${arguments['spec-path']}', "--only", name]);
+        configletLoc, ["generate", "$dartRoot", "--spec-path", '${arguments['spec-path']}', "--only", exerciseName]);
     if (genSuccess) {
       stdout.write("Successfully created README.md\n");
     } else {
