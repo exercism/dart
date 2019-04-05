@@ -288,6 +288,20 @@
         "sets",
         "strings"
       ]
+    },
+    {
+      "slug": "luhn",
+      "uuid": "54cd6a0c-cbd1-493d-b91d-baad9fec058c",
+      "core": false,
+      "unlocked_by": "armstrong-numbers",
+      "difficulty": 4,
+      "topics": [
+        "algorithms",
+        "booleans",
+        "loops",
+        "strings",
+        "type_conversion"
+      ]
     }
   ]
 }
