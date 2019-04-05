@@ -6,7 +6,6 @@
 bin/configlet
 bin/configlet.exe
 
-
 ### Dart ###
 # Directory created by dart tools
 /exercises/**/pubspec.lock
@@ -22,3 +21,7 @@ doc/
 *.js.deps
 *.js.map
 *.info.json
+
+## IDE files/folders
+/.idea/
+/.vscode/
