@@ -114,17 +114,21 @@ linter:
     - valid_regexps
 """;
 
-String testCaseTemplate(String exerciseName, Map<String, Object> testCase, {bool firstTest = true}) {
+String testCaseTemplate(String exerciseName, Map<String, Object> testCase, {bool firstTest = true, String returnType}) {
   bool skipTests = firstTest;
 
   if (testCase['cases'] != null) {
+    if (returnType == null) {
+      returnType = _determineBestReturnType(testCase['cases'] as List<dynamic>);
+    }
+
     // We have a group, not a case
     String description = testCase['description'] as String;
 
     // Build the tests up recursively, only first test should be skipped
     List<String> testList = <String>[];
     for (Map<String, Object> caseObj in testCase['cases'] as dynamic) {
-      testList.add(testCaseTemplate(exerciseName, caseObj, firstTest: skipTests));
+      testList.add(testCaseTemplate(exerciseName, caseObj, firstTest: skipTests, returnType: returnType));
       skipTests = false;
     }
     String tests = testList.join("\n");
@@ -141,10 +145,9 @@ String testCaseTemplate(String exerciseName, Map<String, Object> testCase, {bool
   }
 
   String description = repr(testCase['description']);
-  String resultType = getFriendlyType(testCase['expected']);
   String object = camelCase(exerciseName);
   String method = testCase['property'].toString();
-  String expected = repr(testCase['expected']);
+  String expected = repr(testCase['expected'], typeDeclaration: returnType);
 
   Map<String, dynamic> input = testCase['input'] as Map<String, dynamic>;
   String arguments = input.keys.map((k) => repr(input[k])).join(', ');
@@ -155,7 +158,7 @@ String testCaseTemplate(String exerciseName, Map<String, Object> testCase, {bool
 
   final result = '''
     test($description, () {
-      final $resultType result = $object.$method($arguments);
+      final $returnType result = $object.$method($arguments);
       expect(result, equals($expected));
     }, skip: ${!skipTests});
 ''';
@@ -169,28 +172,119 @@ bool _containsWhitespaceCodes(String input) {
   return input.contains('\n') || input.contains('\r') || input.contains('\t');
 }
 
+String _determineBestReturnType(List<dynamic> testCases) {
+  var casesList = <dynamic>[];
+
+  if (testCases.length == 1) {
+    if (testCases.first is Map<String, Object>) {
+      casesList = testCases.first['cases'] as List;
+    }
+  } else {
+    casesList = testCases;
+  }
+
+  final interimList = casesList.where((dynamic map) => _isValid(map)).toList();
+  final expectedList = <dynamic>[];
+
+  interimList.forEach((dynamic map) => expectedList.add(map['expected']));
+  expectedList.removeWhere((dynamic expected) => _isEmptyCollection(expected));
+
+  final dynamic first = expectedList.first;
+
+  if (first is Iterable) {
+    final iterableType = '${getIterableType(first)}';
+
+    if (first is List) {
+      return 'List<$iterableType>';
+    }
+
+    if (first is Set) {
+      return 'Set<$iterableType>';
+    }
+  }
+
+  if (first is Map) {
+    return 'Map${getMapType(first)}';
+  }
+
+  if (first is String) {
+    return 'String';
+  }
+
+  if (first is num) {
+    if (first is int) {
+      return 'int';
+    } else if (first is double) {
+      return 'double';
+    } else {
+      return 'num';
+    }
+  }
+  return '';
+}
+
+bool _isValid(dynamic map) {
+  if (map is Map<String, Object>) {
+    if (map['expected'] is List && (map['expected'] as List).isNotEmpty) {
+      return true;
+    } else if (map['expected'] is String && (map['expected'] as String).isNotEmpty) {
+      return true;
+    } else if (map['expected'] is num) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+  return false;
+}
+
+bool _isEmptyCollection(dynamic item) {
+  if (item is List) return item.isEmpty;
+  if (item is Map) return item.isEmpty;
+  if (item is Set) return item.isEmpty;
+  return false;
+}
+
 /// `repr` takes in any object and tries to coerce it to a String in such a way that it is suitable to include in code.
 /// Based on the python `repr` function, but only works for basic types: String, Iterable, Map, and primitive types
-String repr(Object x) {
+/// `typeDeclaration` is the determined return type and used to determine the type within collections.
+String repr(Object x, {String typeDeclaration}) {
   if (x is String) {
     String result = x.replaceAll('\'', r"\'").replaceAll('\n', r'\n').replaceAll(r'$', r'\$');
     return "'$result'";
   }
 
   if (x is Iterable) {
-    return '[${x.map(repr).join(", ")}]';
+    String iterableType;
+
+    if (typeDeclaration != null) {
+      final RegExp iterables = new RegExp(r'List|Map|Set');
+      iterableType = typeDeclaration.replaceFirst(iterables, '');
+    } else {
+      iterableType = '<${getIterableType(x)}>';
+    }
+
+    if (x is List) {
+      return '$iterableType[${x.map(repr).join(", ")}]';
+    } else if (x is Set) {
+      return '$iterableType{${x.map(repr).join(", ")}}';
+    }
   }
 
   if (x is Map) {
-    List<String> pairs = [];
-    for (var k in x.keys) {
-      pairs.add("${repr(k)}: ${repr(x[k])}");
-    }
-
-    return "{${pairs.join(', ')}}";
+    return _defineMap(x, '${getMapType(x)}');
   }
 
   return "$x";
+}
+
+String _defineMap(Map x, String iterableType) {
+  final pairs = <String>[];
+  for (var k in x.keys) {
+    pairs.add("${repr(k)}: ${repr(x[k])}");
+  }
+
+  return "$iterableType{${pairs.join(', ')}}";
 }
 
 /// A helper method to get the inside type of an iterable
@@ -202,6 +296,17 @@ String getIterableType(Iterable iter) {
   }
 
   return "Object";
+}
+
+/// A helper method to get the inside type of a map
+String getMapType(Map map) {
+  Set<String> keyTypes = map.keys.map(getFriendlyType).toSet();
+  Set<String> valueTypes = map.values.map(getFriendlyType).toSet();
+
+  String mapKeyType = keyTypes.length == 1 ? keyTypes.first : 'dynamic';
+  String mapValueType = valueTypes.length == 1 ? valueTypes.first : 'dynamic';
+
+  return '<$mapKeyType, $mapValueType>';
 }
 
 /// Get a human-friendly type of a variable
