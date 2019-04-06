@@ -31,6 +31,16 @@
       ]
     },
     {
+      "slug": "reverse-string",
+      "uuid": "f195282c-c7a3-4a85-bbc1-d4e85e62d54c",
+      "core": false,
+      "unlocked_by": "two-fer",
+      "difficulty": 1,
+      "topics": [
+        "strings"
+      ]
+    },
+    {
       "slug": "leap",
       "uuid": "4bcfd789-dee6-4dd9-8524-076508504eda",
       "core": true,
