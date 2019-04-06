@@ -19,6 +19,17 @@
       ]
     },
     {
+      "slug": "resistor-color",
+      "uuid": "b0e61aa6-5944-48b4-a91b-8960b6655e51",
+      "core": false,
+      "unlocked_by": "hello-world",
+      "difficulty": 2,
+      "topics": [
+        "arrays",
+        "strings"
+      ]
+    },
+    {
       "slug": "two-fer",
       "uuid": "57a75d7e-370b-4937-8dd4-429db1f26ff3",
       "core": true,
