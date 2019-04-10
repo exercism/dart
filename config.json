@@ -336,6 +336,18 @@
         "loops",
         "strings"
       ]
+    },
+    {
+      "slug": "collatz-conjecture",
+      "uuid": "8cc3b7a3-6a63-4e3b-b64d-8a07d52d51f8",
+      "core": false,
+      "unlocked_by": "two-fer",
+      "difficulty": 1,
+      "topics": [
+        "exception_handling",
+        "loops",
+        "math"
+      ]
     }
   ]
 }
