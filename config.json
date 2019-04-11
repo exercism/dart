@@ -324,6 +324,18 @@
         "strings",
         "type_conversion"
       ]
+    },
+    {
+      "slug": "isbn-verifier",
+      "uuid": "c52dfe2b-5634-4c0c-8ea2-3ca86e5d9a33",
+      "core": true,
+      "unlocked_by": null,
+      "difficulty": 4,
+      "topics": [
+        "integers",
+        "loops",
+        "strings"
+      ]
     }
   ]
 }
