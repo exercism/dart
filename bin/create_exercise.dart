@@ -250,7 +250,13 @@ bool _isEmptyCollection(dynamic item) {
 /// `typeDeclaration` is the determined return type and used to determine the type within collections.
 String repr(Object x, {String typeDeclaration}) {
   if (x is String) {
-    String result = x.replaceAll('\'', r"\'").replaceAll('\n', r'\n').replaceAll(r'$', r'\$');
+    String result = x
+        .replaceAll('\'', r"\'")
+        .replaceAll('\n', r'\n')
+        .replaceAll("\r", r"\r")
+        .replaceAll("\s", r"\s")
+        .replaceAll("\t", r"\t")
+        .replaceAll(r'$', r'\$');
     return "'$result'";
   }
 
