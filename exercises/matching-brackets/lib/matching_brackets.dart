@@ -1,3 +1,3 @@
-class BracketPush {
+class MatchingBrackets {
   // Put your code here
 }
