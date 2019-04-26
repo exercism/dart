@@ -1,4 +1,4 @@
-name: 'bracket_push'
+name: 'matching_brackets'
 environment:
   sdk: ">=1.24.0 <3.0.0"
 dev_dependencies:

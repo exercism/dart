@@ -1,6 +1,6 @@
 import 'dart:collection';
 
-class BracketPush {
+class MatchingBrackets {
   bool isPaired(String input) {
     ListQueue<String> stack = new ListQueue(input.length);
 
