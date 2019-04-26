@@ -78,12 +78,7 @@ void main() {
       }, skip: true);
 
       test('can sort complex tree', () {
-        final bst = new BinarySearchTree('2')
-          ..insert("1")
-          ..insert("3")
-          ..insert("6")
-          ..insert("7")
-          ..insert("5");
+        final bst = new BinarySearchTree('2')..insert("1")..insert("3")..insert("6")..insert("7")..insert("5");
 
         expect(bst.sortedData, equals(['1', '2', '3', '5', '6', '7']));
       }, skip: true);
