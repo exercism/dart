@@ -341,6 +341,22 @@
       ]
     },
     {
+      "slug": "minesweeper",
+      "uuid": "2c60339e-d15a-41e7-ba4f-33fa18d2a732",
+      "core": false,
+      "unlocked_by": "pascals-triangle",
+      "difficulty": 5,
+      "topics": [
+        "classes",
+        "games",
+        "lists",
+        "logic",
+        "loops",
+        "math",
+        "object_oriented_programming"
+      ]
+    },
+    {
       "slug": "isbn-verifier",
       "uuid": "c52dfe2b-5634-4c0c-8ea2-3ca86e5d9a33",
       "core": true,
