@@ -251,6 +251,21 @@
       ]
     },
     {
+      "slug": "prime-factors",
+      "uuid": "89bb2ba8-86f2-4660-8739-4141eb9e6cf5",
+      "core": false,
+      "unlocked_by": "anagram",
+      "difficulty": 3,
+      "topics": [
+        "arrays",
+        "conditionals",
+        "integers",
+        "lists",
+        "loops",
+        "math"
+      ]
+    },
+    {
       "slug": "diamond",
       "uuid": "5bbd251d-b2eb-44a1-a9a6-8543afb7511c",
       "core": false,
