@@ -125,6 +125,20 @@
       ]
     },
     {
+      "slug": "perfect-numbers",
+      "uuid": "db9eb481-a2b5-4b53-9825-a20797f930de",
+      "core": false,
+      "unlocked_by": "difference-of-squares",
+      "difficulty": 2,
+      "topics": [
+        "arrays",
+        "control_flow_conditionals",
+        "control_flow_loops",
+        "integers",
+        "math"
+      ]
+    },
+    {
       "slug": "word-count",
       "uuid": "b74dde02-03d0-4165-8302-e8ba119b486b",
       "core": true,
