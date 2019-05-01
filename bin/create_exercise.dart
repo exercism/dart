@@ -172,24 +172,10 @@ bool _containsWhitespaceCodes(String input) {
   return input.contains('\n') || input.contains('\r') || input.contains('\t');
 }
 
-String _determineBestReturnType(List<dynamic> testCases) {
-  var casesList = <dynamic>[];
+String _determineBestReturnType(List<dynamic> specCases) {
+  final expectedList = retrieveListOfExpected(specCases);
 
-  if (testCases.length == 1) {
-    if (testCases.first is Map<String, Object>) {
-      casesList = testCases.first['cases'] as List;
-    }
-  } else {
-    casesList = testCases;
-  }
-
-  final interimList = casesList.where((dynamic map) => _isValid(map)).toList();
-  final expectedList = <dynamic>[];
-
-  interimList.forEach((dynamic map) => expectedList.add(map['expected']));
-  expectedList.removeWhere((dynamic expected) => _isEmptyCollection(expected));
-
-  final dynamic first = expectedList.first;
+  final dynamic first = expectedList.isNotEmpty ? expectedList.first : null;
 
   if (first is Iterable) {
     final iterableType = '${getIterableType(first)}';
@@ -223,26 +209,39 @@ String _determineBestReturnType(List<dynamic> testCases) {
   return '';
 }
 
-bool _isValid(dynamic map) {
-  if (map is Map<String, Object>) {
-    if (map['expected'] is List && (map['expected'] as List).isNotEmpty) {
-      return true;
-    } else if (map['expected'] is String && (map['expected'] as String).isNotEmpty) {
-      return true;
-    } else if (map['expected'] is num) {
-      return true;
-    } else {
-      return false;
+Set<dynamic> retrieveListOfExpected(List<dynamic> list, {Set<dynamic> expectedTypeSet}) {
+  if (expectedTypeSet == null) {
+    expectedTypeSet = new Set<dynamic>();
+  }
+
+  for (int count = 0; count < list.length; count++) {
+    if (list[count] is Map) {
+      Map entry = list[count] as Map;
+      bool addEntry = true;
+
+      if (entry.containsKey('expected')) {
+        if (entry['expected'] is Map) {
+          if ((entry['expected'] as Map).containsKey('error')) {
+            addEntry = !addEntry;
+          }
+        }
+
+        if (addEntry) {
+          expectedTypeSet.add(entry['expected']);
+        }
+      }
+
+      if (entry.containsKey('cases')) {
+        expectedTypeSet = retrieveListOfExpected(entry['cases'] as List, expectedTypeSet: expectedTypeSet);
+      }
+    }
+
+    if (list[count] is List) {
+      expectedTypeSet = retrieveListOfExpected(list[count] as List, expectedTypeSet: expectedTypeSet);
     }
   }
-  return false;
-}
 
-bool _isEmptyCollection(dynamic item) {
-  if (item is List) return item.isEmpty;
-  if (item is Map) return item.isEmpty;
-  if (item is Set) return item.isEmpty;
-  return false;
+  return expectedTypeSet;
 }
 
 /// `repr` takes in any object and tries to coerce it to a String in such a way that it is suitable to include in code.
@@ -254,7 +253,6 @@ String repr(Object x, {String typeDeclaration}) {
         .replaceAll('\'', r"\'")
         .replaceAll('\n', r'\n')
         .replaceAll("\r", r"\r")
-        .replaceAll("\s", r"\s")
         .replaceAll("\t", r"\t")
         .replaceAll(r'$', r'\$');
     return "'$result'";
