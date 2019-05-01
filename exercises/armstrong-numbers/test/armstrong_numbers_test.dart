@@ -5,10 +5,15 @@ void main() {
   final armstrongNumbers = new ArmstrongNumbers();
 
   group('ArmstrongNumbers', () {
+    test("Zero is an Armstrong number", () {
+      final bool result = armstrongNumbers.isArmstrongNumber(0);
+      expect(result, equals(true));
+    }, skip: false);
+
     test("Single digit numbers are Armstrong numbers", () {
       final bool result = armstrongNumbers.isArmstrongNumber(5);
       expect(result, equals(true));
-    }, skip: false);
+    }, skip: true);
 
     test("There are no 2 digit Armstrong numbers", () {
       final bool result = armstrongNumbers.isArmstrongNumber(10);
