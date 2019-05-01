@@ -381,6 +381,18 @@
         "sorting",
         "trees"
       ]
+    },
+    {
+      "slug": "nth-prime",
+      "uuid": "b470633d-6d2c-4245-92eb-37ea80500f2b",
+      "core": false,
+      "unlocked_by": "armstrong-numbers",
+      "difficulty": 3,
+      "topics": [
+        "algorithms",
+        "integers",
+        "math"
+      ]
     }
   ]
 }
