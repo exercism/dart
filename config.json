@@ -433,6 +433,18 @@
         "control_flow_conditionals",
         "control_flow_loops"
       ]
+    },
+    {
+      "slug": "secret-handshake",
+      "uuid": "0687be19-99e8-4b85-b3da-6b91a10acaa3",
+      "core": false,
+      "unlocked_by": "scrabble-score",
+      "difficulty": 5,
+      "topics": [
+        "arrays",
+        "bitwise_operations",
+        "integers"
+      ]
     }
   ]
 }
