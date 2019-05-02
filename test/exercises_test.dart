@@ -124,5 +124,5 @@ void main() {
 
       await runTest(testPath);
     }
-  }, timeout: new Timeout(new Duration(minutes: 10)));
+  }, timeout: new Timeout(new Duration(minutes: 20)));
 }
