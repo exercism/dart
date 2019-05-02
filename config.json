@@ -422,6 +422,17 @@
         "control_flow_conditionals",
         "control_flow_loops"
       ]
+    },
+    {
+      "slug": "triangle",
+      "uuid": "387eb271-b02d-444f-a1e0-dbccea72f740",
+      "core": false,
+      "unlocked_by": "hamming",
+      "difficulty": 3,
+      "topics": [
+        "control_flow_conditionals",
+        "control_flow_loops"
+      ]
     }
   ]
 }
