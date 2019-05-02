@@ -409,6 +409,19 @@
         "integers",
         "math"
       ]
+    },
+    {
+      "slug": "allergies",
+      "uuid": "729f4c8b-678a-434c-a09e-a71aca4bb2c0",
+      "core": false,
+      "unlocked_by": "difference-of-squares",
+      "difficulty": 2,
+      "topics": [
+        "arrays",
+        "bitwise_operations",
+        "control_flow_conditionals",
+        "control_flow_loops"
+      ]
     }
   ]
 }
