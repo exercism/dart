@@ -207,6 +207,10 @@ String _determineBestReturnType(List<dynamic> specCases) {
       return 'num';
     }
   }
+
+  if (first is bool) {
+    return 'bool';
+  }
   return '';
 }
 
