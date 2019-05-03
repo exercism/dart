@@ -221,9 +221,11 @@ Set<dynamic> retrieveListOfExpected(List<dynamic> list, {Set<dynamic> expectedTy
 
       if (entry.containsKey('expected')) {
         if (entry['expected'] is Map) {
-          if ((entry['expected'] as Map).containsKey('error')) {
-            addEntry = !addEntry;
-          }
+          addEntry = !(entry['expected'] as Map).containsKey('error');
+        }
+
+        if (entry['expected'] is Iterable) {
+          addEntry = (entry['expected'] as Iterable).isNotEmpty;
         }
 
         if (addEntry) {
