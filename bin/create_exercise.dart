@@ -123,7 +123,7 @@ String testCaseTemplate(String exerciseName, Map<String, Object> testCase, {bool
     }
 
     // We have a group, not a case
-    String description = testCase['description'] as String;
+    String description = _handleQuotes(testCase['description'] as String);
 
     // Build the tests up recursively, only first test should be skipped
     List<String> testList = <String>[];
@@ -242,6 +242,18 @@ Set<dynamic> retrieveListOfExpected(List<dynamic> list, {Set<dynamic> expectedTy
   }
 
   return expectedTypeSet;
+}
+
+String _handleQuotes(String arguments) {
+  if (arguments != null) {
+    final firstChar = arguments[0];
+    final lastChar = arguments[arguments.length - 1];
+    final shortenArgs = arguments.substring(1, arguments.length - 1).replaceAll('\'', '\\\'');
+
+    return '$firstChar$shortenArgs$lastChar';
+  } else {
+    return null;
+  }
 }
 
 /// `repr` takes in any object and tries to coerce it to a String in such a way that it is suitable to include in code.
