@@ -151,6 +151,7 @@ String testCaseTemplate(String exerciseName, Map<String, Object> testCase, {bool
 
   Map<String, dynamic> input = testCase['input'] as Map<String, dynamic>;
   String arguments = input.keys.map((k) => repr(input[k])).join(', ');
+  arguments = arguments == 'null' ? '' : arguments;
 
   if (_containsWhitespaceCodes(arguments)) {
     arguments = _protectWhitespaces(arguments);
