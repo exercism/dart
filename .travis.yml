@@ -3,8 +3,8 @@ language: dart
 sudo: false
 
 dart:
+  - "2.0.0"
   - stable
-  - "1.24.3"
   - dev
 
 cache:
