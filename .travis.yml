@@ -11,6 +11,11 @@ cache:
   directories:
     - $HOME/.pub-cache
 
-script:
-  - pub run bin/check_formatting.dart
-  - pub run test
+jobs:
+  include:
+    - stage: check_formatting
+      script:
+      - pub run bin/check_formatting.dart
+
+stages:
+  - check_formatting
