@@ -10,6 +10,8 @@ dart:
 cache:
   directories:
     - $HOME/.pub-cache
+    - .dart_tool/pub
+    - .pub/
 
 jobs:
   include:
