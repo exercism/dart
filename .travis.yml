@@ -1,6 +1,7 @@
 language: dart
 
 sudo: false
+xvfb: false
 
 dart:
   - "2.0.0"
