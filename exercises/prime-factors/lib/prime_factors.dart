@@ -1,3 +1,3 @@
-class BracketPush {
+class PrimeFactors {
   // Put your code here
 }

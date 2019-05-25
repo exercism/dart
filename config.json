@@ -251,6 +251,21 @@
       ]
     },
     {
+      "slug": "prime-factors",
+      "uuid": "89bb2ba8-86f2-4660-8739-4141eb9e6cf5",
+      "core": false,
+      "unlocked_by": "anagram",
+      "difficulty": 3,
+      "topics": [
+        "arrays",
+        "conditionals",
+        "integers",
+        "lists",
+        "loops",
+        "math"
+      ]
+    },
+    {
       "slug": "diamond",
       "uuid": "5bbd251d-b2eb-44a1-a9a6-8543afb7511c",
       "core": false,
@@ -263,7 +278,7 @@
       ]
     },
     {
-      "slug": "bracket-push",
+      "slug": "matching-brackets",
       "uuid": "508ebbf1-205e-4992-97d7-2865f06a3b2b",
       "core": false,
       "unlocked_by": null,
@@ -381,6 +396,18 @@
         "searching",
         "sorting",
         "trees"
+      ]
+    },
+    {
+      "slug": "nth-prime",
+      "uuid": "b470633d-6d2c-4245-92eb-37ea80500f2b",
+      "core": false,
+      "unlocked_by": "armstrong-numbers",
+      "difficulty": 3,
+      "topics": [
+        "algorithms",
+        "integers",
+        "math"
       ]
     }
   ]
