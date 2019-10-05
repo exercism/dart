@@ -81,9 +81,9 @@ $testCasesString
 String pubTemplate(String name) => """
 name: '${snakeCase(name)}'
 environment:
-  sdk: ">=1.24.0 <3.0.0"
+  sdk: '>=2.0.0 <3.0.0'
 dev_dependencies:
-  test: '<0.13.0'
+  test: '<2.0.0'
 """;
 
 String analysisOptionsTemplate() => """
