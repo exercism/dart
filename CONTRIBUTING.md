@@ -31,6 +31,7 @@ Please keep the following in mind:
     * Sensitive information (email address, real names, etc)
 
 - Please run the following commands before submitting your PR:
+    * `pub run bin/fetch_configlet.dart` - Fetches the latest version of [configlet](https://github.com/exercism/configlet)
     * `pub run bin/check_formatting.dart` - Checks the config.json and all Dart files for formatting issues
     * `pub run bin/presubmit.dart` - Runs the test for Dart exercises, and formats config.json and all Dart files
 
@@ -57,4 +58,4 @@ Please keep the following in mind:
 
 - Be sure to add the new exercise to the appropriate place in the `config.json` file.
 
-- Please run `bin/fetch-configlet && bin/configlet lint --track-id=dart .` to ensure the exercise is configured correctly.
+- Please run `pub run bin/fetch_configlet.dart && bin/configlet lint --track-id=dart .` to ensure the exercise is configured correctly.
