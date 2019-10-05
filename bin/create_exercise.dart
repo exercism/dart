@@ -384,10 +384,15 @@ Future main(List<String> args) async {
   }
 
   final exerciseName = restArgs.first;
+  final exerciseDir = new Directory("exercises/${kebabCase(exerciseName)}");
+
+  if (await exerciseDir.exists()) {
+    stderr.write("$exerciseName already exist\n");
+    exit(1);
+  }
 
   // Create dir
   final currentDir = Directory.current;
-  final exerciseDir = new Directory("exercises/${kebabCase(exerciseName)}");
   final filename = snakeCase(exerciseName);
   String version;
 
@@ -411,11 +416,6 @@ Future main(List<String> args) async {
     }
   } else {
     print("Could not find: ${arguments['spec-path']}/exercises/$exerciseName/canonical-data.json");
-  }
-
-  if (await exerciseDir.exists()) {
-    stderr.write("$exerciseName already exist\n");
-    exit(1);
   }
 
   await new Directory("${exerciseDir.path}/.meta").create(recursive: true);
