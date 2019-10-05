@@ -17,6 +17,7 @@ cache:
 jobs:
   include:
     - stage: check_formatting
+      dart: stable
       script:
       - pub run bin/check_formatting.dart
 
