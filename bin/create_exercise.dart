@@ -1,9 +1,9 @@
-import "dart:async";
-import "dart:io";
+import 'dart:async';
+import 'dart:convert';
+import 'dart:io';
 
-import "package:args/args.dart";
-import "package:dart2_constant/convert.dart" as polyfill;
-import "package:path/path.dart" show dirname;
+import 'package:args/args.dart';
+import 'package:path/path.dart' show dirname;
 
 /// Constants
 const String scriptFilename = "create-exercise";
@@ -244,7 +244,7 @@ Future main(List<String> args) async {
     try {
       final File canonicalDataJson = new File(filename);
       final source = await canonicalDataJson.readAsString();
-      final Map<String, Object> specification = polyfill.json.decode(source) as Map<String, Object>;
+      final Map<String, Object> specification = json.decode(source) as Map<String, Object>;
 
       version = specification['version'] as String;
 
