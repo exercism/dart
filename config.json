@@ -88,6 +88,18 @@
       ]
     },
     {
+      "slug": "beer-song",
+      "uuid": "50c34698-7767-42b3-962f-21c735e49787",
+      "core": false,
+      "unlocked_by": "scrabble-score",
+      "difficulty": 3,
+      "topics": [
+        "loops",
+        "strings",
+        "text_formatting"
+      ]
+    },
+    {
       "slug": "armstrong-numbers",
       "uuid": "4f650701-9568-4d95-9f72-be4bde2c90ec",
       "core": true,
