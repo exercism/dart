@@ -393,14 +393,14 @@ Future main(List<String> args) async {
 
   // Create dir
   final currentDir = Directory.current;
-  final filename = snakeCase(exerciseName);
+  final exerciseFilename = snakeCase(exerciseName);
   String version;
 
   // Get test cases from canonical-data.json, format tests
   if (arguments["spec-path"] != null) {
-    String filename = "${arguments['spec-path']}/exercises/$exerciseName/canonical-data.json";
+    String canonicalFilePath = "${arguments['spec-path']}/exercises/$exerciseName/canonical-data.json";
     try {
-      final File canonicalDataJson = new File(filename);
+      final File canonicalDataJson = new File(canonicalFilePath);
       final source = await canonicalDataJson.readAsString();
       final Map<String, Object> specification = json.decode(source) as Map<String, Object>;
 
@@ -408,10 +408,10 @@ Future main(List<String> args) async {
       _testCasesString = testCaseTemplate(exerciseName, specification);
       print("Found: ${arguments['spec-path']}/exercises/$exerciseName/canonical-data.json");
     } on FileSystemException {
-      stderr.write("Could not open file '$filename', exiting.\n");
+      stderr.write("Could not open file '$canonicalFilePath', exiting.\n");
       exit(1);
     } on FormatException {
-      stderr.write("File '$filename' is not valid JSON, exiting.\n");
+      stderr.write("File '$canonicalFilePath' is not valid JSON, exiting.\n");
       exit(1);
     }
   } else {
@@ -423,10 +423,10 @@ Future main(List<String> args) async {
   await new Directory("${exerciseDir.path}/test").create(recursive: true);
 
   // Create files
-  String testFileName = "${exerciseDir.path}/test/${filename}_test.dart";
+  String testFileName = "${exerciseDir.path}/test/${exerciseFilename}_test.dart";
   await new File('${exerciseDir.path}/.meta/version').writeAsString(version);
   await new File("${exerciseDir.path}/lib/example.dart").writeAsString(exampleTemplate(exerciseName));
-  await new File("${exerciseDir.path}/lib/${filename}.dart").writeAsString(mainTemplate(exerciseName));
+  await new File("${exerciseDir.path}/lib/${exerciseFilename}.dart").writeAsString(mainTemplate(exerciseName));
   await new File(testFileName).writeAsString(testTemplate(exerciseName));
   await new File("${exerciseDir.path}/analysis_options.yaml").writeAsString(analysisOptionsTemplate());
   await new File("${exerciseDir.path}/pubspec.yaml").writeAsString(pubTemplate(exerciseName));
