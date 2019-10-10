@@ -407,6 +407,46 @@ Future main(List<String> args) async {
       version = specification['version'].toString();
       _testCasesString = testCaseTemplate(exerciseName, specification);
       print("Found: ${arguments['spec-path']}/exercises/$exerciseName/canonical-data.json");
+
+      await new Directory("${exerciseDir.path}/.meta").create(recursive: true);
+      await new Directory("${exerciseDir.path}/lib").create(recursive: true);
+      await new Directory("${exerciseDir.path}/test").create(recursive: true);
+
+      // Create files
+      String testFileName = "${exerciseDir.path}/test/${exerciseFilename}_test.dart";
+      await new File('${exerciseDir.path}/.meta/version').writeAsString(version);
+      await new File("${exerciseDir.path}/lib/example.dart").writeAsString(exampleTemplate(exerciseName));
+      await new File("${exerciseDir.path}/lib/${exerciseFilename}.dart").writeAsString(mainTemplate(exerciseName));
+      await new File(testFileName).writeAsString(testTemplate(exerciseName));
+      await new File("${exerciseDir.path}/analysis_options.yaml").writeAsString(analysisOptionsTemplate());
+      await new File("${exerciseDir.path}/pubspec.yaml").writeAsString(pubTemplate(exerciseName));
+
+      // Generate README
+      final dartRoot = "${dirname(Platform.script.toFilePath())}/..";
+      final configletLoc = "$dartRoot/bin/configlet";
+      final genSuccess = await runProcess(
+          configletLoc, ["generate", "$dartRoot", "--spec-path", '${arguments['spec-path']}', "--only", exerciseName]);
+      if (genSuccess) {
+        stdout.write("Successfully created README.md\n");
+      } else {
+        stderr.write("Warning: `configlet generate` exited with an error, 'README.md' is likely malformed.\n");
+      }
+
+      // The output from file generation is not always well-formatted, use dartfmt to clean it up
+      final fmtSuccess =
+      await runProcess("pub", ["run", "dart_style:format", "-i", "0", "-l", "120", "-w", exerciseDir.path]);
+      if (fmtSuccess) {
+        stdout.write("Successfully created a rough-draft of tests at '$testFileName'.\n");
+        stdout.write("You should check this over and fix or refine as necessary.\n");
+      } else {
+        stderr.write("Warning: dart_style:format exited with an error, files in '${exerciseDir.path}' may be malformed.\n");
+      }
+
+      // Install deps
+      Directory.current = exerciseDir;
+
+      final pubSuccess = await runProcess("pub", ["get"]);
+      assert(pubSuccess);
     } on FileSystemException {
       stderr.write("Could not open file '$canonicalFilePath', exiting.\n");
       exit(1);
@@ -417,48 +457,6 @@ Future main(List<String> args) async {
   } else {
     print("Could not find: ${arguments['spec-path']}/exercises/$exerciseName/canonical-data.json");
   }
-
-  await new Directory("${exerciseDir.path}/.meta").create(recursive: true);
-  await new Directory("${exerciseDir.path}/lib").create(recursive: true);
-  await new Directory("${exerciseDir.path}/test").create(recursive: true);
-
-  // Create files
-  String testFileName = "${exerciseDir.path}/test/${exerciseFilename}_test.dart";
-  await new File('${exerciseDir.path}/.meta/version').writeAsString(version);
-  await new File("${exerciseDir.path}/lib/example.dart").writeAsString(exampleTemplate(exerciseName));
-  await new File("${exerciseDir.path}/lib/${exerciseFilename}.dart").writeAsString(mainTemplate(exerciseName));
-  await new File(testFileName).writeAsString(testTemplate(exerciseName));
-  await new File("${exerciseDir.path}/analysis_options.yaml").writeAsString(analysisOptionsTemplate());
-  await new File("${exerciseDir.path}/pubspec.yaml").writeAsString(pubTemplate(exerciseName));
-
-  if (arguments["spec-path"] != null) {
-    // Generate README
-    final dartRoot = "${dirname(Platform.script.toFilePath())}/..";
-    final configletLoc = "$dartRoot/bin/configlet";
-    final genSuccess = await runProcess(
-        configletLoc, ["generate", "$dartRoot", "--spec-path", '${arguments['spec-path']}', "--only", exerciseName]);
-    if (genSuccess) {
-      stdout.write("Successfully created README.md\n");
-    } else {
-      stderr.write("Warning: `configlet generate` exited with an error, 'README.md' is likely malformed.\n");
-    }
-  }
-
-  // The output from file generation is not always well-formatted, use dartfmt to clean it up
-  final fmtSuccess =
-      await runProcess("pub", ["run", "dart_style:format", "-i", "0", "-l", "120", "-w", exerciseDir.path]);
-  if (fmtSuccess) {
-    stdout.write("Successfully created a rough-draft of tests at '$testFileName'.\n");
-    stdout.write("You should check this over and fix or refine as necessary.\n");
-  } else {
-    stderr.write("Warning: dart_style:format exited with an error, files in '${exerciseDir.path}' may be malformed.\n");
-  }
-
-  // Install deps
-  Directory.current = exerciseDir;
-
-  final pubSuccess = await runProcess("pub", ["get"]);
-  assert(pubSuccess);
 
   Directory.current = currentDir;
 }
