@@ -167,6 +167,74 @@ String testCaseTemplate(String exerciseName, Map<String, Object> testCase, {bool
   return result;
 }
 
+/// Determines whether the script should generate an exercise.
+Future<bool> _doGenerate(Directory exerciseDir, String exerciseName, String version) async {
+  if (await exerciseDir.exists()) {
+    if (await Directory('${exerciseDir.path}/.meta').exists()) {
+      if (await File('${exerciseDir.path}/.meta/version').exists()) {
+        String currentVersion = await File('${exerciseDir.path}/.meta/version').readAsString();
+
+        if (currentVersion == version) {
+          stderr.write('$exerciseName of version, $currentVersion, already exists\n');
+          exit(1);
+        }
+      }
+    }
+    stderr.write('$exerciseName already exists\n');
+    exit(1);
+  }
+
+  return true;
+}
+
+/// Creates/updates an exercise.
+void _generateExercise(Map<String, Object> specification, String exerciseFilename, String exerciseName,
+    Directory exerciseDir, String version, ArgResults arguments) async {
+  _testCasesString = testCaseTemplate(exerciseName, specification);
+  print("Found: ${arguments['spec-path']}/exercises/$exerciseName/canonical-data.json");
+
+  await new Directory("${exerciseDir.path}/.meta").create(recursive: true);
+  await new Directory("${exerciseDir.path}/lib").create(recursive: true);
+  await new Directory("${exerciseDir.path}/test").create(recursive: true);
+
+  // Create files
+  String testFileName = "${exerciseDir.path}/test/${exerciseFilename}_test.dart";
+  await new File('${exerciseDir.path}/.meta/version').writeAsString(version);
+  await new File("${exerciseDir.path}/lib/example.dart").writeAsString(exampleTemplate(exerciseName));
+  await new File("${exerciseDir.path}/lib/${exerciseFilename}.dart").writeAsString(mainTemplate(exerciseName));
+  await new File(testFileName).writeAsString(testTemplate(exerciseName));
+  await new File("${exerciseDir.path}/analysis_options.yaml").writeAsString(analysisOptionsTemplate());
+  await new File("${exerciseDir.path}/pubspec.yaml").writeAsString(pubTemplate(exerciseName));
+
+  // Generate README
+  final dartRoot = "${dirname(Platform.script.toFilePath())}/..";
+  final configletLoc = "$dartRoot/bin/configlet";
+  final genSuccess = await runProcess(
+      configletLoc, ["generate", "$dartRoot", "--spec-path", '${arguments['spec-path']}', "--only", exerciseName]);
+  if (genSuccess) {
+    stdout.write("Successfully created README.md\n");
+  } else {
+    stderr.write("Warning: `configlet generate` exited with an error, 'README.md' is likely malformed.\n");
+  }
+
+  // The output from file generation is not always well-formatted, use dartfmt to clean it up
+  final fmtSuccess =
+      await runProcess("pub", ["run", "dart_style:format", "-i", "0", "-l", "120", "-w", exerciseDir.path]);
+  if (fmtSuccess) {
+    stdout.write("Successfully created a rough-draft of tests at '$testFileName'.\n");
+    stdout.write("You should check this over and fix or refine as necessary.\n");
+  } else {
+    stderr
+        .write("Warning: dart_style:format exited with an error, files in \'${exerciseDir.path}\' may be malformed.\n");
+  }
+
+  // Install deps
+  Directory.current = exerciseDir;
+
+  final pubSuccess = await runProcess("pub", ["get"]);
+  assert(pubSuccess);
+}
+
 String _protectWhitespaces(String input) => input..replaceAll("\\", '\\\\');
 
 bool _containsWhitespaceCodes(String input) {
@@ -386,15 +454,9 @@ Future main(List<String> args) async {
   final exerciseName = restArgs.first;
   final exerciseDir = new Directory("exercises/${kebabCase(exerciseName)}");
 
-  if (await exerciseDir.exists()) {
-    stderr.write("$exerciseName already exist\n");
-    exit(1);
-  }
-
   // Create dir
   final currentDir = Directory.current;
   final exerciseFilename = snakeCase(exerciseName);
-  String version;
 
   // Get test cases from canonical-data.json, format tests
   if (arguments["spec-path"] != null) {
@@ -403,50 +465,11 @@ Future main(List<String> args) async {
       final File canonicalDataJson = new File(canonicalFilePath);
       final source = await canonicalDataJson.readAsString();
       final Map<String, Object> specification = json.decode(source) as Map<String, Object>;
+      final version = specification['version'].toString();
 
-      version = specification['version'].toString();
-      _testCasesString = testCaseTemplate(exerciseName, specification);
-      print("Found: ${arguments['spec-path']}/exercises/$exerciseName/canonical-data.json");
-
-      await new Directory("${exerciseDir.path}/.meta").create(recursive: true);
-      await new Directory("${exerciseDir.path}/lib").create(recursive: true);
-      await new Directory("${exerciseDir.path}/test").create(recursive: true);
-
-      // Create files
-      String testFileName = "${exerciseDir.path}/test/${exerciseFilename}_test.dart";
-      await new File('${exerciseDir.path}/.meta/version').writeAsString(version);
-      await new File("${exerciseDir.path}/lib/example.dart").writeAsString(exampleTemplate(exerciseName));
-      await new File("${exerciseDir.path}/lib/${exerciseFilename}.dart").writeAsString(mainTemplate(exerciseName));
-      await new File(testFileName).writeAsString(testTemplate(exerciseName));
-      await new File("${exerciseDir.path}/analysis_options.yaml").writeAsString(analysisOptionsTemplate());
-      await new File("${exerciseDir.path}/pubspec.yaml").writeAsString(pubTemplate(exerciseName));
-
-      // Generate README
-      final dartRoot = "${dirname(Platform.script.toFilePath())}/..";
-      final configletLoc = "$dartRoot/bin/configlet";
-      final genSuccess = await runProcess(
-          configletLoc, ["generate", "$dartRoot", "--spec-path", '${arguments['spec-path']}', "--only", exerciseName]);
-      if (genSuccess) {
-        stdout.write("Successfully created README.md\n");
-      } else {
-        stderr.write("Warning: `configlet generate` exited with an error, 'README.md' is likely malformed.\n");
+      if (await _doGenerate(exerciseDir, exerciseName, version)) {
+        _generateExercise(specification, exerciseFilename, exerciseName, exerciseDir, version, arguments);
       }
-
-      // The output from file generation is not always well-formatted, use dartfmt to clean it up
-      final fmtSuccess =
-      await runProcess("pub", ["run", "dart_style:format", "-i", "0", "-l", "120", "-w", exerciseDir.path]);
-      if (fmtSuccess) {
-        stdout.write("Successfully created a rough-draft of tests at '$testFileName'.\n");
-        stdout.write("You should check this over and fix or refine as necessary.\n");
-      } else {
-        stderr.write("Warning: dart_style:format exited with an error, files in '${exerciseDir.path}' may be malformed.\n");
-      }
-
-      // Install deps
-      Directory.current = exerciseDir;
-
-      final pubSuccess = await runProcess("pub", ["get"]);
-      assert(pubSuccess);
     } on FileSystemException {
       stderr.write("Could not open file '$canonicalFilePath', exiting.\n");
       exit(1);
