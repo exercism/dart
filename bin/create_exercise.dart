@@ -236,6 +236,7 @@ Future main(List<String> args) async {
   final currentDir = Directory.current;
   final exerciseDir = new Directory("exercises/${kebabCase(name)}");
   final filename = snakeCase(name);
+  String version;
 
   // Get test cases from canonical-data.json, format tests
   if (arguments["spec-path"] != null) {
@@ -244,6 +245,8 @@ Future main(List<String> args) async {
       final File canonicalDataJson = new File(filename);
       final source = await canonicalDataJson.readAsString();
       final Map<String, Object> specification = polyfill.json.decode(source) as Map<String, Object>;
+
+      version = specification['version'] as String;
 
       testCasesString = testCaseTemplate(name, specification);
       print("Found: ${arguments['spec-path']}/exercises/$name/canonical-data.json");
@@ -265,6 +268,7 @@ Future main(List<String> args) async {
 
   await new Directory("${exerciseDir.path}/lib").create(recursive: true);
   await new Directory("${exerciseDir.path}/test").create(recursive: true);
+  await new Directory("${exerciseDir.path}/.meta").create(recursive: true);
 
   // Create files
   String testFileName = "${exerciseDir.path}/test/${filename}_test.dart";
@@ -273,6 +277,7 @@ Future main(List<String> args) async {
   await new File(testFileName).writeAsString(testTemplate(name));
   await new File("${exerciseDir.path}/pubspec.yaml").writeAsString(pubTemplate(name));
   await new File("${exerciseDir.path}/analysis_options.yaml").writeAsString(analysisOptionsTemplate());
+  await new File("${exerciseDir.path}/.meta/version").writeAsString(version);
 
   if (arguments["spec-path"] != null) {
     // Generate README
