@@ -404,7 +404,7 @@ Future main(List<String> args) async {
       final source = await canonicalDataJson.readAsString();
       final Map<String, Object> specification = json.decode(source) as Map<String, Object>;
 
-      version = specification['version'] as String;
+      version = specification['version'].toString();
       _testCasesString = testCaseTemplate(exerciseName, specification);
       print("Found: ${arguments['spec-path']}/exercises/$exerciseName/canonical-data.json");
     } on FileSystemException {
@@ -424,7 +424,7 @@ Future main(List<String> args) async {
 
   // Create files
   String testFileName = "${exerciseDir.path}/test/${filename}_test.dart";
-  await new File("${exerciseDir.path}/.meta/version").writeAsString(version);
+  await new File('${exerciseDir.path}/.meta/version').writeAsString(version);
   await new File("${exerciseDir.path}/lib/example.dart").writeAsString(exampleTemplate(exerciseName));
   await new File("${exerciseDir.path}/lib/${filename}.dart").writeAsString(mainTemplate(exerciseName));
   await new File(testFileName).writeAsString(testTemplate(exerciseName));
