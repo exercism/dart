@@ -6,11 +6,11 @@ import 'package:args/args.dart';
 import 'package:path/path.dart' show dirname;
 
 /// Constants
-const String scriptFilename = "create-exercise";
+const String scriptFilename = 'create-exercise';
 
 final parser = new ArgParser()
-  ..addSeparator("Usage: $scriptFilename [--spec-path path] <slug>")
-  ..addOption("spec-path", help: "The location of the problem-specifications directory.", valueHelp: 'path');
+  ..addSeparator('Usage: $scriptFilename [--spec-path path] <slug>')
+  ..addOption('spec-path', help: 'The location of the problem-specifications directory.', valueHelp: 'path');
 
 /// Helpers
 List<String> words(final String str) {
@@ -18,19 +18,19 @@ List<String> words(final String str) {
 
   return str
       .toLowerCase()
-      .replaceAll(new RegExp(r"[^a-z0-9]"), " ")
-      .replaceAll(new RegExp(r" +"), " ")
+      .replaceAll(new RegExp(r'[^a-z0-9]'), ' ')
+      .replaceAll(new RegExp(r' +'), ' ')
       .trim()
-      .split(" ");
+      .split(' ');
 }
 
 String upperFirst(final String str) {
   if (str == null || str.length == 0) return '';
 
-  final chars = str.split("");
+  final chars = str.split('');
   final first = chars.first;
 
-  return first.toUpperCase() + chars.skip(1).join("");
+  return first.toUpperCase() + chars.skip(1).join('');
 }
 
 String camelCase(String str, {bool isUpperFirst = false}) {
@@ -38,40 +38,40 @@ String camelCase(String str, {bool isUpperFirst = false}) {
   final first = parts.first;
   final rest = parts.skip(1);
 
-  return (isUpperFirst ? upperFirst(first) : first) + rest.map(upperFirst).join("");
+  return (isUpperFirst ? upperFirst(first) : first) + rest.map(upperFirst).join('');
 }
 
 String pascalCase(String str) => camelCase(str, isUpperFirst: true);
 
-String snakeCase(String str) => words(str).join("_");
+String snakeCase(String str) => words(str).join('_');
 
-String kebabCase(String str) => words(str).join("-");
+String kebabCase(String str) => words(str).join('-');
 
 /// Templates
-String exampleTemplate(String name) => """
+String exampleTemplate(String name) => '''
 class ${pascalCase(name)} {
 
 }
-""";
+''';
 
-String mainTemplate(String name) => """
+String mainTemplate(String name) => '''
 class ${pascalCase(name)} {
   // Put your code here
 }
-""";
+''';
 
-String _testCasesString = """
+String _testCasesString = '''
     test('should work', () {
       // TODO
-    });""";
+    });''';
 
 /// The test template sorts the import of packages, instantiates an instance of the exercise class, and defines the main
 /// function's group of tests.
 String testTemplate(String name) {
-  final packages = <String>[name, "test"];
+  final packages = <String>[name, 'test'];
   packages.sort();
 
-  return """
+  return '''
 import 'package:${snakeCase(packages[0])}/${snakeCase(packages[0])}.dart';
 import 'package:${snakeCase(packages[1])}/${snakeCase(packages[1])}.dart';
 
@@ -82,18 +82,18 @@ void main() {
 $_testCasesString
   });
 }
-""";
+''';
 }
 
-String pubTemplate(String name) => """
+String pubTemplate(String name) => '''
 name: '${snakeCase(name)}'
 environment:
   sdk: '>=2.0.0 <3.0.0'
 dev_dependencies:
   test: '<2.0.0'
-""";
+''';
 
-String analysisOptionsTemplate() => """
+String analysisOptionsTemplate() => '''
 analyzer:
   strong-mode:
     implicit-casts: false
@@ -112,7 +112,7 @@ linter:
     - literal_only_boolean_expressions
     - no_adjacent_strings_in_list
     - valid_regexps
-""";
+''';
 
 String testCaseTemplate(String exerciseName, Map<String, Object> testCase, {bool firstTest = true, String returnType}) {
   bool skipTests = firstTest;
@@ -131,17 +131,17 @@ String testCaseTemplate(String exerciseName, Map<String, Object> testCase, {bool
       testList.add(testCaseTemplate(exerciseName, caseObj, firstTest: skipTests, returnType: returnType));
       skipTests = false;
     }
-    String tests = testList.join("\n");
+    String tests = testList.join('\n');
 
     if (description == null) {
       return tests;
     }
 
-    return """
+    return '''
       group('$description', () {
         $tests
       });
-    """;
+    ''';
   }
 
   String description = repr(testCase['description']);
@@ -191,51 +191,51 @@ Future<bool> _doGenerate(Directory exerciseDir, String exerciseName, String vers
 void _generateExercise(Map<String, Object> specification, String exerciseFilename, String exerciseName,
     Directory exerciseDir, String version, ArgResults arguments) async {
   _testCasesString = testCaseTemplate(exerciseName, specification);
-  print("Found: ${arguments['spec-path']}/exercises/$exerciseName/canonical-data.json");
+  print('Found: ${arguments['spec-path']}/exercises/$exerciseName/canonical-data.json');
 
-  await new Directory("${exerciseDir.path}/.meta").create(recursive: true);
-  await new Directory("${exerciseDir.path}/lib").create(recursive: true);
-  await new Directory("${exerciseDir.path}/test").create(recursive: true);
+  await new Directory('${exerciseDir.path}/.meta').create(recursive: true);
+  await new Directory('${exerciseDir.path}/lib').create(recursive: true);
+  await new Directory('${exerciseDir.path}/test').create(recursive: true);
 
   // Create files
-  String testFileName = "${exerciseDir.path}/test/${exerciseFilename}_test.dart";
+  String testFileName = '${exerciseDir.path}/test/${exerciseFilename}_test.dart';
   await new File('${exerciseDir.path}/.meta/version').writeAsString(version);
-  await new File("${exerciseDir.path}/lib/example.dart").writeAsString(exampleTemplate(exerciseName));
-  await new File("${exerciseDir.path}/lib/${exerciseFilename}.dart").writeAsString(mainTemplate(exerciseName));
+  await new File('${exerciseDir.path}/lib/example.dart').writeAsString(exampleTemplate(exerciseName));
+  await new File('${exerciseDir.path}/lib/${exerciseFilename}.dart').writeAsString(mainTemplate(exerciseName));
   await new File(testFileName).writeAsString(testTemplate(exerciseName));
-  await new File("${exerciseDir.path}/analysis_options.yaml").writeAsString(analysisOptionsTemplate());
-  await new File("${exerciseDir.path}/pubspec.yaml").writeAsString(pubTemplate(exerciseName));
+  await new File('${exerciseDir.path}/analysis_options.yaml').writeAsString(analysisOptionsTemplate());
+  await new File('${exerciseDir.path}/pubspec.yaml').writeAsString(pubTemplate(exerciseName));
 
   // Generate README
-  final dartRoot = "${dirname(Platform.script.toFilePath())}/..";
-  final configletLoc = "$dartRoot/bin/configlet";
+  final dartRoot = '${dirname(Platform.script.toFilePath())}/..';
+  final configletLoc = '$dartRoot/bin/configlet';
   final genSuccess = await runProcess(
-      configletLoc, ["generate", "$dartRoot", "--spec-path", '${arguments['spec-path']}', "--only", exerciseName]);
+      configletLoc, ['generate', '$dartRoot', '--spec-path', '${arguments['spec-path']}', '--only', exerciseName]);
   if (genSuccess) {
-    stdout.write("Successfully created README.md\n");
+    stdout.write('Successfully created README.md\n');
   } else {
-    stderr.write("Warning: `configlet generate` exited with an error, 'README.md' is likely malformed.\n");
+    stderr.write('Warning: `configlet generate` exited with an error, \'README.md\' is likely malformed.\n');
   }
 
   // The output from file generation is not always well-formatted, use dartfmt to clean it up
   final fmtSuccess =
-      await runProcess("pub", ["run", "dart_style:format", "-i", "0", "-l", "120", "-w", exerciseDir.path]);
+      await runProcess('pub', ['run', 'dart_style:format', '-i', '0', '-l', '120', '-w', exerciseDir.path]);
   if (fmtSuccess) {
-    stdout.write("Successfully created a rough-draft of tests at '$testFileName'.\n");
-    stdout.write("You should check this over and fix or refine as necessary.\n");
+    stdout.write('Successfully created a rough-draft of tests at \'$testFileName\'.\n');
+    stdout.write('You should check this over and fix or refine as necessary.\n');
   } else {
     stderr
-        .write("Warning: dart_style:format exited with an error, files in \'${exerciseDir.path}\' may be malformed.\n");
+        .write('Warning: dart_style:format exited with an error, files in \'${exerciseDir.path}\' may be malformed.\n');
   }
 
   // Install deps
   Directory.current = exerciseDir;
 
-  final pubSuccess = await runProcess("pub", ["get"]);
+  final pubSuccess = await runProcess('pub', ['get']);
   assert(pubSuccess);
 }
 
-String _protectWhitespaces(String input) => input..replaceAll("\\", '\\\\');
+String _protectWhitespaces(String input) => input..replaceAll('\\', '\\\\');
 
 bool _containsWhitespaceCodes(String input) {
   return input.contains('\n') || input.contains('\r') || input.contains('\t');
@@ -339,10 +339,10 @@ String repr(Object x, {String typeDeclaration}) {
     String result = x
         .replaceAll('\'', r"\'")
         .replaceAll('\n', r'\n')
-        .replaceAll("\r", r"\r")
-        .replaceAll("\t", r"\t")
+        .replaceAll('\r', r'\r')
+        .replaceAll('\t', r'\t')
         .replaceAll(r'$', r'\$');
-    return "'$result'";
+    return '\'$result\'';
   }
 
   if (x is Iterable) {
@@ -356,9 +356,9 @@ String repr(Object x, {String typeDeclaration}) {
     }
 
     if (x is List) {
-      return '$iterableType[${x.map(repr).join(", ")}]';
+      return '$iterableType[${x.map(repr).join(', ')}]';
     } else if (x is Set) {
-      return '$iterableType{${x.map(repr).join(", ")}}';
+      return '$iterableType{${x.map(repr).join(', ')}}';
     }
   }
 
@@ -366,16 +366,16 @@ String repr(Object x, {String typeDeclaration}) {
     return _defineMap(x, '${getMapType(x)}');
   }
 
-  return "$x";
+  return '$x';
 }
 
 String _defineMap(Map x, String iterableType) {
   final pairs = <String>[];
   for (var k in x.keys) {
-    pairs.add("${repr(k)}: ${repr(x[k])}");
+    pairs.add('${repr(k)}: ${repr(x[k])}');
   }
 
-  return "$iterableType{${pairs.join(', ')}}";
+  return '$iterableType{${pairs.join(', ')}}';
 }
 
 /// A helper method to get the inside type of an iterable
@@ -386,7 +386,7 @@ String getIterableType(Iterable iter) {
     return types.first;
   }
 
-  return "Object";
+  return 'Object';
 }
 
 /// A helper method to get the inside type of a map
@@ -403,15 +403,15 @@ String getMapType(Map map) {
 /// Get a human-friendly type of a variable
 String getFriendlyType(Object x) {
   if (x is String) {
-    return "String";
+    return 'String';
   }
 
   if (x is Iterable) {
-    return "List<${getIterableType(x)}>";
+    return 'List<${getIterableType(x)}>';
   }
 
   if (x is Map) {
-    return "Map<${getIterableType(x.keys)}, ${getIterableType(x.values)}>";
+    return 'Map<${getIterableType(x.keys)}, ${getIterableType(x.values)}>';
   }
 
   if (x is num) {
@@ -452,15 +452,15 @@ Future main(List<String> args) async {
   }
 
   final exerciseName = restArgs.first;
-  final exerciseDir = new Directory("exercises/${kebabCase(exerciseName)}");
+  final exerciseDir = new Directory('exercises/${kebabCase(exerciseName)}');
 
   // Create dir
   final currentDir = Directory.current;
   final exerciseFilename = snakeCase(exerciseName);
 
   // Get test cases from canonical-data.json, format tests
-  if (arguments["spec-path"] != null) {
-    String canonicalFilePath = "${arguments['spec-path']}/exercises/$exerciseName/canonical-data.json";
+  if (arguments['spec-path'] != null) {
+    String canonicalFilePath = '${arguments['spec-path']}/exercises/$exerciseName/canonical-data.json';
     try {
       final File canonicalDataJson = new File(canonicalFilePath);
       final source = await canonicalDataJson.readAsString();
@@ -471,14 +471,14 @@ Future main(List<String> args) async {
         _generateExercise(specification, exerciseFilename, exerciseName, exerciseDir, version, arguments);
       }
     } on FileSystemException {
-      stderr.write("Could not open file '$canonicalFilePath', exiting.\n");
+      stderr.write('Could not open file \'$canonicalFilePath\', exiting.\n');
       exit(1);
     } on FormatException {
-      stderr.write("File '$canonicalFilePath' is not valid JSON, exiting.\n");
+      stderr.write('File \'$canonicalFilePath\' is not valid JSON, exiting.\n');
       exit(1);
     }
   } else {
-    print("Could not find: ${arguments['spec-path']}/exercises/$exerciseName/canonical-data.json");
+    print('Could not find: ${arguments['spec-path']}/exercises/$exerciseName/canonical-data.json');
   }
 
   Directory.current = currentDir;
