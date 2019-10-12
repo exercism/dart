@@ -235,6 +235,21 @@ void _generateExercise(Map<String, Object> specification, String exerciseFilenam
   assert(pubSuccess);
 }
 
+/// If a string contains a single backslash, we need to add another behind it, so the backslash remains.
+String _ensureBackslashesTreatedAsBackslashes(List<String> input) {
+  List<String> result = <String>[];
+
+  input.forEach((String value) {
+    if (value == r'\') {
+      result.add(value + value);
+    } else {
+      result.add(value);
+    }
+  });
+
+  return StringBuffer(result.join()).toString();
+}
+
 String _protectWhitespaces(String input) => input..replaceAll('\\', '\\\\');
 
 bool _containsWhitespaceCodes(String input) {
@@ -336,7 +351,8 @@ String _handleQuotes(String arguments) {
 /// `typeDeclaration` is the determined return type and used to determine the type within collections.
 String repr(Object x, {String typeDeclaration}) {
   if (x is String) {
-    String result = x
+    String result = _ensureBackslashesTreatedAsBackslashes(x.split(''));
+    result = result
         .replaceAll('\'', r"\'")
         .replaceAll('\n', r'\n')
         .replaceAll('\r', r'\r')
