@@ -149,6 +149,7 @@ String testCaseTemplate(String exerciseName, Map<String, Object> testCase, {bool
   String method = testCase['property'].toString();
   String expected = repr(testCase['expected'], typeDeclaration: returnType);
 
+  returnType = _finalizeReturnType(expected, returnType);
   Map<String, dynamic> input = testCase['input'] as Map<String, dynamic>;
   String arguments = input.keys.map((k) => repr(input[k])).join(', ');
   arguments = arguments == 'null' ? '' : arguments;
@@ -165,6 +166,30 @@ String testCaseTemplate(String exerciseName, Map<String, Object> testCase, {bool
 ''';
 
   return result;
+}
+
+String _finalizeReturnType(String expected, String returnType) {
+  final expectedIterable = RegExp(r"(<[A-Za-z]+>\[[a-zA-Z0-9', *]{0,}\])");
+  final expectedMap = RegExp(r"(<[A-Za-z, ]+>\{[[a-zA-Z0-9':, ]{0,}\})");
+
+  if (expected.contains(expectedIterable)) {
+    final iterableType = RegExp(r"(<[A-Za-z]+>)");
+    final extracted = iterableType.stringMatch(expected);
+    return returnType.contains('List<List') ? returnType : 'List$extracted';
+  } else if (expected.contains(expectedMap)) {
+    final iterableType = RegExp(r"(<[A-Za-z, ]+>)");
+    final extracted = iterableType.stringMatch(expected);
+    return 'Map$extracted';
+  } else {
+    if (expected == 'false' ||
+        expected == 'true' ||
+        expected.contains(RegExp(r'([0-9.]+)')) ||
+        expected.contains(RegExp(r"('[a-zA-Z, \'!]{0,}')"))) {
+      return returnType;
+    } else {
+      return expected;
+    }
+  }
 }
 
 /// Determines whether the script should generate an exercise.
@@ -366,7 +391,9 @@ String repr(Object x, {String typeDeclaration}) {
 
     if (typeDeclaration != null) {
       final RegExp iterables = new RegExp(r'List|Map|Set');
-      iterableType = typeDeclaration.replaceFirst(iterables, '');
+      final knownType = '<${typeDeclaration.replaceFirst(iterables, '')}>';
+      final currentType = '<${getIterableType(x)}>';
+      iterableType = knownType == currentType ? knownType : currentType;
     } else {
       iterableType = '<${getIterableType(x)}>';
     }
