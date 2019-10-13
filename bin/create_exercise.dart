@@ -85,8 +85,9 @@ $_testCasesString
 ''';
 }
 
-String pubTemplate(String name) => '''
+String pubTemplate(String name, String version) => '''
 name: '${snakeCase(name)}'
+version: $version
 environment:
   sdk: '>=2.0.0 <3.0.0'
 dev_dependencies:
@@ -218,18 +219,16 @@ void _generateExercise(Map<String, Object> specification, String exerciseFilenam
   _testCasesString = testCaseTemplate(exerciseName, specification);
   print('Found: ${arguments['spec-path']}/exercises/$exerciseName/canonical-data.json');
 
-  await new Directory('${exerciseDir.path}/.meta').create(recursive: true);
   await new Directory('${exerciseDir.path}/lib').create(recursive: true);
   await new Directory('${exerciseDir.path}/test').create(recursive: true);
 
   // Create files
   String testFileName = '${exerciseDir.path}/test/${exerciseFilename}_test.dart';
-  await new File('${exerciseDir.path}/.meta/version').writeAsString(version);
   await new File('${exerciseDir.path}/lib/example.dart').writeAsString(exampleTemplate(exerciseName));
   await new File('${exerciseDir.path}/lib/${exerciseFilename}.dart').writeAsString(mainTemplate(exerciseName));
   await new File(testFileName).writeAsString(testTemplate(exerciseName));
   await new File('${exerciseDir.path}/analysis_options.yaml').writeAsString(analysisOptionsTemplate());
-  await new File('${exerciseDir.path}/pubspec.yaml').writeAsString(pubTemplate(exerciseName));
+  await new File('${exerciseDir.path}/pubspec.yaml').writeAsString(pubTemplate(exerciseName, version));
 
   // Generate README
   final dartRoot = '${dirname(Platform.script.toFilePath())}/..';
