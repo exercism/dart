@@ -165,8 +165,9 @@ void main() {
       });
 
       test('pubTemplate', () {
-        expect(pubTemplate('foo bar'), equals('''
+        expect(pubTemplate('foo bar', '1.0.0'), equals('''
 name: 'foo_bar'
+version: 1.0.0
 environment:
   sdk: '>=2.0.0 <3.0.0'
 dev_dependencies:
