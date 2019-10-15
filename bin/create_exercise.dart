@@ -12,12 +12,14 @@ final _parser = ArgParser()
   ..addOption('spec-path', help: 'The location of the problem-specifications directory.', valueHelp: 'path');
 
 // Helpers
+/// Determine the words within a string, so they can be placed in the proper case.
 List<String> words(String str) {
   if (str == null) return [''];
 
   return str.toLowerCase().replaceAll(RegExp(r'[^a-z0-9]'), ' ').replaceAll(RegExp(r' +'), ' ').trim().split(' ');
 }
 
+/// Converts first character to upper case.
 String upperFirst(String str) {
   if (str == null || str.length == 0) return '';
 
@@ -27,6 +29,7 @@ String upperFirst(String str) {
   return first.toUpperCase() + chars.skip(1).join('');
 }
 
+/// Converts given string to camelCase.
 String camelCase(String str, {bool isUpperFirst = false}) {
   final parts = words(str);
   final first = parts.first;
@@ -35,19 +38,24 @@ String camelCase(String str, {bool isUpperFirst = false}) {
   return (isUpperFirst ? upperFirst(first) : first) + rest.map(upperFirst).join('');
 }
 
+/// Converts given string to pascalCase.
 String pascalCase(String str) => camelCase(str, isUpperFirst: true);
 
+/// Converts given string to snakeCase.
 String snakeCase(String str) => words(str).join('_');
 
+/// Converts given string to kebabCase.
 String kebabCase(String str) => words(str).join('-');
 
 // Templates
+/// Generates the code for an example class.
 String exampleTemplate(String name) => '''
 class ${pascalCase(name)} {
 
 }
 ''';
 
+/// Generates the code for the starting file of an exercise.
 String mainTemplate(String name) => '''
 class ${pascalCase(name)} {
   // Put your code here
@@ -59,7 +67,7 @@ String _testCasesString = '''
       // TODO
     });''';
 
-/// The test template sorts the import of packages, instantiates an instance of the exercise class, and defines the main
+/// Sorts the import of packages, instantiates an instance of the exercise class, and defines the main
 /// function's group of tests.
 String testTemplate(String name) {
   final packages = <String>[name, 'test'];
@@ -79,6 +87,7 @@ $_testCasesString
 ''';
 }
 
+/// Generates the yaml code for a pubspec.yaml file.
 String pubTemplate(String name, String version) => '''
 name: '${snakeCase(name)}'
 version: $version
@@ -88,6 +97,7 @@ dev_dependencies:
   test: '<2.0.0'
 ''';
 
+/// Generates the yaml code for an analysis_options.yaml file
 String analysisOptionsTemplate() => '''
 analyzer:
   strong-mode:
@@ -109,6 +119,7 @@ linter:
     - valid_regexps
 ''';
 
+/// Parses through the given test case (or group) in order to produce a String of code for the generated test suite.
 String testCaseTemplate(String exerciseName, Map<String, Object> testCase, {bool firstTest = true, String returnType}) {
   bool skipTests = firstTest;
 
@@ -314,14 +325,15 @@ String _determineBestReturnType(List<dynamic> specCases) {
   return '';
 }
 
-Set<dynamic> retrieveListOfExpected(List<dynamic> list, {Set<dynamic> expectedTypeSet}) {
+/// Parses through a list of test cases to assemble a list of all the expected values within the test cases.
+Set<dynamic> retrieveListOfExpected(List<dynamic> testCases, {Set<dynamic> expectedTypeSet}) {
   if (expectedTypeSet == null) {
     expectedTypeSet = Set<dynamic>();
   }
 
-  for (var count = 0; count < list.length; count++) {
-    if (list[count] is Map) {
-      Map entry = list[count] as Map;
+  for (var count = 0; count < testCases.length; count++) {
+    if (testCases[count] is Map) {
+      Map entry = testCases[count] as Map;
       bool addEntry = true;
 
       if (entry.containsKey('expected')) {
@@ -343,19 +355,20 @@ Set<dynamic> retrieveListOfExpected(List<dynamic> list, {Set<dynamic> expectedTy
       }
     }
 
-    if (list[count] is List) {
-      expectedTypeSet = retrieveListOfExpected(list[count] as List, expectedTypeSet: expectedTypeSet);
+    if (testCases[count] is List) {
+      expectedTypeSet = retrieveListOfExpected(testCases[count] as List, expectedTypeSet: expectedTypeSet);
     }
   }
 
   return expectedTypeSet;
 }
 
-String _handleQuotes(String arguments) {
-  if (arguments != null) {
-    final firstChar = arguments[0];
-    final lastChar = arguments[arguments.length - 1];
-    final shortenArgs = arguments.substring(1, arguments.length - 1).replaceAll('\'', '\\\'');
+/// Escapes single quotes found in a test case's description, in order to prevent errors.
+String _handleQuotes(String input) {
+  if (input != null) {
+    final firstChar = input[0];
+    final lastChar = input[input.length - 1];
+    final shortenArgs = input.substring(1, input.length - 1).replaceAll('\'', '\\\'');
 
     return '$firstChar$shortenArgs$lastChar';
   } else {
