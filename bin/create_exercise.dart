@@ -161,7 +161,7 @@ String testCaseTemplate(String exerciseName, Map<String, Object> testCase, {bool
   arguments = arguments == 'null' ? '' : arguments;
 
   if (_containsWhitespaceCodes(arguments)) {
-    arguments = _protectWhitespaces(arguments);
+    arguments = _escapeWhitespace(arguments);
   }
 
   final result = '''
@@ -264,7 +264,7 @@ void _generateExercise(Map<String, Object> specification, String exerciseFilenam
 }
 
 /// If a string contains a single backslash, we need to add another behind it, so the backslash remains.
-String _ensureBackslashesTreatedAsBackslashes(List<String> input) {
+String _escapeBackslash(List<String> input) {
   List<String> result = <String>[];
 
   input.forEach((String value) {
@@ -278,7 +278,7 @@ String _ensureBackslashesTreatedAsBackslashes(List<String> input) {
   return result.join();
 }
 
-String _protectWhitespaces(String input) => input..replaceAll('\\', '\\\\');
+String _escapeWhitespace(String input) => input..replaceAll('\\', '\\\\');
 
 bool _containsWhitespaceCodes(String input) {
   return input.contains('\n') || input.contains('\r') || input.contains('\t');
@@ -381,7 +381,7 @@ String _handleQuotes(String input) {
 /// `typeDeclaration` is the determined return type and used to determine the type within collections.
 String _repr(Object x, {String typeDeclaration}) {
   if (x is String) {
-    String result = _ensureBackslashesTreatedAsBackslashes(x.split(''));
+    String result = _escapeBackslash(x.split(''));
     result = result
         .replaceAll('\'', r"\'")
         .replaceAll('\n', r'\n')
