@@ -38,13 +38,13 @@ String camelCase(String str, {bool isUpperFirst = false}) {
   return (isUpperFirst ? upperFirst(first) : first) + rest.map(upperFirst).join('');
 }
 
-/// Converts given string to pascalCase.
+/// Converts given string to PascalCase.
 String pascalCase(String str) => camelCase(str, isUpperFirst: true);
 
-/// Converts given string to snakeCase.
+/// Converts given string to snake_case.
 String snakeCase(String str) => words(str).join('_');
 
-/// Converts given string to kebabCase.
+/// Converts given string to kebab-case.
 String kebabCase(String str) => words(str).join('-');
 
 // Templates
