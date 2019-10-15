@@ -15,12 +15,7 @@ final parser = ArgParser()
 List<String> words(String str) {
   if (str == null) return [''];
 
-  return str
-      .toLowerCase()
-      .replaceAll(RegExp(r'[^a-z0-9]'), ' ')
-      .replaceAll(RegExp(r' +'), ' ')
-      .trim()
-      .split(' ');
+  return str.toLowerCase().replaceAll(RegExp(r'[^a-z0-9]'), ' ').replaceAll(RegExp(r' +'), ' ').trim().split(' ');
 }
 
 String upperFirst(String str) {
@@ -241,8 +236,7 @@ void _generateExercise(Map<String, Object> specification, String exerciseFilenam
   }
 
   // The output from file generation is not always well-formatted, use dartfmt to clean it up
-  final fmtSuccess =
-      runProcess('pub', ['run', 'dart_style:format', '-i', '0', '-l', '120', '-w', exerciseDir.path]);
+  final fmtSuccess = runProcess('pub', ['run', 'dart_style:format', '-i', '0', '-l', '120', '-w', exerciseDir.path]);
   if (fmtSuccess) {
     stdout.write('Successfully created a rough-draft of tests at \'$testFileName\'.\n');
     stdout.write('You should check this over and fix or refine as necessary.\n');
