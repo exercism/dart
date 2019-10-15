@@ -168,11 +168,11 @@ String _finalizeReturnType(String expected, String returnType) {
   final expectedMap = RegExp(r"(<[A-Za-z, ]+>\{[[a-zA-Z0-9':, ]{0,}\})");
 
   if (expected.contains(expectedIterable)) {
-    final iterableType = RegExp(r"(<[A-Za-z]+>)");
+    final iterableType = RegExp(r'(<[A-Za-z]+>)');
     final extracted = iterableType.stringMatch(expected);
     return returnType.contains('List<List') ? returnType : 'List$extracted';
   } else if (expected.contains(expectedMap)) {
-    final iterableType = RegExp(r"(<[A-Za-z, ]+>)");
+    final iterableType = RegExp(r'(<[A-Za-z, ]+>)');
     final extracted = iterableType.stringMatch(expected);
     return 'Map$extracted';
   } else {
