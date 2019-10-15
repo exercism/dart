@@ -1,4 +1,3 @@
-import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 
@@ -194,11 +193,11 @@ String _finalizeReturnType(String expected, String returnType) {
 }
 
 /// Determines whether the script should generate an exercise.
-Future<bool> _doGenerate(Directory exerciseDir, String exerciseName, String version) async {
-  if (await exerciseDir.exists()) {
-    if (await Directory('${exerciseDir.path}/.meta').exists()) {
-      if (await File('${exerciseDir.path}/.meta/version').exists()) {
-        String currentVersion = await File('${exerciseDir.path}/.meta/version').readAsString();
+bool _doGenerate(Directory exerciseDir, String exerciseName, String version) {
+  if (exerciseDir.existsSync()) {
+    if (Directory('${exerciseDir.path}/.meta').existsSync()) {
+      if (File('${exerciseDir.path}/.meta/version').existsSync()) {
+        String currentVersion = File('${exerciseDir.path}/.meta/version').readAsStringSync();
 
         if (currentVersion == version) {
           stderr.write('$exerciseName of version, $currentVersion, already exists\n');
@@ -219,21 +218,21 @@ void _generateExercise(Map<String, Object> specification, String exerciseFilenam
   _testCasesString = testCaseTemplate(exerciseName, specification);
   print('Found: ${arguments['spec-path']}/exercises/$exerciseName/canonical-data.json');
 
-  await Directory('${exerciseDir.path}/lib').create(recursive: true);
-  await Directory('${exerciseDir.path}/test').create(recursive: true);
+  Directory('${exerciseDir.path}/lib').createSync(recursive: true);
+  Directory('${exerciseDir.path}/test').createSync(recursive: true);
 
   // Create files
   String testFileName = '${exerciseDir.path}/test/${exerciseFilename}_test.dart';
-  await File('${exerciseDir.path}/lib/example.dart').writeAsString(exampleTemplate(exerciseName));
-  await File('${exerciseDir.path}/lib/${exerciseFilename}.dart').writeAsString(mainTemplate(exerciseName));
-  await File(testFileName).writeAsString(testTemplate(exerciseName));
-  await File('${exerciseDir.path}/analysis_options.yaml').writeAsString(analysisOptionsTemplate());
-  await File('${exerciseDir.path}/pubspec.yaml').writeAsString(pubTemplate(exerciseName, version));
+  File('${exerciseDir.path}/lib/example.dart').writeAsStringSync(exampleTemplate(exerciseName));
+  File('${exerciseDir.path}/lib/${exerciseFilename}.dart').writeAsStringSync(mainTemplate(exerciseName));
+  File(testFileName).writeAsStringSync(testTemplate(exerciseName));
+  File('${exerciseDir.path}/analysis_options.yaml').writeAsStringSync(analysisOptionsTemplate());
+  File('${exerciseDir.path}/pubspec.yaml').writeAsStringSync(pubTemplate(exerciseName, version));
 
   // Generate README
   final dartRoot = '${dirname(Platform.script.toFilePath())}/..';
   final configletLoc = '$dartRoot/bin/configlet';
-  final genSuccess = await runProcess(
+  final genSuccess = runProcess(
       configletLoc, ['generate', '$dartRoot', '--spec-path', '${arguments['spec-path']}', '--only', exerciseName]);
   if (genSuccess) {
     stdout.write('Successfully created README.md\n');
@@ -243,7 +242,7 @@ void _generateExercise(Map<String, Object> specification, String exerciseFilenam
 
   // The output from file generation is not always well-formatted, use dartfmt to clean it up
   final fmtSuccess =
-      await runProcess('pub', ['run', 'dart_style:format', '-i', '0', '-l', '120', '-w', exerciseDir.path]);
+      runProcess('pub', ['run', 'dart_style:format', '-i', '0', '-l', '120', '-w', exerciseDir.path]);
   if (fmtSuccess) {
     stdout.write('Successfully created a rough-draft of tests at \'$testFileName\'.\n');
     stdout.write('You should check this over and fix or refine as necessary.\n');
@@ -255,7 +254,7 @@ void _generateExercise(Map<String, Object> specification, String exerciseFilenam
   // Install deps
   Directory.current = exerciseDir;
 
-  final pubSuccess = await runProcess('pub', ['get']);
+  final pubSuccess = runProcess('pub', ['get']);
   assert(pubSuccess);
 }
 
@@ -471,8 +470,8 @@ String getFriendlyType(Object x) {
 
 // runProcess runs a process, writes any stdout/stderr output.
 // Returns true if the cmd was successful, false otherwise
-Future<bool> runProcess(String cmd, List<String> arguments) async {
-  final res = await Process.run(cmd, arguments, runInShell: true);
+bool runProcess(String cmd, List<String> arguments) {
+  final res = Process.runSync(cmd, arguments, runInShell: true);
   if (!res.stdout.toString().isEmpty) {
     stdout.write(res.stdout);
   }
@@ -484,7 +483,7 @@ Future<bool> runProcess(String cmd, List<String> arguments) async {
   return res.exitCode == 0;
 }
 
-Future main(List<String> args) async {
+void main(List<String> args) {
   final arguments = parser.parse(args);
   final restArgs = arguments.rest;
 
@@ -505,11 +504,11 @@ Future main(List<String> args) async {
     String canonicalFilePath = '${arguments['spec-path']}/exercises/$exerciseName/canonical-data.json';
     try {
       final canonicalDataJson = File(canonicalFilePath);
-      final source = await canonicalDataJson.readAsString();
+      final source = canonicalDataJson.readAsStringSync();
       final specification = json.decode(source) as Map<String, Object>;
       final version = specification['version'].toString();
 
-      if (await _doGenerate(exerciseDir, exerciseName, version)) {
+      if (_doGenerate(exerciseDir, exerciseName, version)) {
         _generateExercise(specification, exerciseFilename, exerciseName, exerciseDir, version, arguments);
       }
     } on FileSystemException {
