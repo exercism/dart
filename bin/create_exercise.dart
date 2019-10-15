@@ -6,10 +6,10 @@ import 'package:args/args.dart';
 import 'package:path/path.dart' show dirname;
 
 // Constants
-const String scriptFilename = 'create-exercise';
+const String scriptFileName = 'create-exercise';
 
 final parser = new ArgParser()
-  ..addSeparator('Usage: $scriptFilename [--spec-path path] <slug>')
+  ..addSeparator('Usage: $scriptFileName [--spec-path path] <slug>')
   ..addOption('spec-path', help: 'The location of the problem-specifications directory.', valueHelp: 'path');
 
 // Helpers
