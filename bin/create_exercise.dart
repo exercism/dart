@@ -264,7 +264,7 @@ String _ensureBackslashesTreatedAsBackslashes(List<String> input) {
     }
   });
 
-  return StringBuffer(result.join()).toString();
+  return result.join();
 }
 
 String _protectWhitespaces(String input) => input..replaceAll('\\', '\\\\');
