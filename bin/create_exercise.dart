@@ -5,10 +5,10 @@ import 'package:args/args.dart';
 import 'package:path/path.dart' show dirname;
 
 // Constants
-const scriptFileName = 'create-exercise';
+const _scriptFileName = 'create-exercise';
 
-final parser = ArgParser()
-  ..addSeparator('Usage: $scriptFileName [--spec-path path] <slug>')
+final _parser = ArgParser()
+  ..addSeparator('Usage: $_scriptFileName [--spec-path path] <slug>')
   ..addOption('spec-path', help: 'The location of the problem-specifications directory.', valueHelp: 'path');
 
 // Helpers
@@ -139,14 +139,14 @@ String testCaseTemplate(String exerciseName, Map<String, Object> testCase, {bool
     ''';
   }
 
-  String description = repr(testCase['description']);
+  String description = _repr(testCase['description']);
   String object = camelCase(exerciseName);
   String method = testCase['property'].toString();
-  String expected = repr(testCase['expected'], typeDeclaration: returnType);
+  String expected = _repr(testCase['expected'], typeDeclaration: returnType);
 
   returnType = _finalizeReturnType(expected, returnType);
   Map<String, dynamic> input = testCase['input'] as Map<String, dynamic>;
-  String arguments = input.keys.map((k) => repr(input[k])).join(', ');
+  String arguments = input.keys.map((k) => _repr(input[k])).join(', ');
   arguments = arguments == 'null' ? '' : arguments;
 
   if (_containsWhitespaceCodes(arguments)) {
@@ -227,7 +227,7 @@ void _generateExercise(Map<String, Object> specification, String exerciseFilenam
   // Generate README
   final dartRoot = '${dirname(Platform.script.toFilePath())}/..';
   final configletLoc = '$dartRoot/bin/configlet';
-  final genSuccess = runProcess(
+  final genSuccess = _runProcess(
       configletLoc, ['generate', '$dartRoot', '--spec-path', '${arguments['spec-path']}', '--only', exerciseName]);
   if (genSuccess) {
     stdout.write('Successfully created README.md\n');
@@ -236,7 +236,7 @@ void _generateExercise(Map<String, Object> specification, String exerciseFilenam
   }
 
   // The output from file generation is not always well-formatted, use dartfmt to clean it up
-  final fmtSuccess = runProcess('pub', ['run', 'dart_style:format', '-i', '0', '-l', '120', '-w', exerciseDir.path]);
+  final fmtSuccess = _runProcess('pub', ['run', 'dart_style:format', '-i', '0', '-l', '120', '-w', exerciseDir.path]);
   if (fmtSuccess) {
     stdout.write('Successfully created a rough-draft of tests at \'$testFileName\'.\n');
     stdout.write('You should check this over and fix or refine as necessary.\n');
@@ -248,7 +248,7 @@ void _generateExercise(Map<String, Object> specification, String exerciseFilenam
   // Install deps
   Directory.current = exerciseDir;
 
-  final pubSuccess = runProcess('pub', ['get']);
+  final pubSuccess = _runProcess('pub', ['get']);
   assert(pubSuccess);
 }
 
@@ -279,7 +279,7 @@ String _determineBestReturnType(List<dynamic> specCases) {
   final dynamic first = expectedList.isNotEmpty ? expectedList.first : null;
 
   if (first is Iterable) {
-    final iterableType = '${getIterableType(first)}';
+    final iterableType = '${_getIterableType(first)}';
 
     if (first is List) {
       return 'List<$iterableType>';
@@ -291,7 +291,7 @@ String _determineBestReturnType(List<dynamic> specCases) {
   }
 
   if (first is Map) {
-    return 'Map${getMapType(first)}';
+    return 'Map${_getMapType(first)}';
   }
 
   if (first is String) {
@@ -366,7 +366,7 @@ String _handleQuotes(String arguments) {
 /// `repr` takes in any object and tries to coerce it to a String in such a way that it is suitable to include in code.
 /// Based on the python `repr` function, but only works for basic types: String, Iterable, Map, and primitive types
 /// `typeDeclaration` is the determined return type and used to determine the type within collections.
-String repr(Object x, {String typeDeclaration}) {
+String _repr(Object x, {String typeDeclaration}) {
   if (x is String) {
     String result = _ensureBackslashesTreatedAsBackslashes(x.split(''));
     result = result
@@ -384,21 +384,21 @@ String repr(Object x, {String typeDeclaration}) {
     if (typeDeclaration != null) {
       final iterables = RegExp(r'List|Map|Set');
       final knownType = '<${typeDeclaration.replaceFirst(iterables, '')}>';
-      final currentType = '<${getIterableType(x)}>';
+      final currentType = '<${_getIterableType(x)}>';
       iterableType = knownType == currentType ? knownType : currentType;
     } else {
-      iterableType = '<${getIterableType(x)}>';
+      iterableType = '<${_getIterableType(x)}>';
     }
 
     if (x is List) {
-      return '$iterableType[${x.map(repr).join(', ')}]';
+      return '$iterableType[${x.map(_repr).join(', ')}]';
     } else if (x is Set) {
-      return '$iterableType{${x.map(repr).join(', ')}}';
+      return '$iterableType{${x.map(_repr).join(', ')}}';
     }
   }
 
   if (x is Map) {
-    return _defineMap(x, '${getMapType(x)}');
+    return _defineMap(x, '${_getMapType(x)}');
   }
 
   return '$x';
@@ -407,15 +407,15 @@ String repr(Object x, {String typeDeclaration}) {
 String _defineMap(Map x, String iterableType) {
   final pairs = <String>[];
   for (var k in x.keys) {
-    pairs.add('${repr(k)}: ${repr(x[k])}');
+    pairs.add('${_repr(k)}: ${_repr(x[k])}');
   }
 
   return '$iterableType{${pairs.join(', ')}}';
 }
 
 /// A helper method to get the inside type of an iterable
-String getIterableType(Iterable iter) {
-  Set<String> types = iter.map(getFriendlyType).toSet();
+String _getIterableType(Iterable iter) {
+  Set<String> types = iter.map(_getFriendlyType).toSet();
 
   if (types.length == 1) {
     return types.first;
@@ -425,9 +425,9 @@ String getIterableType(Iterable iter) {
 }
 
 /// A helper method to get the inside type of a map
-String getMapType(Map map) {
-  Set<String> keyTypes = map.keys.map(getFriendlyType).toSet();
-  Set<String> valueTypes = map.values.map(getFriendlyType).toSet();
+String _getMapType(Map map) {
+  Set<String> keyTypes = map.keys.map(_getFriendlyType).toSet();
+  Set<String> valueTypes = map.values.map(_getFriendlyType).toSet();
 
   String mapKeyType = keyTypes.length == 1 ? keyTypes.first : 'dynamic';
   String mapValueType = valueTypes.length == 1 ? valueTypes.first : 'dynamic';
@@ -436,17 +436,17 @@ String getMapType(Map map) {
 }
 
 /// Get a human-friendly type of a variable
-String getFriendlyType(Object x) {
+String _getFriendlyType(Object x) {
   if (x is String) {
     return 'String';
   }
 
   if (x is Iterable) {
-    return 'List<${getIterableType(x)}>';
+    return 'List<${_getIterableType(x)}>';
   }
 
   if (x is Map) {
-    return 'Map<${getIterableType(x.keys)}, ${getIterableType(x.values)}>';
+    return 'Map<${_getIterableType(x.keys)}, ${_getIterableType(x.values)}>';
   }
 
   if (x is num) {
@@ -464,7 +464,7 @@ String getFriendlyType(Object x) {
 
 // runProcess runs a process, writes any stdout/stderr output.
 // Returns true if the cmd was successful, false otherwise
-bool runProcess(String cmd, List<String> arguments) {
+bool _runProcess(String cmd, List<String> arguments) {
   final res = Process.runSync(cmd, arguments, runInShell: true);
   if (!res.stdout.toString().isEmpty) {
     stdout.write(res.stdout);
@@ -478,11 +478,11 @@ bool runProcess(String cmd, List<String> arguments) {
 }
 
 void main(List<String> args) {
-  final arguments = parser.parse(args);
+  final arguments = _parser.parse(args);
   final restArgs = arguments.rest;
 
   if (restArgs.isEmpty) {
-    stderr.write(parser.usage);
+    stderr.write(_parser.usage);
     exit(1);
   }
 
