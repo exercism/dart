@@ -160,8 +160,7 @@
         "pattern_recognition",
         "polymorphism",
         "regular_expressions",
-        "strings",
-        "unicode"
+        "strings"
       ]
     },
     {
