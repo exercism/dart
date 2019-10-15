@@ -201,10 +201,10 @@ linter:
       group('testCaseTemplate tests', () {
         test('simple test for a single case', () {
           Map<String, dynamic> testCase = <String, dynamic>{
-            "description": "Zero is an Armstrong number",
-            "property": "isArmstrongNumber",
-            "input": {"number": 0},
-            "expected": true
+            'description': 'Zero is an Armstrong number',
+            'property': 'isArmstrongNumber',
+            'input': {'number': 0},
+            'expected': true
           };
 
           expect(testCaseTemplate('armstrong-numbers', testCase), equals('''
@@ -221,10 +221,10 @@ linter:
       test('single case', () {
         List<Map<String, dynamic>> cases = <Map<String, dynamic>>[
           <String, dynamic>{
-            "description": "Say Hi!",
-            "property": "hello",
-            "input": <String, dynamic>{},
-            "expected": "Hello, World!"
+            'description': 'Say Hi!',
+            'property': 'hello',
+            'input': <String, dynamic>{},
+            'expected': 'Hello, World!'
           }
         ];
 
@@ -237,40 +237,40 @@ linter:
       test('multiple cases', () {
         List<Map<String, dynamic>> cases = <Map<String, dynamic>>[
           <String, dynamic>{
-            "description": "year not divisible by 4 in common year",
-            "property": "leapYear",
-            "input": {"year": 2015},
-            "expected": false
+            'description': 'year not divisible by 4 in common year',
+            'property': 'leapYear',
+            'input': {'year': 2015},
+            'expected': false
           },
           <String, dynamic>{
-            "description": "year divisible by 2, not divisible by 4 in common year",
-            "property": "leapYear",
-            "input": {"year": 1970},
-            "expected": false
+            'description': 'year divisible by 2, not divisible by 4 in common year',
+            'property': 'leapYear',
+            'input': {'year': 1970},
+            'expected': false
           },
           <String, dynamic>{
-            "description": "year divisible by 4, not divisible by 100 in leap year",
-            "property": "leapYear",
-            "input": {"year": 1996},
-            "expected": true
+            'description': 'year divisible by 4, not divisible by 100 in leap year',
+            'property': 'leapYear',
+            'input': {'year': 1996},
+            'expected': true
           },
           <String, dynamic>{
-            "description": "year divisible by 100, not divisible by 400 in common year",
-            "property": "leapYear",
-            "input": {"year": 2100},
-            "expected": false
+            'description': 'year divisible by 100, not divisible by 400 in common year',
+            'property': 'leapYear',
+            'input': {'year': 2100},
+            'expected': false
           },
           <String, dynamic>{
-            "description": "year divisible by 400 in leap year",
-            "property": "leapYear",
-            "input": {"year": 2000},
-            "expected": true
+            'description': 'year divisible by 400 in leap year',
+            'property': 'leapYear',
+            'input': {'year': 2000},
+            'expected': true
           },
           <String, dynamic>{
-            "description": "year divisible by 200, not divisible by 400 in common year",
-            "property": "leapYear",
-            "input": {"year": 1800},
-            "expected": false
+            'description': 'year divisible by 200, not divisible by 400 in common year',
+            'property': 'leapYear',
+            'input': {'year': 1800},
+            'expected': false
           }
         ];
 
@@ -283,14 +283,14 @@ linter:
       test('nested case', () {
         List<Map<String, dynamic>> cases = <Map<String, dynamic>>[
           <String, dynamic>{
-            "description": "Check if the given string is an isogram",
-            "comments": ["Output should be a boolean denoting if the string is a isogram or not."],
-            "cases": [
+            'description': 'Check if the given string is an isogram',
+            'comments': ['Output should be a boolean denoting if the string is a isogram or not.'],
+            'cases': [
               {
-                "description": "empty string",
-                "property": "isIsogram",
-                "input": {"phrase": ""},
-                "expected": true
+                'description': 'empty string',
+                'property': 'isIsogram',
+                'input': {'phrase': ''},
+                'expected': true
               }
             ]
           }
@@ -305,71 +305,71 @@ linter:
       test('three nested cases', () {
         List<Map<String, dynamic>> cases = <Map<String, dynamic>>[
           <String, dynamic>{
-            "description": "Square the sum of the numbers up to the given number",
-            "cases": [
+            'description': 'Square the sum of the numbers up to the given number',
+            'cases': [
               {
-                "description": "square of sum 1",
-                "property": "squareOfSum",
-                "input": {"number": 1},
-                "expected": 1
+                'description': 'square of sum 1',
+                'property': 'squareOfSum',
+                'input': {'number': 1},
+                'expected': 1
               },
               {
-                "description": "square of sum 5",
-                "property": "squareOfSum",
-                "input": {"number": 5},
-                "expected": 225
+                'description': 'square of sum 5',
+                'property': 'squareOfSum',
+                'input': {'number': 5},
+                'expected': 225
               },
               {
-                "description": "square of sum 100",
-                "property": "squareOfSum",
-                "input": {"number": 100},
-                "expected": 25502500
+                'description': 'square of sum 100',
+                'property': 'squareOfSum',
+                'input': {'number': 100},
+                'expected': 25502500
               }
             ]
           },
           <String, dynamic>{
-            "description": "Sum the squares of the numbers up to the given number",
-            "cases": [
+            'description': 'Sum the squares of the numbers up to the given number',
+            'cases': [
               {
-                "description": "sum of squares 1",
-                "property": "sumOfSquares",
-                "input": {"number": 1},
-                "expected": 1
+                'description': 'sum of squares 1',
+                'property': 'sumOfSquares',
+                'input': {'number': 1},
+                'expected': 1
               },
               {
-                "description": "sum of squares 5",
-                "property": "sumOfSquares",
-                "input": {"number": 5},
-                "expected": 55
+                'description': 'sum of squares 5',
+                'property': 'sumOfSquares',
+                'input': {'number': 5},
+                'expected': 55
               },
               {
-                "description": "sum of squares 100",
-                "property": "sumOfSquares",
-                "input": {"number": 100},
-                "expected": 338350
+                'description': 'sum of squares 100',
+                'property': 'sumOfSquares',
+                'input': {'number': 100},
+                'expected': 338350
               }
             ]
           },
           <String, dynamic>{
-            "description": "Subtract sum of squares from square of sums",
-            "cases": [
+            'description': 'Subtract sum of squares from square of sums',
+            'cases': [
               {
-                "description": "difference of squares 1",
-                "property": "differenceOfSquares",
-                "input": {"number": 1},
-                "expected": 0
+                'description': 'difference of squares 1',
+                'property': 'differenceOfSquares',
+                'input': {'number': 1},
+                'expected': 0
               },
               {
-                "description": "difference of squares 5",
-                "property": "differenceOfSquares",
-                "input": {"number": 5},
-                "expected": 170
+                'description': 'difference of squares 5',
+                'property': 'differenceOfSquares',
+                'input': {'number': 5},
+                'expected': 170
               },
               {
-                "description": "difference of squares 100",
-                "property": "differenceOfSquares",
-                "input": {"number": 100},
-                "expected": 25164150
+                'description': 'difference of squares 100',
+                'property': 'differenceOfSquares',
+                'input': {'number': 100},
+                'expected': 25164150
               }
             ]
           }
@@ -384,50 +384,50 @@ linter:
       test('uneven nested cases', () {
         List<Map<String, dynamic>> cases = <Map<String, dynamic>>[
           <String, dynamic>{
-            "description": "data is retained",
-            "property": "data",
-            "input": {
-              "treeData": ["4"]
+            'description': 'data is retained',
+            'property': 'data',
+            'input': {
+              'treeData': ['4']
             },
-            "expected": {"data": "4", "left": null, "right": null}
+            'expected': {'data': '4', 'left': null, 'right': null}
           },
           <String, dynamic>{
-            "description": "insert data at proper node",
-            "cases": [
+            'description': 'insert data at proper node',
+            'cases': [
               {
-                "description": "smaller number at left node",
-                "property": "data",
-                "input": {
-                  "treeData": ["4", "2"]
+                'description': 'smaller number at left node',
+                'property': 'data',
+                'input': {
+                  'treeData': ['4', '2']
                 },
-                "expected": {
-                  "data": "4",
-                  "left": {"data": "2", "left": null, "right": null},
-                  "right": null
+                'expected': {
+                  'data': '4',
+                  'left': {'data': '2', 'left': null, 'right': null},
+                  'right': null
                 }
               },
               {
-                "description": "same number at left node",
-                "property": "data",
-                "input": {
-                  "treeData": ["4", "4"]
+                'description': 'same number at left node',
+                'property': 'data',
+                'input': {
+                  'treeData': ['4', '4']
                 },
-                "expected": {
-                  "data": "4",
-                  "left": {"data": "4", "left": null, "right": null},
-                  "right": null
+                'expected': {
+                  'data': '4',
+                  'left': {'data': '4', 'left': null, 'right': null},
+                  'right': null
                 }
               },
               {
-                "description": "greater number at right node",
-                "property": "data",
-                "input": {
-                  "treeData": ["4", "5"]
+                'description': 'greater number at right node',
+                'property': 'data',
+                'input': {
+                  'treeData': ['4', '5']
                 },
-                "expected": {
-                  "data": "4",
-                  "left": null,
-                  "right": {"data": "5", "left": null, "right": null}
+                'expected': {
+                  'data': '4',
+                  'left': null,
+                  'right': {'data': '5', 'left': null, 'right': null}
                 }
               }
             ]
@@ -436,21 +436,21 @@ linter:
 
         Set<dynamic> actualSet = retrieveListOfExpected(cases);
         Set<Map<String, dynamic>> expectedSet = Set.of([
-          <String, dynamic>{"data": "4", "left": null, "right": null},
+          <String, dynamic>{'data': '4', 'left': null, 'right': null},
           <String, dynamic>{
-            "data": "4",
-            "left": {"data": "2", "left": null, "right": null},
-            "right": null
+            'data': '4',
+            'left': {'data': '2', 'left': null, 'right': null},
+            'right': null
           },
           <String, dynamic>{
-            "data": "4",
-            "left": {"data": "4", "left": null, "right": null},
-            "right": null
+            'data': '4',
+            'left': {'data': '4', 'left': null, 'right': null},
+            'right': null
           },
           <String, dynamic>{
-            "data": "4",
-            "left": null,
-            "right": {"data": "5", "left": null, "right": null}
+            'data': '4',
+            'left': null,
+            'right': {'data': '5', 'left': null, 'right': null}
           }
         ]);
 
@@ -460,10 +460,10 @@ linter:
       test('case with an expected error', () {
         List<Map<String, dynamic>> cases = <Map<String, dynamic>>[
           <String, dynamic>{
-            "description": "zero is an error",
-            "property": "steps",
-            "input": {"number": 0},
-            "expected": {"error": "Only positive numbers are allowed"}
+            'description': 'zero is an error',
+            'property': 'steps',
+            'input': {'number': 0},
+            'expected': {'error': 'Only positive numbers are allowed'}
           }
         ];
 
