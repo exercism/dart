@@ -6,25 +6,25 @@ import 'package:args/args.dart';
 import 'package:path/path.dart' show dirname;
 
 // Constants
-const String scriptFileName = 'create-exercise';
+const scriptFileName = 'create-exercise';
 
-final parser = new ArgParser()
+final parser = ArgParser()
   ..addSeparator('Usage: $scriptFileName [--spec-path path] <slug>')
   ..addOption('spec-path', help: 'The location of the problem-specifications directory.', valueHelp: 'path');
 
 // Helpers
-List<String> words(final String str) {
+List<String> words(String str) {
   if (str == null) return [''];
 
   return str
       .toLowerCase()
-      .replaceAll(new RegExp(r'[^a-z0-9]'), ' ')
-      .replaceAll(new RegExp(r' +'), ' ')
+      .replaceAll(RegExp(r'[^a-z0-9]'), ' ')
+      .replaceAll(RegExp(r' +'), ' ')
       .trim()
       .split(' ');
 }
 
-String upperFirst(final String str) {
+String upperFirst(String str) {
   if (str == null || str.length == 0) return '';
 
   final chars = str.split('');
@@ -75,7 +75,7 @@ String testTemplate(String name) {
 import 'package:${snakeCase(packages[0])}/${snakeCase(packages[0])}.dart';
 import 'package:${snakeCase(packages[1])}/${snakeCase(packages[1])}.dart';
 
-final ${camelCase(name)} = new ${pascalCase(name)}();
+final ${camelCase(name)} = ${pascalCase(name)}();
 
 void main() {
   group('${pascalCase(name)}', () {
@@ -219,16 +219,16 @@ void _generateExercise(Map<String, Object> specification, String exerciseFilenam
   _testCasesString = testCaseTemplate(exerciseName, specification);
   print('Found: ${arguments['spec-path']}/exercises/$exerciseName/canonical-data.json');
 
-  await new Directory('${exerciseDir.path}/lib').create(recursive: true);
-  await new Directory('${exerciseDir.path}/test').create(recursive: true);
+  await Directory('${exerciseDir.path}/lib').create(recursive: true);
+  await Directory('${exerciseDir.path}/test').create(recursive: true);
 
   // Create files
   String testFileName = '${exerciseDir.path}/test/${exerciseFilename}_test.dart';
-  await new File('${exerciseDir.path}/lib/example.dart').writeAsString(exampleTemplate(exerciseName));
-  await new File('${exerciseDir.path}/lib/${exerciseFilename}.dart').writeAsString(mainTemplate(exerciseName));
-  await new File(testFileName).writeAsString(testTemplate(exerciseName));
-  await new File('${exerciseDir.path}/analysis_options.yaml').writeAsString(analysisOptionsTemplate());
-  await new File('${exerciseDir.path}/pubspec.yaml').writeAsString(pubTemplate(exerciseName, version));
+  await File('${exerciseDir.path}/lib/example.dart').writeAsString(exampleTemplate(exerciseName));
+  await File('${exerciseDir.path}/lib/${exerciseFilename}.dart').writeAsString(mainTemplate(exerciseName));
+  await File(testFileName).writeAsString(testTemplate(exerciseName));
+  await File('${exerciseDir.path}/analysis_options.yaml').writeAsString(analysisOptionsTemplate());
+  await File('${exerciseDir.path}/pubspec.yaml').writeAsString(pubTemplate(exerciseName, version));
 
   // Generate README
   final dartRoot = '${dirname(Platform.script.toFilePath())}/..';
@@ -323,10 +323,10 @@ String _determineBestReturnType(List<dynamic> specCases) {
 
 Set<dynamic> retrieveListOfExpected(List<dynamic> list, {Set<dynamic> expectedTypeSet}) {
   if (expectedTypeSet == null) {
-    expectedTypeSet = new Set<dynamic>();
+    expectedTypeSet = Set<dynamic>();
   }
 
-  for (int count = 0; count < list.length; count++) {
+  for (var count = 0; count < list.length; count++) {
     if (list[count] is Map) {
       Map entry = list[count] as Map;
       bool addEntry = true;
@@ -389,7 +389,7 @@ String repr(Object x, {String typeDeclaration}) {
     String iterableType;
 
     if (typeDeclaration != null) {
-      final RegExp iterables = new RegExp(r'List|Map|Set');
+      final iterables = RegExp(r'List|Map|Set');
       final knownType = '<${typeDeclaration.replaceFirst(iterables, '')}>';
       final currentType = '<${getIterableType(x)}>';
       iterableType = knownType == currentType ? knownType : currentType;
@@ -494,7 +494,7 @@ Future main(List<String> args) async {
   }
 
   final exerciseName = restArgs.first;
-  final exerciseDir = new Directory('exercises/${kebabCase(exerciseName)}');
+  final exerciseDir = Directory('exercises/${kebabCase(exerciseName)}');
 
   // Create dir
   final currentDir = Directory.current;
@@ -504,9 +504,9 @@ Future main(List<String> args) async {
   if (arguments['spec-path'] != null) {
     String canonicalFilePath = '${arguments['spec-path']}/exercises/$exerciseName/canonical-data.json';
     try {
-      final File canonicalDataJson = new File(canonicalFilePath);
+      final canonicalDataJson = File(canonicalFilePath);
       final source = await canonicalDataJson.readAsString();
-      final Map<String, Object> specification = json.decode(source) as Map<String, Object>;
+      final specification = json.decode(source) as Map<String, Object>;
       final version = specification['version'].toString();
 
       if (await _doGenerate(exerciseDir, exerciseName, version)) {

@@ -152,7 +152,7 @@ class FooBar {
 import 'package:foo_bar/foo_bar.dart';
 import 'package:test/test.dart';
 
-final fooBar = new FooBar();
+final fooBar = FooBar();
 
 void main() {
   group('FooBar', () {
@@ -229,7 +229,7 @@ linter:
         ];
 
         Set<dynamic> actualSet = retrieveListOfExpected(cases);
-        Set<String> expectedSet = new Set.from(<String>['Hello, World!']);
+        Set<String> expectedSet = Set.from(<String>['Hello, World!']);
 
         expect(actualSet, equals(expectedSet));
       });
@@ -275,7 +275,7 @@ linter:
         ];
 
         Set<dynamic> actualSet = retrieveListOfExpected(cases);
-        Set<bool> expectedSet = new Set.from(<bool>[false, true]);
+        Set<bool> expectedSet = Set.from(<bool>[false, true]);
 
         expect(actualSet, equals(expectedSet));
       });
@@ -297,7 +297,7 @@ linter:
         ];
 
         Set<dynamic> actualSet = retrieveListOfExpected(cases);
-        Set<bool> expectedSet = new Set.from(<bool>[true]);
+        Set<bool> expectedSet = Set.from(<bool>[true]);
 
         expect(actualSet, equals(expectedSet));
       });
@@ -376,7 +376,7 @@ linter:
         ];
 
         Set<dynamic> actualSet = retrieveListOfExpected(cases);
-        Set<int> expectedSet = new Set.from(<int>[1, 225, 25502500, 55, 338350, 0, 170, 25164150]);
+        Set<int> expectedSet = Set.from(<int>[1, 225, 25502500, 55, 338350, 0, 170, 25164150]);
 
         expect(actualSet, equals(expectedSet));
       });
@@ -435,7 +435,7 @@ linter:
         ];
 
         Set<dynamic> actualSet = retrieveListOfExpected(cases);
-        Set<Map<String, dynamic>> expectedSet = new Set.from(<Map<String, dynamic>>[
+        Set<Map<String, dynamic>> expectedSet = Set.from(<Map<String, dynamic>>[
           <String, dynamic>{"data": "4", "left": null, "right": null},
           <String, dynamic>{
             "data": "4",
@@ -468,7 +468,7 @@ linter:
         ];
 
         Set<dynamic> actualSet = retrieveListOfExpected(cases);
-        Set<dynamic> expectedSet = new Set<dynamic>();
+        Set<dynamic> expectedSet = Set<dynamic>();
 
         expect(actualSet, equals(expectedSet));
       });
