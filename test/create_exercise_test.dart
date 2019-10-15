@@ -229,7 +229,7 @@ linter:
         ];
 
         Set<dynamic> actualSet = retrieveListOfExpected(cases);
-        Set<String> expectedSet = Set.from(<String>['Hello, World!']);
+        Set<String> expectedSet = Set.of(['Hello, World!']);
 
         expect(actualSet, equals(expectedSet));
       });
@@ -275,7 +275,7 @@ linter:
         ];
 
         Set<dynamic> actualSet = retrieveListOfExpected(cases);
-        Set<bool> expectedSet = Set.from(<bool>[false, true]);
+        Set<bool> expectedSet = Set.of([false, true]);
 
         expect(actualSet, equals(expectedSet));
       });
@@ -297,7 +297,7 @@ linter:
         ];
 
         Set<dynamic> actualSet = retrieveListOfExpected(cases);
-        Set<bool> expectedSet = Set.from(<bool>[true]);
+        Set<bool> expectedSet = Set.of([true]);
 
         expect(actualSet, equals(expectedSet));
       });
@@ -376,7 +376,7 @@ linter:
         ];
 
         Set<dynamic> actualSet = retrieveListOfExpected(cases);
-        Set<int> expectedSet = Set.from(<int>[1, 225, 25502500, 55, 338350, 0, 170, 25164150]);
+        Set<int> expectedSet = Set.of([1, 225, 25502500, 55, 338350, 0, 170, 25164150]);
 
         expect(actualSet, equals(expectedSet));
       });
@@ -435,7 +435,7 @@ linter:
         ];
 
         Set<dynamic> actualSet = retrieveListOfExpected(cases);
-        Set<Map<String, dynamic>> expectedSet = Set.from(<Map<String, dynamic>>[
+        Set<Map<String, dynamic>> expectedSet = Set.of([
           <String, dynamic>{"data": "4", "left": null, "right": null},
           <String, dynamic>{
             "data": "4",
