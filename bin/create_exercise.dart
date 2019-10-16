@@ -3,6 +3,7 @@ import 'dart:io';
 
 import 'package:args/args.dart';
 import 'package:path/path.dart' show dirname;
+import 'package:yaml/yaml.dart';
 
 // Constants
 const _scriptFileName = 'create-exercise';
@@ -201,14 +202,15 @@ String _finalizeReturnType(String expected, String returnType) {
 /// Determines whether the script should generate an exercise.
 bool _doGenerate(Directory exerciseDir, String exerciseName, String version) {
   if (exerciseDir.existsSync()) {
-    if (Directory('${exerciseDir.path}/.meta').existsSync()) {
-      if (File('${exerciseDir.path}/.meta/version').existsSync()) {
-        String currentVersion = File('${exerciseDir.path}/.meta/version').readAsStringSync();
+    if (File('${exerciseDir.path}/pubspec.yaml').existsSync()) {
+      String pubspecString = File('${exerciseDir.path}/pubspec.yaml').readAsStringSync();
+      final currentVersion = loadYaml(pubspecString)['version'] as String;
 
-        if (currentVersion == version) {
-          stderr.write('$exerciseName of version, $currentVersion, already exists\n');
-          exit(1);
-        }
+      if (currentVersion == version) {
+        stderr.write('$exerciseName of version, $currentVersion, already exists\n');
+        exit(1);
+      } else {
+        return true;
       }
     }
     stderr.write('$exerciseName already exists\n');
