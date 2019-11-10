@@ -1,3 +1,3 @@
-String twofer() {
+String twoFer() {
   // Put your code here
 }
