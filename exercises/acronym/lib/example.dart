@@ -1,8 +1,8 @@
 class Acronym {
   String abbreviate(final String input) {
-    StringBuffer acronymBuilder = new StringBuffer();
+    StringBuffer acronymBuilder = StringBuffer();
 
-    RegExp separatorsExp = new RegExp(r'( )|(-)');
+    RegExp separatorsExp = RegExp(r'( )|(-)');
     List<String> list = input.split(separatorsExp);
 
     // Need to remove any empty strings in the list to avoid an error when `.toUpperCase()` is called.
