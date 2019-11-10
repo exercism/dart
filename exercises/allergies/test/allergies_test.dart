@@ -1,9 +1,9 @@
 import 'package:allergies/allergies.dart';
 import 'package:test/test.dart';
 
-void main() {
-  final allergies = new Allergies();
+final allergies = Allergies();
 
+void main() {
   group('Allergies', () {
     group('testing for eggs allergy', () {
       test('not allergic to anything', () {
@@ -223,49 +223,52 @@ void main() {
 
     group('list when:', () {
       test('no allergies', () {
-        final List<Object> result = allergies.list(0);
+        final List<String> result = allergies.list(0);
         expect(result, equals(<String>[]));
       }, skip: true);
 
       test('just eggs', () {
         final List<String> result = allergies.list(1);
-        expect(result, equals(['eggs']));
+        expect(result, equals(<String>['eggs']));
       }, skip: true);
 
       test('just peanuts', () {
         final List<String> result = allergies.list(2);
-        expect(result, equals(['peanuts']));
+        expect(result, equals(<String>['peanuts']));
       }, skip: true);
 
       test('just strawberries', () {
         final List<String> result = allergies.list(8);
-        expect(result, equals(['strawberries']));
+        expect(result, equals(<String>['strawberries']));
       }, skip: true);
 
       test('eggs and peanuts', () {
         final List<String> result = allergies.list(3);
-        expect(result, equals(['eggs', 'peanuts']));
+        expect(result, equals(<String>['eggs', 'peanuts']));
       }, skip: true);
 
       test('more than eggs but not peanuts', () {
         final List<String> result = allergies.list(5);
-        expect(result, equals(['eggs', 'shellfish']));
+        expect(result, equals(<String>['eggs', 'shellfish']));
       }, skip: true);
 
       test('lots of stuff', () {
         final List<String> result = allergies.list(248);
-        expect(result, equals(['strawberries', 'tomatoes', 'chocolate', 'pollen', 'cats']));
+        expect(result, equals(<String>['strawberries', 'tomatoes', 'chocolate', 'pollen', 'cats']));
       }, skip: true);
 
       test('everything', () {
         final List<String> result = allergies.list(255);
-        expect(result,
-            equals(['eggs', 'peanuts', 'shellfish', 'strawberries', 'tomatoes', 'chocolate', 'pollen', 'cats']));
+        expect(
+            result,
+            equals(
+                <String>['eggs', 'peanuts', 'shellfish', 'strawberries', 'tomatoes', 'chocolate', 'pollen', 'cats']));
       }, skip: true);
 
       test('no allergen score parts', () {
         final List<String> result = allergies.list(509);
-        expect(result, equals(['eggs', 'shellfish', 'strawberries', 'tomatoes', 'chocolate', 'pollen', 'cats']));
+        expect(
+            result, equals(<String>['eggs', 'shellfish', 'strawberries', 'tomatoes', 'chocolate', 'pollen', 'cats']));
       }, skip: true);
     });
   });
