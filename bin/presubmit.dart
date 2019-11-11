@@ -2,7 +2,7 @@ import 'dart:async';
 import 'package:exercism_dart/src/utils.dart';
 
 Future<Null> main() async {
-  final CommonUtils utils = new CommonUtils();
+  final CommonUtils utils = CommonUtils();
 
   if (utils.fetchConfiglet() == 0) {
     print('Formatting config.json...');

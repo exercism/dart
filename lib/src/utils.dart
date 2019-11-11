@@ -6,13 +6,13 @@ class CommonUtils {
   ProcessManager _manager;
 
   CommonUtils() {
-    this._manager = new ProcessManager();
+    this._manager = ProcessManager();
   }
 
   /// Fetches the configlet file if it doesn't exist already, and returns the
   /// exit code.
   int fetchConfiglet() {
-    File configletFile = new File('bin/configlet');
+    File configletFile = File('bin/configlet');
 
     if (!configletFile.existsSync()) {
       print('Fetching configlet...');
@@ -39,7 +39,7 @@ class CommonUtils {
 
     if (result is bool && !result || result is Future && !await result) {
       print('Unable to run "$executable". Make sure that it\'s executable and that you have permissions to run it.');
-      return new Future.value(1);
+      return Future.value(1);
     }
 
     return runCmd(executable, arguments);

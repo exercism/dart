@@ -26,7 +26,7 @@ Future runCmd(List<String> cmds) async {
 }
 
 Future<String> getPackageName() async {
-  final pubspec = new File('pubspec.yaml');
+  final pubspec = File('pubspec.yaml');
 
   final String pubspecString = await pubspec.readAsString();
 
@@ -36,7 +36,7 @@ Future<String> getPackageName() async {
 }
 
 Future locateExercismDirAndExecuteTests() async {
-  final exercisesRootDir = new Directory('exercises');
+  final exercisesRootDir = Directory('exercises');
 
   assert(await exercisesRootDir.exists());
 
@@ -65,8 +65,8 @@ Running tests for: $packageName
 ================================================================================
 ''');
 
-  File stub = new File('lib/${packageName}.dart');
-  File example = new File('lib/example.dart');
+  File stub = File('lib/${packageName}.dart');
+  File example = File('lib/example.dart');
 
   try {
     stub = await stub.rename('lib/${packageName}.dart.bu');
@@ -91,7 +91,7 @@ Running tests for: $packageName
 
 /// Execute all the tests under the exercise directory
 Future runAllTests() async {
-  final dartExercismRootDir = new Directory('..');
+  final dartExercismRootDir = Directory('..');
 
   assert(await dartExercismRootDir.exists());
 
@@ -118,11 +118,11 @@ void main() {
     } else {
       final testPath = '${Directory.current.path}/exercises/$testName';
 
-      if (!await new Directory(testPath).exists()) {
-        throw new ArgumentError('No exercise with this name: $testName');
+      if (!await Directory(testPath).exists()) {
+        throw ArgumentError('No exercise with this name: $testName');
       }
 
       await runTest(testPath);
     }
-  }, timeout: new Timeout(new Duration(minutes: 20)));
+  }, timeout: Timeout(Duration(minutes: 20)));
 }
