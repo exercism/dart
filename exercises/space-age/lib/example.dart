@@ -1,14 +1,14 @@
 class SpaceAge {
   /// A Mapping of planet as a `String` to corresponding class
   Map<String, Planet> planets = {
-    "Earth": new Earth(),
-    "Mercury": new Mercury(),
-    "Venus": new Venus(),
-    "Mars": new Mars(),
-    "Jupiter": new Jupiter(),
-    "Saturn": new Saturn(),
-    "Uranus": new Uranus(),
-    "Neptune": new Neptune(),
+    "Earth": Earth(),
+    "Mercury": Mercury(),
+    "Venus": Venus(),
+    "Mars": Mars(),
+    "Jupiter": Jupiter(),
+    "Saturn": Saturn(),
+    "Uranus": Uranus(),
+    "Neptune": Neptune(),
   };
 
   /// Returns age in years on given [planet]
@@ -26,7 +26,7 @@ class SpaceAge {
 
       age = asPlanet.ageInYears(seconds);
     } else {
-      throw new ArgumentError.value(planet, 'planet',
+      throw ArgumentError.value(planet, 'planet',
           'must be one of the following\n${planets.keys.toList().join('\n')}\nor a class extending Planet');
     }
 

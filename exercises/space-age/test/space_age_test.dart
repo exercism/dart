@@ -1,7 +1,7 @@
 import 'package:test/test.dart';
 import 'package:space_age/space_age.dart';
 
-final SpaceAge spaceAge = new SpaceAge();
+final SpaceAge spaceAge = SpaceAge();
 
 void main() {
   group("SpaceAge", ageOnPlanetTests);
