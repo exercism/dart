@@ -2,7 +2,7 @@ import 'dart:async';
 import 'package:exercism_dart/src/utils.dart';
 
 Future main() async {
-  final CommonUtils utils = new CommonUtils();
+  final CommonUtils utils = CommonUtils();
   int errorCode = 0;
 
   if (utils.fetchConfiglet() == 0) {
@@ -12,7 +12,7 @@ Future main() async {
     if (errorCode != 0) {
       print('Checking config.json formatting failed!!');
       await utils.terminate();
-      throw new StateError('Formatting failed.');
+      throw StateError('Formatting failed.');
     }
   }
 
@@ -23,7 +23,7 @@ Future main() async {
   if (errorCode != 0) {
     print('Checking exercise formatting failed!!');
     await utils.terminate();
-    throw new StateError('Formatting failed.');
+    throw StateError('Formatting failed.');
   }
 
   await utils.terminate();
