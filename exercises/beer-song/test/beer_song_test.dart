@@ -2,7 +2,7 @@ import 'package:beer_song/beer_song.dart';
 import 'package:test/test.dart';
 
 void main() {
-  final beerSong = new BeerSong();
+  final beerSong = BeerSong();
 
   group('BeerSong', () {
     group('verse', () {
