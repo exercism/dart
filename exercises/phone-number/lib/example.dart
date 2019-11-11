@@ -5,7 +5,7 @@ class PhoneNumber {
     String onlyDigits = "";
 
     /// find all digits.
-    Iterable<Match> findDigits = new RegExp(r'\d+').allMatches(phoneNumber);
+    Iterable<Match> findDigits = RegExp(r'\d+').allMatches(phoneNumber);
     findDigits.forEach((match) {
       onlyDigits += match.group(0);
 
@@ -39,7 +39,7 @@ class PhoneNumber {
     /// Only these special characters are allowed.
     /// **"." "(" ")" "-" "+" ** and space,
     /// remove these characters.
-    phoneNumber = phoneNumber.replaceAll(new RegExp(r"^[-.()+\s]*$"), "");
+    phoneNumber = phoneNumber.replaceAll(RegExp(r"^[-.()+\s]*$"), "");
 
     /// "123-@:!-7890" is invalid, however **"123-@:!-789012"** is valid
     /// by the current logic since the regex grabs all the digits
@@ -57,7 +57,7 @@ class PhoneNumber {
     /// after removing the country code if it exists,
     /// first and fourth digits can only range from **2-9**
     /// i.e. Area code and Exchange code.
-    RegExp codeRange = new RegExp(r'^[2-9]$');
+    RegExp codeRange = RegExp(r'^[2-9]$');
     if (codeRange.hasMatch(onlyDigits[0]) && codeRange.hasMatch(onlyDigits[3])) {
       return onlyDigits;
     }
