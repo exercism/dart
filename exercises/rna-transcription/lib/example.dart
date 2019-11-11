@@ -11,7 +11,7 @@ class RnaTranscription {
         case "A":
           return "U";
         default:
-          throw new ArgumentError("Invalid input");
+          throw ArgumentError("Invalid input");
       }
     }).join("");
   }
