@@ -1,7 +1,7 @@
 import 'package:test/test.dart';
 import 'package:word_count/word_count.dart';
 
-final WordCount wordCount = new WordCount();
+final WordCount wordCount = WordCount();
 
 void main() {
   group("WordCount: Simple Tests - ", simpleTests);
