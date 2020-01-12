@@ -1,14 +1,14 @@
 class SpaceAge {
   /// A Mapping of planet as a `String` to corresponding class
   Map<String, Planet> planets = {
-    "Earth": Earth(),
-    "Mercury": Mercury(),
-    "Venus": Venus(),
-    "Mars": Mars(),
-    "Jupiter": Jupiter(),
-    "Saturn": Saturn(),
-    "Uranus": Uranus(),
-    "Neptune": Neptune(),
+    'Earth': Earth(),
+    'Mercury': Mercury(),
+    'Venus': Venus(),
+    'Mars': Mars(),
+    'Jupiter': Jupiter(),
+    'Saturn': Saturn(),
+    'Uranus': Uranus(),
+    'Neptune': Neptune(),
   };
 
   /// Returns age in years on given [planet]
