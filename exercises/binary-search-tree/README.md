@@ -53,10 +53,22 @@ And if we then added 1, 5, and 7, it would look like this
      / \     / \
     1   3   5   7
 
+
+To run the tests:
+
+```sh
+$ pub run test
+```
+
+For more detailed info about the Dart track see the [installation](http://exercism.io/languages/dart/installation) and [testing](http://exercism.io/languages/dart/tests) pages.
+
 ## Resources
 
 - [Data structures: Binary Search Tree (YouTube)](https://youtu.be/pYT9F8_LFTM?t=9m39s)
 
-## Submitting Incomplete Solutions
+## Source
 
+Josh Cheek [https://twitter.com/josh_cheek](https://twitter.com/josh_cheek)
+
+## Submitting Incomplete Solutions
 It's possible to submit an incomplete solution so you can see how others have completed the exercise.
