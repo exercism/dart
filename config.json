@@ -456,6 +456,19 @@
         "bitwise_operations",
         "integers"
       ]
+    },
+    {
+      "slug": "robot-simulator",
+      "uuid": "8fffb0bb-2f71-41a9-90f2-7006020ddc19",
+      "core": false,
+      "unlocked_by": "pascals-triangle",
+      "difficulty": 4,
+      "topics": [
+        "classes",
+        "enumerations",
+        "logic",
+        "loops"
+      ]
     }
   ]
 }
