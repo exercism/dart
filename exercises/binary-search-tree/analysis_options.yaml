@@ -10,9 +10,9 @@ analyzer:
 
 linter:
   rules:
-      # Error Rules
-      - avoid_relative_lib_imports
-      - avoid_types_as_parameter_names
-      - literal_only_boolean_expressions
-      - no_adjacent_strings_in_list
-      - valid_regexps
+    # Error Rules
+    - avoid_relative_lib_imports
+    - avoid_types_as_parameter_names
+    - literal_only_boolean_expressions
+    - no_adjacent_strings_in_list
+    - valid_regexps
