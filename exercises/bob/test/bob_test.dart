@@ -36,7 +36,7 @@ void main() {
     }, skip: true);
 
     test('talking forcefully', () {
-      final String result = bob.response('Let\'s go make out behind the gym!');
+      final String result = bob.response('Hi there!');
       expect(result, equals('Whatever.'));
     }, skip: true);
 
@@ -46,7 +46,7 @@ void main() {
     }, skip: true);
 
     test('forceful question', () {
-      final String result = bob.response('WHAT THE HELL WERE YOU THINKING?');
+      final String result = bob.response('WHAT\'S GOING ON?');
       expect(result, equals('Calm down, I know what I\'m doing!'));
     }, skip: true);
 

@@ -4,7 +4,9 @@ class Bob {
       return "Fine. Be that way!";
     }
 
-    if (message == "WHAT THE HELL WERE YOU THINKING?") {
+    if (message == message.toUpperCase() &&
+        message != message.toLowerCase() &&
+        message.substring(message.length - 1) == '?') {
       return "Calm down, I know what I'm doing!";
     }
 
