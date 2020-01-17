@@ -41,7 +41,7 @@ void main() {
     }, skip: true);
 
     test('using acronyms in regular speech', () {
-      final String result = bob.response('It\'s OK if you don\'t want to go to the DMV.');
+      final String result = bob.response('It\'s OK if you don\'t want to go work for NASA.');
       expect(result, equals('Whatever.'));
     }, skip: true);
 
@@ -71,7 +71,7 @@ void main() {
     }, skip: true);
 
     test('shouting with no exclamation mark', () {
-      final String result = bob.response('I HATE THE DMV');
+      final String result = bob.response('I HATE THE DENTIST');
       expect(result, equals('Whoa, chill out!'));
     }, skip: true);
 
