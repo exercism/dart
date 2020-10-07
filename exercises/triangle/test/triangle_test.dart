@@ -1,9 +1,9 @@
 import 'package:test/test.dart';
 import 'package:triangle/triangle.dart';
 
-void main() {
-  final triangle = new Triangle();
+final triangle = Triangle();
 
+void main() {
   group('Triangle', () {
     group('equilateral triangle', () {
       test('all sides are equal', () {
