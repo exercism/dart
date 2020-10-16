@@ -6,6 +6,29 @@ Choose your operating system:
 * [Mac OS X](#mac-os-x)
 * [Linux](#linux)
 
+## Understanding Test Result
+
+The test run summary will list the number of passed, skipped and failed tests.
+For example :
+
+```
+❯ pub run test
+00:01 +4 ~3 -1: Some tests failed.
+```
+
+`+` describes the number of tests passed. In this example, 4 tests are passed.
+
+`~` describes the number of tests skipped. In this example, 3 tests are skipped.
+
+`-` describes the number of tests failed. In this case, there is only one test that failed.
+
+The `skip` parameter instructs the test suite to not run a test. 
+This is commonly used to avoid running tests of unimplemented functionality, so you can focus on the part you are currently working on.
+
+It is advised to enable tests one by one as you implement the functionality being tested or as you move towards edge cases. 
+You can do so by flipping the `skip: false` to `skip: true` flag for each test. 
+You can also submit your exercise without passing all tests to get feedback.
+
 ----
 
 # Windows
