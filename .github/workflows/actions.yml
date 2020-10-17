@@ -17,7 +17,7 @@ jobs:
       id: cache-dependencies
       with:
         path: 
-          - ~/.pub-cache
+          - $HOME/.pub-cache
           - .dart_tool/pub
           - .pub/
         key: ${{ runner.os }}-${{ hashFiles('**/lockfiles') }}
