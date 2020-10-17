@@ -1,0 +1,36 @@
+name: Actions
+
+on: [push, pull_request]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    container:
+      image:  google/dart:latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Cache Dependencies
+      uses: actions/cache@v2
+      id: cache-dependencies
+      key: 
+      with:
+        path: 
+          - ~/.pub-cache
+          - .dart_tool/pub
+          - .pub/
+        key: ${{ runner.os }}-${{ hashFiles('**/lockfiles') }}
+
+
+    - name: Install dependencies
+      if: steps.cache-dependencies.outputs.cache-hit != 'true'
+      run: pub get
+
+    - name: Check Stage formatting
+      run: pub run bin/check_formatting.dart
+
+    - name: Run tests
+      run: pub run test
+      
