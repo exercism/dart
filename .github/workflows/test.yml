@@ -12,19 +12,11 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - name: Cache Dependencies
-      uses: actions/cache@v2
-      id: cache-dependencies
-      with:
-        path: |
-          $HOME/.pub-cache
-          .dart_tool/
-          .pub/
-        key: ${{ runner.os }}-${{ hashFiles('**/lockfiles') }}
-
     - name: Install dependencies
-      if: steps.cache-dependencies.outputs.cache-hit != 'true'
       run: pub get
+
+    - name: Check Stage formatting
+      run: pub get && pub run bin/check_formatting.dart
 
     - name: Run tests
       run: pub run test
