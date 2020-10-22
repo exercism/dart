@@ -16,7 +16,7 @@ jobs:
       run: pub get
 
     - name: Check Stage formatting
-      run: pub get && pub run bin/check_formatting.dart
+      run: pub run bin/check_formatting.dart
 
     - name: Run tests
       run: pub run test
