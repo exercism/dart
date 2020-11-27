@@ -5,6 +5,8 @@
 .project
 bin/configlet
 bin/configlet.exe
+bin/canonical_data_syncer
+bin/canonical_data_syncer.exe
 
 ### Dart ###
 # Directory created by dart tools
