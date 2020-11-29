@@ -3,7 +3,7 @@ import 'package:test/test.dart';
 
 /// We are using a predicate to better match the error message from collatzConjecture.
 /// Knowing about predicates are not needed for completing this exercise,
-/// but you can find out more info at http://dartdoc.takyam.com/articles/dart-unit-tests/#matchers
+/// but you can find out more info at https://pub.dev/documentation/test/latest/
 /// if you wish to learn more about predicates and matchers used in Unit Testing for Dart.
 
 void main() {
