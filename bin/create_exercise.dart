@@ -134,7 +134,7 @@ String testCaseTemplate(String exerciseName, Map<String, Object> testCase, {bool
 
     // Build the tests up recursively, only first test should be skipped
     List<String> testList = <String>[];
-    for (Map<String, Object> caseObj in testCase['cases'] as dynamic) {
+    for (Map<String, Object> caseObj in testCase['cases'] as List<Map<String, Object>>) {
       testList.add(testCaseTemplate(exerciseName, caseObj, firstTest: skipTests, returnType: returnType));
       skipTests = false;
     }
