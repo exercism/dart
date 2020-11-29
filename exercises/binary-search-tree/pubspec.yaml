@@ -1,5 +1,4 @@
 name: 'binary_search_tree'
-version: 1.0.0
 environment:
   sdk: '>=2.0.0 <3.0.0'
 dev_dependencies:
