@@ -41,6 +41,9 @@ Please keep the following in mind:
 - All Exercism exercises must be defined in [problem-specifications](https://github.com/exercism/problem-specifications/tree/master/exercises) before they are implemented for a specific track. If your exercise is new, please submit a PR to [exercism/problem-specification](https://github.com/exercism/problem-specifications).
 
 - Please make sure the new exercise conforms to specifications in the [exercism/problem-specifications](https://github.com/exercism/problem-specifications) repo.
+  - Run `bin/fetch-canonical_data_syncer` to download the canonical_data_syncer.
+  - Use `bin/canonical_data_syncer --exercise <slug-name-for-new-exercise> --mode -c` to see if any test cases are missing.
+    - Example `./bin/canonical_data_syncer --exercise armstrong-numbers --mode -c`
 
 - Each exercise must stand on its own. Do not reference files outside the exercise directory. They will not be included when the user fetches the exercise.
 
@@ -53,8 +56,8 @@ Please keep the following in mind:
 - Each exercise should have a test suite, an example solution, a template file for the real implementation, and a README.md
   - The CI build expects Dart files to be named in the convention of snake_case_filenames
 
-- Please do not commit any configuration files or directories inside the exercise other than pubspec.lock and pubspec.yaml
+- Please do not commit any configuration files or directories inside the exercise other than pubspec.yaml, .meta/tests.toml, and analysis_options.yaml.
 
 - Be sure to add the new exercise to the appropriate place in the `config.json` file.
 
-- Please run `bin/fetch-configlet && bin/configlet lint --track-id=dart .` to ensure the exercise is configured correctly.
+- Please run `bin/fetch-configlet && bin/configlet lint --track-id=dart .` to configure the exercise correctly.
