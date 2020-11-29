@@ -22,7 +22,7 @@ List<String> words(String str) {
 
 /// Converts first character to upper case.
 String upperFirst(String str) {
-  if (str == null || str.length == 0) return '';
+  if (str == null || str.isEmpty) return '';
 
   final chars = str.split('');
   final first = chars.first;
@@ -130,15 +130,17 @@ String testCaseTemplate(String exerciseName, Map<String, Object> testCase, {bool
     }
 
     // We have a group, not a case
-    String description = _handleQuotes(testCase['description'] as String);
+    final description = _handleQuotes(testCase['description'] as String);
 
     // Build the tests up recursively, only first test should be skipped
-    List<String> testList = <String>[];
+    final testList = <String>[];
+
     for (Map<String, Object> caseObj in testCase['cases'] as List<Map<String, Object>>) {
       testList.add(testCaseTemplate(exerciseName, caseObj, firstTest: skipTests, returnType: returnType));
       skipTests = false;
     }
-    String tests = testList.join('\n');
+
+    final tests = testList.join('\n');
 
     if (description == null) {
       return tests;
@@ -151,13 +153,13 @@ String testCaseTemplate(String exerciseName, Map<String, Object> testCase, {bool
     ''';
   }
 
-  String description = _repr(testCase['description']);
-  String object = camelCase(exerciseName);
-  String method = testCase['property'].toString();
-  String expected = _repr(testCase['expected'], typeDeclaration: returnType);
+  final description = _repr(testCase['description']);
+  final object = camelCase(exerciseName);
+  final method = testCase['property'].toString();
+  final expected = _repr(testCase['expected'], typeDeclaration: returnType);
 
   returnType = _finalizeReturnType(expected, returnType);
-  Map<String, dynamic> input = testCase['input'] as Map<String, dynamic>;
+  final input = testCase['input'] as Map<String, dynamic>;
   String arguments = input.keys.map((k) => _repr(input[k])).join(', ');
   arguments = arguments == 'null' ? '' : arguments;
 
@@ -203,7 +205,7 @@ String _finalizeReturnType(String expected, String returnType) {
 bool _doGenerate(Directory exerciseDir, String exerciseName, String version) {
   if (exerciseDir.existsSync()) {
     if (File('${exerciseDir.path}/pubspec.yaml').existsSync()) {
-      String pubspecString = File('${exerciseDir.path}/pubspec.yaml').readAsStringSync();
+      final pubspecString = File('${exerciseDir.path}/pubspec.yaml').readAsStringSync();
       final currentVersion = loadYaml(pubspecString)['version'] as String;
 
       if (currentVersion == version) {
@@ -230,7 +232,7 @@ void _generateExercise(Map<String, Object> specification, String exerciseFilenam
   Directory('${exerciseDir.path}/test').createSync(recursive: true);
 
   // Create files
-  String testFileName = '${exerciseDir.path}/test/${exerciseFilename}_test.dart';
+  final testFileName = '${exerciseDir.path}/test/${exerciseFilename}_test.dart';
   File('${exerciseDir.path}/lib/example.dart').writeAsStringSync(exampleTemplate(exerciseName));
   File('${exerciseDir.path}/lib/${exerciseFilename}.dart').writeAsStringSync(mainTemplate(exerciseName));
   File(testFileName).writeAsStringSync(testTemplate(exerciseName));
@@ -267,7 +269,7 @@ void _generateExercise(Map<String, Object> specification, String exerciseFilenam
 
 /// If a string contains a single backslash, we need to add another behind it, so the backslash remains.
 String _escapeBackslash(String input) {
-  List<String> result = <String>[];
+  final result = <String>[];
 
   input.split('').forEach((String value) {
     if (value == r'\') {
@@ -335,7 +337,7 @@ Set<dynamic> retrieveListOfExpected(List<dynamic> testCases, {Set<dynamic> expec
 
   for (var count = 0; count < testCases.length; count++) {
     if (testCases[count] is Map) {
-      Map entry = testCases[count] as Map;
+      final entry = testCases[count] as Map;
       bool addEntry = true;
 
       if (entry.containsKey('expected')) {
@@ -430,7 +432,7 @@ String _defineMap(Map x, String iterableType) {
 
 /// A helper method to get the inside type of an iterable
 String _getIterableType(Iterable iter) {
-  Set<String> types = iter.map(_getFriendlyType).toSet();
+  final types = iter.map(_getFriendlyType).toSet();
 
   if (types.length == 1) {
     return types.first;
@@ -441,11 +443,11 @@ String _getIterableType(Iterable iter) {
 
 /// A helper method to get the inside type of a map
 String _getMapType(Map map) {
-  Set<String> keyTypes = map.keys.map(_getFriendlyType).toSet();
-  Set<String> valueTypes = map.values.map(_getFriendlyType).toSet();
+  final keyTypes = map.keys.map(_getFriendlyType).toSet();
+  final valueTypes = map.values.map(_getFriendlyType).toSet();
 
-  String mapKeyType = keyTypes.length == 1 ? keyTypes.first : 'dynamic';
-  String mapValueType = valueTypes.length == 1 ? valueTypes.first : 'dynamic';
+  final mapKeyType = keyTypes.length == 1 ? keyTypes.first : 'dynamic';
+  final mapValueType = valueTypes.length == 1 ? valueTypes.first : 'dynamic';
 
   return '<$mapKeyType, $mapValueType>';
 }
@@ -510,7 +512,7 @@ void main(List<String> args) {
 
   // Get test cases from canonical-data.json, format tests
   if (arguments['spec-path'] != null) {
-    String canonicalFilePath = '${arguments['spec-path']}/exercises/$exerciseName/canonical-data.json';
+    final canonicalFilePath = '${arguments['spec-path']}/exercises/$exerciseName/canonical-data.json';
     try {
       final canonicalDataJson = File(canonicalFilePath);
       final source = canonicalDataJson.readAsStringSync();

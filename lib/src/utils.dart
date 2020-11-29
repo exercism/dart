@@ -12,7 +12,7 @@ class CommonUtils {
   /// Fetches the configlet file if it doesn't exist already, and returns the
   /// exit code.
   int fetchConfiglet() {
-    File configletFile = File('bin/configlet');
+    final configletFile = File('bin/configlet');
 
     if (!configletFile.existsSync()) {
       print('Fetching configlet...');
@@ -25,7 +25,7 @@ class CommonUtils {
   /// Returns a [Future] with the exit code resulting from running the
   /// [executable] with [arguments].
   Future<int> runCmd(String executable, [List<String> arguments = const []]) async {
-    Process spawn = await _manager.spawn(executable, arguments);
+    final spawn = await _manager.spawn(executable, arguments);
     return _exit(await spawn.exitCode);
   }
 

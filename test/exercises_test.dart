@@ -57,7 +57,7 @@ Future runTest(String path) async {
 
   Directory.current = path;
 
-  String packageName = await getPackageName();
+  final packageName = await getPackageName();
 
   print('''
 ================================================================================
@@ -99,7 +99,7 @@ Future runAllTests() async {
 
   Directory.current = dartExercismRootDir.parent;
 
-  String packageName = await getPackageName();
+  final packageName = await getPackageName();
 
   print('''
 

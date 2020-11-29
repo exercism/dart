@@ -200,7 +200,7 @@ linter:
 
       group('testCaseTemplate tests', () {
         test('simple test for a single case', () {
-          Map<String, dynamic> testCase = <String, dynamic>{
+          final testCase = <String, dynamic>{
             'description': 'Zero is an Armstrong number',
             'property': 'isArmstrongNumber',
             'input': {'number': 0},
@@ -219,7 +219,7 @@ linter:
 
     group('processing test cases', () {
       test('single case', () {
-        List<Map<String, dynamic>> cases = <Map<String, dynamic>>[
+        final cases = <Map<String, dynamic>>[
           <String, dynamic>{
             'description': 'Say Hi!',
             'property': 'hello',
@@ -228,14 +228,14 @@ linter:
           }
         ];
 
-        Set<dynamic> actualSet = retrieveListOfExpected(cases);
-        Set<String> expectedSet = Set.of(['Hello, World!']);
+        final actualSet = retrieveListOfExpected(cases);
+        final expectedSet = Set.of(['Hello, World!']);
 
         expect(actualSet, equals(expectedSet));
       });
 
       test('multiple cases', () {
-        List<Map<String, dynamic>> cases = <Map<String, dynamic>>[
+        final cases = <Map<String, dynamic>>[
           <String, dynamic>{
             'description': 'year not divisible by 4 in common year',
             'property': 'leapYear',
@@ -274,14 +274,14 @@ linter:
           }
         ];
 
-        Set<dynamic> actualSet = retrieveListOfExpected(cases);
-        Set<bool> expectedSet = Set.of([false, true]);
+        final actualSet = retrieveListOfExpected(cases);
+        final expectedSet = Set.of([false, true]);
 
         expect(actualSet, equals(expectedSet));
       });
 
       test('nested case', () {
-        List<Map<String, dynamic>> cases = <Map<String, dynamic>>[
+        final cases = <Map<String, dynamic>>[
           <String, dynamic>{
             'description': 'Check if the given string is an isogram',
             'comments': ['Output should be a boolean denoting if the string is a isogram or not.'],
@@ -296,14 +296,14 @@ linter:
           }
         ];
 
-        Set<dynamic> actualSet = retrieveListOfExpected(cases);
-        Set<bool> expectedSet = Set.of([true]);
+        final actualSet = retrieveListOfExpected(cases);
+        final expectedSet = Set.of([true]);
 
         expect(actualSet, equals(expectedSet));
       });
 
       test('three nested cases', () {
-        List<Map<String, dynamic>> cases = <Map<String, dynamic>>[
+        final cases = <Map<String, dynamic>>[
           <String, dynamic>{
             'description': 'Square the sum of the numbers up to the given number',
             'cases': [
@@ -375,14 +375,14 @@ linter:
           }
         ];
 
-        Set<dynamic> actualSet = retrieveListOfExpected(cases);
-        Set<int> expectedSet = Set.of([1, 225, 25502500, 55, 338350, 0, 170, 25164150]);
+        final actualSet = retrieveListOfExpected(cases);
+        final expectedSet = Set.of([1, 225, 25502500, 55, 338350, 0, 170, 25164150]);
 
         expect(actualSet, equals(expectedSet));
       });
 
       test('uneven nested cases', () {
-        List<Map<String, dynamic>> cases = <Map<String, dynamic>>[
+        final cases = <Map<String, dynamic>>[
           <String, dynamic>{
             'description': 'data is retained',
             'property': 'data',
@@ -434,8 +434,8 @@ linter:
           }
         ];
 
-        Set<dynamic> actualSet = retrieveListOfExpected(cases);
-        Set<Map<String, dynamic>> expectedSet = Set.of([
+        final actualSet = retrieveListOfExpected(cases);
+        final expectedSet = Set.of([
           <String, dynamic>{'data': '4', 'left': null, 'right': null},
           <String, dynamic>{
             'data': '4',
@@ -458,7 +458,7 @@ linter:
       });
 
       test('case with an expected error', () {
-        List<Map<String, dynamic>> cases = <Map<String, dynamic>>[
+        final cases = <Map<String, dynamic>>[
           <String, dynamic>{
             'description': 'zero is an error',
             'property': 'steps',
@@ -467,8 +467,8 @@ linter:
           }
         ];
 
-        Set<dynamic> actualSet = retrieveListOfExpected(cases);
-        Set<dynamic> expectedSet = Set<dynamic>();
+        final actualSet = retrieveListOfExpected(cases);
+        final expectedSet = Set<dynamic>();
 
         expect(actualSet, equals(expectedSet));
       });
