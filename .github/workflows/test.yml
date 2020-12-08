@@ -6,8 +6,12 @@ jobs:
   test:
     runs-on: ubuntu-latest
 
+    strategy:
+      matrix:
+        tag: [latest, dev]
+
     container:
-      image:  google/dart:latest
+      image:  google/dart:${{ matrix.tag }}
 
     steps:
     - uses: actions/checkout@v2
