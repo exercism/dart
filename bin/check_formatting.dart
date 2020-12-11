@@ -5,7 +5,7 @@ Future main() async {
   final CommonUtils utils = CommonUtils();
   int errorCode = 0;
 
-  if (utils.fetchConfiglet() == 0) {
+  if (await utils.fetchConfiglet() == 0) {
     print('Checking config.json formatting...');
     errorCode = await utils.runCmdIfExecutable('bin/configlet', ['lint', '--track-id', 'dart', '.']);
 
