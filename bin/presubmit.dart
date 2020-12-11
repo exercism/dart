@@ -4,7 +4,7 @@ import 'package:exercism_dart/src/utils.dart';
 Future<Null> main() async {
   final CommonUtils utils = CommonUtils();
 
-  if (utils.fetchConfiglet() == 0) {
+  if (await utils.fetchConfiglet() == 0) {
     print('Formatting config.json...');
     await utils.runCmdIfExecutable('bin/configlet', ['fmt', '.']);
   }

@@ -11,12 +11,12 @@ class CommonUtils {
 
   /// Fetches the configlet file if it doesn't exist already, and returns the
   /// exit code.
-  int fetchConfiglet() {
+  Future<int> fetchConfiglet() async {
     final configletFile = File('bin/configlet');
 
     if (!configletFile.existsSync()) {
       print('Fetching configlet...');
-      return _exit(Process.runSync('bin/fetch-configlet', []).exitCode);
+      return _exit(await runCmdIfExecutable('bin/fetch-configlet'));
     }
 
     return 0;
