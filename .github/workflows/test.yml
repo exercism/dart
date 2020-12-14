@@ -20,12 +20,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - name: Upgrade dependencies
-      if: ${{ matrix.experimental }}
-      run: dart pub upgrade
-
     - name: Install dependencies
-      if: ${{ !matrix.experimental }}
       run: dart pub get
 
     - name: Check Stage formatting
