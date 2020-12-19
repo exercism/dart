@@ -5,14 +5,10 @@ on: [push, pull_request]
 jobs:
   test:
     runs-on: ubuntu-latest
-    continue-on-error: ${{ matrix.experimental }}
     strategy:
+      fail-fast: false
       matrix:
-        tag: ['2.10', latest]
-        experimental: [false]
-        include:
-          - tag: dev
-            experimental: true
+        tag: ['2.10']
 
     container:
       image:  google/dart:${{ matrix.tag }}
