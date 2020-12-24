@@ -5,18 +5,22 @@ on: [push, pull_request]
 jobs:
   test:
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        tag: ['2.10']
 
     container:
-      image:  google/dart:latest
+      image:  google/dart:${{ matrix.tag }}
 
     steps:
     - uses: actions/checkout@v2
 
     - name: Install dependencies
-      run: pub get
+      run: dart pub get
 
     - name: Check Stage formatting
-      run: pub run bin/check_formatting.dart
+      run: dart run bin/check_formatting.dart
 
     - name: Run tests
-      run: pub run test
+      run: dart test
