@@ -1,5 +1,6 @@
 {
   "language": "Dart",
+  "slug": "dart",
   "active": true,
   "status": {
     "concept_exercises": false,
