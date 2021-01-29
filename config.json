@@ -25,7 +25,8 @@
           "errors-basic",
           "callbacks",
           "recursion"
-        ]
+        ],
+        "status": "wip"
       },
       {
         "slug": "numbers",
@@ -34,14 +35,16 @@
           "numbers-basic",
           "type-conversion"
         ],
-        "prerequisites": []
+        "prerequisites": [],
+        "status": "wip"
       },
       {
         "slug": "strings",
         "uuid": "1b7e3737-0333-4eee-b425-2e84b2e09fe2",
         "concepts": [
           "strings-basic"
-        ]
+        ],
+        "status": "wip"
       }
     ],
     "practice": [
