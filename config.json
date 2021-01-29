@@ -1,6 +1,12 @@
 {
   "language": "Dart",
   "active": true,
+  "status": {
+    "concept_exercises": false,
+    "test_runner": false,
+    "representer": false,
+    "analyzer": false
+  },
   "blurb": "Dart is a general purpose programming language which has seen a rise in popularity for its usages in mobile and web application development.",
   "version": 3,
   "test_pattern": "_test\\.dart$",
