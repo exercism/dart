@@ -1,3 +1,5 @@
+# About
+
 Dart brings object-oriented and typing together with the flexibility that JavaScript is known for.  It is designed to simplify common programming tasks. In recent years, its popularity in the software development community has grown tremendously.
 
 To dig deeper into Dart, [click here](https://www.dartlang.org/guides/language/language-tour).
