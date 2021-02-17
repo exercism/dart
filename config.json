@@ -12,6 +12,20 @@
   "version": 3,
   "online_editor": null,
   "test_pattern": "_test\\.dart$",
+  "files": {
+    "solution": [
+      "path/to/%{kebab_slug}.ext"
+    ],
+    "test": [
+      "path/to/%{kebab_slug}.ext"
+    ],
+    "example": [
+      "path/to/%{kebab_slug}.ext"
+    ],
+    "exemplar": [
+      "path/to/%{kebab_slug}.ext"
+    ]
+  },
   "exercises": {
     "concept": [
       {
