@@ -1,3 +1,5 @@
+# Installation
+
 ## Installing Dart
 
 ### Automatic installation instructions (recommended)

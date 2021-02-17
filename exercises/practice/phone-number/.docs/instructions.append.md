@@ -1,4 +1,4 @@
-## Tip
+# Tip
 
 A function with a *return type* can only return data of that *type* and `null`.
 However the function caller is only expecting one data type.

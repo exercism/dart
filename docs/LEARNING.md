@@ -1,4 +1,4 @@
-## Recommended Learning Resources
+# Recommended Learning Resources
  * [Dart Language Overview](https://www.dartlang.org/guides/language/language-tour)
  * [Getting Started](https://www.dartlang.org/tutorials/dart-vm/get-started)
  * [Make a command line app](https://www.dartlang.org/tutorials/dart-vm/cmdline)
