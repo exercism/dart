@@ -22,7 +22,7 @@
       ".meta/lib/example.dart"
     ],
     "exemplar": [
-      "path/to/%{kebab_slug}.ext"
+      ".meta/exemplar.dart"
     ]
   },
   "exercises": {
