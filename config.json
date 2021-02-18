@@ -14,13 +14,13 @@
   "test_pattern": "_test\\.dart$",
   "files": {
     "solution": [
-      "path/to/%{kebab_slug}.ext"
+      "lib/%{snake_slug}.dart"
     ],
     "test": [
-      "path/to/%{kebab_slug}.ext"
+      "test/%{snake_slug}_test.dart"
     ],
     "example": [
-      "path/to/%{kebab_slug}.ext"
+      "lib/example.dart"
     ],
     "exemplar": [
       "path/to/%{kebab_slug}.ext"
