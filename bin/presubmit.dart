@@ -6,7 +6,8 @@ Future<Null> main() async {
 
   if (await utils.fetchConfiglet() == 0) {
     print('Formatting config.json...');
-    await utils.runCmdIfExecutable('bin/configlet', ['fmt', '.']);
+    print('Unsupported operation: Please see https://github.com/exercism/dart/issues/296');
+    // await utils.runCmdIfExecutable('bin/configlet', ['fmt', '.']);
   }
 
   print('Formatting all Dart files...');
