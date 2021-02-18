@@ -66,7 +66,7 @@ Running tests for: $packageName
 ''');
 
   File stub = File('lib/${packageName}.dart');
-  File example = File('lib/example.dart');
+  File example = File('.meta/lib/example.dart');
 
   try {
     stub = await stub.rename('lib/${packageName}.dart.bu');
@@ -82,7 +82,7 @@ Running tests for: $packageName
       await runCmd(cmds);
     }
   } finally {
-    await example.rename('lib/example.dart');
+    await example.rename('.meta/lib/example.dart');
     await stub.rename('lib/${packageName}.dart');
 
     Directory.current = current;
