@@ -6,6 +6,7 @@ import 'package:yaml/yaml.dart';
 
 /// Constants
 const String envName = 'EXERCISE';
+const String practiceExcercisesDir = 'exercises/practice';
 
 /// Helpers
 Future runCmd(List<String> cmds) async {
@@ -36,7 +37,7 @@ Future<String> getPackageName() async {
 }
 
 Future locateExercismDirAndExecuteTests() async {
-  final exercisesRootDir = Directory('exercises');
+  final exercisesRootDir = Directory(practiceExcercisesDir);
 
   assert(await exercisesRootDir.exists());
 
@@ -66,7 +67,7 @@ Running tests for: $packageName
 ''');
 
   File stub = File('lib/${packageName}.dart');
-  File example = File('lib/example.dart');
+  File example = File('.meta/lib/example.dart');
 
   try {
     stub = await stub.rename('lib/${packageName}.dart.bu');
@@ -82,7 +83,7 @@ Running tests for: $packageName
       await runCmd(cmds);
     }
   } finally {
-    await example.rename('lib/example.dart');
+    await example.rename('.meta/lib/example.dart');
     await stub.rename('lib/${packageName}.dart');
 
     Directory.current = current;
@@ -116,7 +117,7 @@ void main() {
     if (testName == null) {
       await runAllTests();
     } else {
-      final testPath = '${Directory.current.path}/exercises/$testName';
+      final testPath = '${Directory.current.path}/$practiceExcercisesDir/$testName';
 
       if (!await Directory(testPath).exists()) {
         throw ArgumentError('No exercise with this name: $testName');
