@@ -6,6 +6,7 @@ import 'package:yaml/yaml.dart';
 
 /// Constants
 const String envName = 'EXERCISE';
+const String practiceExcercisesDir = 'exercises/practice';
 
 /// Helpers
 Future runCmd(List<String> cmds) async {
@@ -36,7 +37,7 @@ Future<String> getPackageName() async {
 }
 
 Future locateExercismDirAndExecuteTests() async {
-  final exercisesRootDir = Directory('exercises');
+  final exercisesRootDir = Directory(practiceExcercisesDir);
 
   assert(await exercisesRootDir.exists());
 
@@ -116,7 +117,7 @@ void main() {
     if (testName == null) {
       await runAllTests();
     } else {
-      final testPath = '${Directory.current.path}/exercises/$testName';
+      final testPath = '${Directory.current.path}/$practiceExcercisesDir/$testName';
 
       if (!await Directory(testPath).exists()) {
         throw ArgumentError('No exercise with this name: $testName');
