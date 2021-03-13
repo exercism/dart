@@ -1,3 +1,4 @@
 String reverse() {
-  // Put your code here
+  // Replace the throw call and put your code here
+  throw ('Unimplemented method');
 }
