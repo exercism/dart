@@ -7,6 +7,7 @@ import 'package:yaml/yaml.dart';
 
 // Constants
 const _scriptFileName = 'create-exercise';
+const _constSet = <dynamic>{};
 
 final _parser = ArgParser()
   ..addSeparator('Usage: $_scriptFileName [--spec-path path] <slug>')
@@ -14,14 +15,14 @@ final _parser = ArgParser()
 
 // Helpers
 /// Determine the words within a string, so they can be placed in the proper case.
-List<String> words(String str) {
+List<String> words(String? str) {
   if (str == null) return [''];
 
   return str.toLowerCase().replaceAll(RegExp(r'[^a-z0-9]'), ' ').replaceAll(RegExp(r' +'), ' ').trim().split(' ');
 }
 
 /// Converts first character to upper case.
-String upperFirst(String str) {
+String upperFirst(String? str) {
   if (str == null || str.isEmpty) return '';
 
   final chars = str.split('');
@@ -93,7 +94,7 @@ String pubTemplate(String name, String version) => '''
 name: '${snakeCase(name)}'
 version: $version
 environment:
-  sdk: '>=2.0.0 <3.0.0'
+  sdk: '>=2.12.0 <3.0.0'
 dev_dependencies:
   test: '<2.0.0'
 ''';
@@ -121,16 +122,17 @@ linter:
 ''';
 
 /// Parses through the given test case (or group) in order to produce a String of code for the generated test suite.
-String testCaseTemplate(String exerciseName, Map<String, Object> testCase, {bool firstTest = true, String returnType}) {
+String testCaseTemplate(String exerciseName, Map<String, dynamic> testCase,
+    {bool firstTest = true, String returnType = ''}) {
   bool skipTests = firstTest;
 
   if (testCase['cases'] != null) {
-    if (returnType == null) {
+    if (returnType.isEmpty) {
       returnType = _determineBestReturnType(testCase['cases'] as List<dynamic>);
     }
 
     // We have a group, not a case
-    final description = _handleQuotes(testCase['description'] as String);
+    final description = _handleQuotes(testCase['description'] as String?);
 
     // Build the tests up recursively, only first test should be skipped
     final testList = <String>[];
@@ -206,7 +208,7 @@ bool _doGenerate(Directory exerciseDir, String exerciseName, String version) {
   if (exerciseDir.existsSync()) {
     if (File('${exerciseDir.path}/pubspec.yaml').existsSync()) {
       final pubspecString = File('${exerciseDir.path}/pubspec.yaml').readAsStringSync();
-      final currentVersion = loadYaml(pubspecString)['version'] as String;
+      final currentVersion = loadYaml(pubspecString)['version'] as String?;
 
       if (currentVersion == version) {
         stderr.write('$exerciseName of version, $currentVersion, already exists\n');
@@ -330,11 +332,7 @@ String _determineBestReturnType(List<dynamic> specCases) {
 }
 
 /// Parses through a list of test cases to assemble a list of all the expected values within the test cases.
-Set<dynamic> retrieveListOfExpected(List<dynamic> testCases, {Set<dynamic> expectedTypeSet}) {
-  if (expectedTypeSet == null) {
-    expectedTypeSet = Set<dynamic>();
-  }
-
+Set<dynamic> retrieveListOfExpected(List<dynamic> testCases, {Set<dynamic> expectedTypeSet = _constSet}) {
   for (var count = 0; count < testCases.length; count++) {
     if (testCases[count] is Map) {
       final entry = testCases[count] as Map;
@@ -368,7 +366,7 @@ Set<dynamic> retrieveListOfExpected(List<dynamic> testCases, {Set<dynamic> expec
 }
 
 /// Escapes single quotes found in a test case's description, in order to prevent errors.
-String _handleQuotes(String input) {
+String? _handleQuotes(String? input) {
   if (input != null) {
     final firstChar = input[0];
     final lastChar = input[input.length - 1];
@@ -383,7 +381,7 @@ String _handleQuotes(String input) {
 /// `repr` takes in any object and tries to coerce it to a String in such a way that it is suitable to include in code.
 /// Based on the python `repr` function, but only works for basic types: String, Iterable, Map, and primitive types
 /// `typeDeclaration` is the determined return type and used to determine the type within collections.
-String _repr(Object x, {String typeDeclaration}) {
+String _repr(Object? x, {String? typeDeclaration}) {
   if (x is String) {
     String result = _escapeBackslash(x);
     result = result
@@ -432,7 +430,7 @@ String _defineMap(Map x, String iterableType) {
 
 /// A helper method to get the inside type of an iterable
 String _getIterableType(Iterable iter) {
-  final types = iter.map(_getFriendlyType).toSet();
+  final types = iter.map<String>(_getFriendlyType as String Function(dynamic)).toSet();
 
   if (types.length == 1) {
     return types.first;
@@ -443,8 +441,8 @@ String _getIterableType(Iterable iter) {
 
 /// A helper method to get the inside type of a map
 String _getMapType(Map map) {
-  final keyTypes = map.keys.map(_getFriendlyType).toSet();
-  final valueTypes = map.values.map(_getFriendlyType).toSet();
+  final keyTypes = map.keys.map<String>(_getFriendlyType as String Function(dynamic)).toSet();
+  final valueTypes = map.values.map<String>(_getFriendlyType as String Function(dynamic)).toSet();
 
   final mapKeyType = keyTypes.length == 1 ? keyTypes.first : 'dynamic';
   final mapValueType = valueTypes.length == 1 ? valueTypes.first : 'dynamic';
