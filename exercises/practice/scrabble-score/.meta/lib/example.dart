@@ -30,8 +30,8 @@ final Map<String, int> _scores = const {
 int score(String word) {
   int val = 0;
   if (word.length > 0) {
-    word.split('').forEach((char) {
-      int score = _scores[char.toLowerCase()];
+    word.split('').forEach((String char) {
+      final score = _scores[char.toLowerCase()];
       val += score ?? 0;
     });
   }
