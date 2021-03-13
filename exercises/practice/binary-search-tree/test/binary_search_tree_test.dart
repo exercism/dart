@@ -14,21 +14,21 @@ void main() {
         final bst = BinarySearchTree('4')..insert('2');
 
         expect(bst.root.data, equals('4'));
-        expect(bst.root.left.data, equals('2'));
+        expect(bst.root.left!.data, equals('2'));
       }, skip: true);
 
       test('same number at left node', () {
         final bst = BinarySearchTree('4')..insert('4');
 
         expect(bst.root.data, equals('4'));
-        expect(bst.root.left.data, equals('4'));
+        expect(bst.root.left!.data, equals('4'));
       }, skip: true);
 
       test('greater number at right node', () {
         final bst = BinarySearchTree('4')..insert('5');
 
         expect(bst.root.data, equals('4'));
-        expect(bst.root.right.data, equals('5'));
+        expect(bst.root.right!.data, equals('5'));
       }, skip: true);
 
       test('can create complex tree', () {
@@ -36,13 +36,13 @@ void main() {
 
         expect(bst.root.data, equals('4'));
 
-        expect(bst.root.left.data, equals('2'));
-        expect(bst.root.left.left.data, equals('1'));
-        expect(bst.root.left.right.data, equals('3'));
+        expect(bst.root.left!.data, equals('2'));
+        expect(bst.root.left!.left!.data, equals('1'));
+        expect(bst.root.left!.right!.data, equals('3'));
 
-        expect(bst.root.right.data, equals('6'));
-        expect(bst.root.right.left.data, equals('5'));
-        expect(bst.root.right.right.data, equals('7'));
+        expect(bst.root.right!.data, equals('6'));
+        expect(bst.root.right!.left!.data, equals('5'));
+        expect(bst.root.right!.right!.data, equals('7'));
       }, skip: true);
     });
 
