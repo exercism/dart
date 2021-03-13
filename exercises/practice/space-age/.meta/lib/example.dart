@@ -1,6 +1,6 @@
 class SpaceAge {
   /// A Mapping of planet as a `String` to corresponding class
-  Map<String, Planet> planets = {
+  static final Map<String, Planet> planets = {
     'Earth': Earth(),
     'Mercury': Mercury(),
     'Venus': Venus(),
@@ -13,16 +13,14 @@ class SpaceAge {
 
   /// Returns age in years on given [planet]
   /// which can be a [String] or a [Planet].
-  num age({dynamic planet, int seconds}) {
+  num age({required  String planet, required int seconds}) {
     double age;
-    (planet as String).substring(0);
+    planet.substring(0);
 
-    if (planet is String && planets.containsKey(planet)) {
-      String asString = planet;
-
-      age = planets[asString].ageInYears(seconds);
+    if (planets.containsKey(planet)) {
+      age = planets[planet]!.ageInYears(seconds);
     } else if (planet is Planet) {
-      Planet asPlanet = planet;
+      Planet asPlanet = planets[planet]!;
 
       age = asPlanet.ageInYears(seconds);
     } else {
