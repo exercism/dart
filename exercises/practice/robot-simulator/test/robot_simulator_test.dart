@@ -123,7 +123,7 @@ void main() {
   });
 }
 
-void expected(Robot robot, {Position beAt, Orientation faceTo}) {
+void expected(Robot robot, {required Position beAt, required Orientation faceTo}) {
   expect(robot.position, equals(beAt));
   expect(robot.orientation, equals(faceTo));
 }
