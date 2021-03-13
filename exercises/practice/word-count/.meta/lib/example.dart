@@ -1,6 +1,6 @@
 class WordCount {
-  Map<String, int> countWords(String input) {
-    Map<String, int> count = Map();
+  Map<String?, int> countWords(String input) {
+    final count = <String?, int>{};
 
     /// make a list of all words using regex.
     /// \\w+ matches any number of letters
@@ -8,7 +8,7 @@ class WordCount {
     /// \\w+'\\w  => matches any number of letters then "'" and then a single letter
     ///  e.g. don't
     /// \\d+ matches one or more digits
-    List<String> allWords = List();
+    final allWords = <String?>[];
     var wordMatches = RegExp("\\w+'\\w|\\w+|d+").allMatches(input.toLowerCase());
     for (var match in wordMatches) {
       allWords.add(match.group(0));
@@ -20,7 +20,7 @@ class WordCount {
     allWords.forEach((singleWord) => count[singleWord] = 0);
 
     /// count all words and set there counter accordingly
-    allWords.forEach((singleWord) => count[singleWord] = count[singleWord] + 1);
+    allWords.forEach((singleWord) => count[singleWord] = count[singleWord]! + 1);
     return count;
   }
 }
