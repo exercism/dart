@@ -13,17 +13,17 @@ void main() {
 
 void cleanUpTest() {
   test('cleans the number', () {
-    final String result = phoneNumber.clean('(223) 456-7890');
+    final String? result = phoneNumber.clean('(223) 456-7890');
     expect(result, equals('2234567890'));
   }, skip: false);
 
   test('cleans numbers with dots', () {
-    final String result = phoneNumber.clean('223.456.7890');
+    final String? result = phoneNumber.clean('223.456.7890');
     expect(result, equals('2234567890'));
   }, skip: true);
 
   test('cleans numbers with multiple spaces', () {
-    final String result = phoneNumber.clean('223 456   7890   ');
+    final String? result = phoneNumber.clean('223 456   7890   ');
     expect(result, equals('2234567890'));
   }, skip: true);
 }
@@ -40,12 +40,12 @@ void numberLengthTest() {
   }, skip: true);
 
   test('valid when 11 digits and starting with 1', () {
-    final String result = phoneNumber.clean('12234567890');
+    final String? result = phoneNumber.clean('12234567890');
     expect(result, equals('2234567890'));
   }, skip: true);
 
   test('valid when 11 digits and starting with 1 even with punctuation', () {
-    final String result = phoneNumber.clean('+1 (223) 456-7890');
+    final String? result = phoneNumber.clean('+1 (223) 456-7890');
     expect(result, equals('2234567890'));
   }, skip: true);
 
