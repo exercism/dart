@@ -72,7 +72,7 @@ class Minesweeper {
   /// Number of rows in thie minefield
   int get rows => _minefield.length;
 
-  Minesweeper([List<String> minefield]) {
+  Minesweeper(List<String> minefield) {
     if (minefield.isNotEmpty) {
       _minefield.addAll(
         minefield.map(
