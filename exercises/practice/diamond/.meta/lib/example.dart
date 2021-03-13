@@ -5,7 +5,7 @@ class Diamond {
     } else {
       int diamondSize = (letter.codeUnitAt(0) - 64);
       int maxStringSize = diamondSize * 2 - 1;
-      List<String> diamond = new List<String>();
+      List<String> diamond = <String>[];
 
       for (int i = 0; i < diamondSize; i++) {
         String row = "".padRight(maxStringSize, " ");
