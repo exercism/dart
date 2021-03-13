@@ -4,18 +4,17 @@ class BinarySearchTree<T extends Comparable<T>> {
 
   BinarySearchTree(T rootData) : root = new Node<T>(rootData) {
     // Note: [assert] does not run in release mode
-    assert(rootData != null);
   }
 
   /// Returns an empty `List` if [root] is `null`.
   ///
   /// Otherwise returns data traversed in ascending order.
   Iterable<T> get sortedData sync* {
-    for (var t in root?.ascendingOrder ?? <T>[]) yield t;
+    for (var t in root.ascendingOrder) yield t;
   }
 
   /// Returns `true` on success, `false` on failure.
-  bool insert(T value) => root?.insert(value) ?? false;
+  bool insert(T value) => root.insert(value);
 }
 
 class Node<T extends Comparable<T>> {
@@ -23,20 +22,17 @@ class Node<T extends Comparable<T>> {
   final T data;
 
   /// Left node of this node, can be `null`
-  Node<T> left;
+  Node<T>? left;
 
   /// Right node of this node, can be `null`
-  Node<T> right;
+  Node<T>? right;
 
   Node(this.data, [this.left, this.right]) {
     // Note: [assert] does not run in release mode
-    assert(data != null);
   }
 
   /// This is **inorder** traversal of the tree.
   Iterable<T> get ascendingOrder sync* {
-    if (data == null) return;
-
     /// Traverse left sub-tree if it's present
     for (var t in left?.ascendingOrder ?? <T>[]) yield t;
 
@@ -48,8 +44,6 @@ class Node<T extends Comparable<T>> {
 
   /// Returns `true` on success, `false` on failure.
   bool insert(T value) {
-    if (value == null) return false;
-
     /// Insert in left sub-tree if its a smaller or equal number.
     if (value.compareTo(data) <= 0) {
       return left?.insert(value) ?? (left = new Node(value)).data == value;
