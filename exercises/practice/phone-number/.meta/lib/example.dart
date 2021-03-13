@@ -1,16 +1,16 @@
 class PhoneNumber {
   /// Returns `String` for a valid number, `null` for invalid.
-  String clean(String phoneNumber) {
+  String? clean(String phoneNumber) {
     /// initialize an empty string.
     String onlyDigits = "";
 
     /// find all digits.
     Iterable<Match> findDigits = RegExp(r'\d+').allMatches(phoneNumber);
     findDigits.forEach((match) {
-      onlyDigits += match.group(0);
+      onlyDigits += match.group(0)!;
 
       /// remove all digits **for an edge case**.
-      phoneNumber = phoneNumber.replaceAll(match.group(0), "");
+      phoneNumber = phoneNumber.replaceAll(match.group(0)!, "");
     });
 
     if (phoneNumber.contains(RegExp(r'[a-zA-Z]'))) throw FormatException('letters not permitted');
