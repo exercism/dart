@@ -7,7 +7,7 @@ class CommonUtils {
     this._manager = ProcessManager();
   }
 
-  ProcessManager _manager;
+  late ProcessManager _manager;
 
   /// Fetches the configlet file if it doesn't exist already, and returns the
   /// exit code.
