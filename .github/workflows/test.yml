@@ -8,7 +8,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        tag: ['2.10']
+        tag: ['2.12']
 
     container:
       image:  google/dart:${{ matrix.tag }}
