@@ -7,7 +7,6 @@ import 'package:yaml/yaml.dart';
 
 // Constants
 const _scriptFileName = 'create-exercise';
-const _constSet = <dynamic>{};
 
 final _parser = ArgParser()
   ..addSeparator('Usage: $_scriptFileName [--spec-path path] <slug>')
@@ -193,8 +192,9 @@ String _finalizeReturnType(String expected, String returnType) {
     return 'Map$extracted';
   } else {
     if (expected == 'false' ||
-        expected == 'true' ||
-        expected.contains(RegExp(r'([0-9.]+)')) ||
+        expected == 'true') {
+      return 'bool';
+    } else if (expected.contains(RegExp(r'([0-9.]+)')) ||
         expected.contains(RegExp(r"('[a-zA-Z, \'!]{0,}')"))) {
       return returnType;
     } else {
@@ -293,7 +293,8 @@ bool _containsWhitespaceCodes(String input) {
 String _determineBestReturnType(List<dynamic> specCases) {
   final expectedList = retrieveListOfExpected(specCases);
 
-  final dynamic first = expectedList.isNotEmpty ? expectedList.first : null;
+  final dynamic first = expectedList != null && expectedList.isNotEmpty
+      ? expectedList.first : null;
 
   if (first is Iterable) {
     final iterableType = '${_getIterableType(first)}';
@@ -332,7 +333,12 @@ String _determineBestReturnType(List<dynamic> specCases) {
 }
 
 /// Parses through a list of test cases to assemble a list of all the expected values within the test cases.
-Set<dynamic> retrieveListOfExpected(List<dynamic> testCases, {Set<dynamic> expectedTypeSet = _constSet}) {
+Set<dynamic>? retrieveListOfExpected(List<dynamic> testCases, {Set<dynamic>? expectedTypeSet}) {
+
+  if (expectedTypeSet == null) {
+    expectedTypeSet = <dynamic>{};
+  }
+
   for (var count = 0; count < testCases.length; count++) {
     if (testCases[count] is Map) {
       final entry = testCases[count] as Map;
@@ -348,7 +354,7 @@ Set<dynamic> retrieveListOfExpected(List<dynamic> testCases, {Set<dynamic> expec
         }
 
         if (addEntry) {
-          expectedTypeSet.add(entry['expected']);
+          expectedTypeSet?.add(entry['expected']);
         }
       }
 
