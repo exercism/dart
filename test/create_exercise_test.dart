@@ -209,7 +209,7 @@ linter:
 
           expect(testCaseTemplate('armstrong-numbers', testCase), equals('''
     test('${testCase['description']}', () {
-      final null result = armstrongNumbers.${testCase['property']}(${testCase['input']['number']});
+      final bool result = armstrongNumbers.${testCase['property']}(${testCase['input']['number']});
       expect(result, equals(${testCase['expected']}));
     }, skip: false);
 '''));
