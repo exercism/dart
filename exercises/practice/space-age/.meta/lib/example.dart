@@ -13,14 +13,16 @@ class SpaceAge {
 
   /// Returns age in years on given [planet]
   /// which can be a [String] or a [Planet].
-  num age({required  String planet, required int seconds}) {
+  num age({required dynamic planet, required int seconds}) {
     double age;
-    planet.substring(0);
+    (planet as String).substring(0);
 
-    if (planets.containsKey(planet)) {
-      age = planets[planet]!.ageInYears(seconds);
+    if (planet is String && planets.containsKey(planet)) {
+      String asString = planet;
+
+      age = planets[asString]!.ageInYears(seconds);
     } else if (planet is Planet) {
-      Planet asPlanet = planets[planet]!;
+      Planet asPlanet = planet as Planet;
 
       age = asPlanet.ageInYears(seconds);
     } else {
