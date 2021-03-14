@@ -2,9 +2,7 @@ class BinarySearchTree<T extends Comparable<T>> {
   /// Root node for the tree.
   final Node<T> root;
 
-  BinarySearchTree(T rootData) : root = new Node<T>(rootData) {
-    // Note: [assert] does not run in release mode
-  }
+  BinarySearchTree(T rootData) : root = new Node<T>(rootData);
 
   /// Returns an empty `List` if [root] is `null`.
   ///
@@ -27,9 +25,7 @@ class Node<T extends Comparable<T>> {
   /// Right node of this node, can be `null`
   Node<T>? right;
 
-  Node(this.data, [this.left, this.right]) {
-    // Note: [assert] does not run in release mode
-  }
+  Node(this.data, [this.left, this.right]);
 
   /// This is **inorder** traversal of the tree.
   Iterable<T> get ascendingOrder sync* {
