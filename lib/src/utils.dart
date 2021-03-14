@@ -3,11 +3,7 @@ import 'dart:io';
 import 'package:io/io.dart';
 
 class CommonUtils {
-  CommonUtils() {
-    this._manager = ProcessManager();
-  }
-
-  late ProcessManager _manager;
+  final ProcessManager _manager = ProcessManager();
 
   /// Fetches the configlet file if it doesn't exist already, and returns the
   /// exit code.
