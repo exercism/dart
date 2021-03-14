@@ -7,6 +7,7 @@ import 'package:yaml/yaml.dart';
 
 // Constants
 const _scriptFileName = 'create-exercise';
+const _defaultSet = <dynamic>{};
 
 final _parser = ArgParser()
   ..addSeparator('Usage: $_scriptFileName [--spec-path path] <slug>')
@@ -330,11 +331,7 @@ String _determineBestReturnType(List<dynamic> specCases) {
 }
 
 /// Parses through a list of test cases to assemble a list of all the expected values within the test cases.
-Set<dynamic>? retrieveListOfExpected(List<dynamic> testCases, {Set<dynamic>? expectedTypeSet}) {
-  if (expectedTypeSet == null) {
-    expectedTypeSet = <dynamic>{};
-  }
-
+Set<dynamic> retrieveListOfExpected(List<dynamic> testCases, {Set<dynamic> expectedTypeSet = _defaultSet}) {
   for (var count = 0; count < testCases.length; count++) {
     if (testCases[count] is Map) {
       final entry = testCases[count] as Map;
@@ -350,17 +347,19 @@ Set<dynamic>? retrieveListOfExpected(List<dynamic> testCases, {Set<dynamic>? exp
         }
 
         if (addEntry) {
-          expectedTypeSet?.add(entry['expected']);
+          expectedTypeSet = Set<dynamic>.of(expectedTypeSet)..add(entry['expected']);
         }
       }
 
       if (entry.containsKey('cases')) {
-        expectedTypeSet = retrieveListOfExpected(entry['cases'] as List, expectedTypeSet: expectedTypeSet);
+        expectedTypeSet =
+            Set<dynamic>.of(retrieveListOfExpected(entry['cases'] as List, expectedTypeSet: expectedTypeSet));
       }
     }
 
     if (testCases[count] is List) {
-      expectedTypeSet = retrieveListOfExpected(testCases[count] as List, expectedTypeSet: expectedTypeSet);
+      expectedTypeSet =
+          Set<dynamic>.of(retrieveListOfExpected(testCases[count] as List, expectedTypeSet: expectedTypeSet));
     }
   }
 
