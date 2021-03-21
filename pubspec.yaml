@@ -9,7 +9,7 @@ authors:
   - jvarness <jake.varness@gmail.com>
 dev_dependencies:
   args: '^2.0.0'
-  dart_style: '^1.0.8'
+  dart_style: '^2.0.0'
   io: '^1.0.0'
   test: '^1.16.0'
   yaml: '^3.0.0'
