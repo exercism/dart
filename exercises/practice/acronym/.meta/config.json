@@ -1,6 +1,12 @@
 {
   "blurb": "Convert a long phrase to its acronym",
-  "authors": [],
+  "authors": [
+    "Stargator"
+  ],
+  "contributors": [
+    "devkabiir",
+    "ErikSchierboom"
+  ],
   "files": {
     "solution": [],
     "test": [],
