@@ -1,6 +1,14 @@
 {
   "blurb": "Given a phrase, count the occurrences of each word in that phrase.",
-  "authors": [],
+  "authors": [
+    "kabiir"
+  ],
+  "contributors": [
+    "devkabiir",
+    "ErikSchierboom",
+    "jackhughesweb",
+    "Stargator"
+  ],
   "files": {
     "solution": [
       "lib/word_count.dart"

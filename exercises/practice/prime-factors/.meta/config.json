@@ -1,6 +1,13 @@
 {
   "blurb": "Compute the prime factors of a given natural number.",
-  "authors": [],
+  "authors": [
+    "amscotti"
+  ],
+  "contributors": [
+    "devkabiir",
+    "ErikSchierboom",
+    "Stargator"
+  ],
   "files": {
     "solution": [
       "lib/prime_factors.dart"

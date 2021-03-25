@@ -1,6 +1,16 @@
 {
   "blurb": "Bob is a lackadaisical teenager. In conversation, his responses are very limited.",
-  "authors": [],
+  "authors": [
+    "SuperPaintman"
+  ],
+  "contributors": [
+    "camuthig",
+    "devkabiir",
+    "ErikSchierboom",
+    "jackhughesweb",
+    "kytrinyx",
+    "Stargator"
+  ],
   "files": {
     "solution": [
       "lib/bob.dart"

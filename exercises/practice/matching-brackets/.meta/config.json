@@ -1,6 +1,14 @@
 {
   "blurb": "Make sure the brackets and braces all match.",
-  "authors": [],
+  "authors": [
+    "johnngugi"
+  ],
+  "contributors": [
+    "amscotti",
+    "devkabiir",
+    "ErikSchierboom",
+    "Stargator"
+  ],
   "files": {
     "solution": [
       "lib/matching_brackets.dart"

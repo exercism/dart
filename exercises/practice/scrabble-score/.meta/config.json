@@ -1,6 +1,14 @@
 {
   "blurb": "Given a word, compute the Scrabble score for that word.",
-  "authors": [],
+  "authors": [
+    "jvarness"
+  ],
+  "contributors": [
+    "devkabiir",
+    "ErikSchierboom",
+    "jackhughesweb",
+    "Stargator"
+  ],
   "files": {
     "solution": [
       "lib/scrabble_score.dart"

@@ -1,6 +1,13 @@
 {
   "blurb": "Add the numbers to a minesweeper board",
-  "authors": [],
+  "authors": [
+    "devkabiir"
+  ],
+  "contributors": [
+    "ErikSchierboom",
+    "sisminnmaw",
+    "Stargator"
+  ],
   "files": {
     "solution": [
       "lib/minesweeper.dart"
