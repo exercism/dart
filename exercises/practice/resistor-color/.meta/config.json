@@ -2,8 +2,12 @@
   "blurb": "Convert a resistor band's color to its numeric representation",
   "authors": [],
   "files": {
-    "solution": [],
-    "test": [],
+    "solution": [
+      "lib/resistor_color.dart"
+    ],
+    "test": [
+      "test/resistor_color_test.dart"
+    ],
     "example": [
       ".meta/lib/example.dart"
     ]

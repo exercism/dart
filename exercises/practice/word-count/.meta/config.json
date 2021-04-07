@@ -2,8 +2,12 @@
   "blurb": "Given a phrase, count the occurrences of each word in that phrase.",
   "authors": [],
   "files": {
-    "solution": [],
-    "test": [],
+    "solution": [
+      "lib/word_count.dart"
+    ],
+    "test": [
+      "test/word_count_test.dart"
+    ],
     "example": [
       ".meta/lib/example.dart"
     ]

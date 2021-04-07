@@ -2,8 +2,12 @@
   "blurb": "Check if a given string is a valid ISBN-10 number.",
   "authors": [],
   "files": {
-    "solution": [],
-    "test": [],
+    "solution": [
+      "lib/isbn_verifier.dart"
+    ],
+    "test": [
+      "test/isbn_verifier_test.dart"
+    ],
     "example": [
       ".meta/lib/example.dart"
     ]

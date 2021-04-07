@@ -2,8 +2,12 @@
   "blurb": "Given a word, compute the Scrabble score for that word.",
   "authors": [],
   "files": {
-    "solution": [],
-    "test": [],
+    "solution": [
+      "lib/scrabble_score.dart"
+    ],
+    "test": [
+      "test/scrabble_score_test.dart"
+    ],
     "example": [
       ".meta/lib/example.dart"
     ]

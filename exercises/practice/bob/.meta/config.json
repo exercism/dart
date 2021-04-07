@@ -2,8 +2,12 @@
   "blurb": "Bob is a lackadaisical teenager. In conversation, his responses are very limited.",
   "authors": [],
   "files": {
-    "solution": [],
-    "test": [],
+    "solution": [
+      "lib/bob.dart"
+    ],
+    "test": [
+      "test/bob_test.dart"
+    ],
     "example": [
       ".meta/lib/example.dart"
     ]

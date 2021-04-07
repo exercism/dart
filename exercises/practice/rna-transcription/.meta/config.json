@@ -2,8 +2,12 @@
   "blurb": "Given a DNA strand, return its RNA Complement Transcription.",
   "authors": [],
   "files": {
-    "solution": [],
-    "test": [],
+    "solution": [
+      "lib/rna_transcription.dart"
+    ],
+    "test": [
+      "test/rna_transcription_test.dart"
+    ],
     "example": [
       ".meta/lib/example.dart"
     ]

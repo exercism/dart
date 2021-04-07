@@ -2,8 +2,12 @@
   "blurb": "Determine if a number is an Armstrong number",
   "authors": [],
   "files": {
-    "solution": [],
-    "test": [],
+    "solution": [
+      "lib/armstrong_numbers.dart"
+    ],
+    "test": [
+      "test/armstrong_numbers_test.dart"
+    ],
     "example": [
       ".meta/lib/example.dart"
     ]

@@ -2,8 +2,12 @@
   "blurb": "Given a number determine whether or not it is valid per the Luhn formula.",
   "authors": [],
   "files": {
-    "solution": [],
-    "test": [],
+    "solution": [
+      "lib/luhn.dart"
+    ],
+    "test": [
+      "test/luhn_test.dart"
+    ],
     "example": [
       ".meta/lib/example.dart"
     ]
