@@ -2,8 +2,12 @@
   "blurb": "Determine if a word or phrase is an isogram.",
   "authors": [],
   "files": {
-    "solution": [],
-    "test": [],
+    "solution": [
+      "lib/isogram.dart"
+    ],
+    "test": [
+      "test/isogram_test.dart"
+    ],
     "example": [
       ".meta/lib/example.dart"
     ]

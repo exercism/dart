@@ -2,8 +2,12 @@
   "blurb": "Determine if a sentence is a pangram.",
   "authors": [],
   "files": {
-    "solution": [],
-    "test": [],
+    "solution": [
+      "lib/pangram.dart"
+    ],
+    "test": [
+      "test/pangram_test.dart"
+    ],
     "example": [
       ".meta/lib/example.dart"
     ]

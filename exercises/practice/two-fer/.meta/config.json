@@ -2,8 +2,12 @@
   "blurb": "Create a sentence of the form \"One for X, one for me.\"",
   "authors": [],
   "files": {
-    "solution": [],
-    "test": [],
+    "solution": [
+      "lib/two_fer.dart"
+    ],
+    "test": [
+      "test/two_fer_test.dart"
+    ],
     "example": [
       ".meta/lib/example.dart"
     ]

@@ -2,8 +2,12 @@
   "blurb": "Reverse a string",
   "authors": [],
   "files": {
-    "solution": [],
-    "test": [],
+    "solution": [
+      "lib/reverse_string.dart"
+    ],
+    "test": [
+      "test/reverse_string_test.dart"
+    ],
     "example": [
       ".meta/lib/example.dart"
     ]

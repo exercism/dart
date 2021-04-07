@@ -2,8 +2,12 @@
   "blurb": "Given a moment, determine the moment that would be after a gigasecond has passed.",
   "authors": [],
   "files": {
-    "solution": [],
-    "test": [],
+    "solution": [
+      "lib/gigasecond.dart"
+    ],
+    "test": [
+      "test/gigasecond_test.dart"
+    ],
     "example": [
       ".meta/lib/example.dart"
     ]

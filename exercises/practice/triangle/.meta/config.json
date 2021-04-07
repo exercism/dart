@@ -2,8 +2,12 @@
   "blurb": "Determine if a triangle is equilateral, isosceles, or scalene.",
   "authors": [],
   "files": {
-    "solution": [],
-    "test": [],
+    "solution": [
+      "lib/triangle.dart"
+    ],
+    "test": [
+      "test/triangle_test.dart"
+    ],
     "example": [
       ".meta/lib/example.dart"
     ]

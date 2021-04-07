@@ -2,8 +2,12 @@
   "blurb": "Compute Pascal's triangle up to a given number of rows.",
   "authors": [],
   "files": {
-    "solution": [],
-    "test": [],
+    "solution": [
+      "lib/pascals_triangle.dart"
+    ],
+    "test": [
+      "test/pascals_triangle_test.dart"
+    ],
     "example": [
       ".meta/lib/example.dart"
     ]

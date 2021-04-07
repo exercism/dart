@@ -2,8 +2,12 @@
   "blurb": "Convert color codes, as used on resistors, to a numeric value.",
   "authors": [],
   "files": {
-    "solution": [],
-    "test": [],
+    "solution": [
+      "lib/resistor_color_duo.dart"
+    ],
+    "test": [
+      "test/resistor_color_duo_test.dart"
+    ],
     "example": [
       ".meta/lib/example.dart"
     ]

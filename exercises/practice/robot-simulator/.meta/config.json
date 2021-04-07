@@ -2,8 +2,12 @@
   "blurb": "Write a robot simulator.",
   "authors": [],
   "files": {
-    "solution": [],
-    "test": [],
+    "solution": [
+      "lib/robot_simulator.dart"
+    ],
+    "test": [
+      "test/robot_simulator_test.dart"
+    ],
     "example": [
       ".meta/lib/example.dart"
     ]

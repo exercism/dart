@@ -2,8 +2,12 @@
   "blurb": "Convert a long phrase to its acronym",
   "authors": [],
   "files": {
-    "solution": [],
-    "test": [],
+    "solution": [
+      "lib/acronym.dart"
+    ],
+    "test": [
+      "test/acronym_test.dart"
+    ],
     "example": [
       ".meta/lib/example.dart"
     ]

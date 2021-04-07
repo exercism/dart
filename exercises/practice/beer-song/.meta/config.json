@@ -2,8 +2,12 @@
   "blurb": "Produce the lyrics to that beloved classic, that field-trip favorite: 99 Bottles of Beer on the Wall.",
   "authors": [],
   "files": {
-    "solution": [],
-    "test": [],
+    "solution": [
+      "lib/beer_song.dart"
+    ],
+    "test": [
+      "test/beer_song_test.dart"
+    ],
     "example": [
       ".meta/lib/example.dart"
     ]

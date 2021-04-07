@@ -2,8 +2,12 @@
   "blurb": "Insert and search for numbers in a binary tree.",
   "authors": [],
   "files": {
-    "solution": [],
-    "test": [],
+    "solution": [
+      "lib/binary_search_tree.dart"
+    ],
+    "test": [
+      "test/binary_search_tree_test.dart"
+    ],
     "example": [
       ".meta/lib/example.dart"
     ]
