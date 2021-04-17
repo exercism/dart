@@ -1,11 +1,10 @@
 {
   "blurb": "Insert and search for numbers in a binary tree.",
   "authors": [
-    "amscotti"
+    "devkabiir"
   ],
   "contributors": [
-    "devkabiir",
-    "ErikSchierboom",
+    "amscotti",
     "Stargator"
   ],
   "files": {
