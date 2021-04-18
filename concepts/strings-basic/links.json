@@ -1,1 +1,10 @@
-[]
+[
+  {
+    "url": "https://dart.dev/guides/language/language-tour#strings",
+    "description": "Overview of Dart Strings"
+  },
+  {
+    "url":  "https://api.dart.dev/stable/2.12.4/dart-core/String-class.html",
+    "description": "String API"
+  }
+]
