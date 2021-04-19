@@ -1,4 +1,4 @@
-name: 'strings'
+name: 'strings_basic'
 environment:
   sdk: '>=2.12.0 <3.0.0'
 dev_dependencies:

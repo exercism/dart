@@ -24,7 +24,7 @@ pub run test
 
 ```
 
-In the test suites all tests but the first have been skipped. This is to
+In the test suites all tests except the first have been skipped. This is to
 encourage you to solve the exercise one step at a time.
 
 Once you get a test passing, you can enable the next one by changing `skip: true` to
@@ -32,7 +32,7 @@ Once you get a test passing, you can enable the next one by changing `skip: true
 
 ## Submitting the solution
 
-Once none of the tests are skipped and they are all passing, you can submit
+Once your solution passes all the tests, and you do not skip any test, you can submit
 your solution using `exercism submit strings.dart`.
 
 ## Writing custom tests
