@@ -11,7 +11,7 @@ dependencies:
 
 Install assignment dependencies:
 
-```shell
+```bash
 pub get
 ```
 
@@ -21,7 +21,6 @@ Execute the tests with:
 
 ```bash
 pub run test
-
 ```
 
 In the test suites all tests except the first have been skipped. This is to
