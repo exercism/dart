@@ -267,7 +267,7 @@
       {
         "slug": "isbn-verifier",
         "name": "Isbn Verifier",
-        "uuid": "c52dfe2b-5634-4c0c-8ea2-3ca86e5d9a33",
+        "uuid": "cc0b5fe0-ff63-45b6-8bff-7b62fc5995d8",
         "practices": [],
         "prerequisites": [],
         "difficulty": 4,
@@ -335,7 +335,7 @@
       {
         "slug": "resistor-color-duo",
         "name": "Resistor Color Duo",
-        "uuid": "98ae146a-67f9-49ae-9cd6-00882a374248",
+        "uuid": "c05b7dd7-4ba3-44bb-87e8-72b83c6f0e8b",
         "practices": [],
         "prerequisites": [],
         "difficulty": 2,
@@ -347,7 +347,7 @@
       {
         "slug": "beer-song",
         "name": "Beer Song",
-        "uuid": "50c34698-7767-42b3-962f-21c735e49787",
+        "uuid": "2a35fc68-3cb9-4790-a1ce-7d881b213e37",
         "practices": [],
         "prerequisites": [],
         "difficulty": 3,
