@@ -10,7 +10,10 @@
   },
   "blurb": "Dart is a general purpose programming language which has seen a rise in popularity for its usages in mobile and web application development.",
   "version": 3,
-  "online_editor": null,
+  "online_editor": {
+    "indent_style": "space",
+    "indent_size": 4
+  },
   "files": {
     "solution": [
       "lib/%{snake_slug}.dart"
