@@ -42,8 +42,8 @@ Please keep the following in mind:
 
 - Please make sure the new exercise conforms to specifications in the [exercism/problem-specifications](https://github.com/exercism/problem-specifications) repo.
   - Run `bin/fetch-configlet` to download configlet.
-  - Use `bin/configlet sync --exercise <slug-name-for-new-exercise> --mode -c` to see if any test cases are missing.
-    - Example `./bin/configlet sync --exercise armstrong-numbers --mode -c`
+  - Use `bin/configlet sync --exercise <slug-name-for-new-exercise> --check` to see if any test cases are missing.
+    - Example `./bin/configlet sync --exercise armstrong-numbers --check`
 
 - Each exercise must stand on its own. Do not reference files outside the exercise directory. They will not be included when the user fetches the exercise.
 
