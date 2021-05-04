@@ -41,9 +41,9 @@ Please keep the following in mind:
 - All Exercism exercises must be defined in [problem-specifications](https://github.com/exercism/problem-specifications/tree/master/exercises) before they are implemented for a specific track. If your exercise is new, please submit a PR to [exercism/problem-specification](https://github.com/exercism/problem-specifications).
 
 - Please make sure the new exercise conforms to specifications in the [exercism/problem-specifications](https://github.com/exercism/problem-specifications) repo.
-  - Run `bin/fetch-canonical_data_syncer` to download the canonical_data_syncer.
-  - Use `bin/canonical_data_syncer --exercise <slug-name-for-new-exercise> --mode -c` to see if any test cases are missing.
-    - Example `./bin/canonical_data_syncer --exercise armstrong-numbers --mode -c`
+  - Run `bin/fetch-configlet` to download configlet.
+  - Use `bin/configlet sync --exercise <slug-name-for-new-exercise> --check` to see if any test cases are missing.
+    - Example `./bin/configlet sync --exercise armstrong-numbers --check`
 
 - Each exercise must stand on its own. Do not reference files outside the exercise directory. They will not be included when the user fetches the exercise.
 
