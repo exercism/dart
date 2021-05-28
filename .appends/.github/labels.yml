@@ -1,0 +1,76 @@
+- name: "Hacktoberfest"
+  description: ""
+  color: "fbaa04"
+
+- name: "bug"
+  description: ""
+  color: "ee0701"
+
+- name: "discussion"
+  description: ""
+  color: "e93695"
+
+- name: "duplicate"
+  description: ""
+  color: "cccccc"
+
+- name: "enhancement"
+  description: ""
+  color: "84b6eb"
+
+- name: "good first issue"
+  description: ""
+  color: "0052cc"
+
+- name: "hacktoberfest-accepted"
+  description: "Hacktoberfest accepted PR"
+  color: "20CC28"
+
+- name: "help wanted"
+  description: ""
+  color: "128A0C"
+
+- name: "high-priority"
+  description: ""
+  color: "cc802a"
+
+- name: "invalid"
+  description: ""
+  color: "e6e6e6"
+
+- name: "low-priority"
+  description: ""
+  color: "c5def5"
+
+- name: "maintainer-change"
+  description: ""
+  color: "a5ea81"
+
+- name: "new-concept-exercise"
+  description: ""
+  color: "d4c5f9"
+
+- name: "new-practice-exercise"
+  description: ""
+  color: "1de6db"
+
+- name: "question"
+  description: ""
+  color: "cc317c"
+
+- name: "update-document"
+  description: ""
+  color: "496fb7"
+
+- name: "v3"
+  description: "Preparing for Exercism"
+  color: "3ac952"
+
+- name: "v3-migration 🤖"
+  description: "Preparing for Exercism v3"
+  color: "E99695"
+
+- name: "wontfix"
+  description: ""
+  color: "ffffff"
+
