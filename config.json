@@ -67,6 +67,7 @@
         "concepts": [
           "strings-basic"
         ],
+        "prerequisites": [],
         "status": "wip"
       }
     ],
