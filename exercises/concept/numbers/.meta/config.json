@@ -1,0 +1,17 @@
+{
+  "blurb": "TODO: add blurb for numbers concept exercise",
+  "authors": [
+    "Stargator"
+  ],
+  "files": {
+    "solution": [
+      "lib/numbers.dart"
+    ],
+    "test": [
+      "test/numbers_test.dart"
+    ],
+    "exemplar": [
+      ".meta/lib/exemplar.dart"
+    ]
+  }
+}

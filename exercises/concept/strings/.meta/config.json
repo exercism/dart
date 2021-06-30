@@ -1,0 +1,17 @@
+{
+  "blurb": "TODO: add blurb for strings concept exercise",
+  "authors": [
+    "Stargator"
+  ],
+  "files": {
+    "solution": [
+      "lib/strings.dart"
+    ],
+    "test": [
+      "test/strings_test.dart"
+    ],
+    "exemplar": [
+      ".meta/lib/exemplar.dart"
+    ]
+  }
+}
