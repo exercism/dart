@@ -29,6 +29,19 @@ It is advised to enable tests one by one as you implement the functionality bein
 You can do so by flipping the `skip: false` to `skip: true` flag for each test. 
 You can also submit your exercise without passing all tests to get feedback.
 
+NOTE: Some users may run into the error:
+
+```
+command not found: pub
+```
+
+If your terminal does not know where pub is, you may need to add it to your PATH. Alternatively, try the following command from the root directory of the exercise:
+
+```
+dart test
+```
+
+
 ----
 
 # Windows
