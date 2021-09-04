@@ -3,5 +3,5 @@
 To run the tests:
 
 ```sh
-$ pub run test
+$ dart run test
 ```

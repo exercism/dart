@@ -31,8 +31,8 @@ Please keep the following in mind:
     * Sensitive information (email address, real names, etc)
 
 - Please run the following commands before submitting your PR:
-    * `pub run bin/check_formatting.dart` - Checks the config.json and all Dart files for formatting issues
-    * `pub run bin/presubmit.dart` - Runs the test for Dart exercises, and formats config.json and all Dart files
+    * `dart run bin/check_formatting.dart` - Checks the config.json and all Dart files for formatting issues
+    * `dart run bin/presubmit.dart` - Runs the test for Dart exercises, and formats config.json and all Dart files
 
 - Once a Pull Request is approved, the contributing branch will be rebased onto the latest version of our master branch.
 
