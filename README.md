@@ -12,9 +12,9 @@ Exercism exercises in Dart.
 
 The simplest way to install Dart can be [found here](docs/INSTALLATION.md).
 
-Clone the repo and run `pub get` to download all the dependencies for this project.
+Clone the repo and run `dart pub get` to download all the dependencies for this project.
 
-To run all the tests execute: `pub run test`
+To run all the tests execute: `dart run test`
 
 To create a new exercise, use the executable in the tool directory: `dart bin/create_exercise.dart`
 

@@ -17,7 +17,7 @@ jobs:
     - uses: actions/checkout@v2
 
     - name: Install dependencies
-      run: dart pub get
+      run: dart dart pub get
 
     - name: Check Stage formatting
       run: dart run bin/check_formatting.dart

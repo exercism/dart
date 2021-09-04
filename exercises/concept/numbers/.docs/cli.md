@@ -12,7 +12,7 @@ dependencies:
 Install assignment dependencies:
 
 ```shell
-pub get
+dart pub get
 ```
 
 ## Making the test suite pass
@@ -20,7 +20,7 @@ pub get
 Execute the tests with:
 
 ```bash
-pub run test
+dart run test
 
 ```
 

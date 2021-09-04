@@ -12,7 +12,7 @@ The test run summary will list the number of passed, skipped and failed tests.
 For example :
 
 ```
-❯ pub run test
+❯ dart run test
 00:01 +4 ~3 -1: Some tests failed.
 ```
 
@@ -71,13 +71,13 @@ dart test
 1. Download the dependent packages:
 
      ```batchfile
-     C:\Users\JaneDoe>pub get
+     C:\Users\JaneDoe>dart pub get
      ```
 
 1. Run the tests:
 
      ```batchfile
-     C:\Users\JaneDoe>pub run test
+     C:\Users\JaneDoe>dart run test
      ```
    *(Don't worry about the tests failing, at first, this is how you begin each exercise.)*
 
@@ -112,13 +112,13 @@ If you get stuck, at any point, don't forget to reach out for [help](http://exer
 1. Download the dependent packages:
 
      ```shell
-     $ pub get
+     $ dart pub get
      ```
 
 1. Run the tests:
 
      ```shell
-     $ pub run test
+     $ dart run test
      ```
    *(Don't worry about the tests failing, at first, this is how you begin each exercise.)*
 
@@ -152,13 +152,13 @@ If you get stuck, at any point, don't forget to reach out for [help](http://exer
 1. Download the dependent packages:
 
      ```shell
-     $ pub get
+     $ dart pub get
      ```
 
 1. Run the tests:
 
      ```shell
-     $ pub run test
+     $ dart run test
      ```
    *(Don't worry about the tests failing, at first, this is how you begin each exercise.)*
 
