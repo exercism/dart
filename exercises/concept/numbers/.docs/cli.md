@@ -20,7 +20,7 @@ dart pub get
 Execute the tests with:
 
 ```bash
-dart run test
+dart test
 
 ```
 
