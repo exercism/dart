@@ -4,7 +4,7 @@
   "active": true,
   "status": {
     "concept_exercises": false,
-    "test_runner": true,
+    "test_runner": false,
     "representer": false,
     "analyzer": false
   },
