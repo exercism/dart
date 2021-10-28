@@ -1,5 +1,5 @@
 name: Broken link check
-on: [push]
+on: [push, pull_request]
 
 jobs:
   broken_link_checker_job:
@@ -15,7 +15,7 @@ jobs:
       uses: celinekurpershoek/link-checker@v1.0.1
 
       with:
-      
+
         url: 'https://...'
         honorRobotExclusions: false
         ignorePatterns: 'github,google'
