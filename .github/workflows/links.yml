@@ -15,10 +15,11 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Link Checker
+        id: checker
         uses: lycheeverse/lychee-action@v1.0.9
         with:
           args: --verbose --no-progress **/*.md **/*.html
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
       - name: Fail if there were link errors
-        run: exit ${{ steps.lychee.outputs.exit_code }}
+        run: exit ${{ steps.checker.outputs.exit_code }}
