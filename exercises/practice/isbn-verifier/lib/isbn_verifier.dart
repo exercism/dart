@@ -1,3 +1,1 @@
-class IsbnVerifier {
-  // Put your code here
-}
+// Put your code here
