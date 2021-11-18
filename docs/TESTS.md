@@ -73,7 +73,7 @@ You can also submit your exercise without passing all tests to get feedback.
 
 Good luck!  Have fun!
 
-If you get stuck, at any point, don't forget to reach out for [help](https://exercism.io/languages/dart/help).
+If you get stuck, at any point, don't forget to reach out for [help](https://exercism.io/languages/dart).
 
 ----
 
