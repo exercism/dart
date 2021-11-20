@@ -2,7 +2,7 @@
 
 Dart brings object-oriented and typing together with the flexibility that JavaScript is known for.  It is designed to simplify common programming tasks. In recent years, its popularity in the software development community has grown tremendously.
 
-To dig deeper into Dart, [click here](https://www.dartlang.org/guides/language/language-tour).
+To dig deeper into Dart, [click here](https://www.dart.dev/guides/language/language-tour).
 
 The primary concepts baked into the making of the language were:
 
@@ -16,8 +16,8 @@ The primary concepts baked into the making of the language were:
 
 Dart is a very versitile language that can be used in a variety of different ways:
 
- - Dart code can be transpiled into JavaScript for [web development](https://webdev.dartlang.org/), typically using [AngularDart](https://webdev.dartlang.org/angular).
- - [Application servers](https://www.dartlang.org/dart-vm) can be written using Dart.
+ - Dart code can be transpiled into JavaScript for [web development](https://dart.dev/web), typically using [AngularDart](https://webdev.dartlang.org/angular).
+ - [Application servers](https://www.dart.dev/dart-vm) can be written using Dart.
  - Cross-platform mobile application development can be achieved through a popular framework called [Flutter](https://flutter.io/).
  - [Google Firebase](https://github.com/firebase/firebase-dart) APIs can be integrated into Dart apps using the libraries written by the Firebase team.
 
