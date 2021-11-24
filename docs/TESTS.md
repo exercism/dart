@@ -113,7 +113,7 @@ If you get stuck, at any point, don't forget to reach out for [help](https://exe
 
 Good luck!  Have fun!
 
-If you get stuck, at any point, don't forget to reach out for [help](https://exercism.org/tracks/dart).
+If you get stuck, at any point, don't forget to reach out for [help](https://exercism.org/docs/tracks/dart).
 
 ----
 
