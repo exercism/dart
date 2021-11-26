@@ -16,7 +16,7 @@ jobs:
 
       - name: Link Checker
         id: checker
-        uses: lycheeverse/lychee-action@v1.0.9
+        uses: lycheeverse/lychee-action@v1.1.1
         with:
           args: --verbose --no-progress **/*.md **/*.html
         env:
