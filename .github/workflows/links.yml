@@ -1,0 +1,25 @@
+name: Links
+
+on:
+  push:
+  pull_request:
+  repository_dispatch:
+  workflow_dispatch:
+  schedule:
+    - cron: "00 18 * * *"
+
+jobs:
+  linkChecker:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Link Checker
+        id: checker
+        uses: lycheeverse/lychee-action@v1.1.1
+        with:
+          args: --verbose --no-progress **/*.md **/*.html
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+      - name: Fail if there were link errors
+        run: exit ${{ steps.checker.outputs.exit_code }}
