@@ -1,6 +1,16 @@
 name: Test
 
-on: [pull_request]
+on:
+  pull_request:
+    paths:
+      - 'bin/*.dart'
+      - 'exercises/**/*.dart'
+      - 'exercises/**/analysis_options.yaml'
+      - 'exercises/**/pubspec.yaml'
+      - 'lib/src/*.dart'
+      - 'test/*.dart'
+      - 'analysis_options.yaml'
+      - 'pubspec.*'
 
 jobs:
   test:
