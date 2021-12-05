@@ -2,6 +2,13 @@ name: Links
 
 on:
   pull_request:
+    paths:
+      - 'concept/**/*.md'
+      - 'concept/**/links.json'
+      - 'docs/*.md'
+      - 'exercises/**/*.md'
+      - 'reference/*.md'
+      - '*.md'
   repository_dispatch:
   workflow_dispatch:
 
