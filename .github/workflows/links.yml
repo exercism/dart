@@ -5,8 +5,6 @@ on:
   pull_request:
   repository_dispatch:
   workflow_dispatch:
-  schedule:
-    - cron: "00 18 * * *"
 
 jobs:
   linkChecker:
@@ -15,11 +13,9 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Link Checker
-        id: checker
         uses: lycheeverse/lychee-action@v1.2.0
         with:
           args: --verbose --no-progress **/*.md **/*.html
+          fail: true
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
-      - name: Fail if there were link errors
-        run: exit ${{ steps.checker.outputs.exit_code }}
