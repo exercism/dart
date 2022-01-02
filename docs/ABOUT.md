@@ -16,7 +16,7 @@ The primary concepts baked into the making of the language were:
 
 Dart is a very versitile language that can be used in a variety of different ways:
 
- - Dart code can be transpiled into JavaScript for [web development](https://dart.dev/web), typically using [AngularDart](https://github.com/angulardart).
+ - Dart code can be transpiled into JavaScript for [web development](https://dart.dev/web), typically using [AngularDart](https://github.com/angulardart/angular).
  - [Application servers](https://www.dart.dev/dart-vm) can be written using Dart.
  - Cross-platform mobile application development can be achieved through a popular framework called [Flutter](https://flutter.io/).
  - [Google Firebase](https://github.com/firebase/firebase-dart) APIs can be integrated into Dart apps using the libraries written by the Firebase team.
