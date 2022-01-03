@@ -3,6 +3,7 @@ name: Test
 on:
   pull_request:
     paths:
+      - '.github/workflows/test.yml'
       - 'bin/*.dart'
       - 'exercises/**/*.dart'
       - 'exercises/**/analysis_options.yaml'
