@@ -9,6 +9,8 @@ on:
       - 'exercises/**/*.md'
       - 'reference/*.md'
       - '*.md'
+      - '**/**/*.md'
+      - '**/*.md'
   repository_dispatch:
   workflow_dispatch:
 
