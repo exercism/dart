@@ -3,6 +3,7 @@ name: Links
 on:
   pull_request:
     paths:
+      - '.github/workflows/links.yml'
       - 'concept/**/*.md'
       - 'concept/**/links.json'
       - 'docs/*.md'
@@ -11,6 +12,7 @@ on:
       - '*.md'
       - '**/**/*.md'
       - '**/*.md'
+
   repository_dispatch:
   workflow_dispatch:
 
