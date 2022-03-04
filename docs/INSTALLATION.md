@@ -12,7 +12,7 @@
     * Follow the links below for updating your PATH on Windows, Linux and Mac platforms:
         * [Instructions for Windows](https://www.computerhope.com/issues/ch000549.htm)
         * [Instructions for Linux](https://www.computerhope.com/issues/ch001647.htm)
-        * [Instructions for Mac](https://www.pegaxchange.com/tag/macos-sierra-add-entry-to-path-variable/)
+        * [Instructions for Mac](https://support.apple.com/guide/terminal/apd382cc5fa-4f58-4449-b20a-41c53c006f8f/mac)
 
 #### Verify Installation
 * From a new command window or terminal, type `dart --version` to verify that Dart is now available. If the output shows the version number, then Dart is correctly installed on your computer.

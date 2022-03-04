@@ -68,7 +68,7 @@ You can also submit your exercise without passing all tests to get feedback.
      ```
    *(Don't worry about the tests failing, at first, this is how you begin each exercise.)*
 
-1. Solve the exercise.  Find and work through the `README.md` guide ([view on GitHub](https://github.com/exercism/dart/blob/master/exercises/hello-world/README.md)).
+1. Solve the exercise.  Find and work through the `instructions.md` guide ([view on GitHub](https://github.com/exercism/dart/blob/main/exercises/practice/hello-world/.docs/instructions.md)).
 
 
 Good luck!  Have fun!
@@ -109,7 +109,7 @@ If you get stuck, at any point, don't forget to reach out for [help](https://exe
      ```
    *(Don't worry about the tests failing, at first, this is how you begin each exercise.)*
 
-1. Solve the exercise.  Find and work through the `README.md` guide ([view on GitHub](https://github.com/exercism/dart/blob/master/exercises/hello-world/README.md)).
+1. Solve the exercise.  Find and work through the `instructions.md` guide ([view on GitHub](https://github.com/exercism/dart/blob/main/exercises/practice/hello-world/.docs/instructions.md)).
 
 Good luck!  Have fun!
 
@@ -149,7 +149,7 @@ If you get stuck, at any point, don't forget to reach out for [help](https://exe
      ```
    *(Don't worry about the tests failing, at first, this is how you begin each exercise.)*
 
-1. Solve the exercise.  Find and work through the `README.md` guide ([view on GitHub](https://github.com/exercism/dart/blob/master/exercises/hello-world/README.md)).
+1. Solve the exercise.  Find and work through the `instructions.md` guide ([view on GitHub](https://github.com/exercism/dart/blob/main/exercises/practice/hello-world/.docs/instructions.md)).
 
 Good luck!  Have fun!
 
