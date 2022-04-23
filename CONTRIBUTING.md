@@ -2,7 +2,7 @@
 
 Thank you so much for contributing! :tada:
 
-Please read about how to [get involved in a track](https://github.com/exercism/docs/tree/master/contributing-to-language-tracks). Be sure to read the Exercism [Code of Conduct](https://exercism.io/code-of-conduct).
+Please read about how to [get involved in a track](https://exercism.org/docs/building). Be sure to read the Exercism [Code of Conduct](https://exercism.io/code-of-conduct).
 
 We welcome pull requests of all kinds. No contribution is too small.
 
