@@ -2,7 +2,7 @@
 
 Thank you so much for contributing! :tada:
 
-Please read about how to [get involved in a track](https://exercism.org/docs/building). Be sure to read the Exercism [Code of Conduct](https://exercism.io/code-of-conduct).
+Please read about how to [get involved in a track](https://exercism.org/docs/building/tracks). Be sure to read the Exercism [Code of Conduct](https://exercism.io/code-of-conduct).
 
 We welcome pull requests of all kinds. No contribution is too small.
 
@@ -51,7 +51,7 @@ Please keep the following in mind:
 
 - Please do not add a README or README.md file to the exercise directory. The READMEs are generated using shared metadata, which lives in the
 [exercism/problem-specifications](https://github.com/exercism/problem-specifications) repository.
-  - Read the [Generating a README](https://github.com/exercism/docs/blob/master/language-tracks/exercises/anatomy/readmes.md) sections Setup and Generation to see the necessary steps.
+  - Read the [Contributing to Exercism](https://exercism.org/docs/building) guide to see the necessary steps for generating a README.md with the configlet tool.
 
 - Each exercise should have a test suite, an example solution, a template file for the real implementation, and a README.md
   - The CI build expects Dart files to be named in the convention of snake_case_filenames
