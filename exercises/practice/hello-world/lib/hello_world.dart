@@ -1,5 +1,5 @@
 class HelloWorld {
   String hello() {
-    return "Goodbye, Mars!";
+    return "Hello, World!";
   }
 }
