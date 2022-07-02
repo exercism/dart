@@ -15,8 +15,7 @@ void main() {
 
   group('Hamming', () {
     test('empty strands', () {
-      final int result = hamming.distance('', '');
-      expect(result, equals(0));
+      expect(() => hamming.distance('', ''), throwsA(noEmptyStrand));
     }, skip: false);
 
     test('single letter identical strands', () {
