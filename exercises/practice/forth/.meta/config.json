@@ -1,0 +1,22 @@
+{
+  "blurb": "Implement an evaluator for a very simple subset of Forth.",
+  "authors": [
+    "matthewmorgan"
+  ],
+  "contributors": [
+    "AlexeyBukin"
+  ],
+  "files": {
+    "solution": [
+      "lib/forth.dart"
+    ],
+    "test": [
+      "test/forth_test.dart"
+    ],
+    "example": [
+      ".meta/lib/example.dart"
+    ]
+  },
+  "source": "Exercism JS track",
+  "source_url": "https://exercism.org/tracks/javascript/exercises/forth"
+}
