@@ -154,6 +154,15 @@
         ]
       },
       {
+        "slug": "forth",
+        "name": "Forth",
+        "uuid": "7137cdad-fdac-4e30-836a-c92c352bdc4d",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 8,
+        "topics": ["domain_specific_languages", "parsing", "stacks"]
+      },
+      {
         "slug": "word-count",
         "name": "Word Count",
         "uuid": "b74dde02-03d0-4165-8302-e8ba119b486b",
