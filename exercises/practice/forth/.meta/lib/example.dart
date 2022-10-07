@@ -1,7 +1,7 @@
 import 'dart:collection';
 
 class Forth {
-  final _stack = Stack();
+  final _stack = _Stack();
 
   List<int> get stack => _stack.asList;
 
@@ -117,7 +117,7 @@ class Forth {
   }
 }
 
-class Stack {
+class _Stack {
   List<int> get asList => _stack.toList();
 
   final _stack = Queue<int>();
