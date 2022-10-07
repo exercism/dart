@@ -19,4 +19,4 @@ You should use the following rules for the syntax: a number is a sequence of one
 
 Words are case-insensitive.
 
-[Forth]: https://en.wikipedia.org/wiki/Forth_%28programming_language%29
+[Forth]: https://en.wikipedia.org/wiki/Forth_(programming_language)
