@@ -169,7 +169,7 @@ void main() {
 name: 'foo_bar'
 version: 1.0.0
 environment:
-  sdk: '>=2.12.0 <3.0.0'
+  sdk: '>=2.18.0 <3.0.0'
 dev_dependencies:
   test: '<2.0.0'
 '''));
