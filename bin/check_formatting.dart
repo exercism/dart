@@ -7,7 +7,7 @@ Future main() async {
 
   print('Checking all Dart files formatting...');
   errorCode = await utils
-      .runCmd('pub', ['run', 'dart_style:format', '-i', '0', '-l', '120', '-n', '--set-exit-if-changed', '.']);
+      .runCmd('dart', ['run', 'dart_style:format', '-i', '0', '-l', '120', '-n', '--set-exit-if-changed', '.']);
 
   if (errorCode != 0) {
     print('Checking exercise formatting failed!!');
