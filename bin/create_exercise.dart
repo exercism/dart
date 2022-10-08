@@ -252,7 +252,7 @@ void _generateExercise(Map<String, Object> specification, String exerciseFilenam
   }
 
   // The output from file generation is not always well-formatted, use dartfmt to clean it up
-  final fmtSuccess = _runProcess('pub', ['run', 'dart_style:format', '-i', '0', '-l', '120', '-w', exerciseDir.path]);
+  final fmtSuccess = _runProcess('dart', ['run', 'dart_style:format', '-i', '0', '-l', '120', '-w', exerciseDir.path]);
   if (fmtSuccess) {
     stdout.write('Successfully created a rough-draft of tests at \'$testFileName\'.\n');
     stdout.write('You should check this over and fix or refine as necessary.\n');
@@ -261,10 +261,10 @@ void _generateExercise(Map<String, Object> specification, String exerciseFilenam
         .write('Warning: dart_style:format exited with an error, files in \'${exerciseDir.path}\' may be malformed.\n');
   }
 
-  // Install deps
+  // Install dependencies
   Directory.current = exerciseDir;
 
-  final pubSuccess = _runProcess('pub', ['get']);
+  final pubSuccess = _runProcess('dart', ['pub', 'get']);
   assert(pubSuccess);
 }
 

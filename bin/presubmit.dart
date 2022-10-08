@@ -11,10 +11,10 @@ Future<Null> main() async {
   }
 
   print('Formatting all Dart files...');
-  await utils.runCmd('pub', ['run', 'dart_style:format', '-l', '120', '-w', '.']);
+  await utils.runCmd('dart', ['run', 'dart_style:format', '-l', '120', '-w', '.']);
 
   print('Running tests...');
-  await utils.runCmd('pub', ['run', 'test']);
+  await utils.runCmd('dart', ['run', 'test']);
 
   await utils.terminate();
   print('Done!');

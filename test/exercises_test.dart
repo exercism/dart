@@ -75,10 +75,10 @@ Running tests for: $packageName
 
     for (List<String> cmds in [
       /// Pull dependencies
-      ['pub', 'upgrade'],
+      ['dart', 'pub', 'upgrade'],
 
       /// Run all exercise tests
-      ['pub', 'run', 'test', '--run-skipped']
+      ['dart', 'test', '--run-skipped']
     ]) {
       await runCmd(cmds);
     }
