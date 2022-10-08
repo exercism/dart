@@ -32,7 +32,13 @@ void main() {
       }, skip: true);
 
       test('can create complex tree', () {
-        final bst = BinarySearchTree('4')..insert('2')..insert("6")..insert("1")..insert("3")..insert("5")..insert("7");
+        final bst = BinarySearchTree('4')
+          ..insert('2')
+          ..insert("6")
+          ..insert("1")
+          ..insert("3")
+          ..insert("5")
+          ..insert("7");
 
         expect(bst.root.data, equals('4'));
 
@@ -72,7 +78,12 @@ void main() {
       }, skip: true);
 
       test('can sort complex tree', () {
-        final bst = BinarySearchTree('2')..insert("1")..insert("3")..insert("6")..insert("7")..insert("5");
+        final bst = BinarySearchTree('2')
+          ..insert("1")
+          ..insert("3")
+          ..insert("6")
+          ..insert("7")
+          ..insert("5");
 
         expect(bst.sortedData, equals(['1', '2', '3', '5', '6', '7']));
       }, skip: true);
