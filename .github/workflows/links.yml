@@ -3,7 +3,7 @@ name: Links
 on:
   pull_request:
     paths:
-      - '.github/workflows/links.yml'
+#      - '.github/workflows/links.yml' Temporarily disabled by @Stargator
       - 'concept/**/*.md'
       - 'concept/**/links.json'
       - 'docs/*.md'
