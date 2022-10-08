@@ -7,7 +7,7 @@ on:
       - 'concept/**/*.md'
       - 'concept/**/links.json'
       - 'docs/*.md'
-      - 'exercises/**/*.md'
+#      - 'exercises/**/*.md' Temporarily disabled by @Stargator
       - 'reference/*.md'
       - '*.md'
       - '**/**/*.md'
