@@ -143,7 +143,7 @@
       },
       {
         "slug": "difference-of-squares",
-        "name": "Difference Of Squares",
+        "name": "Difference of Squares",
         "uuid": "c1cdab6f-c18c-4173-828a-2191151d20d4",
         "practices": [],
         "prerequisites": [],
@@ -245,7 +245,7 @@
       },
       {
         "slug": "rna-transcription",
-        "name": "Rna Transcription",
+        "name": "RNA Transcription",
         "uuid": "99147c39-e8d3-4166-9215-c47fb4832781",
         "practices": [],
         "prerequisites": [],
@@ -271,7 +271,7 @@
       },
       {
         "slug": "pascals-triangle",
-        "name": "Pascals Triangle",
+        "name": "Pascal's Triangle",
         "uuid": "f06d9bb0-0b8d-4b34-b6d4-5c5cfae0d93c",
         "practices": [],
         "prerequisites": [],
@@ -286,7 +286,7 @@
       },
       {
         "slug": "isbn-verifier",
-        "name": "Isbn Verifier",
+        "name": "ISBN Verifier",
         "uuid": "cc0b5fe0-ff63-45b6-8bff-7b62fc5995d8",
         "practices": [],
         "prerequisites": [],
