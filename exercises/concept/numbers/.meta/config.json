@@ -1,5 +1,4 @@
 {
-  "blurb": "TODO: add blurb for numbers concept exercise",
   "authors": [
     "Stargator"
   ],
@@ -13,5 +12,6 @@
     "exemplar": [
       ".meta/lib/exemplar.dart"
     ]
-  }
+  },
+  "blurb": "TODO: add blurb for numbers concept exercise"
 }
