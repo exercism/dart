@@ -1,5 +1,4 @@
 {
-  "blurb": "Add the numbers to a minesweeper board",
   "authors": [
     "devkabiir"
   ],
@@ -16,5 +15,6 @@
     "example": [
       ".meta/lib/example.dart"
     ]
-  }
+  },
+  "blurb": "Add the numbers to a minesweeper board"
 }

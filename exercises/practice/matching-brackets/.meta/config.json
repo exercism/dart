@@ -1,5 +1,4 @@
 {
-  "blurb": "Make sure the brackets and braces all match.",
   "authors": [
     "johnngugi"
   ],
@@ -17,5 +16,6 @@
       ".meta/lib/example.dart"
     ]
   },
+  "blurb": "Make sure the brackets and braces all match.",
   "source": "Ginna Baker"
 }

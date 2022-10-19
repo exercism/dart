@@ -1,9 +1,6 @@
 {
-  "blurb": "Convert a resistor band's color to its numeric representation",
   "authors": [
     "amscotti"
-  ],
-  "contributors": [
   ],
   "files": {
     "solution": [
@@ -16,6 +13,7 @@
       ".meta/lib/example.dart"
     ]
   },
+  "blurb": "Convert a resistor band's color to its numeric representation",
   "source": "Maud de Vries, Erik Schierboom",
   "source_url": "https://github.com/exercism/problem-specifications/issues/1458"
 }
