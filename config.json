@@ -630,23 +630,23 @@
   "key_features": [
     {
       "icon": "web",
-      "title": "Popular for Web and Mobile Development",
+      "title": "Web and Mobile",
       "content": "Dart has the Flutter library, which can be used to quickly build web and smartphone applications."
     },
     {
       "icon": "cross-platform",
-      "title": "Instant iOS and Android Development",
-      "content": "Dart/Flutter can be converted into iOS's Swift language and Android's Kotlin language, making mobile development fast and efficient."
+      "title": "iOS and Android",
+      "content": "Dart can be converted into Swift and Kotlin, making mobile development fast and efficient."
     },
     {
       "icon": "community",
       "title": "Full Documentation",
-      "content": "Dart's documentation and learning materials are constantly updated by its developers, making it easy to look up information on the language."
+      "content": "Dart's learning materials are constantly updated, making it easy to look up information."
     },
     {
       "icon": "community",
       "title": "Countless Packages",
-      "content": "Dart allows users to build and publish their own packages for public use, which can be accessed from Dart directly."
+      "content": "Easily build and publish packages for public use, which can be accessed from Dart directly."
     },
     {
       "icon": "functional",
