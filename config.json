@@ -632,22 +632,22 @@
     {
       "icon": "community",
       "title": "Full Documentation",
-      "contents": "Dart's documentation and learning materials are constantly updated by its developers, making it easy to look up information on the language."
+      "content": "Dart's documentation and learning materials are constantly updated by its developers, making it easy to look up information on the language."
     },
     {
       "icon": "community",
       "title": "Countless Packages",
-      "contents": "Dart allows users to build and publish their own packages for public use, which can be accessed from Dart directly."
+      "content": "Dart allows users to build and publish their own packages for public use, which can be accessed from Dart directly."
     },
     {
       "icon": "functional",
       "title": "Highly-organized Code",
-      "contents": "Dart's coding style makes it easy to read and understand."
+      "content": "Dart's coding style makes it easy to read and understand."
     },
     {
       "icon": "fun",
       "title": "Easy to Learn",
-      "contents": "Dart is easy to understand and great for beginners to programming."
+      "content": "Dart is easy to understand and great for beginners to programming."
     }
   ],
   "tags": [
