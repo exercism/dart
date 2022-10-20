@@ -629,34 +629,34 @@
   ],
   "key_features": [
     {
-      icon: "web",
-      title: "Popular for Web and Mobile Development",
-      content: "Dart has the Flutter library, which can be used to quickly build web and smartphone applications."
+      "icon": "web",
+      "title": "Popular for Web and Mobile Development",
+      "content": "Dart has the Flutter library, which can be used to quickly build web and smartphone applications."
     },
     {
-      icon: "cross-platform",
-      title: "Instant iOS and Android Development",
-      content: "Dart/Flutter can be converted into iOS's Swift language and Android's Kotlin language, making mobile development fast and efficient."
+      "icon": "cross-platform",
+      "title": "Instant iOS and Android Development",
+      "content": "Dart/Flutter can be converted into iOS's Swift language and Android's Kotlin language, making mobile development fast and efficient."
     },
     {
-      icon: "community",
-      title: "Full Documentation",
-      contents: "Dart's documentation and learning materials are constantly updated by its developers, making it easy to look up information on the language."
+      "icon": "community",
+      "title": "Full Documentation",
+      "contents": "Dart's documentation and learning materials are constantly updated by its developers, making it easy to look up information on the language."
     },
     {
-      icon: "community",
-      title: "Countless Packages",
-      contents: "Dart allows users to build and publish their own packages for public use, which can be accessed from Dart directly."
+      "icon": "community",
+      "title": "Countless Packages",
+      "contents": "Dart allows users to build and publish their own packages for public use, which can be accessed from Dart directly."
     },
     {
-      icon: "functional",
-      title: "Highly-organized Code",
-      contents: "Dart's coding style makes it easy to read and understand."
+      "icon": "functional",
+      "title": "Highly-organized Code",
+      "contents": "Dart's coding style makes it easy to read and understand."
     },
     {
-      icon: "fun",
-      title: "Easy to Learn",
-      contents: "Dart is easy to understand and great for beginners to programming."
+      "icon": "fun",
+      "title": "Easy to Learn",
+      "contents": "Dart is easy to understand and great for beginners to programming."
     }
   ],
   "tags": [
