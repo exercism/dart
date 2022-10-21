@@ -1,10 +1,15 @@
+# This file is a copy of the
+# https://github.com/exercism/configlet/blob/main/scripts/fetch-configlet.ps1 file.
+# Please submit bugfixes/improvements to the above file to ensure that all tracks
+# benefit from the changes.
+
 $ErrorActionPreference = "Stop"
 $ProgressPreference = "SilentlyContinue"
 
 $requestOpts = @{
-    Headers = If ($env:GITHUB_TOKEN) { @{ Authorization = "Bearer ${env:GITHUB_TOKEN}" } } Else { @{ } }
+    Headers           = If ($env:GITHUB_TOKEN) { @{ Authorization = "Bearer ${env:GITHUB_TOKEN}" } } Else { @{ } }
     MaximumRetryCount = 3
-    RetryIntervalSec = 1
+    RetryIntervalSec  = 1
 }
 
 $arch = If ([Environment]::Is64BitOperatingSystem) { "64bit" } Else { "32bit" }
