@@ -37,9 +37,7 @@ void main() {
       }, skip: true);
     });
 
-    group(
-        'first letter and ay are moved to the end of words that start with consonants',
-        () {
+    group('first letter and ay are moved to the end of words that start with consonants', () {
       test('word beginning with p', () {
         final result = pigLatin.translate('pig');
         expect(result, equals('igpay'));
@@ -105,8 +103,7 @@ void main() {
       }, skip: true);
     });
 
-    group('position of y in a word determines if it is a consonant or a vowel',
-        () {
+    group('position of y in a word determines if it is a consonant or a vowel', () {
       test('y is treated like a consonant at the beginning of a word', () {
         final result = pigLatin.translate('yellow');
         expect(result, equals('ellowyay'));
