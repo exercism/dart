@@ -582,7 +582,20 @@
           "pattern_matching",
           "stacks"
         ]
-      }
+      },
+      {
+        "slug": "pig-latin",
+        "name": "Pig Latin",
+        "uuid": "8c5c9cc5-ddd1-4756-94fe-5862c940a5b8",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 5,
+        "topics": [
+          "strings",
+          "arrays",
+          "lists"
+        ]
+      } 
     ]
   },
   "concepts": [
