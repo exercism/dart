@@ -1,6 +1,6 @@
 # Exercism Dart Track
 
-[![Test](https://github.com/exercism/dart/actions/workflows/test.yml/badge.svg)](https://github.com/exercism/dart/actions/workflows/test.yml) [![Gitter](https://badges.gitter.im/exercism/dart.svg)](https://gitter.im/exercism/dart?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
+[![Test](https://github.com/exercism/dart/actions/workflows/test.yml/badge.svg)](https://github.com/exercism/dart/actions/workflows/test.yml)
 
 Exercism exercises in Dart.
 
