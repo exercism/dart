@@ -1,3 +1,1 @@
-class PigLatin {
-  // Put your code here
-}
+// Your code here
