@@ -15,6 +15,7 @@ The simplest way to install Dart can be [found here](docs/INSTALLATION.md).
 Clone the repo and run `dart pub get` to download all the dependencies for this project.
 
 To run all the tests execute: `dart test`
+To run the tests for a single exercise, execute `EXERCISE=slug dart test`.
 
 To create a new exercise, use the executable in the tool directory: `dart bin/create_exercise.dart`
 
