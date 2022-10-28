@@ -11,8 +11,8 @@ void main() {
     }, skip: false);
 
     test('detects two anagrams', () {
-      final List<String> result = anagram.findAnagrams('master', <String>['stream', 'pigeon', 'maters']);
-      expect(result, equals(<String>['stream', 'maters']));
+      final List<String> result = anagram.findAnagrams('solemn', <String>['lemons', 'cherry', 'melons']);
+      expect(result, equals(<String>['lemons', 'melons']));
     }, skip: true);
 
     test('does not detect anagram subsets', () {
@@ -66,13 +66,23 @@ void main() {
       expect(result, equals(<String>[]));
     }, skip: true);
 
-    test('words are not anagrams of themselves (case-insensitive)', () {
-      final List<String> result = anagram.findAnagrams('BANANA', <String>['BANANA', 'Banana', 'banana']);
+    test('words are not anagrams of themselves', () {
+      final List<String> result = anagram.findAnagrams('BANANA', <String>['BANANA']);
+      expect(result, equals(<String>[]));
+    }, skip: true);
+
+    test('words are not anagrams of themselves even if letter case is partially different', () {
+      final List<String> result = anagram.findAnagrams('BANANA', <String>['Banana']);
+      expect(result, equals(<String>[]));
+    }, skip: true);
+
+    test('words are not anagrams of themselves even if letter case is completely different', () {
+      final List<String> result = anagram.findAnagrams('BANANA', <String>['banana']);
       expect(result, equals(<String>[]));
     }, skip: true);
 
     test('words other than themselves can be anagrams', () {
-      final List<String> result = anagram.findAnagrams('LISTEN', <String>['Listen', 'Silent', 'LISTEN']);
+      final List<String> result = anagram.findAnagrams('LISTEN', <String>['LISTEN', 'Silent']);
       expect(result, equals(<String>['Silent']));
     }, skip: true);
   });
