@@ -277,4 +277,9 @@ void listWhen() {
     final List<String> result = allergies.list(509);
     expect(result, equals(<String>['eggs', 'shellfish', 'strawberries', 'tomatoes', 'chocolate', 'pollen', 'cats']));
   }, skip: true);
+
+  test('no allergen score parts without highest valid score', () {
+    final List<String> result = allergies.list(257);
+    expect(result, equals(<String>['eggs']));
+  }, skip: true);
 }
