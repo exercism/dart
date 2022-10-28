@@ -13,6 +13,7 @@ linter:
     # Error Rules
     - avoid_relative_lib_imports
     - avoid_types_as_parameter_names
+    - directives_ordering
     - literal_only_boolean_expressions
     - no_adjacent_strings_in_list
     - valid_regexps
