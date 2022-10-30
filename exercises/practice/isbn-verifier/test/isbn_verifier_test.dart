@@ -3,7 +3,7 @@ import 'package:test/test.dart';
 
 void main() {
   group('IsbnVerifier', () {
-    test('valid isbn number', () {
+    test('valid isbn', () {
       final bool result = isValid('3-598-21508-8');
       expect(result, equals(true));
     }, skip: false);
@@ -13,7 +13,7 @@ void main() {
       expect(result, equals(false));
     }, skip: true);
 
-    test('valid isbn number with a check digit of 10', () {
+    test('valid isbn with a check digit of 10', () {
       final bool result = isValid('3-598-21507-X');
       expect(result, equals(true));
     }, skip: true);
@@ -23,7 +23,7 @@ void main() {
       expect(result, equals(false));
     }, skip: true);
 
-    test('invalid character in isbn', () {
+    test('invalid character in isbn is not treated as zero', () {
       final bool result = isValid('3-598-P1581-X');
       expect(result, equals(false));
     }, skip: true);
@@ -78,7 +78,7 @@ void main() {
       expect(result, equals(false));
     }, skip: true);
 
-    test('invalid characters are not ignored', () {
+    test('invalid characters are not ignored after checking length', () {
       final bool result = isValid('3132P34035');
       expect(result, equals(false));
     }, skip: true);
