@@ -23,6 +23,11 @@ void main() {
       expect(result, equals(false));
     }, skip: true);
 
+    test('invalid check digit in isbn is not treated as zero', () {
+      final bool result = isValid('4-598-21507-B');
+      expect(result, equals(false));
+    }, skip: true);
+
     test('invalid character in isbn is not treated as zero', () {
       final bool result = isValid('3-598-P1581-X');
       expect(result, equals(false));
@@ -80,6 +85,11 @@ void main() {
 
     test('invalid characters are not ignored after checking length', () {
       final bool result = isValid('3132P34035');
+      expect(result, equals(false));
+    }, skip: true);
+
+    test('invalid characters are not ignored before checking length', () {
+      final bool result = isValid('3598P215088');
       expect(result, equals(false));
     }, skip: true);
 
