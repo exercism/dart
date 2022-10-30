@@ -1,12 +1,9 @@
 import 'package:hamming/hamming.dart';
 import 'package:test/test.dart';
 
-final hamming = Hamming();
-
-/// Test cases match one-to-one with those described
-/// in the problem specification found here:
-/// https://github.com/exercism/problem-specifications/blob/master/exercises/hamming/canonical-data.json
 void main() {
+  final hamming = Hamming();
+
   final mustEqual = predicate(
       (Error e) => e is ArgumentError && e.message == 'left and right strands must be of equal length',
       'an ArgumentError with the message "left and right strands must be of equal length"');
