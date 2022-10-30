@@ -4,11 +4,8 @@ import 'package:test/test.dart';
 void main() {
   final hamming = Hamming();
 
-  final mustEqual = predicate(
-      (Error e) => e is ArgumentError && e.message == 'left and right strands must be of equal length',
-      'an ArgumentError with the message "left and right strands must be of equal length"');
-  final noEmptyStrand = predicate((Error e) => e is ArgumentError && e.message == 'no strand must be empty',
-      'an ArgumentError with the message "no strand must be empty"');
+  final mustEqual = predicate((Error e) => e is ArgumentError && e.message == 'strands must be of equal length',
+      'an ArgumentError with the message "strands must be of equal length"');
 
   group('Hamming', () {
     test('empty strands', () {
@@ -44,12 +41,12 @@ void main() {
       expect(() => hamming.distance('ATA', 'AGTG'), throwsA(mustEqual));
     }, skip: true);
 
-    test('disallow left empty strand', () {
-      expect(() => hamming.distance('', 'G'), throwsA(noEmptyStrand));
+    test('disallow empty first strand', () {
+      expect(() => hamming.distance('', 'G'), throwsA(mustEqual));
     }, skip: true);
 
-    test('disallow right empty strand', () {
-      expect(() => hamming.distance('G', ''), throwsA(noEmptyStrand));
+    test('disallow empty second strand', () {
+      expect(() => hamming.distance('G', ''), throwsA(mustEqual));
     }, skip: true);
   });
 }
