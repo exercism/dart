@@ -2,6 +2,9 @@
   "authors": [
     "jvarness"
   ],
+  "contributors": [
+    "kytrinyx"
+  ],
   "files": {
     "solution": [
       "lib/isogram.dart"

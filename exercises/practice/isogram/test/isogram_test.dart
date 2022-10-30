@@ -69,5 +69,10 @@ void main() {
       final bool result = isogram.isIsogram('angola');
       expect(result, equals(false));
     }, skip: true);
+
+    test('word with duplicated character and with two hyphens', () {
+      final bool result = isogram.isIsogram('up-to-date');
+      expect(result, equals(false));
+    }, skip: true);
   });
 }
