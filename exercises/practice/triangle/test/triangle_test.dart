@@ -4,9 +4,9 @@ import 'package:triangle/triangle.dart';
 final triangle = Triangle();
 
 void main() {
-  group("Triangle: equilateral triangle - ", equilateralTriangle);
-  group("Triangle: isosceles triangle - ", isoscelesTriangle);
-  group("Triangle: scalene triangle - ", scaleneTriangle);
+  group('Triangle: equilateral triangle - ', equilateralTriangle);
+  group('Triangle: isosceles triangle - ', isoscelesTriangle);
+  group('Triangle: scalene triangle - ', scaleneTriangle);
 }
 
 void equilateralTriangle() {
@@ -96,6 +96,16 @@ void scaleneTriangle() {
 
   test('first and second sides are equal', () {
     final result = triangle.scalene(4, 4, 3);
+    expect(result, equals(false));
+  }, skip: true);
+
+  test('first and third sides are equal', () {
+    final result = triangle.scalene(3, 4, 3);
+    expect(result, equals(false));
+  }, skip: true);
+
+  test('second and third sides are equal', () {
+    final result = triangle.scalene(4, 3, 3);
     expect(result, equals(false));
   }, skip: true);
 
