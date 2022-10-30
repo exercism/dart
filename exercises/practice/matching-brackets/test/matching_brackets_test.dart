@@ -70,6 +70,11 @@ void main() {
       expect(result, equals(false));
     }, skip: true);
 
+    test('paired and wrong nested brackets but innermost are correct', () {
+      final bool result = matchingBrackets.isPaired('[({}])');
+      expect(result, equals(false));
+    }, skip: true);
+
     test('paired and incomplete brackets', () {
       final bool result = matchingBrackets.isPaired('{}[');
       expect(result, equals(false));
@@ -77,6 +82,16 @@ void main() {
 
     test('too many closing brackets', () {
       final bool result = matchingBrackets.isPaired('[]]');
+      expect(result, equals(false));
+    }, skip: true);
+
+    test('early unexpected brackets', () {
+      final bool result = matchingBrackets.isPaired(')()');
+      expect(result, equals(false));
+    }, skip: true);
+
+    test('early mismatched brackets', () {
+      final bool result = matchingBrackets.isPaired('{)()');
       expect(result, equals(false));
     }, skip: true);
 
