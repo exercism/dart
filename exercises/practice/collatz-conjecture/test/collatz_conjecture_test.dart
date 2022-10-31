@@ -2,7 +2,7 @@ import 'package:collatz_conjecture/collatz_conjecture.dart';
 import 'package:test/test.dart';
 
 void main() {
-  final collatzConjecture = new CollatzConjecture();
+  final collatzConjecture = CollatzConjecture();
 
   /// We are using a predicate to better match the error message from collatzConjecture.
   /// Knowing about predicates are not needed for completing this exercise,
