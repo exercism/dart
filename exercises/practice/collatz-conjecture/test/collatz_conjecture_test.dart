@@ -14,22 +14,22 @@ void main() {
 
   group('CollatzConjecture', () {
     test('zero steps for one', () {
-      final int result = collatzConjecture.steps(1);
+      final result = collatzConjecture.steps(1);
       expect(result, equals(0));
     }, skip: false);
 
     test('divide if even', () {
-      final int result = collatzConjecture.steps(16);
+      final result = collatzConjecture.steps(16);
       expect(result, equals(4));
     }, skip: true);
 
     test('even and odd steps', () {
-      final int result = collatzConjecture.steps(12);
+      final result = collatzConjecture.steps(12);
       expect(result, equals(9));
     }, skip: true);
 
     test('large number of even and odd steps', () {
-      final int result = collatzConjecture.steps(1000000);
+      final result = collatzConjecture.steps(1000000);
       expect(result, equals(152));
     }, skip: true);
 

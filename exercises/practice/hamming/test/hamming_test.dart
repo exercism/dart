@@ -9,27 +9,27 @@ void main() {
 
   group('Hamming', () {
     test('empty strands', () {
-      final int result = hamming.distance('', '');
+      final result = hamming.distance('', '');
       expect(result, equals(0));
     }, skip: false);
 
     test('single letter identical strands', () {
-      final int result = hamming.distance('A', 'A');
+      final result = hamming.distance('A', 'A');
       expect(result, equals(0));
     }, skip: true);
 
     test('single letter different strands', () {
-      final int result = hamming.distance('G', 'T');
+      final result = hamming.distance('G', 'T');
       expect(result, equals(1));
     }, skip: true);
 
     test('long identical strands', () {
-      final int result = hamming.distance('GGACTGAAATCTG', 'GGACTGAAATCTG');
+      final result = hamming.distance('GGACTGAAATCTG', 'GGACTGAAATCTG');
       expect(result, equals(0));
     }, skip: true);
 
     test('long different strands', () {
-      final int result = hamming.distance('GGACGGATTCTG', 'AGGACGGATTCT');
+      final result = hamming.distance('GGACGGATTCTG', 'AGGACGGATTCT');
       expect(result, equals(9));
     }, skip: true);
 
