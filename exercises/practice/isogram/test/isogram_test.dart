@@ -6,72 +6,72 @@ void main() {
 
   group('Isogram', () {
     test('empty string', () {
-      final bool result = isogram.isIsogram('');
+      final result = isogram.isIsogram('');
       expect(result, equals(true));
     }, skip: false);
 
     test('isogram with only lower case characters', () {
-      final bool result = isogram.isIsogram('isogram');
+      final result = isogram.isIsogram('isogram');
       expect(result, equals(true));
     }, skip: true);
 
     test('word with one duplicated character', () {
-      final bool result = isogram.isIsogram('eleven');
+      final result = isogram.isIsogram('eleven');
       expect(result, equals(false));
     }, skip: true);
 
     test('word with one duplicated character from the end of the alphabet', () {
-      final bool result = isogram.isIsogram('zzyzx');
+      final result = isogram.isIsogram('zzyzx');
       expect(result, equals(false));
     }, skip: true);
 
     test('longest reported english isogram', () {
-      final bool result = isogram.isIsogram('subdermatoglyphic');
+      final result = isogram.isIsogram('subdermatoglyphic');
       expect(result, equals(true));
     }, skip: true);
 
     test('word with duplicated character in mixed case', () {
-      final bool result = isogram.isIsogram('Alphabet');
+      final result = isogram.isIsogram('Alphabet');
       expect(result, equals(false));
     }, skip: true);
 
     test('word with duplicated character in mixed case, lowercase first', () {
-      final bool result = isogram.isIsogram('alphAbet');
+      final result = isogram.isIsogram('alphAbet');
       expect(result, equals(false));
     }, skip: true);
 
     test('hypothetical isogrammic word with hyphen', () {
-      final bool result = isogram.isIsogram('thumbscrew-japingly');
+      final result = isogram.isIsogram('thumbscrew-japingly');
       expect(result, equals(true));
     }, skip: true);
 
     test('hypothetical word with duplicated character following hyphen', () {
-      final bool result = isogram.isIsogram('thumbscrew-jappingly');
+      final result = isogram.isIsogram('thumbscrew-jappingly');
       expect(result, equals(false));
     }, skip: true);
 
     test('isogram with duplicated hyphen', () {
-      final bool result = isogram.isIsogram('six-year-old');
+      final result = isogram.isIsogram('six-year-old');
       expect(result, equals(true));
     }, skip: true);
 
     test('made-up name that is an isogram', () {
-      final bool result = isogram.isIsogram('Emily Jung Schwartzkopf');
+      final result = isogram.isIsogram('Emily Jung Schwartzkopf');
       expect(result, equals(true));
     }, skip: true);
 
     test('duplicated character in the middle', () {
-      final bool result = isogram.isIsogram('accentor');
+      final result = isogram.isIsogram('accentor');
       expect(result, equals(false));
     }, skip: true);
 
     test('same first and last characters', () {
-      final bool result = isogram.isIsogram('angola');
+      final result = isogram.isIsogram('angola');
       expect(result, equals(false));
     }, skip: true);
 
     test('word with duplicated character and with two hyphens', () {
-      final bool result = isogram.isIsogram('up-to-date');
+      final result = isogram.isIsogram('up-to-date');
       expect(result, equals(false));
     }, skip: true);
   });
