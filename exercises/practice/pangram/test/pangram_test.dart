@@ -50,8 +50,8 @@ void main() {
       expect(result, equals(true));
     }, skip: true);
 
-    test('case insensitive', () {
-      final result = pangram.isPangram('the quick brown fox jumps over with lazy FX');
+    test('a-m and A-M are 26 different characters but not a pangram', () {
+      final result = pangram.isPangram('abcdefghijklm ABCDEFGHIJKLM');
       expect(result, equals(false));
     }, skip: true);
   });
