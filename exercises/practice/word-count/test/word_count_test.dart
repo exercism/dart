@@ -46,8 +46,19 @@ void main() {
     }, skip: true);
 
     test('with apostrophes', () {
-      final result = wordCount.countWords('First: don\'t laugh. Then: don\'t cry.');
-      expect(result, equals(<String, int>{'first': 1, 'don\'t': 2, 'laugh': 1, 'then': 1, 'cry': 1}));
+      final result = wordCount.countWords('\'First: don\'t laugh. Then: don\'t cry. You\'re getting it.\'');
+      expect(
+          result,
+          equals(<String, int>{
+            'first': 1,
+            'don\'t': 2,
+            'laugh': 1,
+            'then': 1,
+            'cry': 1,
+            'you\'re': 1,
+            'getting': 1,
+            'it': 1
+          }));
     }, skip: true);
 
     test('with quotations', () {
@@ -71,6 +82,11 @@ void main() {
     test('alternating word separators not detected as a word', () {
       final result = wordCount.countWords(',\n,one,\n ,two \n \'three\'');
       expect(result, equals(<String, int>{'one': 1, 'two': 1, 'three': 1}));
+    }, skip: true);
+
+    test('quotation for word with apostrophe', () {
+      final result = wordCount.countWords('can, can\'t, \'can\'t\'');
+      expect(result, equals(<String, int>{'can': 1, 'can\'t': 2}));
     }, skip: true);
   });
 }

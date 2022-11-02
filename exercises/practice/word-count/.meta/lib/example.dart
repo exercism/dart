@@ -9,7 +9,7 @@ class WordCount {
     ///  e.g. don't
     /// \\d+ matches one or more digits
     final allWords = <String>[];
-    var wordMatches = RegExp("\\w+'\\w|\\w+|d+").allMatches(input.toLowerCase());
+    var wordMatches = RegExp("\\w+'\\w+|\\w+|d+").allMatches(input.toLowerCase());
     for (var match in wordMatches) {
       allWords.add(match.group(0)!);
     }
