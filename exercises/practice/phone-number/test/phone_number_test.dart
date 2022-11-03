@@ -50,13 +50,13 @@ void main() {
     }, skip: true);
 
     test('invalid with letters', () {
-      expect(() => phoneNumber.clean('123-abc-7890'),
+      expect(() => phoneNumber.clean('523-abc-7890'),
           throwsA(predicate<FormatException>((e) => e is FormatException && e.message == 'letters not permitted')));
     }, skip: true);
 
     test('invalid with punctuations', () {
       expect(
-          () => phoneNumber.clean('123-@:!-7890'),
+          () => phoneNumber.clean('523-@:!-7890'),
           throwsA(
               predicate<FormatException>((e) => e is FormatException && e.message == 'punctuations not permitted')));
     }, skip: true);
