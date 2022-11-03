@@ -45,6 +45,11 @@ void main() {
       expect(result, equals(false));
     }, skip: true);
 
+    test('invalid long number with a remainder divisible by 5', () {
+      final result = luhn.valid('1 2345 6789 1234 5678 9013');
+      expect(result, equals(false));
+    }, skip: true);
+
     test('valid number with an even number of digits', () {
       final result = luhn.valid('095 245 88');
       expect(result, equals(true));
@@ -85,6 +90,16 @@ void main() {
       expect(result, equals(true));
     }, skip: true);
 
+    test('very long input is valid', () {
+      final result = luhn.valid('9999999999 9999999999 9999999999 9999999999');
+      expect(result, equals(true));
+    }, skip: true);
+
+    test('valid luhn with an odd number of digits and non zero first digit', () {
+      final result = luhn.valid('109');
+      expect(result, equals(true));
+    }, skip: true);
+
     test('using ascii value for non-doubled non-digit isn\'t allowed', () {
       final result = luhn.valid('055b 444 285');
       expect(result, equals(false));
@@ -92,6 +107,11 @@ void main() {
 
     test('using ascii value for doubled non-digit isn\'t allowed', () {
       final result = luhn.valid(':9');
+      expect(result, equals(false));
+    }, skip: true);
+
+    test('non-numeric, non-space char in the middle with a sum that\'s divisible by 10 isn\'t allowed', () {
+      final result = luhn.valid('59%59');
       expect(result, equals(false));
     }, skip: true);
   });
