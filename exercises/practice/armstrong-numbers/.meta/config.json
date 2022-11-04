@@ -3,7 +3,8 @@
     "Stargator"
   ],
   "contributors": [
-    "amscotti"
+    "amscotti",
+    "kytrinyx"
   ],
   "files": {
     "solution": [
@@ -16,7 +17,7 @@
       ".meta/lib/example.dart"
     ]
   },
-  "blurb": "Determine if a number is an Armstrong number",
+  "blurb": "Determine if a number is an Armstrong number.",
   "source": "Wikipedia",
   "source_url": "https://en.wikipedia.org/wiki/Narcissistic_number"
 }
