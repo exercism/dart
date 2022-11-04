@@ -1,5 +1,3 @@
-import 'dart:math' show pow;
-
 class ArmstrongNumbers {
   /// The parameters and variables within the method that are set to final in order to prevent the accidentally modification of the value.
   /// As those variables are not needed to be changed.
