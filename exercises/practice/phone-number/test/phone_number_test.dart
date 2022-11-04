@@ -22,16 +22,28 @@ void main() {
 
     test('invalid when 9 digits', () {
       expect(
-          () => phoneNumber.clean('123456789'),
-          throwsA(
-              predicate<FormatException>((e) => e is FormatException && e.message == 'incorrect number of digits')));
+        () => phoneNumber.clean('123456789'),
+        throwsA(
+          isA<FormatException>().having(
+            (e) => e.message,
+            'message',
+            'incorrect number of digits',
+          ),
+        ),
+      );
     }, skip: true);
 
     test('invalid when 11 digits does not start with a 1', () {
       expect(
-          () => phoneNumber.clean('22234567890'),
-          throwsA(
-              predicate<FormatException>((e) => e is FormatException && e.message == '11 digits must start with 1')));
+        () => phoneNumber.clean('22234567890'),
+        throwsA(
+          isA<FormatException>().having(
+            (e) => e.message,
+            'message',
+            '11 digits must start with 1',
+          ),
+        ),
+      );
     }, skip: true);
 
     test('valid when 11 digits and starting with 1', () {
@@ -45,76 +57,146 @@ void main() {
     }, skip: true);
 
     test('invalid when more than 11 digits', () {
-      expect(() => phoneNumber.clean('321234567890'),
-          throwsA(predicate<FormatException>((e) => e is FormatException && e.message == 'more than 11 digits')));
+      expect(
+        () => phoneNumber.clean('321234567890'),
+        throwsA(
+          isA<FormatException>().having(
+            (e) => e.message,
+            'message',
+            'more than 11 digits',
+          ),
+        ),
+      );
     }, skip: true);
 
     test('invalid with letters', () {
-      expect(() => phoneNumber.clean('523-abc-7890'),
-          throwsA(predicate<FormatException>((e) => e is FormatException && e.message == 'letters not permitted')));
+      expect(
+        () => phoneNumber.clean('523-abc-7890'),
+        throwsA(
+          isA<FormatException>().having(
+            (e) => e.message,
+            'message',
+            'letters not permitted',
+          ),
+        ),
+      );
     }, skip: true);
 
     test('invalid with punctuations', () {
       expect(
-          () => phoneNumber.clean('523-@:!-7890'),
-          throwsA(
-              predicate<FormatException>((e) => e is FormatException && e.message == 'punctuations not permitted')));
+        () => phoneNumber.clean('523-@:!-7890'),
+        throwsA(
+          isA<FormatException>().having(
+            (e) => e.message,
+            'message',
+            'punctuations not permitted',
+          ),
+        ),
+      );
     }, skip: true);
 
     test('invalid if area code starts with 0', () {
       expect(
-          () => phoneNumber.clean('(023) 456-7890'),
-          throwsA(predicate<FormatException>(
-              (e) => e is FormatException && e.message == 'area code cannot start with zero')));
+        () => phoneNumber.clean('(023) 456-7890'),
+        throwsA(
+          isA<FormatException>().having(
+            (e) => e.message,
+            'message',
+            'area code cannot start with zero',
+          ),
+        ),
+      );
     }, skip: true);
 
     test('invalid if area code starts with 1', () {
       expect(
-          () => phoneNumber.clean('(123) 456-7890'),
-          throwsA(predicate<FormatException>(
-              (e) => e is FormatException && e.message == 'area code cannot start with one')));
+        () => phoneNumber.clean('(123) 456-7890'),
+        throwsA(
+          isA<FormatException>().having(
+            (e) => e.message,
+            'message',
+            'area code cannot start with one',
+          ),
+        ),
+      );
     }, skip: true);
 
     test('invalid if exchange code starts with 0', () {
       expect(
-          () => phoneNumber.clean('(223) 056-7890'),
-          throwsA(predicate<FormatException>(
-              (e) => e is FormatException && e.message == 'exchange code cannot start with zero')));
+        () => phoneNumber.clean('(223) 056-7890'),
+        throwsA(
+          isA<FormatException>().having(
+            (e) => e.message,
+            'message',
+            'exchange code cannot start with zero',
+          ),
+        ),
+      );
     }, skip: true);
 
     test('invalid if exchange code starts with 1', () {
       expect(
-          () => phoneNumber.clean('(223) 156-7890'),
-          throwsA(predicate<FormatException>(
-              (e) => e is FormatException && e.message == 'exchange code cannot start with one')));
+        () => phoneNumber.clean('(223) 156-7890'),
+        throwsA(
+          isA<FormatException>().having(
+            (e) => e.message,
+            'message',
+            'exchange code cannot start with one',
+          ),
+        ),
+      );
     }, skip: true);
 
     test('invalid if area code starts with 0 on valid 11-digit number', () {
       expect(
-          () => phoneNumber.clean('1 (023) 456-7890'),
-          throwsA(predicate<FormatException>(
-              (e) => e is FormatException && e.message == 'area code cannot start with zero')));
+        () => phoneNumber.clean('1 (023) 456-7890'),
+        throwsA(
+          isA<FormatException>().having(
+            (e) => e.message,
+            'message',
+            'area code cannot start with zero',
+          ),
+        ),
+      );
     }, skip: true);
 
     test('invalid if area code starts with 1 on valid 11-digit number', () {
       expect(
-          () => phoneNumber.clean('1 (123) 456-7890'),
-          throwsA(predicate<FormatException>(
-              (e) => e is FormatException && e.message == 'area code cannot start with one')));
+        () => phoneNumber.clean('1 (123) 456-7890'),
+        throwsA(
+          isA<FormatException>().having(
+            (e) => e.message,
+            'message',
+            'area code cannot start with one',
+          ),
+        ),
+      );
     }, skip: true);
 
     test('invalid if exchange code starts with 0 on valid 11-digit number', () {
       expect(
-          () => phoneNumber.clean('1 (223) 056-7890'),
-          throwsA(predicate<FormatException>(
-              (e) => e is FormatException && e.message == 'exchange code cannot start with zero')));
+        () => phoneNumber.clean('1 (223) 056-7890'),
+        throwsA(
+          isA<FormatException>().having(
+            (e) => e.message,
+            'message',
+            'exchange code cannot start with zero',
+          ),
+        ),
+      );
     }, skip: true);
 
     test('invalid if exchange code starts with 1 on valid 11-digit number', () {
       expect(
-          () => phoneNumber.clean('1 (223) 156-7890'),
-          throwsA(predicate<FormatException>(
-              (e) => e is FormatException && e.message == 'exchange code cannot start with one')));
+        () => phoneNumber.clean('1 (223) 156-7890'),
+        throwsA(
+          isA<FormatException>().having(
+            (e) => e.message,
+            'message',
+            'exchange code cannot start with one',
+          ),
+        ),
+      );
     }, skip: true);
   });
 }
