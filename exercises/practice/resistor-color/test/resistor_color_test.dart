@@ -4,40 +4,31 @@ import 'package:test/test.dart';
 final resistorColor = ResistorColor();
 
 void main() {
-  group('ResistorColor', () {
-    group('Color codes', () {
-      test('Black', () {
-        final int result = resistorColor.colorCode('black');
-        expect(result, equals(0));
-      }, skip: false);
+  group('ResistorColor: resistor color tests - ', resistorColorTests);
+  group('ResistorColor: Color codes - ', colorCodes);
+}
 
-      test('White', () {
-        final int result = resistorColor.colorCode('white');
-        expect(result, equals(9));
-      }, skip: true);
+void resistorColorTests() {
+  test('Colors', () {
+    final result = resistorColor.colors;
+    expect(result,
+        equals(<String>['black', 'brown', 'red', 'orange', 'yellow', 'green', 'blue', 'violet', 'grey', 'white']));
+  }, skip: false);
+}
 
-      test('Orange', () {
-        final int result = resistorColor.colorCode('orange');
-        expect(result, equals(3));
-      }, skip: true);
-    });
+void colorCodes() {
+  test('Black', () {
+    final result = resistorColor.colorCode('black');
+    expect(result, equals(0));
+  }, skip: true);
 
-    test('Colors', () {
-      final List<String> result = resistorColor.colors;
-      expect(
-          result,
-          equals(<String>[
-            'black',
-            'brown',
-            'red',
-            'orange',
-            'yellow',
-            'green',
-            'blue',
-            'violet',
-            'grey',
-            'white',
-          ]));
-    }, skip: true);
-  });
+  test('White', () {
+    final result = resistorColor.colorCode('white');
+    expect(result, equals(9));
+  }, skip: true);
+
+  test('Orange', () {
+    final result = resistorColor.colorCode('orange');
+    expect(result, equals(3));
+  }, skip: true);
 }
