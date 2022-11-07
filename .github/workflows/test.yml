@@ -34,5 +34,9 @@ jobs:
     - name: Check Stage formatting
       run: dart run bin/check_formatting.dart
 
+    # We can't check the exercises because they will produce errors since the example files have the solution.
+    - name: Analyze Dart code
+      run: dart analyze bin/ lib/ test/
+
     - name: Run tests
       run: dart test
