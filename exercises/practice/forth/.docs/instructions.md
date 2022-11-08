@@ -2,7 +2,8 @@
 
 Implement an evaluator for a very simple subset of Forth.
 
-[Forth] is a stack-based programming language.
+[Forth][forth]
+is a stack-based programming language.
 Implement a very basic evaluator for a small subset of Forth.
 
 Your evaluator has to support the following words:
@@ -19,4 +20,4 @@ You should use the following rules for the syntax: a number is a sequence of one
 
 Words are case-insensitive.
 
-[Forth]: https://en.wikipedia.org/wiki/Forth_(programming_language)
+[forth]: https://en.wikipedia.org/wiki/Forth_%28programming_language%29
