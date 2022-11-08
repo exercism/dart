@@ -64,7 +64,7 @@ class Minesweeper {
   Row operator [](int index) => _minefield[index];
 
   /// Annoted version of minefield
-  List<String> get annoted => _minefield.map((row) => "$row").toList();
+  List<String> get annotated => _minefield.map((row) => "$row").toList();
 
   /// Number of columns in this minefield
   int get columns => _minefield.isEmpty ? 0 : _minefield.first._cells.length;
