@@ -2,7 +2,7 @@ import 'package:prime_factors/prime_factors.dart';
 import 'package:test/test.dart';
 
 void main() {
-  final primeFactors = new PrimeFactors();
+  final primeFactors = PrimeFactors();
 
   group('PrimeFactors', () {
     test('no factors', () {
