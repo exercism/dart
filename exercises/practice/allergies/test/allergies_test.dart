@@ -1,18 +1,18 @@
-import 'package:test/test.dart';
 import 'package:allergies/allergies.dart';
+import 'package:test/test.dart';
 
 final allergies = Allergies();
 
 void main() {
-  group("Allergies: testing for eggs allergy - ", testingForEggsAllergy);
-  group("Allergies: testing for peanuts allergy - ", testingForPeanutsAllergy);
-  group("Allergies: testing for shellfish allergy - ", testingForShellfishAllergy);
-  group("Allergies: testing for strawberries allergy - ", testingForStrawberriesAllergy);
-  group("Allergies: testing for tomatoes allergy - ", testingForTomatoesAllergy);
-  group("Allergies: testing for chocolate allergy - ", testingForChocolateAllergy);
-  group("Allergies: testing for pollen allergy - ", testingForPollenAllergy);
-  group("Allergies: testing for cats allergy - ", testingForCatsAllergy);
-  group("Allergies: list when: - ", listWhen);
+  group('Allergies: testing for eggs allergy - ', testingForEggsAllergy);
+  group('Allergies: testing for peanuts allergy - ', testingForPeanutsAllergy);
+  group('Allergies: testing for shellfish allergy - ', testingForShellfishAllergy);
+  group('Allergies: testing for strawberries allergy - ', testingForStrawberriesAllergy);
+  group('Allergies: testing for tomatoes allergy - ', testingForTomatoesAllergy);
+  group('Allergies: testing for chocolate allergy - ', testingForChocolateAllergy);
+  group('Allergies: testing for pollen allergy - ', testingForPollenAllergy);
+  group('Allergies: testing for cats allergy - ', testingForCatsAllergy);
+  group('Allergies: list when: - ', listWhen);
 }
 
 void testingForEggsAllergy() {
