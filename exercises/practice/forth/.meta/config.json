@@ -3,7 +3,8 @@
     "matthewmorgan"
   ],
   "contributors": [
-    "AlexeyBukin"
+    "AlexeyBukin",
+    "kytrinyx"
   ],
   "files": {
     "solution": [
@@ -16,7 +17,5 @@
       ".meta/lib/example.dart"
     ]
   },
-  "blurb": "Implement an evaluator for a very simple subset of Forth.",
-  "source": "Exercism JS track",
-  "source_url": "https://exercism.org/tracks/javascript/exercises/forth"
+  "blurb": "Implement an evaluator for a very simple subset of Forth."
 }
