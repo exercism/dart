@@ -48,4 +48,28 @@ void top3Scores() {
     final scores = HighScores(<int>[40]);
     expect(scores.personalTopThree(), equals(<int>[40]));
   }, skip: true);
+
+  test('Latest score after personal top scores', () {
+    final scores = HighScores(<int>[70, 50, 20, 30]);
+    scores.personalTopThree();
+    expect(scores.latest(), equals(30));
+  }, skip: true);
+
+  test('Scores after personal top scores', () {
+    final scores = HighScores(<int>[30, 50, 20, 70]);
+    scores.personalTopThree();
+    expect(scores.getScores, equals(<int>[30, 50, 20, 70]));
+  }, skip: true);
+
+  test('Latest score after personal best', () {
+    final scores = HighScores(<int>[20, 70, 15, 25, 30]);
+    scores.personalBest();
+    expect(scores.latest(), equals(30));
+  }, skip: true);
+
+  test('Scores after personal best', () {
+    final scores = HighScores(<int>[20, 70, 15, 25, 30]);
+    scores.personalBest();
+    expect(scores.getScores, equals(<int>[20, 70, 15, 25, 30]));
+  }, skip: true);
 }
