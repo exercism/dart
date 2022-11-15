@@ -36,20 +36,4 @@ class HighScores {
     }
     return result;
   }
-
-  int latestAfterTopThree(List<int> inputScores) {
-    return inputScores.last;
-  }
-
-  List<int> scoresAfterTopThree(List<int> inputScores) {
-    return inputScores;
-  }
-
-  int latestAfterBest(List<int> inputScores) {
-    return inputScores.last;
-  }
-
-  List<int> scoresAfterBest(List<int> inputScores) {
-    return inputScores;
-  }
 }
