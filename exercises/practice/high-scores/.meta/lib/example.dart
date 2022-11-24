@@ -1,7 +1,7 @@
 class HighScores {
   final List<int> _scores;
 
-  const HighScores(this._scores);
+  HighScores(this._scores);
 
   List<int> get getScores {
     return this._scores;
