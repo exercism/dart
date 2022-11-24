@@ -1,3 +1,4 @@
+import 'package:sum_of_multiples/sum_of_multiples.dart';
 import 'package:test/test.dart';
 
 void main() {
