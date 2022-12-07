@@ -1,37 +1,37 @@
 class HighScores {
-  List<int> scores = [];
+  List<int> _scores = [];
 
   HighScores(List<int> inputScores) {
-    this.scores = inputScores;
+    this._scores = inputScores;
   }
 
   List<int> get getScores {
-    return scores;
+    return _scores;
   }
 
   int latest() {
-    return scores.last;
+    return _scores.last;
   }
 
   int personalBest() {
-    var clone = []..addAll(scores);
+    var clone = []..addAll(_scores);
     clone.sort();
     return clone.last;
   }
 
   List<int> personalTopThree() {
-    var clone = []..addAll(scores);
+    var clone = []..addAll(_scores);
     clone.sort();
     final sortedScores = clone.reversed.toList(growable: false);
     var result = <int>[];
 
-    if (scores.length >= 3) {
+    if (_scores.length >= 3) {
       result = [
         sortedScores.first,
         sortedScores[1],
         sortedScores[2]
       ];
-    } else if (scores.length == 2){
+    } else if (_scores.length == 2){
       result = [
         sortedScores.first,
         sortedScores[1]
