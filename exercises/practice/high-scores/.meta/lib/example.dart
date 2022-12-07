@@ -5,7 +5,7 @@ class HighScores {
     this._scores = inputScores;
   }
 
-  List<int> get getScores {
+  List<int> get scores {
     return _scores;
   }
 

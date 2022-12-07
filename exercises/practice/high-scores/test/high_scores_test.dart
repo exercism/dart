@@ -9,7 +9,7 @@ void main() {
 void highScoresTests() {
   test('List of scores', () {
     final scores = HighScores(<int>[30, 50, 20, 70]);
-    expect(scores.getScores, equals(<int>[30, 50, 20, 70]));
+    expect(scores.scores, equals(<int>[30, 50, 20, 70]));
   }, skip: false);
 
   test('Latest score', () {
@@ -58,7 +58,7 @@ void top3Scores() {
   test('Scores after personal top scores', () {
     final scores = HighScores(<int>[30, 50, 20, 70]);
     scores.personalTopThree();
-    expect(scores.getScores, equals(<int>[30, 50, 20, 70]));
+    expect(scores.scores, equals(<int>[30, 50, 20, 70]));
   }, skip: true);
 
   test('Latest score after personal best', () {
@@ -70,6 +70,6 @@ void top3Scores() {
   test('Scores after personal best', () {
     final scores = HighScores(<int>[20, 70, 15, 25, 30]);
     scores.personalBest();
-    expect(scores.getScores, equals(<int>[20, 70, 15, 25, 30]));
+    expect(scores.scores, equals(<int>[20, 70, 15, 25, 30]));
   }, skip: true);
 }
