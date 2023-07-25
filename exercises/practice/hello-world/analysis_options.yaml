@@ -1,9 +1,9 @@
 analyzer:
   exclude:
     - lib/hello_world.dart
-  strong-mode:
-    implicit-casts: false
-    implicit-dynamic: false
+  # strong-mode:
+  #   implicit-casts: false
+  #   implicit-dynamic: false
   errors:
     unused_element:        error
     unused_import:         error
