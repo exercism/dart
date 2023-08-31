@@ -27,7 +27,7 @@ void main() {
           isA<FormatException>().having(
             (e) => e.message,
             'message',
-            'incorrect number of digits',
+            'must not be fewer than 10 digits',
           ),
         ),
       );
@@ -63,7 +63,7 @@ void main() {
           isA<FormatException>().having(
             (e) => e.message,
             'message',
-            'more than 11 digits',
+            'must not be greater than 11 digits',
           ),
         ),
       );
