@@ -1,11 +1,11 @@
-int square(final int n) {
-  if (1 > n > 64) { 
-    throw "square must be between 1 and 64";
-  } 
+BigInt square(final int n) {
+  if (1 > n || n > 64) {
+    throw new ArgumentError("square must be between 1 and 64");
+  }
 
-  return 2 ** (n - 1);
+  return BigInt.from(2).pow(n - 1);
 }
 
-int total() {
-  return (2 ** 64) - 1;
+BigInt total() {
+  return BigInt.from(2).pow(64) - BigInt.from(1);
 }
