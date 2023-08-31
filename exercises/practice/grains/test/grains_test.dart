@@ -53,8 +53,7 @@ void squareTests() {
     expect(
         () => square(0),
         throwsA(
-          isA<ArgumentError>().having((error) => error.message, 'message',
-              'square must be between 1 and 64'),
+          isA<ArgumentError>().having((error) => error.message, 'message', 'square must be between 1 and 64'),
         ));
   }, skip: true);
 
@@ -62,8 +61,7 @@ void squareTests() {
     expect(
         () => square(-1),
         throwsA(
-          isA<ArgumentError>().having((error) => error.message, 'message',
-              'square must be between 1 and 64'),
+          isA<ArgumentError>().having((error) => error.message, 'message', 'square must be between 1 and 64'),
         ));
   }, skip: true);
 
@@ -71,8 +69,7 @@ void squareTests() {
     expect(
         () => square(65),
         throwsA(
-          isA<ArgumentError>().having((error) => error.message, 'message',
-              'square must be between 1 and 64'),
+          isA<ArgumentError>().having((error) => error.message, 'message', 'square must be between 1 and 64'),
         ));
   }, skip: true);
 }
