@@ -650,7 +650,21 @@
         "practices": [],
         "prerequisites": [],
         "difficulty": 5
-      }
+      },
+      {
+        "slug": "sieve",
+        "name": "Sieve of Eratosthenes",
+        "uuid": "d4edfb08-ff23-48f7-a3a4-33062d072c3a",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 5,
+        "topics": [
+          "conditionals",
+          "loops",
+          "arrays",
+          "lists"
+        ]
+      } 
     ]
   },
   "concepts": [
