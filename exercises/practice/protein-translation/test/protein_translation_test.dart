@@ -135,24 +135,15 @@ void main() {
   }, skip: true);
 
   test("Non-existing codon can't translate", () {
-    expect(
-      () => translator.translate("AAA"),
-      throwsA(isA<ArgumentError>())
-    );
+    expect(() => translator.translate("AAA"), throwsA(isA<ArgumentError>()));
   }, skip: true);
 
   test("Unknown amino acids, not part of a codon, can't translate", () {
-    expect(
-      () => translator.translate("XYZ"),
-      throwsA(isA<ArgumentError>())
-    );
+    expect(() => translator.translate("XYZ"), throwsA(isA<ArgumentError>()));
   }, skip: true);
 
   test("Incomplete RNA sequence can't translate", () {
-    expect(
-      () => translator.translate("AUGU"),
-      throwsA(isA<ArgumentError>())
-    );
+    expect(() => translator.translate("AUGU"), throwsA(isA<ArgumentError>()));
   }, skip: true);
 
   test('Incomplete RNA sequence can translate if valid until a STOP codon', () {
@@ -160,4 +151,3 @@ void main() {
     expect(result, equals(["Phenylalanine", "Phenylalanine"]));
   }, skip: true);
 }
-
