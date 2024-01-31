@@ -1,0 +1,5 @@
+name: 'protein_translation'
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+dev_dependencies:
+  test: '<2.0.0'
