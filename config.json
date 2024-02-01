@@ -628,12 +628,28 @@
         ]
       },
       {
+        "slug": "protein-translation",
+        "name": "Protein Translation",
+        "uuid": "0ef97b96-dcd8-4f25-8ab2-9cce4229f5e7",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 4
+      },
+      {
         "slug": "roman-numerals",
         "name": "Roman Numerals",
         "uuid": "8472c6f2-1ede-426e-8234-89b5da766d88",
         "practices": [],
         "prerequisites": [],
         "difficulty": 3
+      },
+      {
+        "slug": "protein-translation",
+        "name": "Protein Translation",
+        "uuid": "0ef97b96-dcd8-4f25-8ab2-9cce4229f5e7",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 4
       }
     ]
   },
