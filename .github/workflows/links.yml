@@ -23,7 +23,7 @@ jobs:
       - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11
 
       - name: Link Checker
-        uses: lycheeverse/lychee-action@c3089c702fbb949e3f7a8122be0c33c017904f9b
+        uses: lycheeverse/lychee-action@c053181aa0c3d17606addfe97a9075a32723548a
         with:
           args: --verbose --no-progress --require-https .
           fail: true
