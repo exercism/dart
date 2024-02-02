@@ -20,10 +20,10 @@ jobs:
   linkChecker:
     runs-on: ubuntu-22.04
     steps:
-      - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11
+      - uses: actions/checkout@v4
 
       - name: Link Checker
-        uses: lycheeverse/lychee-action@c053181aa0c3d17606addfe97a9075a32723548a
+        uses: lycheeverse/lychee-action@v1
         with:
           args: --verbose --no-progress --require-https .
           fail: true
