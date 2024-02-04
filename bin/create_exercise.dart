@@ -292,7 +292,7 @@ bool _containsWhitespaceCodes(String input) {
 String _determineBestReturnType(List<dynamic> specCases) {
   final expectedList = retrieveListOfExpected(specCases);
 
-  final dynamic first = expectedList != null && expectedList.isNotEmpty ? expectedList.first : null;
+  final dynamic first = expectedList.isNotEmpty ? expectedList.first : null;
 
   if (first is Iterable) {
     final iterableType = '${_getIterableType(first)}';
