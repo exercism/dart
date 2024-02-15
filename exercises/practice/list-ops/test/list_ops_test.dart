@@ -86,8 +86,7 @@ void main() {
     }, skip: true);
   });
 
-  group('filter list returning only values that satisfy the filter function',
-      () {
+  group('filter list returning only values that satisfy the filter function', () {
     test('empty list', () {
       final list = [];
       final result = list.filter((int x) => x % 2 == 1);
@@ -116,9 +115,7 @@ void main() {
     }, skip: true);
   });
 
-  group(
-      'return a list of elements whose values equal the list value transformed by the mapping function',
-      () {
+  group('return a list of elements whose values equal the list value transformed by the mapping function', () {
     test('empty list', () {
       final list = [];
       final result = list.myMap((int x) => x + 1);
