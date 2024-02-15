@@ -49,7 +49,14 @@ void main() {
       final result = lists.concat();
       expect(result, equals([1, 2, 3, 4, 5, 6]));
       // does not mutate the original list
-      expect(lists, equals([[1, 2], [3], [], [4, 5, 6]]));
+      expect(
+          lists,
+          equals([
+            [1, 2],
+            [3],
+            [],
+            [4, 5, 6]
+          ]));
     }, skip: true);
 
     test('list of nested lists', () {
