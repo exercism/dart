@@ -1,0 +1,17 @@
+{
+  "authors": [
+    "glennj"
+  ],
+  "files": {
+    "solution": [
+      "lib/list_ops.dart"
+    ],
+    "test": [
+      "test/list_ops_test.dart"
+    ],
+    "example": [
+      ".meta/lib/example.dart"
+    ]
+  },
+  "blurb": "Implement basic list operations."
+}
