@@ -15,6 +15,9 @@
     ],
     "example": [
       ".meta/lib/example.dart"
+    ],
+    "invalidator": [
+      "pubspec.yaml"
     ]
   },
   "blurb": "Convert color codes, as used on resistors, to a numeric value.",
