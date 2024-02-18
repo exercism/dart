@@ -30,6 +30,9 @@
     ],
     "exemplar": [
       ".meta/exemplar.dart"
+    ],
+    "invalidator": [
+      "pubspec.yaml"
     ]
   },
   "exercises": {
