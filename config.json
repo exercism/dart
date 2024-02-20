@@ -667,7 +667,15 @@
           "arrays",
           "lists"
         ]
-      } 
+      },
+      {
+        "slug": "circular-buffer",
+        "name": "Circular Buffer",
+        "uuid": "c69af85e-f089-4457-a375-63ad29fc266b",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 3
+      }
     ]
   },
   "concepts": [
