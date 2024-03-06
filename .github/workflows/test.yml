@@ -20,7 +20,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        tag: ['2.18']
+        tag: ['3.2']
 
     container:
       image:  dart:${{ matrix.tag }}
