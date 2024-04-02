@@ -57,7 +57,7 @@ void main() {
     }, skip: true);
 
     test('does not detect an anagram if the original word is repeated', () {
-      final result = anagram.findAnagrams('go', <String>['go Go GO']);
+      final result = anagram.findAnagrams('go', <String>['goGoGO']);
       expect(result, equals(<String>[]));
     }, skip: true);
 
@@ -84,6 +84,20 @@ void main() {
     test('words other than themselves can be anagrams', () {
       final result = anagram.findAnagrams('LISTEN', <String>['LISTEN', 'Silent']);
       expect(result, equals(<String>['Silent']));
+    }, skip: true);
+
+    test('handles case of greek letters', () {
+      final result = anagram.findAnagrams('ΑΒΓ', <String>['ΒΓΑ', 'ΒΓΔ', 'γβα', 'αβγ']);
+      expect(result, equals(<String>['ΒΓΑ', 'γβα']));
+    }, skip: true);
+
+    test('different characters may have the same bytes', () {
+      /*
+        a⬂ => 61 E2 AC 82
+        €a => E2 82 AC 61
+      */
+      final result = anagram.findAnagrams('a⬂', <String>['€a']);
+      expect(result, equals(<String>[]));
     }, skip: true);
   });
 }

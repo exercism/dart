@@ -32,5 +32,10 @@ void main() {
       final result = reverse('drawer');
       expect(result, equals('reward'));
     }, skip: true);
+
+    test('wide characters', () {
+      final result = reverse('子猫');
+      expect(result, equals('猫子'));
+    }, skip: true);
   });
 }
