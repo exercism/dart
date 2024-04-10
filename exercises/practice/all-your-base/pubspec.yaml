@@ -1,0 +1,6 @@
+name: 'all_your_base'
+environment:
+  sdk: '>=3.2.0 <4.0.0'
+dev_dependencies:
+  test: '<2.0.0'
+
