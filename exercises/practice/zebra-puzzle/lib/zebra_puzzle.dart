@@ -1,0 +1,3 @@
+class ZebraPuzzle {
+  // your solution goes here ...
+}
