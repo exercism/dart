@@ -655,6 +655,14 @@
         "difficulty": 5
       },
       {
+        "slug": "all-your-base",
+        "name": "All Your Base",
+        "uuid": "bad7bb3f-932c-4e90-bfad-206899d3261f",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 4
+      },
+      {
         "slug": "sieve",
         "name": "Sieve of Eratosthenes",
         "uuid": "d4edfb08-ff23-48f7-a3a4-33062d072c3a",
