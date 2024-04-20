@@ -663,6 +663,14 @@
         "difficulty": 4
       },
       {
+        "slug": "yacht",
+        "name": "Yacht",
+        "uuid": "ba68d326-f612-4e99-95da-697d6b0dc8a7",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 4
+      },
+      {
         "slug": "sieve",
         "name": "Sieve of Eratosthenes",
         "uuid": "d4edfb08-ff23-48f7-a3a4-33062d072c3a",
