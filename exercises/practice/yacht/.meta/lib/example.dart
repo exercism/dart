@@ -1,14 +1,35 @@
+import 'package:yacht/categories.dart';
+
 class Yacht {
-  static int yacht(List<int> dice) {
+  List<int> dice;
+
+  Yacht(this.dice);
+
+  int score(Category category) {
+    return switch(category) {
+      Category.ones => singles(1),
+      Category.twos => singles(2),
+      Category.threes => singles(3),
+      Category.fours => singles(4),
+      Category.fives => singles(5),
+      Category.sixes => singles(6),
+      Category.full_house => full_house(),
+      Category.four_of_a_kind => four_of_a_kind(),
+      Category.little_straight => little_straight(),
+      Category.big_straight => big_straight(),
+      Category.choice => choice(),
+      Category.yacht => yacht(),
+    };
+  }
+
+  int yacht() {
     Set<int> uniq = Set.from(dice);
     return uniq.length == 1 ? 50 : 0;
   }
 
-  static int choice(List<int> dice) {
-    return dice.fold(0, (sum, die) => sum + die);
-  }
+  int choice() => dice.fold(0, (sum, die) => sum + die);
 
-  static Map<int, int> count(List<int> dice) {
+  Map<int, int> _count() {
     var empty = <int, int>{1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0};
     return dice.fold(empty, (counts, die) {
       counts.update(die, (c) => c + 1);
@@ -16,8 +37,8 @@ class Yacht {
     });
   }
 
-  static int four_of_a_kind(List<int> dice) {
-    var c = count(dice);
+  int four_of_a_kind() {
+    var c = _count();
     int score = 0;
     c.forEach((die, count) {
       if (count >= 4) score = 4 * die;
@@ -25,29 +46,18 @@ class Yacht {
     return score;
   }
 
-  static int full_house(List<int> dice) {
-    var c = count(dice);
+  int full_house() {
+    var c = _count();
     c.removeWhere((_, count) => count == 0);
-    return c.length == 2 && c.containsValue(3) ? choice(dice) : 0;
+    return c.length == 2 && c.containsValue(3) ? choice() : 0;
   }
 
-  static int little_straight(List<int> dice) {
-    return Set.from(dice).containsAll({1, 2, 3, 4, 5}) ? 30 : 0;
-  }
+  int little_straight() => _straight({1, 2, 3, 4, 5});
+  int big_straight() => _straight({2, 3, 4, 5, 6});
+  int _straight(Set<int> needed) => Set.from(dice).containsAll(needed) ? 30 : 0;
 
-  static int big_straight(List<int> dice) {
-    return Set.from(dice).containsAll({2, 3, 4, 5, 6}) ? 30 : 0;
-  }
-
-  static int ones(List<int> dice) => singles(dice, 1);
-  static int twos(List<int> dice) => singles(dice, 2);
-  static int threes(List<int> dice) => singles(dice, 3);
-  static int fours(List<int> dice) => singles(dice, 4);
-  static int fives(List<int> dice) => singles(dice, 5);
-  static int sixes(List<int> dice) => singles(dice, 6);
-
-  static int singles(List<int> dice, int die) {
-    var c = count(dice);
+  int singles(int die) {
+    var c = _count();
     return die * (c[die] ?? 0);
   }
 }
