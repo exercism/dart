@@ -9,6 +9,9 @@
     ],
     "example": [
       ".meta/lib/example.dart"
+    ],
+    "editor": [
+      "lib/value_not_found_exception.dart"
     ]
   },
   "blurb": "Implement a binary search algorithm.",
