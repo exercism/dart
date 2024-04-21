@@ -11,6 +11,9 @@
     ],
     "example": [
       ".meta/lib/example.dart"
+    ],
+    "editor": [
+      "lib/categories.dart"
     ]
   },
   "blurb": "Score a single throw of dice in the game Yacht.",
