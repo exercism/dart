@@ -1,5 +1,7 @@
 {
-  "authors": [],
+  "authors": [
+    "glennj"
+  ],
   "files": {
     "solution": [
       "lib/binary_search.dart"
