@@ -1,0 +1,22 @@
+{
+  "authors": [
+    "glennj"
+  ],
+  "files": {
+    "solution": [
+      "lib/binary_search.dart"
+    ],
+    "test": [
+      "test/binary_search_test.dart"
+    ],
+    "example": [
+      ".meta/lib/example.dart"
+    ],
+    "editor": [
+      "lib/value_not_found_exception.dart"
+    ]
+  },
+  "blurb": "Implement a binary search algorithm.",
+  "source": "Wikipedia",
+  "source_url": "https://en.wikipedia.org/wiki/Binary_search_algorithm"
+}
