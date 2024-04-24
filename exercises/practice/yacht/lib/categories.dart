@@ -1,8 +1,8 @@
 enum Category {
   ones,
   twos,
-  fours,
   threes,
+  fours,
   fives,
   sixes,
   full_house,
