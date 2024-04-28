@@ -14,6 +14,9 @@
     ],
     "editor": [
       "lib/value_not_found_exception.dart"
+    ],
+    "invalidator": [
+      "pubspec.yaml"
     ]
   },
   "blurb": "Implement a binary search algorithm.",

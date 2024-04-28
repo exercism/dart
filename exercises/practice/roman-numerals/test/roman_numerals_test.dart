@@ -102,6 +102,10 @@ void main() {
     expect(3001.toRoman(), equals("MMMI"));
   }, skip: true);
 
+  test("converts 3888", () {
+    expect(3888.toRoman(), equals("MMMDCCCLXXXVIII"));
+  }, skip: true);
+
   test("converts 3999", () {
     expect(3999.toRoman(), equals("MMMCMXCIX"));
   }, skip: true);
