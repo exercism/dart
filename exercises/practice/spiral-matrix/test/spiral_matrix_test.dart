@@ -7,10 +7,12 @@ void main() {
     final expected = [];
     expect(result, expected);
   }, skip: false);
-    
+
   test('trivial spiral', () {
     final result = SpiralMatrix(1).toList();
-    final expected = [[1]];
+    final expected = [
+      [1]
+    ];
     expect(result, expected);
   }, skip: true);
 
@@ -22,7 +24,7 @@ void main() {
     ];
     expect(result, expected);
   }, skip: true);
-  
+
   test('spiral of size 3', () {
     final result = SpiralMatrix(3).toList();
     final expected = [
