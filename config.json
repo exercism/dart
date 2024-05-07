@@ -723,6 +723,14 @@
         "practices": [],
         "prerequisites": [],
         "difficulty": 5
+      },
+      {
+        "slug": "largest-series-product",
+        "name": "Largest Series Product",
+        "uuid": "2dec4d11-49ad-4b51-b669-c0e23022c05f",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 4
       }
     ]
   },
