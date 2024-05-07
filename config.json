@@ -731,6 +731,14 @@
         "practices": [],
         "prerequisites": [],
         "difficulty": 4
+      },
+      {
+        "slug": "run-length-encoding",
+        "name": "Run-Length Encoding",
+        "uuid": "9c53981f-b75e-4782-be4a-3b13e1d40fb3",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 4
       }
     ]
   },
