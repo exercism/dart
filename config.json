@@ -130,6 +130,14 @@
         ]
       },
       {
+        "slug": "eliuds-eggs",
+        "name": "Eliud's Eggs",
+        "uuid": "cbe1d3d3-94f1-4988-80bb-d140690a1d02",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 2
+      },
+      {
         "slug": "armstrong-numbers",
         "name": "Armstrong Numbers",
         "uuid": "4f650701-9568-4d95-9f72-be4bde2c90ec",
