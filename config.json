@@ -747,6 +747,14 @@
         "practices": [],
         "prerequisites": [],
         "difficulty": 4
+      },
+      {
+        "slug": "food-chain",
+        "name": "Food Chain",
+        "uuid": "aedf3d4e-b0ef-4fa8-b201-7778973fe7f0",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 5
       }
     ]
   },
