@@ -1,0 +1,3 @@
+class Meetup {
+  // your code here...
+}
