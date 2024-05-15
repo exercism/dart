@@ -1,13 +1,13 @@
 class RotationalCipher {
   String rotate({required String text, required int shiftKey}) {
-    return text.replaceAllMapped(RegExp(r'[[:alpha:]]'), (match) {
-      var char = match[0]!.codeUnitAt(0);
-      if (65 <= char && char <= 90) {
-        char = (char - 65 + shiftKey) % 26 + 65;
-      } else if (97 <= char && char <= 122) {
-        char = (char - 97 + shiftKey) % 26 + 97;
+    return text.replaceAllMapped(RegExp(r'\p{L}', unicode: true), (match) {
+      var letter = match[0]!.codeUnitAt(0);
+      if (65 <= letter && letter <= 90) {
+        letter = (letter - 65 + shiftKey) % 26 + 65;
+      } else if (97 <= letter && letter <= 122) {
+        letter = (letter - 97 + shiftKey) % 26 + 97;
       }
-      return String.fromCharCode(char);
+      return String.fromCharCode(letter);
     });
   }
 }
