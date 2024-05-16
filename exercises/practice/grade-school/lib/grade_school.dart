@@ -1,0 +1,3 @@
+class GradeSchool {
+  // your code here ...
+}
