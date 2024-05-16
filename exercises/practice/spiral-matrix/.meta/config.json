@@ -11,6 +11,9 @@
     ],
     "example": [
       ".meta/lib/example.dart"
+    ],
+    "invalidator": [
+      "pubspec.yaml"
     ]
   },
   "blurb": "Given the size, return a square matrix of numbers in spiral order.",

@@ -11,6 +11,9 @@
     ],
     "example": [
       ".meta/lib/example.dart"
+    ],
+    "invalidator": [
+      "pubspec.yaml"
     ]
   },
   "blurb": "Given a knapsack that can only carry a certain weight, determine which items to put in the knapsack in order to maximize their combined value.",

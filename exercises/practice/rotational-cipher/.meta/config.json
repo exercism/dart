@@ -11,6 +11,9 @@
     ],
     "example": [
       ".meta/lib/example.dart"
+    ],
+    "invalidator": [
+      "pubspec.yaml"
     ]
   },
   "blurb": "Create an implementation of the rotational cipher, also sometimes called the Caesar cipher.",
