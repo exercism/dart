@@ -11,6 +11,9 @@
     ],
     "exemplar": [
       ".meta/lib/exemplar.dart"
+    ],
+    "invalidator": [
+      "pubspec.yaml"
     ]
   },
   "blurb": "TODO: add blurb for strings concept exercise"
