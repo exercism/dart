@@ -134,6 +134,11 @@ void main() {
     expect(result, equals(["Tryptophan", "Cysteine", "Tyrosine"]));
   }, skip: true);
 
+  test('Sequence of two non-STOP codons does not translate to a STOP codon', () {
+    final result = translator.translate("AUGAUG");
+    expect(result, equals(["Methionine", "Methionine"]));
+  }, skip: true);
+
   test("Non-existing codon can't translate", () {
     expect(() => translator.translate("AAA"), throwsA(isA<ArgumentError>()));
   }, skip: true);
