@@ -278,6 +278,14 @@
         ]
       },
       {
+        "slug": "square-root",
+        "name": "Square Root",
+        "uuid": "b3ac8956-3651-4986-bcc0-bb99e4a2f704",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 2
+      },
+      {
         "slug": "sum-of-multiples",
         "name": "Sum of Multiples",
         "uuid": "6b552157-5c08-413e-8667-b9555a1dbba5",
