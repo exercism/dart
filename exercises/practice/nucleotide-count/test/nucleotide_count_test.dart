@@ -27,8 +27,7 @@ void main() {
     }, skip: true);
 
     test('Strand with multiple nucleotides', () {
-      final strand =
-          "AGCTTTTCATTCTGACTGCAACGGGCAATATGTCTCTGTGTGGATTAAAAAAAGAGTGTCTGATAGCAGC";
+      final strand = "AGCTTTTCATTCTGACTGCAACGGGCAATATGTCTCTGTGTGGATTAAAAAAAGAGTGTCTGATAGCAGC";
       final result = counter.count(strand);
       final expected = {"A": 20, "C": 12, "G": 17, "T": 21};
       expect(result, equals(expected));
