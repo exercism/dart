@@ -173,6 +173,14 @@
         ]
       },
       {
+        "slug": "nucleotide-count",
+        "name": "Nucleotide Count",
+        "uuid": "06ea660b-3869-46df-8fd3-a0651b66ed54",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 2
+      },
+      {
         "slug": "grains",
         "name": "Grains",
         "uuid": "2961341d-5c10-40e5-8f97-ad2d6848f399",
