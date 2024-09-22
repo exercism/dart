@@ -138,6 +138,14 @@
         "difficulty": 2
       },
       {
+        "slug": "etl",
+        "name": "ETL",
+        "uuid": "24f1bfbf-fb5d-4358-b89e-20124a8e85fc",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 2
+      },
+      {
         "slug": "armstrong-numbers",
         "name": "Armstrong Numbers",
         "uuid": "4f650701-9568-4d95-9f72-be4bde2c90ec",
