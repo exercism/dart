@@ -47,14 +47,7 @@ void main() {
       }, skip: false);
 
       test('keeps strings', () {
-        final values = [
-          "apple",
-          "zebra",
-          "banana",
-          "zombies",
-          "cherimoya",
-          "zealot"
-        ];
+        final values = ["apple", "zebra", "banana", "zombies", "cherimoya", "zealot"];
         final fn = (String x) => x.startsWith('z');
         final result = strain.keep(values, fn);
         final expected = ["zebra", "zombies", "zealot"];
@@ -125,14 +118,7 @@ void main() {
       }, skip: false);
 
       test('discards strings', () {
-        final values = [
-          "apple",
-          "zebra",
-          "banana",
-          "zombies",
-          "cherimoya",
-          "zealot"
-        ];
+        final values = ["apple", "zebra", "banana", "zombies", "cherimoya", "zealot"];
         final fn = (String x) => x.startsWith('z');
         final result = strain.discard(values, fn);
         final expected = ["apple", "banana", "cherimoya"];
