@@ -351,6 +351,14 @@
         ]
       },
       {
+        "slug": "perfect-numbers",
+        "name": "Perfect Numbers",
+        "uuid": "696b5088-ec86-4d60-8ac1-2cc1d89dee52",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 2
+      },
+      {
         "slug": "isbn-verifier",
         "name": "ISBN Verifier",
         "uuid": "cc0b5fe0-ff63-45b6-8bff-7b62fc5995d8",
