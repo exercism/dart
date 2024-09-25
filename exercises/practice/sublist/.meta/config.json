@@ -1,0 +1,17 @@
+{
+  "authors": [
+    "BNAndras"
+  ],
+  "files": {
+    "solution": [
+      "lib/sublist.dart"
+    ],
+    "test": [
+      "test/sublist_test.dart"
+    ],
+    "example": [
+      ".meta/lib/example.dart"
+    ]
+  },
+  "blurb": "Write a function to determine if a list is a sublist of another list."
+}
