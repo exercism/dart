@@ -35,7 +35,7 @@ void main() {
 
     test('Handles invalid nucleotides', () {
       final strand = "AGXXACT";
-      expect(() => counter.count(strand), throwsArgumentError);
+      expect(() => counter.count(strand), throwsA(const TypeMatcher<InvalidNucleotideException>()));
     }, skip: true);
   });
 }
