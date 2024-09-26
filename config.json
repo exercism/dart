@@ -189,6 +189,14 @@
         ]
       },
       {
+        "slug": "proverb",
+        "name": "Proverb",
+        "uuid": "c0c9c922-e1c7-4971-ac7f-efac2a25a63a",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 2
+      },
+      {
         "slug": "grains",
         "name": "Grains",
         "uuid": "2961341d-5c10-40e5-8f97-ad2d6848f399",

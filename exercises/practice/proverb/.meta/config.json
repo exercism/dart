@@ -1,0 +1,19 @@
+{
+  "authors": [
+    "BNAndras"
+  ],
+  "files": {
+    "solution": [
+      "lib/proverb.dart"
+    ],
+    "test": [
+      "test/proverb_test.dart"
+    ],
+    "example": [
+      ".meta/lib/example.dart"
+    ]
+  },
+  "blurb": "For want of a horseshoe nail, a kingdom was lost, or so the saying goes. Output the full text of this proverbial rhyme.",
+  "source": "Wikipedia",
+  "source_url": "https://en.wikipedia.org/wiki/For_Want_of_a_Nail"
+}
