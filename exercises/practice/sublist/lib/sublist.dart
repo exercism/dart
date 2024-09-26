@@ -1,5 +1,5 @@
 // Implement the Classification enum.
 
-class Strain {
+class Sublist {
   // your code here...
 }
