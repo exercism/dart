@@ -11,3 +11,4 @@ This exception should be raised when an invalid nucleotide is encountered.
 The test suite only checks that an instance of `InvalidNucleotideException` is passed, so you have the freedom to implement it as you see fit as long as it is correctly thrown.
 
 For more information on exceptions in Dart, you can refer to the [exceptions documentation](https://dart.dev/language/error-handling).
+Custom exceptions can be created by [implementing the Exception interface](https://dart.dev/language#interfaces-and-abstract-classes).
