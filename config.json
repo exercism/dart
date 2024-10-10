@@ -130,9 +130,25 @@
         ]
       },
       {
+        "slug": "atbash-cipher",
+        "name": "Atbash Cipher",
+        "uuid": "7093ae21-54ce-4cc8-87a8-777fae080b57",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 2
+      },
+      {
         "slug": "eliuds-eggs",
         "name": "Eliud's Eggs",
         "uuid": "cbe1d3d3-94f1-4988-80bb-d140690a1d02",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 2
+      },
+      {
+        "slug": "etl",
+        "name": "ETL",
+        "uuid": "24f1bfbf-fb5d-4358-b89e-20124a8e85fc",
         "practices": [],
         "prerequisites": [],
         "difficulty": 2
@@ -181,6 +197,14 @@
         "difficulty": 2
       },
       {
+        "slug": "proverb",
+        "name": "Proverb",
+        "uuid": "c0c9c922-e1c7-4971-ac7f-efac2a25a63a",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 2
+      },
+      {
         "slug": "grains",
         "name": "Grains",
         "uuid": "2961341d-5c10-40e5-8f97-ad2d6848f399",
@@ -203,6 +227,14 @@
           "parsing",
           "stacks"
         ]
+      },
+      {
+        "slug": "sublist",
+        "name": "Sublist",
+        "uuid": "fe7d5efd-dae8-4d49-9604-e029da900ca1",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 2
       },
       {
         "slug": "word-count",
@@ -294,6 +326,14 @@
         "difficulty": 2
       },
       {
+        "slug": "strain",
+        "name": "Strain",
+        "uuid": "3c03a3f1-972e-44d0-a558-43480d862021",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 2
+      },
+      {
         "slug": "sum-of-multiples",
         "name": "Sum of Multiples",
         "uuid": "6b552157-5c08-413e-8667-b9555a1dbba5",
@@ -341,6 +381,14 @@
           "loops",
           "math"
         ]
+      },
+      {
+        "slug": "perfect-numbers",
+        "name": "Perfect Numbers",
+        "uuid": "696b5088-ec86-4d60-8ac1-2cc1d89dee52",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 2
       },
       {
         "slug": "isbn-verifier",
