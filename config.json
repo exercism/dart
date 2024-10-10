@@ -189,6 +189,14 @@
         ]
       },
       {
+        "slug": "nucleotide-count",
+        "name": "Nucleotide Count",
+        "uuid": "06ea660b-3869-46df-8fd3-a0651b66ed54",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 2
+      },
+      {
         "slug": "proverb",
         "name": "Proverb",
         "uuid": "c0c9c922-e1c7-4971-ac7f-efac2a25a63a",
