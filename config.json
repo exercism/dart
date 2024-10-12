@@ -690,6 +690,14 @@
         ]
       },
       {
+        "slug": "queen-attack",
+        "name": "Queen Attack",
+        "uuid": "7b748124-eedc-4cb3-984d-c9631d681907",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 3
+      },
+      {
         "slug": "pig-latin",
         "name": "Pig Latin",
         "uuid": "8c5c9cc5-ddd1-4756-94fe-5862c940a5b8",
