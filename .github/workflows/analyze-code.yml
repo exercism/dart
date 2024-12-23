@@ -1,0 +1,36 @@
+name: Analyze Code
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/test.yml'
+      - 'bin/*.dart'
+      - 'exercises/**/*.dart'
+      - 'exercises/**/analysis_options.yaml'
+      - 'exercises/**/pubspec.yaml'
+      - 'lib/*.dart'
+      - 'lib/src/*.dart'
+      - 'test/*.dart'
+      - 'analysis_options.yaml'
+      - 'pubspec.*'
+
+jobs:
+  test:
+    runs-on: ubuntu-22.04
+    strategy:
+      fail-fast: false
+      matrix:
+        tag: ['3.2']
+
+    container:
+      image:  dart:${{ matrix.tag }}
+
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+
+      - name: Install dependencies
+        run: dart pub get
+
+      # We can't check the exercises because they will produce errors since the example files have the solution.
+      - name: Analyze Dart code
+        run: dart analyze bin/ lib/ test/
