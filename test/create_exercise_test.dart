@@ -4,7 +4,10 @@ import '../bin/create_exercise.dart';
 
 void main() {
   group('create-exercise tool', () {
-    group('helpers', () {
+    group('helpers'
+        , (
+
+            ) {
       group('words', () {
         test('null returns empty list', () {
           expect(words(null), equals(['']));
