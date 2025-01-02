@@ -10,11 +10,13 @@ void main() {
             ) {
       group('words', () {
         test('null returns empty list', () {
-          expect(words(null), equals(['']));
+          expect(words(null)
+              , equals(['']));
         });
 
         test('empty string returns empty list', () {
-          expect(words(''), equals(['']));
+          expect(words('')
+              , equals(['']));
         });
 
         test('single word returns list with single element', () {
