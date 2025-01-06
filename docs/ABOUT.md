@@ -15,7 +15,7 @@ Designed to simplify common programming tasks, Dart has rapidly gained popularit
 - **Cross-Platform Development:** Dart powers [Flutter](https://flutter.dev), one of the most popular frameworks for building high-performance, cross-platform apps for mobile, web, and desktop from a single codebase.
 - **Web Support:** Dart code can be transpiled into JavaScript, making it suitable for both client-side and server-side web development.
   Frameworks like [AngularDart](https://angulardart.dev/) are tailored specifically for Dart web apps.
-- **Server-Side Capabilities:** Dart is not just for frontend development; it can be used to build scalable server-side applications with frameworks like [Shelf](https://pub.dev/packages/shelf) or the now-deprecated [Aqueduct](https://aqueduct.io/).
+- **Server-Side Capabilities:** Dart is not just for frontend development; it can be used to build scalable server-side applications with frameworks like [Shelf](https://pub.dev/packages/shelf).
 - **High Performance:** Dart code is compiled to native machine code for mobile and desktop applications and optimized JavaScript for the web, delivering high performance across platforms.
 
 ## Versatility of Dart
