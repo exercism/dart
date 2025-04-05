@@ -36,7 +36,6 @@
     ]
   },
   "exercises": {
-    "concept": [],
     "practice": [
       {
         "slug": "hello-world",
@@ -437,6 +436,15 @@
         "slug": "beer-song",
         "name": "Beer Song",
         "uuid": "2a35fc68-3cb9-4790-a1ce-7d881b213e37",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 3,
+        "status": "deprecated"
+      },
+      {
+        "slug": "bottle-song",
+        "name": "Bottle Song",
+        "uuid": "1daada7e-88a2-469e-b75d-57e0c9084fb4",
         "practices": [],
         "prerequisites": [],
         "difficulty": 3,
