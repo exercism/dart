@@ -36,7 +36,6 @@
     ]
   },
   "exercises": {
-    "concept": [],
     "practice": [
       {
         "slug": "hello-world",
@@ -130,6 +129,14 @@
           "math",
           "strings"
         ]
+      },
+      {
+        "slug": "game-of-life",
+        "name": "Conway's Game of Life",
+        "uuid": "02ad8017-5f92-41a6-8ab2-dcdbc0e3f017",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 2
       },
       {
         "slug": "high-scores",
