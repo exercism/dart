@@ -2,7 +2,7 @@
 
 ## Installing Dart
 
-Instructions to install the Dart SDK can be found on the [Get Dart][get-dart] page.
+Instructions to install the Dart SDK can be found on the Dart website: [Get Dart][get-dart]
 
 ## Dart Plugin for your IDE or Editor
 
