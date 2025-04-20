@@ -2,20 +2,11 @@
 
 ## Installing Dart
 
-### Automatic installation instructions (recommended)
-* Follow the [instructions for installation on the Dart website](https://www.dart.dev/tools/sdk).
-
-### Manual install instructions (for advanced users)
-* Download a zip file from [this page](https://www.dart.dev/install/archive).
-* Unzip the file into whatever directory you choose.
-* Add the full path of that directory to your PATH.
-    * Follow the links below for updating your PATH on Windows, Linux and Mac platforms:
-        * [Instructions for Windows](https://www.computerhope.com/issues/ch000549.htm)
-        * [Instructions for Linux](https://www.computerhope.com/issues/ch001647.htm)
-        * [Instructions for Mac](https://support.apple.com/guide/terminal/apd382cc5fa-4f58-4449-b20a-41c53c006f8f/mac)
-
-#### Verify Installation
-* From a new command window or terminal, type `dart --version` to verify that Dart is now available. If the output shows the version number, then Dart is correctly installed on your computer.
+Instructions to install the Dart SDK can be found on the Dart website: [Get Dart][get-dart]
 
 ## Dart Plugin for your IDE or Editor
-* If you are using an IDE or an editor, [install and configure the Dart plugin](https://www.dart.dev/tools) if it exists for your editor of choice.
+
+If you are using an IDE or an editor, [add a Dart plugin][editors] if it exists for your editor of choice.
+
+[get-dart]: https://www.dart.dev/get-dart
+[editors]:  https://www.dart.dev/tools#editors
