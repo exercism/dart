@@ -36,7 +36,6 @@
     ]
   },
   "exercises": {
-    "concept": [],
     "practice": [
       {
         "slug": "hello-world",
@@ -432,6 +431,14 @@
           "arrays",
           "strings"
         ]
+      },
+      {
+        "slug": "resistor-color-trio",
+        "name": "Resistor Color Trio",
+        "uuid": "dd6d99d9-163f-40a6-ad37-1fc12a948cb6",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 2
       },
       {
         "slug": "beer-song",
