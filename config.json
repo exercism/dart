@@ -441,6 +441,14 @@
         ]
       },
       {
+        "slug": "resistor-color-trio",
+        "name": "Resistor Color Trio",
+        "uuid": "dd6d99d9-163f-40a6-ad37-1fc12a948cb6",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 2
+      },
+      {
         "slug": "beer-song",
         "name": "Beer Song",
         "uuid": "2a35fc68-3cb9-4790-a1ce-7d881b213e37",
