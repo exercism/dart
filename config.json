@@ -147,6 +147,14 @@
         "difficulty": 2
       },
       {
+        "slug": "house",
+        "name": "House",
+        "uuid": "6102dc23-653f-4ac2-a874-ac62b74d1700",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 2
+      },
+      {
         "slug": "difference-of-squares",
         "name": "Difference of Squares",
         "uuid": "c1cdab6f-c18c-4173-828a-2191151d20d4",
