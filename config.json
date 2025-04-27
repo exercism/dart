@@ -738,6 +738,14 @@
         "difficulty": 4
       },
       {
+        "slug": "relative-distance",
+        "name": "Relative Distance",
+        "uuid": "223e92b6-17bd-4695-9747-1e2206bf2a6a",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 5
+      },
+      {
         "slug": "list-ops",
         "name": "List Ops",
         "uuid": "b1418b5d-9c69-438a-8835-cf12d630c547",
