@@ -36,6 +36,32 @@
     ]
   },
   "exercises": {
+    "concept": [
+      {
+        "slug": "futures",
+        "name": "futures",
+        "uuid": "7bcc84a0-9209-497b-b32a-e0784885abc7",
+        "concepts": [],
+        "prerequisites": [],
+        "status": "deprecated"
+      },
+      {
+        "slug": "strings",
+        "name": "strings",
+        "uuid": "b6a1361a-7ae1-4265-b292-9570cb51bda5",
+        "concepts": [],
+        "prerequisites": [],
+        "status": "deprecated"
+      },
+      {
+        "slug": "numbers",
+        "name": "numbers",
+        "uuid": "e4107bd3-383e-47f7-a00b-f0cfb3b6126b",
+        "concepts": [],
+        "prerequisites": [],
+        "status": "deprecated"
+      }
+    ],
     "practice": [
       {
         "slug": "hello-world",

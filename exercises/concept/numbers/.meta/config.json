@@ -1,0 +1,17 @@
+{
+  "authors": [
+    "glennj"
+  ],
+  "files": {
+    "solution": [
+      "lib/numbers.dart"
+    ],
+    "test": [
+      "test/numbers_test.dart"
+    ],
+    "exemplar": [
+      ".meta/exemplar.dart"
+    ]
+  },
+  "blurb": "TODO: add blurb"
+}
