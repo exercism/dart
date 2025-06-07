@@ -40,15 +40,7 @@
       {
         "slug": "futures",
         "name": "futures",
-        "uuid": "7bcc84a0-9209-497b-b32a-e0784885abc7",
-        "concepts": [],
-        "prerequisites": [],
-        "status": "deprecated"
-      },
-      {
-        "slug": "strings",
-        "name": "strings",
-        "uuid": "b6a1361a-7ae1-4265-b292-9570cb51bda5",
+        "uuid": "cf1093f0-3a6b-4ad1-83a9-a8d9b2a57991",
         "concepts": [],
         "prerequisites": [],
         "status": "deprecated"
@@ -56,7 +48,15 @@
       {
         "slug": "numbers",
         "name": "numbers",
-        "uuid": "e4107bd3-383e-47f7-a00b-f0cfb3b6126b",
+        "uuid": "714711a6-1be7-4540-9d44-87b1e58417fc",
+        "concepts": [],
+        "prerequisites": [],
+        "status": "deprecated"
+      },
+      {
+        "slug": "strings",
+        "name": "strings",
+        "uuid": "1b7e3737-0333-4eee-b425-2e84b2e09fe2",
         "concepts": [],
         "prerequisites": [],
         "status": "deprecated"
