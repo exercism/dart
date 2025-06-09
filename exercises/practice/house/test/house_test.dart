@@ -6,29 +6,39 @@ void main() {
 
   group('House', () {
     test('verse one - the house that Jack built', () {
+      final startVerse = 1;
+      final endVerse = 1;
+      final result = house.recite(startVerse, endVerse);
       final expected = 'This is the house that Jack built.';
-      final result = house.recite(1, 1);
       expect(result, equals(expected));
     }, skip: false);
 
     test('verse two - the malt that lay', () {
-      final expected = 'This is the malt that lay in the house that Jack built.';
-      final result = house.recite(2, 2);
+      final startVerse = 2;
+      final endVerse = 2;
+      final result = house.recite(startVerse, endVerse);
+      final expected =
+          'This is the malt that lay in the house that Jack built.';
       expect(result, equals(expected));
     }, skip: true);
 
     test('verse three - the rat that ate', () {
+      final startVerse = 3;
+      final endVerse = 3;
+      final result = house.recite(startVerse, endVerse);
       final expected = [
         'This is the rat',
         'that ate the malt',
         'that lay in the house',
         'that Jack built.',
       ].join(' ');
-      final result = house.recite(3, 3);
       expect(result, equals(expected));
     }, skip: true);
 
     test('verse four - the cat that killed', () {
+      final startVerse = 4;
+      final endVerse = 4;
+      final result = house.recite(startVerse, endVerse);
       final expected = [
         'This is the cat',
         'that killed the rat',
@@ -36,11 +46,13 @@ void main() {
         'that lay in the house',
         'that Jack built.',
       ].join(' ');
-      final result = house.recite(4, 4);
       expect(result, equals(expected));
     }, skip: true);
 
     test('verse five - the dog that worried', () {
+      final startVerse = 5;
+      final endVerse = 5;
+      final result = house.recite(startVerse, endVerse);
       final expected = [
         'This is the dog',
         'that worried the cat',
@@ -49,11 +61,13 @@ void main() {
         'that lay in the house',
         'that Jack built.',
       ].join(' ');
-      final result = house.recite(5, 5);
       expect(result, equals(expected));
     }, skip: true);
 
     test('verse six - the cow with the crumpled horn', () {
+      final startVerse = 6;
+      final endVerse = 6;
+      final result = house.recite(startVerse, endVerse);
       final expected = [
         'This is the cow with the crumpled horn',
         'that tossed the dog',
@@ -63,11 +77,13 @@ void main() {
         'that lay in the house',
         'that Jack built.',
       ].join(' ');
-      final result = house.recite(6, 6);
       expect(result, equals(expected));
     }, skip: true);
 
     test('verse seven - the maiden all forlorn', () {
+      final startVerse = 7;
+      final endVerse = 7;
+      final result = house.recite(startVerse, endVerse);
       final expected = [
         'This is the maiden all forlorn',
         'that milked the cow with the crumpled horn',
@@ -78,11 +94,13 @@ void main() {
         'that lay in the house',
         'that Jack built.',
       ].join(' ');
-      final result = house.recite(7, 7);
       expect(result, equals(expected));
     }, skip: true);
 
     test('verse eight - the man all tattered and torn', () {
+      final startVerse = 8;
+      final endVerse = 8;
+      final result = house.recite(startVerse, endVerse);
       final expected = [
         'This is the man all tattered and torn',
         'that kissed the maiden all forlorn',
@@ -94,11 +112,13 @@ void main() {
         'that lay in the house',
         'that Jack built.',
       ].join(' ');
-      final result = house.recite(8, 8);
       expect(result, equals(expected));
     }, skip: true);
 
     test('verse nine - the priest all shaven and shorn', () {
+      final startVerse = 9;
+      final endVerse = 9;
+      final result = house.recite(startVerse, endVerse);
       final expected = [
         'This is the priest all shaven and shorn',
         'that married the man all tattered and torn',
@@ -111,11 +131,13 @@ void main() {
         'that lay in the house',
         'that Jack built.',
       ].join(' ');
-      final result = house.recite(9, 9);
       expect(result, equals(expected));
     }, skip: true);
 
     test('verse ten - the rooster that crowed in the morn', () {
+      final startVerse = 10;
+      final endVerse = 10;
+      final result = house.recite(startVerse, endVerse);
       final expected = [
         'This is the rooster that crowed in the morn',
         'that woke the priest all shaven and shorn',
@@ -129,11 +151,13 @@ void main() {
         'that lay in the house',
         'that Jack built.',
       ].join(' ');
-      final result = house.recite(10, 10);
       expect(result, equals(expected));
     }, skip: true);
 
     test('verse eleven - the farmer sowing his corn', () {
+      final startVerse = 11;
+      final endVerse = 11;
+      final result = house.recite(startVerse, endVerse);
       final expected = [
         'This is the farmer sowing his corn',
         'that kept the rooster that crowed in the morn',
@@ -148,11 +172,13 @@ void main() {
         'that lay in the house',
         'that Jack built.',
       ].join(' ');
-      final result = house.recite(11, 11);
       expect(result, equals(expected));
     }, skip: true);
 
     test('verse 12 - the horse and the hound and the horn', () {
+      final startVerse = 12;
+      final endVerse = 12;
+      final result = house.recite(startVerse, endVerse);
       final expected = [
         'This is the horse and the hound and the horn',
         'that belonged to the farmer sowing his corn',
@@ -168,11 +194,13 @@ void main() {
         'that lay in the house',
         'that Jack built.',
       ].join(' ');
-      final result = house.recite(12, 12);
       expect(result, equals(expected));
     }, skip: true);
 
     test('multiple verses', () {
+      final startVerse = 4;
+      final endVerse = 8;
+      final result = house.recite(startVerse, endVerse);
       final expected = [
         [
           'This is the cat that killed the rat',
@@ -206,11 +234,13 @@ void main() {
           'that lay in the house that Jack built.',
         ].join(' '),
       ].join('\n');
-      final result = house.recite(4, 8);
       expect(result, equals(expected));
     }, skip: true);
 
     test('full rhyme', () {
+      final startVerse = 1;
+      final endVerse = 12;
+      final result = house.recite(startVerse, endVerse);
       final expected = [
         'This is the house that Jack built.',
         'This is the malt that lay in the house that Jack built.',
@@ -292,7 +322,6 @@ void main() {
           'that lay in the house that Jack built.',
         ].join(' '),
       ].join('\n');
-      final result = house.recite(1, 12);
       expect(result, equals(expected));
     }, skip: true);
   });
