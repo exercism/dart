@@ -17,8 +17,7 @@ void main() {
       final startVerse = 2;
       final endVerse = 2;
       final result = house.recite(startVerse, endVerse);
-      final expected =
-          'This is the malt that lay in the house that Jack built.';
+      final expected = 'This is the malt that lay in the house that Jack built.';
       expect(result, equals(expected));
     }, skip: true);
 
