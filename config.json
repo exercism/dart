@@ -651,6 +651,23 @@
         ]
       },
       {
+        "slug": "flower-field",
+        "name": "Flower Field",
+        "uuid": "b7b86bc1-b1f9-422e-b18e-4129bfe7a7d2",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 5,
+        "topics": [
+          "classes",
+          "games",
+          "lists",
+          "logic",
+          "loops",
+          "math",
+          "object_oriented_programming"
+        ]
+      },
+      {
         "slug": "minesweeper",
         "name": "Minesweeper",
         "uuid": "2c60339e-d15a-41e7-ba4f-33fa18d2a732",
@@ -665,7 +682,8 @@
           "loops",
           "math",
           "object_oriented_programming"
-        ]
+        ],
+        "status": "deprecated"
       },
       {
         "slug": "diamond",

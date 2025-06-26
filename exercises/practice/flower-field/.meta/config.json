@@ -1,0 +1,22 @@
+{
+  "authors": [
+    "devkabiir"
+  ],
+  "contributors": [
+    "sisminnmaw",
+    "kytrinyx",
+    "BNAndras"
+  ],
+  "files": {
+    "solution": [
+      "lib/flower_field.dart"
+    ],
+    "test": [
+      "test/flower_field_test.dart"
+    ],
+    "example": [
+      ".meta/lib/example.dart"
+    ]
+  },
+  "blurb": "Mark all the flowers in a garden."
+}
