@@ -11,6 +11,9 @@
     ],
     "example": [
       ".meta/lib/example.dart"
+    ],
+    "invalidator": [
+      "pubspec.yaml"
     ]
   },
   "blurb": "Given a family tree, calculate the degree of separation.",

@@ -11,6 +11,9 @@
     ],
     "example": [
       ".meta/lib/example.dart"
+    ],
+    "invalidator": [
+      "pubspec.yaml"
     ]
   },
   "blurb": "Output the nursery rhyme 'This is the House that Jack Built'.",
