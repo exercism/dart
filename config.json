@@ -930,6 +930,14 @@
         "practices": [],
         "prerequisites": [],
         "difficulty": 4
+      },
+      {
+        "slug": "camicia",
+        "name": "Camicia",
+        "uuid": "b3de907d-4704-4d57-977d-cbbf970f9e49",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 5
       }
     ]
   },
