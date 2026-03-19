@@ -3,7 +3,6 @@ import 'dart:io';
 
 import 'package:args/args.dart';
 import 'package:path/path.dart' show dirname;
-import 'package:yaml/yaml.dart';
 
 // Constants
 const _scriptFileName = 'create-exercise';
@@ -79,9 +78,9 @@ String testTemplate(String name) {
 import 'package:${snakeCase(packages[0])}/${snakeCase(packages[0])}.dart';
 import 'package:${snakeCase(packages[1])}/${snakeCase(packages[1])}.dart';
 
-final ${camelCase(name)} = ${pascalCase(name)}();
-
 void main() {
+  final ${camelCase(name)} = ${pascalCase(name)}();
+
   group('${pascalCase(name)}', () {
 $_testCasesString
   });
@@ -90,11 +89,10 @@ $_testCasesString
 }
 
 /// Generates the yaml code for a pubspec.yaml file.
-String pubTemplate(String name, String version) => '''
+String pubTemplate(String name) => '''
 name: '${snakeCase(name)}'
-version: $version
 environment:
-  sdk: '>=2.18.0 <3.0.0'
+  sdk: '>=3.2.0 <4.0.0'
 dev_dependencies:
   test: '<2.0.0'
 ''';
@@ -123,7 +121,7 @@ linter:
 
 /// Parses through the given test case (or group) in order to produce a String of code for the generated test suite.
 String testCaseTemplate(String exerciseName, Map<String, dynamic> testCase,
-    {bool firstTest = true, String returnType = ''}) {
+    {bool firstTest = true, String returnType = '', Set<String> excludedUuids = const {}}) {
   bool skipTests = firstTest;
 
   if (testCase['cases'] != null) {
@@ -137,9 +135,13 @@ String testCaseTemplate(String exerciseName, Map<String, dynamic> testCase,
     // Build the tests up recursively, only first test should be skipped
     final testList = <String>[];
 
-    for (Map<String, Object> caseObj in testCase['cases'] as List<Map<String, Object>>) {
-      testList.add(testCaseTemplate(exerciseName, caseObj, firstTest: skipTests, returnType: returnType));
-      skipTests = false;
+    for (Map<String, dynamic> caseObj in testCase['cases'] as List<dynamic>) {
+      final entry = testCaseTemplate(exerciseName, caseObj,
+          firstTest: skipTests, returnType: returnType, excludedUuids: excludedUuids);
+      if (entry.isNotEmpty) {
+        testList.add(entry);
+        skipTests = false;
+      }
     }
 
     final tests = testList.join('\n');
@@ -154,6 +156,8 @@ String testCaseTemplate(String exerciseName, Map<String, dynamic> testCase,
       });
     ''';
   }
+
+  if (excludedUuids.contains(testCase['uuid'])) return '';
 
   final description = _repr(testCase['description']);
   final object = camelCase(exerciseName);
@@ -171,7 +175,7 @@ String testCaseTemplate(String exerciseName, Map<String, dynamic> testCase,
 
   final result = '''
     test($description, () {
-      final $returnType result = $object.$method($arguments);
+      final result = $object.$method($arguments);
       expect(result, equals($expected));
     }, skip: ${!skipTests});
 ''';
@@ -202,54 +206,74 @@ String _finalizeReturnType(String expected, String returnType) {
   }
 }
 
-/// Determines whether the script should generate an exercise.
-bool _doGenerate(Directory exerciseDir, String exerciseName, String version) {
-  if (exerciseDir.existsSync()) {
-    if (File('${exerciseDir.path}/pubspec.yaml').existsSync()) {
-      final pubspecString = File('${exerciseDir.path}/pubspec.yaml').readAsStringSync();
-      final currentVersion = loadYaml(pubspecString)['version'] as String?;
+/// Reads .meta/tests.toml and returns the set of UUIDs marked with `include = false`.
+Set<String> _getExcludedUuids(Directory exerciseDir) {
+  final tomlFile = File('${exerciseDir.path}/.meta/tests.toml');
+  if (!tomlFile.existsSync()) return {};
 
-      if (currentVersion == version) {
-        stderr.write('$exerciseName of version, $currentVersion, already exists\n');
-        exit(1);
-      } else {
-        return true;
-      }
+  final excluded = <String>{};
+  String? currentUuid;
+
+  for (final line in tomlFile.readAsLinesSync()) {
+    if (line.startsWith('[') && line.endsWith(']')) {
+      currentUuid = line.substring(1, line.length - 1);
+    } else if (line.trim() == 'include = false' && currentUuid != null) {
+      excluded.add(currentUuid);
+      currentUuid = null;
     }
-    stderr.write('$exerciseName already exists\n');
-    exit(1);
   }
 
-  return true;
+  return excluded;
 }
 
 /// Creates/updates an exercise.
-void _generateExercise(Map<String, Object> specification, String exerciseFilename, String exerciseName,
-    Directory exerciseDir, String version, ArgResults arguments) async {
-  _testCasesString = testCaseTemplate(exerciseName, specification);
+void _generateExercise(Map<String, dynamic> specification, String exerciseFilename, String exerciseName,
+    Directory exerciseDir, ArgResults arguments) async {
+  final isNew = !exerciseDir.existsSync();
   print('Found: ${arguments['spec-path']}/exercises/$exerciseName/canonical-data.json');
 
+  final dartRoot = '${dirname(Platform.script.toFilePath())}/..';
+  final configletLoc = '$dartRoot/bin/configlet';
+
+  // Run configlet first: create for new exercises, sync for existing
+  if (isNew) {
+    final createSuccess = _runProcess(
+        configletLoc, ['create', '--practice-exercise', exerciseName, '-t', dartRoot]);
+    if (createSuccess) {
+      stdout.write('Successfully created exercise via configlet.\n');
+    } else {
+      stderr.write('Warning: `configlet create` exited with an error.\n');
+    }
+  } else {
+    final syncSuccess = _runProcess(
+        configletLoc, ['sync', '-e', exerciseName, '--docs', '--metadata', '--filepaths', '--tests', 'include', '-u', '-y', '-t', dartRoot]);
+    if (syncSuccess) {
+      stdout.write('Successfully synced via configlet.\n');
+    } else {
+      stderr.write('Warning: `configlet sync` exited with an error.\n');
+    }
+  }
+
+  // Generate tests after configlet sync so excluded UUIDs from tests.toml are up to date
+  _testCasesString = testCaseTemplate(exerciseName, specification, excludedUuids: _getExcludedUuids(exerciseDir));
+
+  Directory('${exerciseDir.path}/.meta/lib').createSync(recursive: true);
   Directory('${exerciseDir.path}/lib').createSync(recursive: true);
   Directory('${exerciseDir.path}/test').createSync(recursive: true);
 
-  // Create files
+  // Fill in files — only write stubs/example if they don't already exist
   final testFileName = '${exerciseDir.path}/test/${exerciseFilename}_test.dart';
-  File('${exerciseDir.path}/lib/example.dart').writeAsStringSync(exampleTemplate(exerciseName));
-  File('${exerciseDir.path}/lib/${exerciseFilename}.dart').writeAsStringSync(mainTemplate(exerciseName));
+  final exampleFile = File('${exerciseDir.path}/.meta/lib/example.dart');
+  if (!exampleFile.existsSync()) {
+    exampleFile.writeAsStringSync(exampleTemplate(exerciseName));
+  }
+  final stubFile = File('${exerciseDir.path}/lib/${exerciseFilename}.dart');
+  if (!stubFile.existsSync()) {
+    stubFile.writeAsStringSync(mainTemplate(exerciseName));
+  }
   File(testFileName).writeAsStringSync(testTemplate(exerciseName));
   File('${exerciseDir.path}/analysis_options.yaml').writeAsStringSync(analysisOptionsTemplate());
-  File('${exerciseDir.path}/pubspec.yaml').writeAsStringSync(pubTemplate(exerciseName, version));
-
-  // Generate README
-  final dartRoot = '${dirname(Platform.script.toFilePath())}/..';
-  final configletLoc = '$dartRoot/bin/configlet';
-  final genSuccess = _runProcess(
-      configletLoc, ['generate', '$dartRoot', '--spec-path', '${arguments['spec-path']}', '--only', exerciseName]);
-  if (genSuccess) {
-    stdout.write('Successfully created README.md\n');
-  } else {
-    stderr.write('Warning: `configlet generate` exited with an error, \'README.md\' is likely malformed.\n');
-  }
+  File('${exerciseDir.path}/pubspec.yaml').writeAsStringSync(pubTemplate(exerciseName));
 
   // The output from file generation is not always well-formatted, use dartfmt to clean it up
   final fmtSuccess = _runProcess('dart', ['run', 'dart_style:format', '-i', '0', '-l', '120', '-w', exerciseDir.path]);
@@ -431,7 +455,7 @@ String _defineMap(Map x, String iterableType) {
 
 /// A helper method to get the inside type of an iterable
 String _getIterableType(Iterable iter) {
-  final types = iter.map<String>(_getFriendlyType as String Function(dynamic)).toSet();
+  final types = iter.map<String>(_getFriendlyType).toSet();
 
   if (types.length == 1) {
     return types.first;
@@ -442,8 +466,8 @@ String _getIterableType(Iterable iter) {
 
 /// A helper method to get the inside type of a map
 String _getMapType(Map map) {
-  final keyTypes = map.keys.map<String>(_getFriendlyType as String Function(dynamic)).toSet();
-  final valueTypes = map.values.map<String>(_getFriendlyType as String Function(dynamic)).toSet();
+  final keyTypes = map.keys.map<String>(_getFriendlyType).toSet();
+  final valueTypes = map.values.map<String>(_getFriendlyType).toSet();
 
   final mapKeyType = keyTypes.length == 1 ? keyTypes.first : 'dynamic';
   final mapValueType = valueTypes.length == 1 ? valueTypes.first : 'dynamic';
@@ -452,7 +476,9 @@ String _getMapType(Map map) {
 }
 
 /// Get a human-friendly type of a variable
-String _getFriendlyType(Object x) {
+String _getFriendlyType(dynamic x) {
+  if (x == null) return 'dynamic';
+
   if (x is String) {
     return 'String';
   }
@@ -503,7 +529,7 @@ void main(List<String> args) {
   }
 
   final exerciseName = restArgs.first;
-  final exerciseDir = Directory('exercises/${kebabCase(exerciseName)}');
+  final exerciseDir = Directory('exercises/practice/${kebabCase(exerciseName)}');
 
   // Create dir
   final currentDir = Directory.current;
@@ -515,12 +541,9 @@ void main(List<String> args) {
     try {
       final canonicalDataJson = File(canonicalFilePath);
       final source = canonicalDataJson.readAsStringSync();
-      final specification = json.decode(source) as Map<String, Object>;
-      final version = specification['version'].toString();
+      final specification = json.decode(source) as Map<String, dynamic>;
 
-      if (_doGenerate(exerciseDir, exerciseName, version)) {
-        _generateExercise(specification, exerciseFilename, exerciseName, exerciseDir, version, arguments);
-      }
+      _generateExercise(specification, exerciseFilename, exerciseName, exerciseDir, arguments);
     } on FileSystemException {
       stderr.write('Could not open file \'$canonicalFilePath\', exiting.\n');
       exit(1);
