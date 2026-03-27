@@ -1,156 +1,72 @@
 # Running the Tests
 
-Choose your operating system:
+## Download an Exercise
 
-* [Windows](#windows)
-* [Mac OS X](#mac-os-x)
-* [Linux](#linux)
+Use the [Exercism CLI][cli] to download the exercise you want to work on.
 
-## Understanding Test Result
+```shell
+exercism download --track=dart --exercise=hello-world
+```
 
-The test run summary will list the number of passed, skipped and failed tests.
-For example :
+Then change into the exercise directory.
+
+```shell
+cd /path/to/exercism/dart/hello-world
+```
+
+## Install Dependencies
+
+Before running the tests, download the exercise dependencies.
+
+```shell
+dart pub get
+```
+
+## Run the Tests
+
+Now, run the tests and see the test results.
+```shell
+dart test
+```
+
+## Understanding Test Results
+
+The test run summary lists the number of tests passed, skipped, and failed.
+For example:
 
 ```
 ❯ dart test
-00:01 +4 ~3 -1: Some tests failed.
+00:01 +0 ~2 -1: Some tests failed.
 ```
 
-`+` describes the number of tests passed. In this example, 4 tests are passed.
+- `+0` — 0 tests passed
+- `~2` — 2 tests skipped
+- `-1` — 1 test failed
 
-`~` describes the number of tests skipped. In this example, 3 tests are skipped.
+Most exercises will have multiple tests where all but the first are skipped by default.
+Here's what a typical test file looks like:
 
-`-` describes the number of tests failed. In this case, there is only one test that failed.
+```dart
+group('TwoFer', () {
+  test('no name given', () {
+    final result = twoFer();
+    expect(result, equals('One for you, one for me.'));
+  }, skip: false);
 
-The `skip` parameter instructs the test suite to not run a test. 
-This is commonly used to avoid running tests of unimplemented functionality, so you can focus on the part you are currently working on.
+  test('a name given', () {
+    final result = twoFer('Alice');
+    expect(result, equals('One for Alice, one for me.'));
+  }, skip: true);
 
-It is advised to enable tests one by one as you implement the functionality being tested or as you move towards edge cases. 
-You can do so by flipping the `skip: false` to `skip: true` flag for each test. 
-You can also submit your exercise without passing all tests to get feedback.
+  test('another name given', () {
+    final result = twoFer('Bob');
+    expect(result, equals('One for Bob, one for me.'));
+  }, skip: true);
+});
+```
 
-----
+As tests pass, enable the next test by changing `skip: true` to `skip: false` (or removing the `skip` parameter entirely).
+Once all tests pass locally, submit your solution.
+Note: all tests will be run by the online test runner on every submission.
 
-# Windows
-
-1. Open a Command Prompt.
-
-1. Get the first exercise:
-
-     ```batchfile
-     C:\Users\JaneDoe>exercism fetch dart
-
-     Not Submitted:     1 problem
-     dart (Hello World) C:\Users\JaneDoe\exercism\dart\hello-world
-
-     New:               1 problem
-     dart (Hello World) C:\Users\JaneDoe\exercism\dart\hello-world
-
-     unchanged: 0, updated: 0, new: 1
-     ```
-
-1. Change directory into the exercism:
-
-     ```batchfile
-     C:\Users\JaneDoe>cd C:\Users\JaneDoe\exercism\dart\hello-world
-     ```
-
-1. Download the dependent packages:
-
-     ```batchfile
-     C:\Users\JaneDoe>dart pub get
-     ```
-
-1. Run the tests:
-
-     ```batchfile
-     C:\Users\JaneDoe>dart test
-     ```
-   *(Don't worry about the tests failing, at first, this is how you begin each exercise.)*
-
-1. Solve the exercise.  Find and work through the `instructions.md` guide ([view on GitHub](https://github.com/exercism/dart/blob/main/exercises/practice/hello-world/.docs/instructions.md)).
-
-
-Good luck!  Have fun!
-
-If you get stuck, at any point, don't forget to reach out for [help](https://exercism.org/docs/tracks/dart).
-
-----
-
-# Mac OS X
-
-1. In the terminal window, get the first exercise:
-
-     ```shell
-     $ exercism fetch dart
-
-     New:                 1 problem
-     Dart (Etl) /Users/janedoe/exercism/dart/hello-world
-
-     unchanged: 0, updated: 0, new: 1
-     ```
-
-1. Change directory into the exercise:
-
-     ```shell
-     $ cd /Users/janedoe/exercism/dart/hello-world
-     ```
-
-1. Download the dependent packages:
-
-     ```shell
-     $ dart pub get
-     ```
-
-1. Run the tests:
-
-     ```shell
-     $ dart test
-     ```
-   *(Don't worry about the tests failing, at first, this is how you begin each exercise.)*
-
-1. Solve the exercise.  Find and work through the `instructions.md` guide ([view on GitHub](https://github.com/exercism/dart/blob/main/exercises/practice/hello-world/.docs/instructions.md)).
-
-Good luck!  Have fun!
-
-If you get stuck, at any point, don't forget to reach out for [help](https://exercism.org/docs/tracks/dart).
-
-----
-
-# Linux
-
-1. In the terminal window, get the first exercise:
-
-     ```shell
-     $ exercism fetch dart
-
-     New:                 1 problem
-     Dart (Etl) /home/janedoe/exercism/dart/hello-world
-
-     unchanged: 0, updated: 0, new: 1
-     ```
-
-1. Change directory into the exercise:
-
-     ```shell
-     $ cd /home/janedoe/exercism/dart/hello-world
-     ```
-
-1. Download the dependent packages:
-
-     ```shell
-     $ dart pub get
-     ```
-
-1. Run the tests:
-
-     ```shell
-     $ dart test
-     ```
-   *(Don't worry about the tests failing, at first, this is how you begin each exercise.)*
-
-1. Solve the exercise.  Find and work through the `instructions.md` guide ([view on GitHub](https://github.com/exercism/dart/blob/main/exercises/practice/hello-world/.docs/instructions.md)).
-
-Good luck!  Have fun!
-
-If you get stuck, at any point, don't forget to reach out for [help](https://exercism.org/docs/tracks/dart).
+[cli]: https://exercism.org/docs/using/solving-exercises/working-locally
