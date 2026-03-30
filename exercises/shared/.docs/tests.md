@@ -12,19 +12,19 @@ Run the tests.
 dart test
 ```
 
-The test run summary lists the number of tests passed, skipped, and failed.
-For example:
+For more detailed per-test output, use the expanded reporter.
 
-```
-❯ dart test
-00:01 +0 ~2 -1: Some tests failed.
+```sh
+dart test -r expanded
 ```
 
-- `+0` — 0 tests passed
-- `~2` — 2 tests skipped
-- `-1` — 1 test failed
+Most exercises have multiple tests, with all but the first skipped by default.
+To work through tests one at a time, change `skip: true` to `skip: false` on each test as you go.
 
-Most exercises will have multiple tests where all but the first are skipped by default.
-As tests pass, enable the next test by changing `skip: true` to `skip: false` (or removing the `skip` parameter entirely).
-Once all tests pass locally, submit your solution.
-Note: all tests will be run by the online test runner on every submission.
+Alternatively, run all tests at once without editing the file.
+
+```sh
+dart test --run-skipped
+```
+
+All tests are run by the online test runner on submission, including skipped ones.
