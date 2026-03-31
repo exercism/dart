@@ -1,156 +1,115 @@
 # Running the Tests
 
-Choose your operating system:
+## Download an Exercise
 
-* [Windows](#windows)
-* [Mac OS X](#mac-os-x)
-* [Linux](#linux)
+Use the [Exercism CLI][cli] to download the exercise you want to work on.
 
-## Understanding Test Result
-
-The test run summary will list the number of passed, skipped and failed tests.
-For example :
-
-```
-❯ dart test
-00:01 +4 ~3 -1: Some tests failed.
+```sh
+exercism download --track=dart --exercise=hello-world
 ```
 
-`+` describes the number of tests passed. In this example, 4 tests are passed.
+Then change into the exercise directory.
 
-`~` describes the number of tests skipped. In this example, 3 tests are skipped.
+```sh
+cd /path/to/exercism/dart/hello-world
+```
 
-`-` describes the number of tests failed. In this case, there is only one test that failed.
+## Install Dependencies
 
-The `skip` parameter instructs the test suite to not run a test. 
-This is commonly used to avoid running tests of unimplemented functionality, so you can focus on the part you are currently working on.
+Before running the tests, download the exercise dependencies.
 
-It is advised to enable tests one by one as you implement the functionality being tested or as you move towards edge cases. 
-You can do so by flipping the `skip: false` to `skip: true` flag for each test. 
-You can also submit your exercise without passing all tests to get feedback.
+```sh
+dart pub get
+```
 
-----
+## Run the Tests
 
-# Windows
+```sh
+dart test
+```
 
-1. Open a Command Prompt.
+## Understanding Test Results
 
-1. Get the first exercise:
+`dart test` uses the compact reporter by default, showing a running count of tests passed, skipped, and failed on a single line.
 
-     ```batchfile
-     C:\Users\JaneDoe>exercism fetch dart
+```sh
+$ dart test
+00:00 +1 -1: test/binary_search_test.dart: finds a value in the middle of an array [E]
+  Expected: <3>
+    Actual: <0>
 
-     Not Submitted:     1 problem
-     dart (Hello World) C:\Users\JaneDoe\exercism\dart\hello-world
-
-     New:               1 problem
-     dart (Hello World) C:\Users\JaneDoe\exercism\dart\hello-world
-
-     unchanged: 0, updated: 0, new: 1
-     ```
-
-1. Change directory into the exercism:
-
-     ```batchfile
-     C:\Users\JaneDoe>cd C:\Users\JaneDoe\exercism\dart\hello-world
-     ```
-
-1. Download the dependent packages:
-
-     ```batchfile
-     C:\Users\JaneDoe>dart pub get
-     ```
-
-1. Run the tests:
-
-     ```batchfile
-     C:\Users\JaneDoe>dart test
-     ```
-   *(Don't worry about the tests failing, at first, this is how you begin each exercise.)*
-
-1. Solve the exercise.  Find and work through the `instructions.md` guide ([view on GitHub](https://github.com/exercism/dart/blob/main/exercises/practice/hello-world/.docs/instructions.md)).
+  package:matcher                    expect
+  test/binary_search_test.dart 13:5  main.<fn>
 
 
-Good luck!  Have fun!
+To run this test again: dart test test/binary_search_test.dart -p vm --plain-name 'finds a value in the middle of an array'
+00:00 +1 ~9 -1: Some tests failed.
+```
 
-If you get stuck, at any point, don't forget to reach out for [help](https://exercism.org/docs/tracks/dart).
+- `+1` — 1 test passed
+- `~9` — 9 tests skipped
+- `-1` — 1 test failed
 
-----
+For more detailed per-test output, use the expanded reporter, which shows each test result as it runs.
 
-# Mac OS X
+```sh
+$ dart test -r expanded
+00:00 +0: loading test/binary_search_test.dart
+00:00 +0: test/binary_search_test.dart: finds a value in an array with one element
+00:00 +1: test/binary_search_test.dart: finds a value in the middle of an array
+00:00 +1 -1: test/binary_search_test.dart: finds a value in the middle of an array [E]
+  Expected: <3>
+    Actual: <0>
+  
+  package:matcher                    expect
+  test/binary_search_test.dart 13:5  main.<fn>
+  
+00:00 +1 -1: test/binary_search_test.dart: finds a value at the beginning of an array
+00:00 +1 ~1 -1: test/binary_search_test.dart: finds a value at the end of an array
+00:00 +1 ~2 -1: test/binary_search_test.dart: finds a value in an array of odd length
+00:00 +1 ~3 -1: test/binary_search_test.dart: finds a value in an array of even length
+00:00 +1 ~4 -1: test/binary_search_test.dart: identifies that a value is not included in the array
+00:00 +1 ~5 -1: test/binary_search_test.dart: a value smaller than the array's smallest value is not found
+00:00 +1 ~6 -1: test/binary_search_test.dart: a value larger than the array's largest value is not found
+00:00 +1 ~7 -1: test/binary_search_test.dart: nothing is found in an empty array
+00:00 +1 ~8 -1: test/binary_search_test.dart: nothing is found when the left and right bounds cross
+00:00 +1 ~9 -1: Some tests failed.
+```
 
-1. In the terminal window, get the first exercise:
+## Working Through Tests
 
-     ```shell
-     $ exercism fetch dart
+Most exercises have multiple tests, with all but the first skipped by default.
 
-     New:                 1 problem
-     Dart (Etl) /Users/janedoe/exercism/dart/hello-world
+```dart
+void main() {
+  final twoFer = TwoFer();
 
-     unchanged: 0, updated: 0, new: 1
-     ```
+  group('TwoFer', () {
+    test('no name given', () {
+      final result = twoFer.statement();
+      expect(result, equals('One for you, one for me.'));
+    }, skip: false);
 
-1. Change directory into the exercise:
+    test('a name given', () {
+      final result = twoFer.statement('Alice');
+      expect(result, equals('One for Alice, one for me.'));
+    }, skip: true);
 
-     ```shell
-     $ cd /Users/janedoe/exercism/dart/hello-world
-     ```
+    test('another name given', () {
+      final result = twoFer.statement('Bob');
+      expect(result, equals('One for Bob, one for me.'));
+    }, skip: true);
+  });
+}
+```
 
-1. Download the dependent packages:
+To work through tests one at a time, change `skip: true` to `skip: false` on each test as you go.
+Alternatively, run all tests at once without editing the file.
 
-     ```shell
-     $ dart pub get
-     ```
+```sh
+dart test --run-skipped
+```
 
-1. Run the tests:
+All tests are run by the online test runner on submission, including skipped ones.
 
-     ```shell
-     $ dart test
-     ```
-   *(Don't worry about the tests failing, at first, this is how you begin each exercise.)*
-
-1. Solve the exercise.  Find and work through the `instructions.md` guide ([view on GitHub](https://github.com/exercism/dart/blob/main/exercises/practice/hello-world/.docs/instructions.md)).
-
-Good luck!  Have fun!
-
-If you get stuck, at any point, don't forget to reach out for [help](https://exercism.org/docs/tracks/dart).
-
-----
-
-# Linux
-
-1. In the terminal window, get the first exercise:
-
-     ```shell
-     $ exercism fetch dart
-
-     New:                 1 problem
-     Dart (Etl) /home/janedoe/exercism/dart/hello-world
-
-     unchanged: 0, updated: 0, new: 1
-     ```
-
-1. Change directory into the exercise:
-
-     ```shell
-     $ cd /home/janedoe/exercism/dart/hello-world
-     ```
-
-1. Download the dependent packages:
-
-     ```shell
-     $ dart pub get
-     ```
-
-1. Run the tests:
-
-     ```shell
-     $ dart test
-     ```
-   *(Don't worry about the tests failing, at first, this is how you begin each exercise.)*
-
-1. Solve the exercise.  Find and work through the `instructions.md` guide ([view on GitHub](https://github.com/exercism/dart/blob/main/exercises/practice/hello-world/.docs/instructions.md)).
-
-Good luck!  Have fun!
-
-If you get stuck, at any point, don't forget to reach out for [help](https://exercism.org/docs/tracks/dart).
+[cli]: https://exercism.org/docs/using/solving-exercises/working-locally
