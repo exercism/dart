@@ -6,7 +6,7 @@ Exercism exercises in Dart.
 
 ## Requirements
 
-* Dart 2.0.0 or higher
+* Dart 3.2 or higher
 
 ## Setup
 
