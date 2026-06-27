@@ -258,8 +258,8 @@ void _generateExercise(Map<String, dynamic> specification, String exerciseFilena
   _testCasesString = testCaseTemplate(exerciseName, specification, excludedUuids: _getExcludedUuids(exerciseDir));
 
   Directory('${exerciseDir.path}/.meta/lib').createSync(recursive: true);
-  Directory('${exerciseDir.path}/lib').createSync(recursive: true);
-  Directory('${exerciseDir.path}/test').createSync(recursive: true);
+Directory('${exerciseDir.path}/lib').createSync();
+Directory('${exerciseDir.path}/test').createSync();
 
   // Fill in files — only write stubs/example if they don't already exist
   final testFileName = '${exerciseDir.path}/test/${exerciseFilename}_test.dart';
