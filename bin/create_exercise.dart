@@ -237,16 +237,27 @@ void _generateExercise(Map<String, dynamic> specification, String exerciseFilena
 
   // Run configlet first: create for new exercises, sync for existing
   if (isNew) {
-    final createSuccess = _runProcess(
-        configletLoc, ['create', '--practice-exercise', exerciseName, '-t', dartRoot]);
+    final createSuccess = _runProcess(configletLoc, ['create', '--practice-exercise', exerciseName, '-t', dartRoot]);
     if (createSuccess) {
       stdout.write('Successfully created exercise via configlet.\n');
     } else {
       stderr.write('Warning: `configlet create` exited with an error.\n');
     }
   } else {
-    final syncSuccess = _runProcess(
-        configletLoc, ['sync', '-e', exerciseName, '--docs', '--metadata', '--filepaths', '--tests', 'include', '-u', '-y', '-t', dartRoot]);
+    final syncSuccess = _runProcess(configletLoc, [
+      'sync',
+      '-e',
+      exerciseName,
+      '--docs',
+      '--metadata',
+      '--filepaths',
+      '--tests',
+      'include',
+      '-u',
+      '-y',
+      '-t',
+      dartRoot
+    ]);
     if (syncSuccess) {
       stdout.write('Successfully synced via configlet.\n');
     } else {
@@ -258,8 +269,8 @@ void _generateExercise(Map<String, dynamic> specification, String exerciseFilena
   _testCasesString = testCaseTemplate(exerciseName, specification, excludedUuids: _getExcludedUuids(exerciseDir));
 
   Directory('${exerciseDir.path}/.meta/lib').createSync(recursive: true);
-Directory('${exerciseDir.path}/lib').createSync();
-Directory('${exerciseDir.path}/test').createSync();
+  Directory('${exerciseDir.path}/lib').createSync();
+  Directory('${exerciseDir.path}/test').createSync();
 
   // Fill in files — only write stubs/example if they don't already exist
   final testFileName = '${exerciseDir.path}/test/${exerciseFilename}_test.dart';
