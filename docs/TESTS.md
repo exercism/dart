@@ -112,4 +112,19 @@ dart test --run-skipped
 
 All tests are run by the online test runner on submission, including skipped ones.
 
+## Handling error "Could not find a command named frontend_server.dart.snapshot"
+
+Suppose you have an exercise you've already solved and submitted, and you're coming back to it after a while.
+You may encounter this error when you test it:
+
+```sh
+$ dart test
+...
+Could not find a command named "/path/to/frontend_server.dart.snapshot".
+```
+
+The [solution][solution] is to delete the `pubspec.lock` file.
+Then run the dart command again.
+
 [cli]: https://exercism.org/docs/using/solving-exercises/working-locally
+[solution]: https://stackoverflow.com/q/79247335/7552
