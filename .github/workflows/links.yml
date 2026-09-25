@@ -2,23 +2,15 @@ name: Links
 
 on:
   pull_request:
-    paths:
-#      - '.github/workflows/links.yml' Temporarily disabled by @Stargator
-      - 'concept/**/*.md'
-      - 'concept/**/links.json'
-      - 'docs/*.md'
-#      - 'exercises/**/*.md' Temporarily disabled by @Stargator
-      - 'reference/*.md'
-      - '*.md'
-      - '**/**/*.md'
-      - '**/*.md'
-
+  push:
+    branches:
+      - main
   repository_dispatch:
   workflow_dispatch:
 
 jobs:
   linkChecker:
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
 
