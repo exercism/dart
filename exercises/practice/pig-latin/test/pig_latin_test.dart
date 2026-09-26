@@ -55,6 +55,11 @@ void main() {
         final result = pigLatin.translate('qat');
         expect(result, equals('atqay'));
       }, skip: true);
+
+      test('word beginning with consonant and vowel containing qu', () {
+        final result = pigLatin.translate('liquid');
+        expect(result, equals('iquidlay'));
+      }, skip: true);
     });
 
     group('some letter clusters are treated like a single consonant', () {

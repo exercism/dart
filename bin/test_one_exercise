@@ -67,4 +67,4 @@ done
 
 # Run the tests
 cd "${tmpdir}"
-dart run test --run-skipped
+dart run test -r github --run-skipped
