@@ -38,6 +38,16 @@ void main() {
       expect(result, equals(false));
     }, skip: true);
 
+    test('only one check digit is allowed', () {
+      final result = isValid('3-598-21508-96');
+      expect(result, equals(false));
+    }, skip: true);
+
+    test('X is not substituted by the value 10', () {
+      final result = isValid('3-598-2X507-5');
+      expect(result, equals(false));
+    }, skip: true);
+
     test('valid isbn without separating dashes', () {
       final result = isValid('3598215088');
       expect(result, equals(true));

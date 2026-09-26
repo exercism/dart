@@ -6,7 +6,7 @@ class LargestSeriesProduct {
       throw new ArgumentError('span must not be negative');
     }
     if (span > number.length) {
-      throw new ArgumentError('span must be smaller than string length');
+      throw new ArgumentError('span must not exceed string length');
     }
 
     List<int> digits = number.codeUnits.map((cp) => cp - 48).toList();

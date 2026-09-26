@@ -56,6 +56,12 @@ void addition() {
       throwsEmptyStack,
     );
   }, skip: true);
+
+  test('more than two values on the stack', () {
+    var forth = Forth();
+    forth.evaluate('1 2 3 +');
+    expect(forth.stack, equals(<int>[1, 5]));
+  }, skip: true);
 }
 
 void subtraction() {
@@ -80,6 +86,12 @@ void subtraction() {
       throwsEmptyStack,
     );
   }, skip: true);
+
+  test('more than two values on the stack', () {
+    var forth = Forth();
+    forth.evaluate('1 12 3 -');
+    expect(forth.stack, equals(<int>[1, 9]));
+  }, skip: true);
 }
 
 void multiplication() {
@@ -103,6 +115,12 @@ void multiplication() {
       () => forth.evaluate('1 *'),
       throwsEmptyStack,
     );
+  }, skip: true);
+
+  test('more than two values on the stack', () {
+    var forth = Forth();
+    forth.evaluate('1 2 3 *');
+    expect(forth.stack, equals(<int>[1, 6]));
   }, skip: true);
 }
 
@@ -142,6 +160,12 @@ void division() {
       throwsEmptyStack,
     );
   }, skip: true);
+
+  test('more than two values on the stack', () {
+    var forth = Forth();
+    forth.evaluate('1 12 3 /');
+    expect(forth.stack, equals(<int>[1, 4]));
+  }, skip: true);
 }
 
 void combinedArithmetic() {
@@ -155,6 +179,18 @@ void combinedArithmetic() {
     var forth = Forth();
     forth.evaluate('2 4 * 3 /');
     expect(forth.stack, equals(<int>[2]));
+  }, skip: true);
+
+  test('multiplication and addition', () {
+    var forth = Forth();
+    forth.evaluate('1 3 4 * +');
+    expect(forth.stack, equals(<int>[13]));
+  }, skip: true);
+
+  test('addition and multiplication', () {
+    var forth = Forth();
+    forth.evaluate('1 3 4 + *');
+    expect(forth.stack, equals(<int>[7]));
   }, skip: true);
 }
 

@@ -1,8 +1,4 @@
-*.swp
 **/packages/
-.buildlog
-.DS_Store
-.project
 bin/configlet
 bin/configlet.exe
 
@@ -22,6 +18,4 @@ doc/
 *.js.map
 *.info.json
 
-## IDE files/folders
-/.idea/
-/.vscode/
+# editor files should go into your personal git ignore file ~/.config/git/ignore

@@ -177,11 +177,18 @@ void main() {
       expect(result, equals([]));
     }, skip: true);
 
-    test('non-empty list', () {
+    test('non-empty even-length list', () {
       final list = [1, 3, 5, 7];
       final result = list.reverse();
       expect(result, equals([7, 5, 3, 1]));
       expect(list, equals([1, 3, 5, 7]));
+    }, skip: true);
+
+    test('non-empty odd-length list', () {
+      final list = [1, 3, 5, 7, 9, 11, 13];
+      final result = list.reverse();
+      expect(result, equals([13, 11, 9, 7, 5, 3, 1]));
+      expect(list, equals([1, 3, 5, 7, 9, 11, 13]));
     }, skip: true);
 
     test('list of lists is not flattened', () {

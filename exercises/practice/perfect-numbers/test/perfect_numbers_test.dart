@@ -37,6 +37,11 @@ void main() {
         final result = perfectNumbers.classify(33550335);
         expect(result, equals(Classification.abundant));
       }, skip: true);
+
+      test('Perfect square number is classified correctly', () {
+        final result = perfectNumbers.classify(196);
+        expect(result, equals(Classification.abundant));
+      }, skip: true);
     });
 
     group('Deficient numbers', () {
