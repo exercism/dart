@@ -53,7 +53,7 @@ void main() {
     expect(
         () => lsp.largestProduct("123", 4),
         throwsA(isA<ArgumentError>()
-            .having((e) => e.message, 'message', contains('span must be smaller than string length'))));
+            .having((e) => e.message, 'message', contains('span must not exceed string length'))));
   }, skip: true);
 
   test('reports 1 for empty string and empty product (0 span)', () {
@@ -70,7 +70,7 @@ void main() {
     expect(
         () => lsp.largestProduct("", 1),
         throwsA(isA<ArgumentError>()
-            .having((e) => e.message, 'message', contains('span must be smaller than string length'))));
+            .having((e) => e.message, 'message', contains('span must not exceed string length'))));
   }, skip: true);
 
   test('rejects invalid character in digits', () {
