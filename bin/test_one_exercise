@@ -1,0 +1,70 @@
+#!/usr/bin/env bash
+#
+# For a given exercise, validate the tests.
+# The directory of the exercise to be tested is passed as $1
+
+set -o errexit
+set -o nounset
+
+die() { echo "$*" >&2; exit 1; }
+
+(( $# == 1 )) || die "usage: $0 path/to/exercise"
+cd "$1" || die "Cannot cd to $1"
+
+config=./.meta/config.json
+[[ -f ${config} ]] || die "no $config file: you're in the wrong directory"
+
+command -v jq >/dev/null || die "You must install jq to run tests"
+
+exercise=${1%/}                 # strip a trailing slash, if there is one
+exercise=${exercise##*/}        # remove any leading path
+
+stub="$(jq -r '.files.solution[0]' "$config")"
+[[ -f ${stub} ]] || die "Missing stub file for $exercise"
+
+tests=$(jq -r '.files.test[0]' "$config")
+[[ -f ${tests} ]] || die "Missing tests file for $exercise"
+
+solution=$(jq -r '.files.example[0] // .files.exemplar[0]' "$config")
+[[ -f ${solution} ]] || die "Missing solution file for $exercise"
+
+invalidator=$(jq -r '.files.invalidator[0]' "$config")
+[[ -f ${invalidator} ]] || die "Missing invalidator file for $exercise"
+
+# this is usually empty but might have multiple files in it
+readarray -t editor_files < <(jq -r '.files.editor[]?' "$config")
+
+# Check that the test file only leaves one test unskipped.
+# There are a few exercise where the test file is structured a little differently.
+# Concept exercises have no skips.
+if ! [[ $PWD =~ exercises/concept/ ]]; then
+    expected=1
+    case "${exercise}" in
+        hello-world) : ;; # don't check
+        *) num_tests=$(grep -c '^ *test(' "${tests}" || :)
+           num_skips=$(grep -c ' skip: true' "${tests}" || :)
+           (( num_skips == num_tests - expected )) || die "$exercise: there should be exactly ${expected} un-skipped test."
+   esac
+fi
+
+cleanup() {
+    rm -rf "${tmpdir}"
+}
+trap cleanup EXIT
+
+# Create implementation file from example
+tmpdir=$(mktemp -d)
+
+dest="${tmpdir}/${stub}"
+mkdir -p "$(dirname "${dest}")"
+cp "${solution}" "${dest}"
+
+for file in "${tests}" "${invalidator}" "${editor_files[@]}"; do
+    dest="${tmpdir}/$(dirname "${file}")"
+    mkdir -p "${dest}"
+    cp "$file" "${dest}"
+done
+
+# Run the tests
+cd "${tmpdir}"
+dart run test --run-skipped

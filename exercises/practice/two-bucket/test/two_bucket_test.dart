@@ -33,6 +33,16 @@ void main() {
     expect(game.measure(), equals((moves: 2, goalBucket: "two", otherBucket: 2)));
   }, skip: true);
 
+  test("Measure using bucket one much bigger than bucket two", () {
+    final game = TwoBucket(bucketOne: 5, bucketTwo: 1, goal: 2, startBucket: "one");
+    expect(game.measure(), equals((moves: 6, goalBucket: "one", otherBucket: 1)));
+  }, skip: true);
+
+  test("Measure using bucket one much smaller than bucket two", () {
+    final game = TwoBucket(bucketOne: 3, bucketTwo: 15, goal: 9, startBucket: "one");
+    expect(game.measure(), equals((moves: 6, goalBucket: "two", otherBucket: 0)));
+  }, skip: true);
+
   test("Not possible to reach the goal", () {
     final game = TwoBucket(bucketOne: 6, bucketTwo: 15, goal: 5, startBucket: "one");
     expect(() => game.measure(),
