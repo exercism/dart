@@ -58,9 +58,14 @@ void main() {
       expect(result, equals(<String>[' 2*2 ', '25*52', '*****', '25*52', ' 2*2 ']));
     }, skip: true);
 
-    test('large gardem', () {
+    test('large garden', () {
       final result = FlowerField(<String>[' *  * ', '  *   ', '    * ', '   * *', ' *  * ', '      ']).annotated;
       expect(result, equals(<String>['1*22*1', '12*322', ' 123*2', '112*4*', '1*22*2', '111111']));
+    }, skip: true);
+
+    test('multiple adjacent flowers', () {
+      final result = FlowerField(<String>[' ** ']).annotated;
+      expect(result, equals(<String>['1**1']));
     }, skip: true);
   });
 }
