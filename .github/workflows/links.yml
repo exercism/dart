@@ -3,7 +3,7 @@ name: Links
 on:
   workflow_dispatch:
   schedule:
-    - cron: 0 0 15 * * # 15th day of each month
+    - cron: 0 0 17 * * # 17th day of each month
 
 jobs:
   call-gha-workflow:
