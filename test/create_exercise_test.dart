@@ -152,9 +152,9 @@ class FooBar {
 import 'package:foo_bar/foo_bar.dart';
 import 'package:test/test.dart';
 
-final fooBar = FooBar();
-
 void main() {
+  final fooBar = FooBar();
+
   group('FooBar', () {
     test('should work', () {
       // TODO
@@ -165,11 +165,10 @@ void main() {
       });
 
       test('pubTemplate', () {
-        expect(pubTemplate('foo bar', '1.0.0'), equals('''
+        expect(pubTemplate('foo bar'), equals('''
 name: 'foo_bar'
-version: 1.0.0
 environment:
-  sdk: '>=2.18.0 <3.0.0'
+  sdk: '>=3.2.0 <4.0.0'
 dev_dependencies:
   test: '<2.0.0'
 '''));
@@ -209,7 +208,7 @@ linter:
 
           expect(testCaseTemplate('armstrong-numbers', testCase), equals('''
     test('${testCase['description']}', () {
-      final bool result = armstrongNumbers.${testCase['property']}(${testCase['input']['number']});
+      final result = armstrongNumbers.${testCase['property']}(${testCase['input']['number']});
       expect(result, equals(${testCase['expected']}));
     }, skip: false);
 '''));
