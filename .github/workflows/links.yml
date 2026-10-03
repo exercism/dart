@@ -1,23 +1,10 @@
 name: Links
 
 on:
-  pull_request:
-  push:
-    branches:
-      - main
-  repository_dispatch:
   workflow_dispatch:
+  schedule:
+    - cron: 0 0 15 * * # 15th day of each month
 
 jobs:
-  linkChecker:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
-
-      - name: Link Checker
-        uses: lycheeverse/lychee-action@e7477775783ea5526144ba13e8db5eec57747ce8
-        with:
-          args: --cache --accept ..=299,429 --verbose --require-https --user-agent "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.75 Safari/537.36" --no-progress **/*.md **/*.html **/*.toml **/*.json
-          fail: true
-        env:
-          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+  call-gha-workflow:
+    uses: exercism/github-actions/.github/workflows/link-checker.yml@main
