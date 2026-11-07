@@ -1,0 +1,12 @@
+String mostCommonWord(String text) {
+  final counts = <String, int>{};
+  var best = '';
+  for (final word in text.toLowerCase().split(' ')) {
+    final count = (counts[word] ?? 0) + 1;
+    counts[word] = count;
+    if (count > (counts[best] ?? 0)) {
+      best = word;
+    }
+  }
+  return '"$best" appears ${counts[best]} times';
+}
