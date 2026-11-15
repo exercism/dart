@@ -125,8 +125,8 @@ void main() {
 
     group('phrases are translated', () {
       test('a whole phrase', () {
-        final result = pigLatin.translate('quick fast run');
-        expect(result, equals('ickquay astfay unray'));
+        final result = pigLatin.translate('why do squids enjoy xrays');
+        expect(result, equals('ywhay oday idssquay enjoyay xraysay'));
       }, skip: true);
     });
   });
